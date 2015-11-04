@@ -8,20 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */; };
-		E4F3C83A1BE9AD2D00D29811 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8391BE9AD2D00D29811 /* ViewController.swift */; };
 		E4F3C83D1BE9AD2D00D29811 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */; };
 		E4F3C83F1BE9AD2D00D29811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83E1BE9AD2D00D29811 /* Assets.xcassets */; };
 		E4F3C8421BE9AD2D00D29811 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C8401BE9AD2D00D29811 /* LaunchScreen.storyboard */; };
+		E4F3C84B1BE9B17100D29811 /* Jobs.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C84A1BE9B17100D29811 /* Jobs.plist */; };
+		E4F3C84D1BE9B17E00D29811 /* Attacks.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C84C1BE9B17E00D29811 /* Attacks.plist */; };
+		E4F3C84F1BE9B18600D29811 /* Types.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C84E1BE9B18600D29811 /* Types.plist */; };
+		E4F3C8511BE9B20300D29811 /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8501BE9B20300D29811 /* Creature.swift */; };
+		E4F3C8531BE9B20C00D29811 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8521BE9B20C00D29811 /* Battle.swift */; };
+		E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8541BE9BB1900D29811 /* PlistService.swift */; };
+		E4F3C8571BE9BD9C00D29811 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8561BE9BD9C00D29811 /* Attack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E4F3C8341BE9AD2D00D29811 /* PMinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E4F3C8391BE9AD2D00D29811 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E4F3C83C1BE9AD2D00D29811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4F3C83E1BE9AD2D00D29811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4F3C8411BE9AD2D00D29811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4F3C8431BE9AD2D00D29811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4F3C84A1BE9B17100D29811 /* Jobs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Jobs.plist; sourceTree = "<group>"; };
+		E4F3C84C1BE9B17E00D29811 /* Attacks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Attacks.plist; sourceTree = "<group>"; };
+		E4F3C84E1BE9B18600D29811 /* Types.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Types.plist; sourceTree = "<group>"; };
+		E4F3C8501BE9B20300D29811 /* Creature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
+		E4F3C8521BE9B20C00D29811 /* Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
+		E4F3C8541BE9BB1900D29811 /* PlistService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistService.swift; sourceTree = "<group>"; };
+		E4F3C8561BE9BD9C00D29811 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,28 @@
 		E4F3C8361BE9AD2D00D29811 /* PMinGame */ = {
 			isa = PBXGroup;
 			children = (
-				E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */,
-				E4F3C8391BE9AD2D00D29811 /* ViewController.swift */,
+				E4F3C8491BE9AD4900D29811 /* Supporting Files */,
 				E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */,
-				E4F3C83E1BE9AD2D00D29811 /* Assets.xcassets */,
-				E4F3C8401BE9AD2D00D29811 /* LaunchScreen.storyboard */,
-				E4F3C8431BE9AD2D00D29811 /* Info.plist */,
+				E4F3C8501BE9B20300D29811 /* Creature.swift */,
+				E4F3C8561BE9BD9C00D29811 /* Attack.swift */,
+				E4F3C8541BE9BB1900D29811 /* PlistService.swift */,
+				E4F3C8521BE9B20C00D29811 /* Battle.swift */,
 			);
 			path = PMinGame;
+			sourceTree = "<group>";
+		};
+		E4F3C8491BE9AD4900D29811 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E4F3C84A1BE9B17100D29811 /* Jobs.plist */,
+				E4F3C84C1BE9B17E00D29811 /* Attacks.plist */,
+				E4F3C84E1BE9B18600D29811 /* Types.plist */,
+				E4F3C8431BE9AD2D00D29811 /* Info.plist */,
+				E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */,
+				E4F3C83E1BE9AD2D00D29811 /* Assets.xcassets */,
+				E4F3C8401BE9AD2D00D29811 /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,8 +148,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4F3C84F1BE9B18600D29811 /* Types.plist in Resources */,
 				E4F3C8421BE9AD2D00D29811 /* LaunchScreen.storyboard in Resources */,
+				E4F3C84D1BE9B17E00D29811 /* Attacks.plist in Resources */,
 				E4F3C83F1BE9AD2D00D29811 /* Assets.xcassets in Resources */,
+				E4F3C84B1BE9B17100D29811 /* Jobs.plist in Resources */,
 				E4F3C83D1BE9AD2D00D29811 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4F3C83A1BE9AD2D00D29811 /* ViewController.swift in Sources */,
+				E4F3C8511BE9B20300D29811 /* Creature.swift in Sources */,
 				E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */,
+				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,
+				E4F3C8571BE9BD9C00D29811 /* Attack.swift in Sources */,
+				E4F3C8531BE9B20C00D29811 /* Battle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

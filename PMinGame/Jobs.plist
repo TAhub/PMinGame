@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Jobs.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/3/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>template</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>10</integer>
+		<key>brute attack</key> <integer>10</integer>
+		<key>brute defense</key> <integer>10</integer>
+		<key>clever attack</key> <integer>10</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<key>burning immunity</key> <true/>
+		<key>bleed immunity</key> <true/>
+		<key>paralysis immunity</key> <true/>
+		<key>freeze immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<!-- player starting jobs -->
+	<key>mystic</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>12</integer>
+		<key>brute attack</key> <integer>10</integer>
+		<key>brute defense</key> <integer>8</integer>
+		<key>clever attack</key> <integer>10</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>soldier</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>11</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>13</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>investor</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>12</integer>
+		<key>dodge</key> <integer>9</integer>
+		<key>brute attack</key> <integer>8</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>barbarian</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>45</integer>
+		<key>accuracy</key> <integer>8</integer>
+		<key>dodge</key> <integer>10</integer>
+		<key>brute attack</key> <integer>12</integer>
+		<key>brute defense</key> <integer>10</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<!-- ne'er-do-wells -->
+	<key>fencer</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>11</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>9</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>rogue</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>12</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>7</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>13</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>pyromaniac</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>12</integer>
+		<key>dodge</key> <integer>10</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>10</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>flame</string>
+		<key>burning immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>cryoman</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>12</integer>
+		<key>brute defense</key> <integer>11</integer>
+		<key>clever attack</key> <integer>10</integer>
+		<key>clever defense</key> <integer>11</integer>
+		<!-- misc -->
+		<key>type</key> <string>frost</string>
+		<key>freeze immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<!-- machines -->
+	<key>warbot</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>45</integer>
+		<key>accuracy</key> <integer>9</integer>
+		<key>dodge</key> <integer>9</integer>
+		<key>brute attack</key> <integer>10</integer>
+		<key>brute defense</key> <integer>11</integer>
+		<key>clever attack</key> <integer>10</integer>
+		<key>clever defense</key> <integer>11</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<key>bleed immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>AI</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>12</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>astral</string>
+		<key>bleed immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>lightning bot</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>9</integer>
+		<key>dodge</key> <integer>12</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>8</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>spark</string>
+		<key>bleed immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>soldier robot</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>12</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>12</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>8</integer>
+		<key>clever defense</key> <integer>11</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<key>bleed immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>exterminator</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>45</integer>
+		<key>accuracy</key> <integer>9</integer>
+		<key>dodge</key> <integer>9</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>10</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<key>bleed immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<!-- undead -->
+	<key>honored dead</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>12</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>8</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>astral</string>
+		<key>bleed immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>life thief</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>45</integer>
+		<key>accuracy</key> <integer>9</integer>
+		<key>dodge</key> <integer>11</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>8</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>frozen soul</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>12</integer>
+		<key>brute defense</key> <integer>13</integer>
+		<key>clever attack</key> <integer>8</integer>
+		<key>clever defense</key> <integer>11</integer>
+		<!-- misc -->
+		<key>type</key> <string>frost</string>
+		<key>freeze immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>shape of fire</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>30</integer>
+		<key>accuracy</key> <integer>13</integer>
+		<key>dodge</key> <integer>9</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>7</integer>
+		<key>clever attack</key> <integer>13</integer>
+		<key>clever defense</key> <integer>9</integer>
+		<!-- misc -->
+		<key>type</key> <string>flame</string>
+		<key>burning immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>dancing lights</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>11</integer>
+		<key>brute attack</key> <integer>12</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>8</integer>
+		<key>clever defense</key> <integer>9</integer>
+		<!-- misc -->
+		<key>type</key> <string>spark</string>
+		<key>paralysis immunity</key> <true/>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<!-- mercenaries -->
+	<key>sour knight</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>50</integer>
+		<key>accuracy</key> <integer>8</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>13</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>11</integer>
+		<!-- misc -->
+		<key>type</key> <string>physical</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>cold killer</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>35</integer>
+		<key>accuracy</key> <integer>12</integer>
+		<key>dodge</key> <integer>10</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>10</integer>
+		<key>clever defense</key> <integer>10</integer>
+		<!-- misc -->
+		<key>type</key> <string>frost</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+	<key>scout</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>40</integer>
+		<key>accuracy</key> <integer>9</integer>
+		<key>dodge</key> <integer>11</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>10</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>spark</string>
+		<!-- TODO: attack list -->
+		<!-- appearance -->
+		<!-- TODO: race -->
+		<!-- TODO: appearance variables I guess -->
+	</dict>
+</dict>
+</plist>

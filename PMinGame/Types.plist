@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Types.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/3/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>physical</key>
+	<dict>
+		<key>physical</key> <integer>0</integer>
+		<key>astral</key> <integer>-2</integer>
+		<key>flame</key> <integer>1</integer>
+		<key>spark</key> <integer>1</integer>
+		<key>frost</key> <integer>-1</integer>
+	</dict>
+	<key>astral</key>
+	<dict>
+		<key>physical</key> <integer>1</integer>
+		<key>astral</key> <integer>1</integer>
+		<key>flame</key> <integer>-1</integer>
+		<key>spark</key> <integer>-1</integer>
+		<key>frost</key> <integer>0</integer>
+	</dict>
+	<key>flame</key>
+	<dict>
+		<key>physical</key> <integer>-1</integer>
+		<key>astral</key> <integer>1</integer>
+		<key>flame</key> <integer>-1</integer>
+		<key>spark</key> <integer>-1</integer>
+		<key>frost</key> <integer>2</integer>
+	</dict>
+	<key>spark</key>
+	<dict>
+		<key>physical</key> <integer>-1</integer>
+		<key>astral</key> <integer>1</integer>
+		<key>flame</key> <integer>1</integer>
+		<key>spark</key> <integer>0</integer>
+		<key>frost</key> <integer>-1</integer>
+	</dict>
+	<key>frost</key>
+	<dict>
+		<key>physical</key> <integer>1</integer>
+		<key>astral</key> <integer>-1</integer>
+		<key>flame</key> <integer>-1</integer>
+		<key>spark</key> <integer>1</integer>
+		<key>frost</key> <integer>-1</integer>
+	</dict>
+</dict>
+</plist>

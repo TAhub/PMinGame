@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Attacks.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/3/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>template</key>
+	<dict>
+		<key>damage</key> <integer>20</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>20</integer>
+		<key>upgrade for</key> <string>template</string>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>quick</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- -->
+	<!-- physical attacks -->
+	<!-- -->
+	<!-- sword line -->
+	<key>sword</key>
+	<dict>
+		<key>damage</key> <integer>18</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>20</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>chainsaw</key>
+	<dict>
+		<key>damage</key> <integer>27</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>18</integer>
+		<key>upgrade for</key> <string>sword</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>vibrating blade</key>
+	<dict>
+		<key>damage</key> <integer>36</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>16</integer>
+		<key>upgrade for</key> <string>chainsaw</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- slam line -->
+	<key>slam</key>
+	<dict>
+		<key>damage</key> <integer>15</integer>
+		<key>accuracy</key> <integer>85</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>30</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>heavy slam</key>
+	<dict>
+		<key>damage</key> <integer>30</integer>
+		<key>accuracy</key> <integer>85</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>26</integer>
+		<key>upgrade for</key> <string>slam</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- knife line -->
+	<key>knife</key>
+	<dict>
+		<key>damage</key> <integer>13</integer>
+		<key>accuracy</key> <integer>95</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>20</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>barbed knife</key>
+	<dict>
+		<key>damage</key> <integer>20</integer>
+		<key>accuracy</key> <integer>95</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>18</integer>
+		<key>upgrade for</key> <string>knife</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>monoedge</key>
+	<dict>
+		<key>damage</key> <integer>26</integer>
+		<key>accuracy</key> <integer>95</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>16</integer>
+		<key>upgrade for</key> <string>barbed knife</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- musket line -->
+	<key>musket</key>
+	<dict>
+		<key>damage</key> <integer>18</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>15</integer>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>rifle</key>
+	<dict>
+		<key>damage</key> <integer>27</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>13</integer>
+		<key>upgrade for</key> <string>musket</string>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>clockwork rifle</key>
+	<dict>
+		<key>damage</key> <integer>36</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>rifle</string>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- misc physical attacks -->
+	<key>subdue</key>
+	<dict>
+		<key>damage</key> <integer>21</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>feint</key>
+	<dict>
+		<key>damage</key> <integer>10</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>grenade</key>
+	<dict>
+		<key>damage</key> <integer>23</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>4</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>mug</key>
+	<dict>
+		<key>damage</key> <integer>16</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>4</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>net gun</key>
+	<dict>
+		<key>damage</key> <integer>8</integer>
+		<key>accuracy</key> <integer>90</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- -->
+	<!-- astral attacks -->
+	<!-- -->
+	<!-- phase touch line -->
+	<key>phase touch</key>
+	<dict>
+		<key>damage</key> <integer>13</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>15</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>ghost touch</key>
+	<dict>
+		<key>damage</key> <integer>20</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>13</integer>
+		<key>upgrade for</key> <string>phase touch</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>heartstopper</key>
+	<dict>
+		<key>damage</key> <integer>26</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>ghost touch</string>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- energy drain line -->
+	<key>energy drain</key>
+	<dict>
+		<key>damage</key> <integer>10</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>super drain</key>
+	<dict>
+		<key>damage</key> <integer>18</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>8</integer>
+		<key>upgrade for</key> <string>energy drain</string>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- misc astral attacks -->
+	<key>blinding light</key>
+	<dict>
+		<key>damage</key> <integer>7</integer>
+		<key>accuracy</key> <integer>90</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>astral lens</key>
+	<dict>
+		<key>damage</key> <integer>55</integer>
+		<key>accuracy</key> <integer>50</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- -->
+	<!-- flame attacks -->
+	<!-- -->
+	<!-- puff of flame line -->
+	<key>puff of flame</key>
+	<dict>
+		<key>damage</key> <integer>20</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>13</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>flamethrower</key>
+	<dict>
+		<key>damage</key> <integer>30</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>puff of flame</string>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>hellfire</key>
+	<dict>
+		<key>damage</key> <integer>40</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>9</integer>
+		<key>upgrade for</key> <string>flamethrower</string>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- misc flame attacks -->
+	<key>brand</key>
+	<dict>
+		<key>damage</key> <integer>25</integer>
+		<key>accuracy</key> <integer>50</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>ignite</key>
+	<dict>
+		<key>damage</key> <integer>11</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- -->
+	<!-- spark attacks -->
+	<!-- -->
+	<!-- shock line -->
+	<key>shock</key>
+	<dict>
+		<key>damage</key> <integer>16</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>15</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>electrocute</key>
+	<dict>
+		<key>damage</key> <integer>23</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>13</integer>
+		<key>upgrade for</key> <string>shock</string>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>lightning bolt</key>
+	<dict>
+		<key>damage</key> <integer>32</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>electrocute</string>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- lightning blow line -->
+	<key>lightning blow</key>
+	<dict>
+		<key>damage</key> <integer>18</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>9</integer>
+		<!-- properties -->
+		<key>quick</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>lightning combo</key>
+	<dict>
+		<key>damage</key> <integer>36</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>7</integer>
+		<key>upgrade for</key> <string>lightning blow</string>
+		<!-- properties -->
+		<key>quick</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- misc spark attacks -->
+	<key>paralyzing touch</key>
+	<dict>
+		<key>damage</key> <integer>13</integer>
+		<key>accuracy</key> <integer>90</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>9</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>electric sight</key>
+	<dict>
+		<key>damage</key> <integer>8</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>5</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>guided bolt</key>
+	<dict>
+		<key>damage</key> <integer>30</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>4</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>shockwave</key>
+	<dict>
+		<key>damage</key> <integer>44</integer>
+		<key>accuracy</key> <integer>65</integer>
+		<key>type</key> <string>spark</string>
+		<key>power points</key> <integer>10</integer>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- -->
+	<!-- frost attacks -->
+	<!-- -->
+	<!-- snowball line -->
+	<key>snowball</key>
+	<dict>
+		<key>damage</key> <integer>23</integer>
+		<key>accuracy</key> <integer>60</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>15</integer>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>snow slam</key>
+	<dict>
+		<key>damage</key> <integer>34</integer>
+		<key>accuracy</key> <integer>60</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>13</integer>
+		<key>upgrade for</key> <string>snowball</string>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>ice fling</key>
+	<dict>
+		<key>damage</key> <integer>46</integer>
+		<key>accuracy</key> <integer>60</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>snow slam</string>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- icicle line -->
+	<key>icicle</key>
+	<dict>
+		<key>damage</key> <integer>17</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>15</integer>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>ice shower</key>
+	<dict>
+		<key>damage</key> <integer>35</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>icicle</string>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- misc frost attacks -->
+	<key>rime</key>
+	<dict>
+		<key>damage</key> <integer>14</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>8</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>freeze ray</key>
+	<dict>
+		<key>damage</key> <integer>16</integer>
+		<key>accuracy</key> <integer>90</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>8</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<!-- -->
+	<!-- typeless attacks -->
+	<!-- -->
+	<key>evade</key>
+	<dict>
+		<key>power points</key> <integer>8</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>hunker down</key>
+	<dict>
+		<key>power points</key> <integer>8</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>power up</key>
+	<dict>
+		<key>power points</key> <integer>8</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>focus</key>
+	<dict>
+		<key>power points</key> <integer>8</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>intimidate</key>
+	<dict>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>ranged</key> <true/>
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>rage</key>
+	<dict>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+	<key>cleanse</key>
+	<dict>
+		<key>power points</key> <integer>4</integer>
+		<!-- properties -->
+		<!-- TODO: effects list -->
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<!-- TODO: message data -->
+	</dict>
+</dict>
+</plist>
