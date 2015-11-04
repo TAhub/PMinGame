@@ -15,7 +15,7 @@ private let kHealthLevelBonus = 5
 class Creature
 {
 	//identity
-	private var job:String = "Sample"
+	private var job:String = "barbarian"
 	
 	//permanent stats
 	private var level:Int = 1
@@ -28,6 +28,9 @@ class Creature
 			health = min(max(health, 0), maxHealth)
 		}
 	}
+	
+	//attacks
+	internal var attacks:[Attack] = [Attack(attack: "puff of flame"), Attack(attack: "clockwork rifle"), Attack(attack: "musket")]
 	
 	//status
 	private var paralysis:Int?
@@ -91,7 +94,7 @@ class Creature
 	private var maxHealth:Int
 	{
 		let baseHealth = PlistService.loadValue("Jobs", job, "health") as! Int
-		let healthMult = 100 + kHealthLevelBonus * min(level, 30)
+		let healthMult = 100 + kHealthLevelBonus * min(level - 1, 30)
 		return baseHealth * healthMult / 100
 	}
 	private var type:String
@@ -115,19 +118,19 @@ class Creature
 		default: assertionFailure("ERROR: Invalid step modifier!"); return 100
 		}
 	}
-	private func typeMultiplier(attackType:String) -> Int
+	internal func typeMultiplier(attackType:String) -> Int
 	{
 		switch(PlistService.loadValue("Types", attackType, type) as! Int)
 		{
 		case -2: return 0
 		case -1: return 50
 		case 0: return 100
-		case 1: return 150
-		case 2: return 200
+		case 1: return 140
+		case 2: return 180
 		default: assertionFailure("ERROR: Invalid type modifier!"); return 100
 		}
 	}
-	private func useAttackOn(attack:Attack, on:Creature)
+	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())
 	{
 		//TODO: fail here and output a message if you are paralyzed or frozen
 		
@@ -182,13 +185,9 @@ class Creature
 		if hit
 		{
 			//TODO: output the attack use message
+			messageHandler("*Name used \(attack.attack)!")
 			
 			var applyEffects:Bool = true
-			
-			if crit
-			{
-				//TODO: output a "it was a crit" message
-			}
 			
 			if let damage = attack.damage
 			{
@@ -197,6 +196,7 @@ class Creature
 				if finalDamage == 0
 				{
 					//TODO: output a "the attack was ineffective!" message
+					messageHandler("The attack was ineffective!")
 					applyEffects = false
 				}
 				else
@@ -205,6 +205,10 @@ class Creature
 					if crit
 					{
 						finalDamage = finalDamage + finalDamage / 2
+						
+						//TODO: output a "it was a crit" message
+						//this is the crit message for damaging attacks
+						messageHandler("WHAM!")
 					}
 					
 					//apply stats
@@ -225,13 +229,23 @@ class Creature
 					//apply steps
 					finalDamage = finalDamage * stepMultiplier(attackStep) / on.stepMultiplier(on.defenseStep)
 					
+					//apply random factor
+					finalDamage = finalDamage * (100 - Int(arc4random_uniform(5))) / 100
+					
 					//apply minimum
 					finalDamage = max(finalDamage, 1)
 					
 					//do the damage
 					on.health -= finalDamage
 					//TODO: output a damage message (be sure to mention the damage type)
+					messageHandler("*Enemyname took \(finalDamage) damage!")
 				}
+			}
+			else if crit
+			{
+				//TODO: output a "it was a crit" message
+				//this is the crit message for non-damaging attacks
+				messageHandler("WHAM!")
 			}
 			
 			if applyEffects
@@ -245,6 +259,13 @@ class Creature
 		else
 		{
 			//TODO: output a miss message
+			messageHandler("*Name tried to use \(attack.attack), but *he missed!")
 		}
+	}
+	
+	//get stuff
+	internal var statLine:String
+	{
+		return "NAME\nlevel \(level) \(type)\n\(health)/\(maxHealth) health"
 	}
 }

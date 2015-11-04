@@ -12,7 +12,7 @@
 	<key>template</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>10</integer>
 		<key>dodge</key> <integer>10</integer>
 		<key>brute attack</key> <integer>10</integer>
@@ -34,7 +34,7 @@
 	<key>mystic</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>11</integer>
 		<key>dodge</key> <integer>12</integer>
 		<key>brute attack</key> <integer>10</integer>
@@ -51,7 +51,7 @@
 	<key>soldier</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>10</integer>
 		<key>dodge</key> <integer>8</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -65,10 +65,10 @@
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
 	</dict>
-	<key>investor</key>
+	<key>inventor</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>12</integer>
 		<key>dodge</key> <integer>9</integer>
 		<key>brute attack</key> <integer>8</integer>
@@ -85,10 +85,10 @@
 	<key>barbarian</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>45</integer>
-		<key>accuracy</key> <integer>8</integer>
+		<key>health</key> <integer>55</integer>
+		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>10</integer>
-		<key>brute attack</key> <integer>12</integer>
+		<key>brute attack</key> <integer>13</integer>
 		<key>brute defense</key> <integer>10</integer>
 		<key>clever attack</key> <integer>9</integer>
 		<key>clever defense</key> <integer>8</integer>
@@ -103,7 +103,7 @@
 	<key>fencer</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>11</integer>
 		<key>dodge</key> <integer>11</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -120,7 +120,7 @@
 	<key>rogue</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>10</integer>
 		<key>dodge</key> <integer>12</integer>
 		<key>brute attack</key> <integer>9</integer>
@@ -137,9 +137,9 @@
 	<key>pyromaniac</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>12</integer>
-		<key>dodge</key> <integer>10</integer>
+		<key>dodge</key> <integer>9</integer>
 		<key>brute attack</key> <integer>9</integer>
 		<key>brute defense</key> <integer>10</integer>
 		<key>clever attack</key> <integer>11</integer>
@@ -155,7 +155,7 @@
 	<key>cryoman</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>10</integer>
 		<key>dodge</key> <integer>8</integer>
 		<key>brute attack</key> <integer>12</integer>
@@ -174,7 +174,7 @@
 	<key>warbot</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>45</integer>
+		<key>health</key> <integer>55</integer>
 		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>9</integer>
 		<key>brute attack</key> <integer>10</integer>
@@ -192,7 +192,7 @@
 	<key>AI</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>11</integer>
 		<key>dodge</key> <integer>8</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -210,12 +210,12 @@
 	<key>lightning bot</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>12</integer>
 		<key>brute attack</key> <integer>9</integer>
 		<key>brute defense</key> <integer>8</integer>
-		<key>clever attack</key> <integer>11</integer>
+		<key>clever attack</key> <integer>13</integer>
 		<key>clever defense</key> <integer>10</integer>
 		<!-- misc -->
 		<key>type</key> <string>spark</string>
@@ -228,7 +228,7 @@
 	<key>soldier robot</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>12</integer>
 		<key>dodge</key> <integer>8</integer>
 		<key>brute attack</key> <integer>12</integer>
@@ -246,7 +246,7 @@
 	<key>exterminator</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>45</integer>
+		<key>health</key> <integer>55</integer>
 		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>9</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -265,7 +265,7 @@
 	<key>honored dead</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>10</integer>
 		<key>dodge</key> <integer>12</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -283,7 +283,7 @@
 	<key>life thief</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>45</integer>
+		<key>health</key> <integer>55</integer>
 		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>11</integer>
 		<key>brute attack</key> <integer>9</integer>
@@ -300,7 +300,7 @@
 	<key>frozen soul</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>10</integer>
 		<key>dodge</key> <integer>8</integer>
 		<key>brute attack</key> <integer>12</integer>
@@ -318,7 +318,7 @@
 	<key>shape of fire</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>30</integer>
+		<key>health</key> <integer>40</integer>
 		<key>accuracy</key> <integer>13</integer>
 		<key>dodge</key> <integer>9</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -336,7 +336,7 @@
 	<key>dancing lights</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>11</integer>
 		<key>dodge</key> <integer>11</integer>
 		<key>brute attack</key> <integer>12</integer>
@@ -355,7 +355,7 @@
 	<key>sour knight</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>50</integer>
+		<key>health</key> <integer>60</integer>
 		<key>accuracy</key> <integer>8</integer>
 		<key>dodge</key> <integer>8</integer>
 		<key>brute attack</key> <integer>11</integer>
@@ -372,7 +372,7 @@
 	<key>cold killer</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>35</integer>
+		<key>health</key> <integer>45</integer>
 		<key>accuracy</key> <integer>12</integer>
 		<key>dodge</key> <integer>10</integer>
 		<key>brute attack</key> <integer>9</integer>
@@ -389,7 +389,7 @@
 	<key>scout</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>40</integer>
+		<key>health</key> <integer>50</integer>
 		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>11</integer>
 		<key>brute attack</key> <integer>11</integer>

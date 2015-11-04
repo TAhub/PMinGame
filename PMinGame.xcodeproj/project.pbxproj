@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
 		E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */; };
 		E4F3C83D1BE9AD2D00D29811 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */; };
 		E4F3C83F1BE9AD2D00D29811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83E1BE9AD2D00D29811 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		E4F3C8341BE9AD2D00D29811 /* PMinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F3C83C1BE9AD2D00D29811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				E4F3C8491BE9AD4900D29811 /* Supporting Files */,
 				E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */,
 				E4F3C8501BE9B20300D29811 /* Creature.swift */,
+				E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */,
 				E4F3C8561BE9BD9C00D29811 /* Attack.swift */,
 				E4F3C8541BE9BB1900D29811 /* PlistService.swift */,
 				E4F3C8521BE9B20C00D29811 /* Battle.swift */,
@@ -164,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */,
 				E4F3C8511BE9B20300D29811 /* Creature.swift in Sources */,
 				E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */,
 				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,
@@ -316,6 +320,7 @@
 				E4F3C8481BE9AD2D00D29811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

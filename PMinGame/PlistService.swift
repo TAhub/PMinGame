@@ -27,12 +27,16 @@ class PlistService
 		
 		return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: 1)
 	}
+	
+	private class func loadEntries(category:String) -> AnyObject?
+	{
+		let p = NSBundle.mainBundle().pathForResource(category, ofType: "plist")
+		return NSDictionary(contentsOfFile: p!)
+	}
 
 	class func loadValueFlat(category:String, _ entry:String) -> AnyObject?
 	{
-		let p = NSBundle.mainBundle().pathForResource(category, ofType: "plist")
-		let d = NSDictionary(contentsOfFile: p!)
-		return d!.valueForKey(entry)
+		return loadEntries(category)!.valueForKey(entry)
 	}
 
 	class func loadValue(category:String, _ entry:String, _ key:String) -> AnyObject?
@@ -45,6 +49,24 @@ class PlistService
 		{
 			//that entry does not exist
 			return nil
+		}
+	}
+	
+	
+	//diagnostics
+	class func jobStatDiagnostic()
+	{
+		print("Job stat balance diagnostic:")
+		
+		let entries = loadEntries("Jobs") as! [String : [String : AnyObject]]
+		for (name, entry) in entries
+		{
+			var points = 0
+			points += (entry["health"] as! Int) * 2
+			points += ((entry["accuracy"] as! Int) + (entry["dodge"] as! Int)) * 10
+			points += ((entry["brute attack"] as! Int) + (entry["brute defense"] as! Int)) * 5
+			points += ((entry["clever attack"] as! Int) + (entry["clever defense"] as! Int)) * 5
+			print("\(name): \(points)")
 		}
 	}
 }

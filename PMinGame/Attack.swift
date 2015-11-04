@@ -8,7 +8,7 @@
 
 class Attack
 {
-	private let attack:String
+	let attack:String
 	var powerPoints:Int = 0
 	
 	init(attack:String)
@@ -48,5 +48,11 @@ class Attack
 	var quick:Bool
 	{
 		return PlistService.loadValue("Attacks", attack, "quick") != nil
+	}
+	
+	//diagnostics
+	var label:String
+	{
+		return "\(attack) (\(powerPoints)/\(maxPowerPoints))"
 	}
 }
