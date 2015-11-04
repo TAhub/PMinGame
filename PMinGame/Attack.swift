@@ -6,6 +6,57 @@
 //  Copyright © 2015 Theodore Abshire. All rights reserved.
 //
 
+struct AttackEffect
+{
+	private let contents:[String : AnyObject]
+	
+	//get the contents
+	var attackStep:Int?
+	{
+		return contents["attack steps"] as? Int
+	}
+	var defenseStep:Int?
+	{
+		return contents["defense steps"] as? Int
+	}
+	var accuracyStep:Int?
+	{
+		return contents["accuracy steps"] as? Int
+	}
+	var dodgeStep:Int?
+	{
+		return contents["dodge steps"] as? Int
+	}
+	var paralysisChance:Int?
+	{
+		return contents["paralysis chance"] as? Int
+	}
+	var freezeChance:Int?
+	{
+		return contents["freeze chance"] as? Int
+	}
+	var bleedChance:Int?
+	{
+		return contents["bleed chance"] as? Int
+	}
+	var burningChance:Int?
+	{
+		return contents["burning chance"] as? Int
+	}
+	var mug:Bool
+	{
+		return contents["mug"] != nil
+	}
+	var nonlethal:Bool
+	{
+		return contents["nonlethal"] != nil
+	}
+	var cleanse:Bool
+	{
+		return contents["cleanse"] != nil
+	}
+}
+
 class Attack
 {
 	let attack:String
@@ -48,6 +99,30 @@ class Attack
 	var quick:Bool
 	{
 		return PlistService.loadValue("Attacks", attack, "quick") != nil
+	}
+	var leech:Bool
+	{
+		return PlistService.loadValue("Attacks", attack, "leech") != nil
+	}
+	var message:String
+	{
+		return PlistService.loadValue("Attacks", attack, "message") as! String
+	}
+	var userEffects:AttackEffect?
+	{
+		if let contents = PlistService.loadValue("Attacks", attack, "user effects") as? [String : AnyObject]
+		{
+			return AttackEffect(contents: contents)
+		}
+		return nil
+	}
+	var enemyEffects:AttackEffect?
+	{
+		if let contents = PlistService.loadValue("Attacks", attack, "enemy effects") as? [String : AnyObject]
+		{
+			return AttackEffect(contents: contents)
+		}
+		return nil
 	}
 	
 	//diagnostics

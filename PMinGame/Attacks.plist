@@ -20,10 +20,39 @@
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
 		<key>quick</key> <true/>
-		<!-- TODO: effects list -->
+		<key>leech</key> <true/>
+		<key>user effects</key>
+		<dict>
+			<key>attack steps</key> <integer>1</integer>
+			<key>defense steps</key> <integer>1</integer>
+			<key>accuracy steps</key> <integer>1</integer>
+			<key>dodge steps</key> <integer>1</integer>
+			<key>paralysis chance</key> <integer>50</integer>
+			<key>freeze chance</key> <integer>50</integer>
+			<key>bleed chance</key> <integer>50</integer>
+			<key>burning chance</key> <integer>50</integer>
+			<key>mug</key> <true/>
+			<key>nonlethal</key> <true/>
+			<key>cleanse</key> <true/>
+		</dict>
+		<key>enemy effects</key>
+		<dict>
+			<key>attack steps</key> <integer>1</integer>
+			<key>defense steps</key> <integer>1</integer>
+			<key>accuracy steps</key> <integer>1</integer>
+			<key>dodge steps</key> <integer>1</integer>
+			<key>paralysis chance</key> <integer>50</integer>
+			<key>freeze chance</key> <integer>50</integer>
+			<key>bleed chance</key> <integer>50</integer>
+			<key>burning chance</key> <integer>50</integer>
+			<key>mug</key> <true/>
+			<key>leech</key> <true/>
+			<key>nonlethal</key> <true/>
+			<key>cleanse</key> <true/>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name did a sample thing!</string>
 	</dict>
 	<!-- -->
 	<!-- physical attacks -->
@@ -36,10 +65,13 @@
 		<key>type</key> <string>physical</string>
 		<key>power points</key> <integer>20</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>5</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name slashed *his sword at *OnName!</string>
 	</dict>
 	<key>chainsaw</key>
 	<dict>
@@ -49,10 +81,13 @@
 		<key>power points</key> <integer>18</integer>
 		<key>upgrade for</key> <string>sword</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>7</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name revved up *his chainsaw and swung it at *OnName!</string>
 	</dict>
 	<key>vibrating blade</key>
 	<dict>
@@ -62,10 +97,13 @@
 		<key>power points</key> <integer>16</integer>
 		<key>upgrade for</key> <string>chainsaw</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>5</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name swiped at *OnName with *his vibrating blade!</string>
 	</dict>
 	<!-- slam line -->
 	<key>slam</key>
@@ -75,10 +113,9 @@
 		<key>type</key> <string>physical</string>
 		<key>power points</key> <integer>30</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name slammed *OnName!</string>
 	</dict>
 	<key>heavy slam</key>
 	<dict>
@@ -88,10 +125,9 @@
 		<key>power points</key> <integer>26</integer>
 		<key>upgrade for</key> <string>slam</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name mightily slammed *OnName!</string>
 	</dict>
 	<!-- knife line -->
 	<key>knife</key>
@@ -101,10 +137,13 @@
 		<key>type</key> <string>physical</string>
 		<key>power points</key> <integer>20</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>10</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name jabbed *his knife at *OnName!</string>
 	</dict>
 	<key>barbed knife</key>
 	<dict>
@@ -114,10 +153,13 @@
 		<key>power points</key> <integer>18</integer>
 		<key>upgrade for</key> <string>knife</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>14</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name stabbed *OnName with his barbed knife!</string>
 	</dict>
 	<key>monoedge</key>
 	<dict>
@@ -127,10 +169,13 @@
 		<key>power points</key> <integer>16</integer>
 		<key>upgrade for</key> <string>barbed knife</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>10</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name cut *OnName with his monoedge knife!</string>
 	</dict>
 	<!-- musket line -->
 	<key>musket</key>
@@ -141,10 +186,9 @@
 		<key>power points</key> <integer>15</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name fired at *OnName with *his musket!</string>
 	</dict>
 	<key>rifle</key>
 	<dict>
@@ -155,10 +199,9 @@
 		<key>upgrade for</key> <string>musket</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name carefully shot *OnName with *his rifle!</string>
 	</dict>
 	<key>clockwork rifle</key>
 	<dict>
@@ -169,10 +212,9 @@
 		<key>upgrade for</key> <string>rifle</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name unloaded a clip at *OnName with *his clockwork rifle!</string>
 	</dict>
 	<!-- misc physical attacks -->
 	<key>subdue</key>
@@ -183,10 +225,13 @@
 		<key>power points</key> <integer>10</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>nonlethal</key> <true/>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name tackled *OnName to the ground!</string>
 	</dict>
 	<key>feint</key>
 	<dict>
@@ -196,10 +241,13 @@
 		<key>power points</key> <integer>10</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name feinted at *OnName!</string>
 	</dict>
 	<key>grenade</key>
 	<dict>
@@ -210,10 +258,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>75</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name throw a grenade at *OnName!</string>
 	</dict>
 	<key>mug</key>
 	<dict>
@@ -223,10 +274,13 @@
 		<key>power points</key> <integer>4</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>mug</key> <true/>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name leapt at *OnName!</string>
 	</dict>
 	<key>net gun</key>
 	<dict>
@@ -237,10 +291,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name pulled out a net gun and fired it at *OnName!</string>
 	</dict>
 	<!-- -->
 	<!-- astral attacks -->
@@ -253,10 +310,9 @@
 		<key>type</key> <string>astral</string>
 		<key>power points</key> <integer>15</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name sunk *his hand into *OnName!</string>
 	</dict>
 	<key>ghost touch</key>
 	<dict>
@@ -266,10 +322,9 @@
 		<key>power points</key> <integer>13</integer>
 		<key>upgrade for</key> <string>phase touch</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name thrust *his arm into *OnName!</string>
 	</dict>
 	<key>heartstopper</key>
 	<dict>
@@ -279,10 +334,9 @@
 		<key>power points</key> <integer>11</integer>
 		<key>upgrade for</key> <string>ghost touch</string>
 		<!-- properties -->
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name reached into *OnName in search of vitals!</string>
 	</dict>
 	<!-- energy drain line -->
 	<key>energy drain</key>
@@ -293,10 +347,10 @@
 		<key>power points</key> <integer>10</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<!-- TODO: effects list -->
+		<key>leech</key> <true/>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name pressed *his hand against *OnName. *OnName began to glow!</string>
 	</dict>
 	<key>super drain</key>
 	<dict>
@@ -307,10 +361,10 @@
 		<key>upgrade for</key> <string>energy drain</string>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<!-- TODO: effects list -->
+		<key>leech</key> <true/>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name pressed both hands against *OnName. *OnName began to glow!</string>
 	</dict>
 	<!-- misc astral attacks -->
 	<key>blinding light</key>
@@ -322,10 +376,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>accuracy steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name released an intense light!</string>
 	</dict>
 	<key>astral lens</key>
 	<dict>
@@ -336,10 +393,10 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<!-- TODO: shouldn't use power points on a miss -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name conjured up an astral lens and began to channel through it!</string>
 	</dict>
 	<!-- -->
 	<!-- flame attacks -->
@@ -354,10 +411,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>5</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name fired a puff of flame at *OnName!</string>
 	</dict>
 	<key>flamethrower</key>
 	<dict>
@@ -369,10 +429,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>7</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name fired a jet of flames at *OnName!</string>
 	</dict>
 	<key>hellfire</key>
 	<dict>
@@ -384,23 +447,29 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>5</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name fired a jet of intense flames at *OnName!</string>
 	</dict>
 	<!-- misc flame attacks -->
 	<key>brand</key>
 	<dict>
 		<key>damage</key> <integer>25</integer>
-		<key>accuracy</key> <integer>50</integer>
+		<key>accuracy</key> <integer>55</integer>
 		<key>type</key> <string>flame</string>
 		<key>power points</key> <integer>10</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>defense steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name touched *OnName with *his red-hot hands!</string>
 	</dict>
 	<key>ignite</key>
 	<dict>
@@ -410,10 +479,13 @@
 		<key>power points</key> <integer>10</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>75</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name engulfed *OnName in flames!</string>
 	</dict>
 	<!-- -->
 	<!-- spark attacks -->
@@ -428,10 +500,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>5</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name released a bolt of static electricity at *OnName!</string>
 	</dict>
 	<key>electrocute</key>
 	<dict>
@@ -443,10 +518,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>7</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name released a blast of electricity at *OnName!</string>
 	</dict>
 	<key>lightning bolt</key>
 	<dict>
@@ -458,10 +536,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>5</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name released a bolt of lightning at *OnName!</string>
 	</dict>
 	<!-- lightning blow line -->
 	<key>lightning blow</key>
@@ -472,10 +553,9 @@
 		<key>power points</key> <integer>9</integer>
 		<!-- properties -->
 		<key>quick</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name launched a lightning-fast attack at *OnName!</string>
 	</dict>
 	<key>lightning combo</key>
 	<dict>
@@ -486,10 +566,9 @@
 		<key>upgrade for</key> <string>lightning blow</string>
 		<!-- properties -->
 		<key>quick</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name launched a series of lightning-fast attacks at *OnName!</string>
 	</dict>
 	<!-- misc spark attacks -->
 	<key>paralyzing touch</key>
@@ -499,10 +578,13 @@
 		<key>type</key> <string>spark</string>
 		<key>power points</key> <integer>9</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>75</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name touched *OnName with his crackling hand!</string>
 	</dict>
 	<key>electric sight</key>
 	<dict>
@@ -512,10 +594,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name activated *his deadly electric sight and turned it towards *OnName!</string>
 	</dict>
 	<key>guided bolt</key>
 	<dict>
@@ -525,10 +610,9 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name released an unerring bolt of lightning at *OnName!</string>
 	</dict>
 	<key>shockwave</key>
 	<dict>
@@ -538,10 +622,9 @@
 		<key>power points</key> <integer>10</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name flung a wave of thunder at *OnName!</string>
 	</dict>
 	<!-- -->
 	<!-- frost attacks -->
@@ -555,10 +638,9 @@
 		<key>power points</key> <integer>15</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name threw a snowball at *OnName!</string>
 	</dict>
 	<key>snow slam</key>
 	<dict>
@@ -569,10 +651,9 @@
 		<key>upgrade for</key> <string>snowball</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name threw an armful of snow at *OnName!</string>
 	</dict>
 	<key>ice fling</key>
 	<dict>
@@ -583,10 +664,9 @@
 		<key>upgrade for</key> <string>snow slam</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name flung a big chunk of ice at *OnName!</string>
 	</dict>
 	<!-- icicle line -->
 	<key>icicle</key>
@@ -597,10 +677,9 @@
 		<key>power points</key> <integer>15</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name tossed an icicle at *OnName!</string>
 	</dict>
 	<key>ice shower</key>
 	<dict>
@@ -611,10 +690,9 @@
 		<key>upgrade for</key> <string>icicle</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name tossed a dozen icicles at *OnName!</string>
 	</dict>
 	<!-- misc frost attacks -->
 	<key>rime</key>
@@ -625,10 +703,13 @@
 		<key>power points</key> <integer>8</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name touched *OnName with *his chilling hand!</string>
 	</dict>
 	<key>freeze ray</key>
 	<dict>
@@ -639,10 +720,13 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>freeze chance</key> <integer>75</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name fired a pale blue ray at *OnName!</string>
 	</dict>
 	<!-- -->
 	<!-- typeless attacks -->
@@ -651,65 +735,87 @@
 	<dict>
 		<key>power points</key> <integer>8</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name began to move erratically!</string>
 	</dict>
 	<key>hunker down</key>
 	<dict>
 		<key>power points</key> <integer>8</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>defense steps</key> <integer>1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name braced *himself for impact!</string>
 	</dict>
 	<key>power up</key>
 	<dict>
 		<key>power points</key> <integer>8</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>attack steps</key> <integer>1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name began to tense up!</string>
 	</dict>
 	<key>focus</key>
 	<dict>
 		<key>power points</key> <integer>8</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>accuracy steps</key> <integer>1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name began to concentrate heavily!</string>
 	</dict>
 	<key>intimidate</key>
 	<dict>
 		<key>power points</key> <integer>6</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
-		<!-- TODO: effects list -->
+		<key>enemy effects</key>
+		<dict>
+			<key>attack steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name shot a scary look at *OnName!</string>
 	</dict>
 	<key>rage</key>
 	<dict>
 		<key>power points</key> <integer>6</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>attack steps</key> <integer>2</integer>
+			<key>dodge steps</key> <integer>-1</integer>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name whipped *himself into a frenzy!</string>
 	</dict>
 	<key>cleanse</key>
 	<dict>
 		<key>power points</key> <integer>4</integer>
 		<!-- properties -->
-		<!-- TODO: effects list -->
+		<key>user effects</key>
+		<dict>
+			<key>cleanse</key> <true/>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<!-- TODO: message data -->
+		<key>message</key> <string>*Name calmed *himself down!</string>
 	</dict>
 </dict>
 </plist>

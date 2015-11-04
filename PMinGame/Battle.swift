@@ -42,14 +42,11 @@ class Battle
 		return enemy.statLine
 	}
 	
-	func useAttack(num:Int)
+	func useAttack(num:Int, messageHandler:(String)->())
 	{
 		if player.attacks.count > num
 		{
-			player.useAttackOn(player.attacks[num], on: enemy)
-			{ (message) in
-				print(message)
-			}
+			player.useAttackOn(player.attacks[num], on: enemy, messageHandler: messageHandler)
 		}
 	}
 	

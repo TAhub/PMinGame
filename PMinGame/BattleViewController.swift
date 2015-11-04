@@ -29,30 +29,95 @@ class BattleViewController: UIViewController {
 	{
 		if sender === firstButton
 		{
-			battle.useAttack(0)
+			battle.useAttack(0, messageHandler: runMessage)
 		}
 		else if sender === secondButton
 		{
-			battle.useAttack(1)
+			battle.useAttack(1, messageHandler: runMessage)
 		}
 		else if sender === thirdButton
 		{
-			battle.useAttack(2)
+			battle.useAttack(2, messageHandler: runMessage)
 		}
 		else if sender === fourthButton
 		{
-			battle.useAttack(3)
+			battle.useAttack(3, messageHandler: runMessage)
 		}
+		setLabels()
 	}
 	
+	private func runMessage(message:String)
+	{
+		messages.append(message)
+	}
+	
+	private var messages = [String]()
 	
 	private var battle:Battle!
+	
+	private func messageThread()
+	{
+		func messageThreadWrite(messages:[String], extraMessage:String?)
+		{
+			//set the text parser
+			var tParse = ""
+			for message in messages
+			{
+				if tParse != ""
+				{
+					tParse += "\n"
+				}
+				tParse += message
+			}
+			if let extraMessage = extraMessage
+			{
+				if tParse != ""
+				{
+					tParse += "\n"
+				}
+				tParse += extraMessage
+			}
+			
+			dispatch_async(dispatch_get_main_queue())
+			{
+				self.textParser.text = tParse
+			}
+		}
+		
+		//TODO: find some way to terminate if controller is removed
+		
+		var oldMessages = [String]()
+		
+		while (true)
+		{
+			usleep(5000)
+			
+			if messages.count > 0
+			{
+				if oldMessages.count >= 3
+				{
+					oldMessages.removeAtIndex(0)
+				}
+				
+				let message = messages.removeAtIndex(0)
+				for i in message.startIndex..<message.endIndex
+				{
+					let subMessage = message.substringToIndex(i)
+					messageThreadWrite(oldMessages, extraMessage: subMessage)
+					usleep(1000)
+				}
+				
+				oldMessages.append(message)
+				messageThreadWrite(oldMessages, extraMessage: nil)
+			}
+		}
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-		PlistService.jobStatDiagnostic()
+		//diagnostics
+//		PlistService.jobStatDiagnostic()
 		
 		//do a little animation
 		playerPosition.constant = 0
@@ -69,11 +134,20 @@ class BattleViewController: UIViewController {
 		battle = Battle()
 		
 		//initialize the labels
+		setLabels()
+		
+		//launch the message thread
+		textParser.text = ""
+		dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), messageThread)
+    }
+	
+	private func setLabels()
+	{
 		playerStats.text = battle.playerStat
 		enemyStats.text = battle.enemyStat
 		firstButton.setTitle(battle.getAttackLabel(0), forState: UIControlState.Normal)
 		secondButton.setTitle(battle.getAttackLabel(1), forState: UIControlState.Normal)
 		thirdButton.setTitle(battle.getAttackLabel(2), forState: UIControlState.Normal)
 		fourthButton.setTitle(battle.getAttackLabel(3), forState: UIControlState.Normal)
-    }
+	}
 }
