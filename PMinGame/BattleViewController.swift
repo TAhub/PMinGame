@@ -10,6 +10,7 @@ import UIKit
 
 class BattleViewController: UIViewController, BattleDelegate {
 
+	//MARK: outlets and actions
 	@IBOutlet weak var playerPosition: NSLayoutConstraint!
 	@IBOutlet weak var playerView: UIView!
 	@IBOutlet weak var playerStats: UILabel!
@@ -27,7 +28,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	@IBAction func pressButton(sender: UIButton)
 	{
-		if !writingMessages
+		if !writingMessages && !animating
 		{
 			if sender === firstButton
 			{
@@ -46,14 +47,14 @@ class BattleViewController: UIViewController, BattleDelegate {
 				battle.pickAttack(3)
 			}
 			battle.turnOperation()
+			labelsChanged()
 		}
 	}
 	
+	//MARK: text parser stuff
 	private var oldMessages = [String]()
 	private var messages = [String]()
 	private var writingMessages:Bool = false
-	
-	private var battle:Battle!
 	
 	private func messageThread()
 	{
@@ -109,8 +110,14 @@ class BattleViewController: UIViewController, BattleDelegate {
 	private func messageThreadOver()
 	{
 		writingMessages = false
+		
+		//advance the battle
 		battle.turnOperation()
 	}
+	
+	//MARK: central stuff
+	private var battle:Battle!
+	private var animating:Bool = false
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,14 +127,18 @@ class BattleViewController: UIViewController, BattleDelegate {
 		PlistService.jobAttackDiagnostic()
 		
 		//do a little animation
+		animating = true
 		playerPosition.constant = 0
 		enemyPosition.constant = 0
-		UIView.animateWithDuration(2)
+		UIView.animateWithDuration(2.0, animations:
 		{
 			self.enemyView.layoutIfNeeded()
 			self.playerView.layoutIfNeeded()
 			self.playerStats.alpha = 1
 			self.enemyStats.alpha = 1
+		})
+		{ (finished) in
+			self.animating = false
 		}
 		
 		//initialize the battle
@@ -137,7 +148,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 		//initialize the labels
 		labelsChanged()
 		
-		//launch the message thread
 		textParser.text = ""
     }
 	

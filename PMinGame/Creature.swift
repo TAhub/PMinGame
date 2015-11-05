@@ -32,6 +32,7 @@ class Creature
 		}
 	}
 	internal var attacks = [Attack]()
+	internal var dead:Bool { return health == 0 }
 	
 	//MARK: status
 	private var paralysis:Int?
@@ -256,7 +257,7 @@ class Creature
 		return 100 //you do full damage always
 	}
 	private func runMessage(messageHandler:(String)->(), on:Creature)(message:String)
-	{
+	{ 
 		let onName = on.name
 		let he = "he"
 		let his = "his"
@@ -291,12 +292,6 @@ class Creature
 	
 	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())
 	{
-		if health == 0
-		{
-			//just don't use the attack
-			return
-		}
-		
 		let runM = runMessage(messageHandler, on: on)
 		
 		//check status effects that do damage to you
@@ -437,7 +432,8 @@ class Creature
 			if let damage = attack.damage
 			{
 				//apply element
-				var finalDamage = damage * on.typeMultiplier(attack.type) / 100
+				let typeMultiplier = on.typeMultiplier(attack.type)
+				var finalDamage = damage * typeMultiplier / 100
 				if finalDamage == 0
 				{
 					//TODO: output a "the attack was ineffective!" message
@@ -451,8 +447,7 @@ class Creature
 					{
 						finalDamage = finalDamage + finalDamage / 2
 						
-						//TODO: output a "it was a crit" message
-						//this is the crit message for damaging attacks
+						//TODO: this message should shake
 						runM(message: "WHAM!")
 					}
 					
@@ -482,7 +477,8 @@ class Creature
 					
 					//do the damage
 					on.health -= finalDamage
-					//TODO: output a damage message (be sure to mention the damage type)
+					
+					//TODO: if typeMultiplier > 150 or if it's a crit, this message should shake
 					runM(message: "*OnName took \(finalDamage) damage!")
 					
 					if on.sleep != nil
@@ -498,18 +494,27 @@ class Creature
 					}
 				}
 			}
-			else if crit
-			{
-				//TODO: output a "it was a crit" message
-				//this is the crit message for non-damaging attacks
-				runM(message: "WHAM!")
-			}
+			//there's no crit message for non-damaging attacks
+			//because it's not immediately obvious what non-damaging crits DO
 			
 			if applyEffects
 			{
 				//apply effects
 				applyEffectsTo(attack.userEffects, crit: crit, messageHandler: messageHandler)
 				on.applyEffectsTo(attack.enemyEffects, crit: crit, messageHandler: messageHandler)
+			}
+			
+			//detect death, to give special messages for that
+			if on.health == 0
+			{
+				if on.good
+				{
+					runM(message: "*OnName fell unconscious!")
+				}
+				else
+				{
+					runM(message: "*OnName died!")
+				}
 			}
 		}
 		else

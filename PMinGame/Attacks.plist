@@ -887,17 +887,17 @@
 	<dict>
 		<key>damage</key> <integer>35</integer>
 		<key>accuracy</key> <integer>85</integer>
-		<key>power points</key> <integer>6</integer>
+		<key>power points</key> <integer>8</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
 		<key>enemy effects</key>
 		<dict>
-			<key>paralysis chance</key> <integer>5</integer>
-			<key>freeze chance</key> <integer>5</integer>
-			<key>bleed chance</key> <integer>5</integer>
+			<key>paralysis chance</key> <integer>6</integer>
+			<key>freeze chance</key> <integer>4</integer>
+			<key>bleed chance</key> <integer>4</integer>
 			<key>burning chance</key> <integer>5</integer>
-			<key>sleep chance</key> <integer>5</integer>
+			<key>sleep chance</key> <integer>6</integer>
 		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->

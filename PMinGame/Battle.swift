@@ -36,10 +36,16 @@ class Battle
 	
 	init()
 	{
-		players.append(Creature(job: "inventor", level: 5, good: true))
-		enemies.append(Creature(job: "fencer", level: 3, good: false))
+		players.append(Creature(job: "inventor", level: 1, good: true))
+		enemies.append(Creature(job: "fencer", level: 1, good: false))
+		
+		//TODO: if loading people externally (IE loading players from the party from another view)
+		//be sure to reset their steps and status effects here, before anything major happens
+		//they can walk around with bleed, etc, in the overworld
+		//because it doesn't matter there
 		
 		//get the first player and the first enemy
+		//TODO: make sure you don't pick a 0 health party member as the first person out, etc
 		enemy = enemies[0]
 		player = players[0]
 		
@@ -89,7 +95,24 @@ class Battle
 		}
 		if turnOrder != nil
 		{
-			if turnOrder!
+			//null the attacks of dead people
+			//TODO: once I add person switching, this SHOULDN'T nil that
+			//I don't want the person switch to fail because the parting attacking killed the old person
+			if player.dead
+			{
+				playerAttack = nil
+			}
+			if enemy.dead
+			{
+				enemyAttack = nil
+			}
+			
+			//also null the turn order, if both sides died
+			if playerAttack == nil && enemyAttack == nil
+			{
+				turnOrder = nil
+			}
+			else if turnOrder!
 			{
 				if playerAttack != nil
 				{
