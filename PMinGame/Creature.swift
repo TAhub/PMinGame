@@ -15,14 +15,15 @@ private let kBleedDamage = 5
 
 class Creature
 {
-	//identity
-	private var job:String = "barbarian"
-	private var name:String = "NAME"
+	//MARK: identity
+	private var job:String
+	private var name:String
+	private var good:Bool
 	
-	//permanent stats
-	private var level:Int = 1
+	//MARK: permanent stats
+	private var level:Int
 	
-	//variables
+	//MARK: variable stats
 	private var health:Int = 0
 	{
 		didSet
@@ -30,14 +31,13 @@ class Creature
 			health = min(max(health, 0), maxHealth)
 		}
 	}
+	internal var attacks = [Attack]()
 	
-	//attacks
-	internal var attacks:[Attack] = [Attack(attack: "electric sight"), Attack(attack: "freeze ray"), Attack(attack: "brand")]
-	
-	//status
+	//MARK: status
 	private var paralysis:Int?
 	private var freeze:Int?
 	private var bleed:Int?
+	private var sleep:Int?
 	private var burning:Int?
 	private var attackStep:Int = 0
 	{
@@ -68,7 +68,7 @@ class Creature
 		}
 	}
 	
-	//derived stats
+	//MARK: derived stats
 	private var accuracy:Int
 	{
 		return PlistService.loadValue("Jobs", job, "accuracy") as! Int + level
@@ -119,8 +119,112 @@ class Creature
 	{
 		return PlistService.loadValue("Jobs", job, "freeze immunity") != nil
 	}
+	private var sleepImmunity:Bool
+	{
+		return PlistService.loadValue("Jobs", job, "sleep immunity") != nil
+	}
 	
-	//attack functions
+	//MARK: initialize and level up functions
+	init(job:String, level:Int, good:Bool)
+	{
+		self.job = job
+		name = job.capitalizedString
+		self.level = level
+		self.good = good
+		
+		getLevelAppropriateAttacks()
+		
+		//fill up resources
+		health = maxHealth
+		for attack in attacks
+		{
+			if good
+			{
+				attack.powerPoints = attack.maxPowerPoints
+			}
+			else
+			{
+				attack.powerPoints = Int(ceil(Float(attack.maxPowerPoints) * 0.25))
+			}
+		}
+	}
+	
+	private func unlearnObsoleteAttack() -> Bool
+	{
+		//try to unlearn a single obsolete attack
+		for attack in attacks
+		{
+			if let upgradeFor = attack.upgradeFor
+			{
+				if let forPosition = attacks.map({$0.attack}).indexOf(upgradeFor)
+				{
+					attacks.removeAtIndex(forPosition)
+					return true
+				}
+			}
+		}
+		return false
+	}
+	
+	private func unlearnNoDamageAttack() -> Bool
+	{
+		//try to unlearn a random attack that does no damage
+		let startPosition = Int(arc4random_uniform(UInt32(attacks.count)))
+		for i in 0..<attacks.count
+		{
+			let aI = (i + startPosition) % attacks.count
+			if attacks[aI].damage == nil
+			{
+				attacks.removeAtIndex(aI)
+				return true
+			}
+		}
+		return false
+	}
+	
+	private func getLevelAppropriateAttacks()
+	{
+		for i in 1...level
+		{
+			if let attack = getAttackForLevel(i)
+			{
+				//learn that attack!
+				attacks.append(attack)
+				
+				if attacks.count > 4
+				{
+					//uh-oh, too many attacks
+					//time to unlearn one
+
+					//first, try to unlearn something that's obsolete
+					if !unlearnObsoleteAttack()
+					{
+						//if that didn't work, unlearn an attack that does no damage
+						if !unlearnNoDamageAttack()
+						{
+							//otherwise, unlearn a random attack
+							attacks.removeAtIndex(Int(arc4random_uniform(UInt32(attacks.count))))
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	private func getAttackForLevel(level:Int) -> Attack?
+	{
+		let attacks = PlistService.loadValue("Jobs", job, "attacks") as! [String : String]
+		for (attackLevel, attackName) in attacks
+		{
+			if attackLevel == "\(level)"
+			{
+				return Attack(attack: attackName)
+			}
+		}
+		return nil
+	}
+	
+	//MARK: attack functions
 	private func stepMultiplier(steps:Int) -> Int
 	{
 		switch(steps)
@@ -135,17 +239,21 @@ class Creature
 		default: assertionFailure("ERROR: Invalid step modifier!"); return 100
 		}
 	}
-	internal func typeMultiplier(attackType:String) -> Int
+	internal func typeMultiplier(attackType:String?) -> Int
 	{
-		switch(PlistService.loadValue("Types", attackType, type) as! Int)
+		if let attackType = attackType
 		{
-		case -2: return 0
-		case -1: return 50
-		case 0: return 100
-		case 1: return 140
-		case 2: return 180
-		default: assertionFailure("ERROR: Invalid type modifier!"); return 100
+			switch(PlistService.loadValue("Types", attackType, type) as! Int)
+			{
+			case -2: return 0
+			case -1: return 50
+			case 0: return 100
+			case 1: return 140
+			case 2: return 180
+			default: assertionFailure("ERROR: Invalid type modifier!"); return 100
+			}
 		}
+		return 100 //you do full damage always
 	}
 	private func runMessage(messageHandler:(String)->(), on:Creature)(message:String)
 	{
@@ -183,6 +291,12 @@ class Creature
 	
 	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())
 	{
+		if health == 0
+		{
+			//just don't use the attack
+			return
+		}
+		
 		let runM = runMessage(messageHandler, on: on)
 		
 		//check status effects that do damage to you
@@ -252,6 +366,19 @@ class Creature
 				}
 			}
 		}
+		if sleep != nil
+		{
+			if shouldShakeOffStatus(baseChance: 25, chanceRamp: 20)(status: sleep!)
+			{
+				runM(message: "*Name woke up!")
+				sleep = nil
+			}
+			else
+			{
+				sleep! += 1
+				runM(message: "*Name was unable to attack due to being asleep!")
+			}
+		}
 		
 		//use power points
 		attack.powerPoints -= 1
@@ -310,7 +437,7 @@ class Creature
 			if let damage = attack.damage
 			{
 				//apply element
-				var finalDamage = damage * on.typeMultiplier(attack.type!) / 100
+				var finalDamage = damage * on.typeMultiplier(attack.type) / 100
 				if finalDamage == 0
 				{
 					//TODO: output a "the attack was ineffective!" message
@@ -357,6 +484,12 @@ class Creature
 					on.health -= finalDamage
 					//TODO: output a damage message (be sure to mention the damage type)
 					runM(message: "*OnName took \(finalDamage) damage!")
+					
+					if on.sleep != nil
+					{
+						runM(message: "*OnName woke up!")
+						on.sleep = nil
+					}
 					
 					if attack.leech
 					{
@@ -408,25 +541,54 @@ class Creature
 		{
 			//TODO: maybe status effect messages?
 			
-			if !bleedImmunity && statusEffectCheck(attackEffect.bleedChance, crit: crit)
+			if bleedImmunity && attackEffect.bleedChance != nil
+			{
+				runM(message: "*Name was immune to bleeding!")
+			}
+			else if statusEffectCheck(attackEffect.bleedChance, crit: crit)
 			{
 				bleed = 0
 				runM(message: "*Name was given a bleeding wound!")
 			}
-			if !paralysisImmunity && statusEffectCheck(attackEffect.paralysisChance, crit: crit)
+			
+			if paralysisImmunity && attackEffect.paralysisChance != nil
+			{
+				runM(message: "*Name was immune to being paralyized!")
+			}
+			else if statusEffectCheck(attackEffect.paralysisChance, crit: crit)
 			{
 				paralysis = 0
 				runM(message: "*Name was paralyzed!")
 			}
-			if !burningImmunity && statusEffectCheck(attackEffect.burningChance, crit: crit)
+			
+			if burningImmunity && attackEffect.burningChance != nil
+			{
+				runM(message: "*Name was immune to being set on fire!")
+			}
+			else if statusEffectCheck(attackEffect.burningChance, crit: crit)
 			{
 				burning = 0
 				runM(message: "*Name was set on fire!")
 			}
-			if !freezeImmunity && statusEffectCheck(attackEffect.freezeChance, crit: crit)
+			
+			if freezeImmunity && attackEffect.freezeChance != nil
+			{
+				runM(message: "*Name was immune to being frozen!")
+			}
+			else if statusEffectCheck(attackEffect.freezeChance, crit: crit)
 			{
 				freeze = 0
 				runM(message: "*Name was frozen!")
+			}
+			
+			if sleepImmunity && attackEffect.sleepChance != nil
+			{
+				runM(message: "*Name was immune to being put to sleep!")
+			}
+			else if statusEffectCheck(attackEffect.sleepChance, crit: crit)
+			{
+				sleep = 0
+				runM(message: "*Name fell asleep!")
 			}
 			
 			let oldAS = attackStep
@@ -447,8 +609,16 @@ class Creature
 			
 			if attackEffect.mug
 			{
-				//TODO: if this is targeting an enemy, create money based on level
-				//otherwise, destroy money based on level
+				if good
+				{
+					//this is targeting the player, so the player should lose money
+					//TODO: destroy money based on level
+				}
+				else
+				{
+					//this is targeting an enemy, so the player should get money
+					//TODO: create money based on level
+				}
 			}
 			
 			if attackEffect.nonlethal && health == 0
@@ -486,14 +656,14 @@ class Creature
 		return false
 	}
 	
-	//get stuff
+	//MARK: label
 	private func getStepLabel(step:Int, name:String) -> String
 	{
 		return (step == 0 ? "" : (step > 0 ? " +\(step) \(name)" : " \(step) \(name)"))
 	}
 	internal var statLine:String
 	{
-		var label = "NAME\nlevel \(level) \(type)\n\(health)/\(maxHealth) health"
+		var label = "\(name)\nlevel \(level) \(type)\n\(health)/\(maxHealth) health"
 		if attackStep != 0 || defenseStep != 0 || accuracyStep != 0 || dodgeStep != 0
 		{
 			label += "\n"
@@ -502,13 +672,14 @@ class Creature
 			label += getStepLabel(accuracyStep, name: "ACCURACY")
 			label += getStepLabel(dodgeStep, name: "DODGE")
 		}
-		if freeze != nil || burning != nil || paralysis != nil || bleed != nil
+		if freeze != nil || burning != nil || paralysis != nil || bleed != nil || sleep != nil
 		{
 			label += "\n"
 			label += (freeze != nil ? " frozen" : "")
 			label += (paralysis != nil ? " paralyzed" : "")
 			label += (bleed != nil ? " bleeding" : "")
 			label += (burning != nil ? " burning" : "")
+			label += (sleep != nil ? " asleep" : "")
 		}
 		return label
 	}

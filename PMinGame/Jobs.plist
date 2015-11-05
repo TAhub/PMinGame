@@ -25,7 +25,11 @@
 		<key>bleed immunity</key> <true/>
 		<key>paralysis immunity</key> <true/>
 		<key>freeze immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>sword</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -43,7 +47,18 @@
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>phase touch</string>
+			<key>4</key> <string>slam</string>
+			<key>8</key> <string>feint</string>
+			<key>10</key> <string>ghost touch</string>
+			<key>14</key> <string>cleanse</string>
+			<key>18</key> <string>power up</string>
+			<key>20</key> <string>heartstopper</string>
+			<key>23</key> <string>heavy slam</string>
+			<key>26</key> <string>astral wheel</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -60,7 +75,18 @@
 		<key>clever defense</key> <integer>13</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>musket</string>
+			<key>2</key> <string>puff of flame</string>
+			<key>6</key> <string>hunker down</string>
+			<key>10</key> <string>rifle</string>
+			<key>13</key> <string>flamethrower</string>
+			<key>17</key> <string>focus</string>
+			<key>20</key> <string>clockwork rifle</string>
+			<key>23</key> <string>flame grenade</string>
+			<key>26</key> <string>hellfire</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -77,7 +103,18 @@
 		<key>clever defense</key> <integer>10</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>shock</string>
+			<key>4</key> <string>net gun</string>
+			<key>7</key> <string>knife</string>
+			<key>10</key> <string>electrocute</string>
+			<key>14</key> <string>electric sight</string>
+			<key>17</key> <string>barbed knife</string>
+			<key>20</key> <string>lightning bolt</string>
+			<key>23</key> <string>experimental blaster</string>
+			<key>26</key> <string>monoedge</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -94,7 +131,18 @@
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>sword</string>
+			<key>2</key> <string>subdue</string>
+			<key>4</key> <string>snowball</string>
+			<key>10</key> <string>rage</string>
+			<key>12</key> <string>chainsaw</string>
+			<key>15</key> <string>snow slam</string>
+			<key>20</key> <string>vibrating blade</string>
+			<key>23</key> <string>storm hammer</string>
+			<key>26</key> <string>ice fling</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -112,7 +160,15 @@
 		<key>clever defense</key> <integer>9</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>sword</string>
+			<key>3</key> <string>feint</string>
+			<key>10</key> <string>chainsaw</string>
+			<key>13</key> <string>power up</string>
+			<key>20</key> <string>vibrating blade</string>
+			<key>24</key> <string>shockwave</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -129,7 +185,16 @@
 		<key>clever defense</key> <integer>13</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>knife</string>
+			<key>2</key> <string>mug</string>
+			<key>5</key> <string>subdue</string>
+			<key>10</key> <string>barbed knife</string>
+			<key>16</key> <string>evade</string>
+			<key>20</key> <string>grenade</string>
+			<key>23</key> <string>monoedge</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -147,7 +212,17 @@
 		<!-- misc -->
 		<key>type</key> <string>flame</string>
 		<key>burning immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>puff of flame</string>
+			<key>3</key> <string>brand</string>
+			<key>8</key> <string>sword</string>
+			<key>10</key> <string>flamethrower</string>
+			<key>17</key> <string>chainsaw</string>
+			<key>20</key> <string>hellfire</string>
+			<key>22</key> <string>explode</string>
+			<key>26</key> <string>vibrating blade</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -165,7 +240,15 @@
 		<!-- misc -->
 		<key>type</key> <string>frost</string>
 		<key>freeze immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>snowball</string>
+			<key>3</key> <string>slam</string>
+			<key>10</key> <string>snow slam</string>
+			<key>17</key> <string>heavy slam</string>
+			<key>20</key> <string>ice fling</string>
+			<key>26</key> <string>freeze ray</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -184,7 +267,16 @@
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
 		<key>bleed immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>slam</string>
+			<key>2</key> <string>hunker down</string>
+			<key>10</key> <string>grenade</string>
+			<key>14</key> <string>power up</string>
+			<key>20</key> <string>heavy slam</string>
+			<key>24</key> <string>net gun</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -202,7 +294,16 @@
 		<!-- misc -->
 		<key>type</key> <string>astral</string>
 		<key>bleed immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>phase touch</string>
+			<key>4</key> <string>shock</string>
+			<key>10</key> <string>ghost touch</string>
+			<key>14</key> <string>electrocute</string>
+			<key>20</key> <string>heartstopper</string>
+			<key>25</key> <string>lightning bolt</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -220,7 +321,16 @@
 		<!-- misc -->
 		<key>type</key> <string>spark</string>
 		<key>bleed immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>shock</string>
+			<key>8</key> <string>paralyzing touch</string>
+			<key>10</key> <string>electrocute</string>
+			<key>16</key> <string>guided bolt</string>
+			<key>20</key> <string>lightning bolt</string>
+			<key>25</key> <string>power up</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -238,7 +348,16 @@
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
 		<key>bleed immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>musket</string>
+			<key>6</key> <string>focus</string>
+			<key>10</key> <string>rifle</string>
+			<key>16</key> <string>electric sight</string>
+			<key>20</key> <string>clockwork rifle</string>
+			<key>24</key> <string>hunker down</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -256,7 +375,16 @@
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
 		<key>bleed immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>puff of flame</string>
+			<key>4</key> <string>slam</string>
+			<key>10</key> <string>flamethrower</string>
+			<key>13</key> <string>ignite</string>
+			<key>20</key> <string>heavy slam</string>
+			<key>23</key> <string>hellfire</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -275,7 +403,15 @@
 		<!-- misc -->
 		<key>type</key> <string>astral</string>
 		<key>bleed immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>phase touch</string>
+			<key>2</key> <string>cleanse</string>
+			<key>10</key> <string>ghost touch</string>
+			<key>16</key> <string>hunker down</string>
+			<key>20</key> <string>heartstopper</string>
+			<key>25</key> <string>astral wheel</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -292,7 +428,16 @@
 		<key>clever defense</key> <integer>10</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>sleep immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>energy drain</string>
+			<key>7</key> <string>slam</string>
+			<key>10</key> <string>hypnotize</string>
+			<key>16</key> <string>power up</string>
+			<key>20</key> <string>super drain</string>
+			<key>24</key> <string>heavy slam</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -310,7 +455,15 @@
 		<!-- misc -->
 		<key>type</key> <string>frost</string>
 		<key>freeze immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>snowball</string>
+			<key>8</key> <string>rime</string>
+			<key>10</key> <string>snow slam</string>
+			<key>18</key> <string>freeze ray</string>
+			<key>20</key> <string>ice fling</string>
+			<key>27</key> <string>astral wheel</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -328,7 +481,16 @@
 		<!-- misc -->
 		<key>type</key> <string>flame</string>
 		<key>burning immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>puff of flame</string>
+			<key>4</key> <string>blinding light</string>
+			<key>8</key> <string>brand</string>
+			<key>10</key> <string>flamethrower</string>
+			<key>15</key> <string>ignite</string>
+			<key>20</key> <string>hellfire</string>
+			<key>23</key> <string>rage</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -346,7 +508,15 @@
 		<!-- misc -->
 		<key>type</key> <string>spark</string>
 		<key>paralysis immunity</key> <true/>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>lightning blow</string>
+			<key>5</key> <string>subdue</string>
+			<key>10</key> <string>evade</string>
+			<key>13</key> <string>paralyzing touch</string>
+			<key>20</key> <string>lightning combo</string>
+			<key>28</key> <string>shockwave</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -364,7 +534,16 @@
 		<key>clever defense</key> <integer>11</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>slam</string>
+			<key>3</key> <string>sword</string>
+			<key>10</key> <string>intimidate</string>
+			<key>13</key> <string>chainsaw</string>
+			<key>18</key> <string>guided bolt</string>
+			<key>20</key> <string>heavy slam</string>
+			<key>24</key> <string>vibrating blade</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -381,7 +560,15 @@
 		<key>clever defense</key> <integer>10</integer>
 		<!-- misc -->
 		<key>type</key> <string>frost</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>icicle</string>
+			<key>4</key> <string>knife</string>
+			<key>10</key> <string>rime</string>
+			<key>13</key> <string>barbed knife</string>
+			<key>20</key> <string>monoedge</string>
+			<key>22</key> <string>ice shower</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->
@@ -398,7 +585,17 @@
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->
 		<key>type</key> <string>spark</string>
-		<!-- TODO: attack list -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>musket</string>
+			<key>3</key> <string>lightning blow</string>
+			<key>7</key> <string>focus</string>
+			<key>10</key> <string>rifle</string>
+			<key>12</key> <string>grenade</string>
+			<key>16</key> <string>electric sight</string>
+			<key>20</key> <string>clockwork rifle</string>
+			<key>24</key> <string>lightning combo</string>
+		</dict>
 		<!-- appearance -->
 		<!-- TODO: race -->
 		<!-- TODO: appearance variables I guess -->

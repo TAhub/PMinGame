@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BattleViewController: UIViewController {
+class BattleViewController: UIViewController, BattleDelegate {
 
 	@IBOutlet weak var playerPosition: NSLayoutConstraint!
 	@IBOutlet weak var playerView: UIView!
@@ -27,31 +27,31 @@ class BattleViewController: UIViewController {
 	
 	@IBAction func pressButton(sender: UIButton)
 	{
-		if sender === firstButton
+		if !writingMessages
 		{
-			battle.useAttack(0, messageHandler: runMessage)
+			if sender === firstButton
+			{
+				battle.pickAttack(0)
+			}
+			else if sender === secondButton
+			{
+				battle.pickAttack(1)
+			}
+			else if sender === thirdButton
+			{
+				battle.pickAttack(2)
+			}
+			else if sender === fourthButton
+			{
+				battle.pickAttack(3)
+			}
+			battle.turnOperation()
 		}
-		else if sender === secondButton
-		{
-			battle.useAttack(1, messageHandler: runMessage)
-		}
-		else if sender === thirdButton
-		{
-			battle.useAttack(2, messageHandler: runMessage)
-		}
-		else if sender === fourthButton
-		{
-			battle.useAttack(3, messageHandler: runMessage)
-		}
-		setLabels()
 	}
 	
-	private func runMessage(message:String)
-	{
-		messages.append(message)
-	}
-	
+	private var oldMessages = [String]()
 	private var messages = [String]()
+	private var writingMessages:Bool = false
 	
 	private var battle:Battle!
 	
@@ -84,33 +84,32 @@ class BattleViewController: UIViewController {
 			}
 		}
 		
-		//TODO: find some way to terminate if controller is removed
-		
-		var oldMessages = [String]()
-		
-		while (true)
+		while messages.count > 0
 		{
-			usleep(5000)
-			
-			if messages.count > 0
+			if oldMessages.count >= 3
 			{
-				if oldMessages.count >= 3
-				{
-					oldMessages.removeAtIndex(0)
-				}
-				
-				let message = messages.removeAtIndex(0)
-				for i in message.startIndex..<message.endIndex
-				{
-					let subMessage = message.substringToIndex(i)
-					messageThreadWrite(oldMessages, extraMessage: subMessage)
-					usleep(1000)
-				}
-				
-				oldMessages.append(message)
-				messageThreadWrite(oldMessages, extraMessage: nil)
+				oldMessages.removeAtIndex(0)
 			}
+			
+			let message = messages.removeAtIndex(0)
+			for i in message.startIndex..<message.endIndex
+			{
+				let subMessage = message.substringToIndex(i)
+				messageThreadWrite(oldMessages, extraMessage: subMessage)
+				usleep(1000)
+			}
+			
+			oldMessages.append(message)
+			messageThreadWrite(oldMessages, extraMessage: nil)
 		}
+		
+		dispatch_async(dispatch_get_main_queue(), messageThreadOver)
+	}
+	
+	private func messageThreadOver()
+	{
+		writingMessages = false
+		battle.turnOperation()
 	}
 	
     override func viewDidLoad() {
@@ -118,6 +117,7 @@ class BattleViewController: UIViewController {
 
 		//diagnostics
 //		PlistService.jobStatDiagnostic()
+		PlistService.jobAttackDiagnostic()
 		
 		//do a little animation
 		playerPosition.constant = 0
@@ -132,16 +132,17 @@ class BattleViewController: UIViewController {
 		
 		//initialize the battle
 		battle = Battle()
+		battle.delegate = self
 		
 		//initialize the labels
-		setLabels()
+		labelsChanged()
 		
 		//launch the message thread
 		textParser.text = ""
-		dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), messageThread)
     }
 	
-	private func setLabels()
+	//MARK: delegate functions
+	func labelsChanged()
 	{
 		playerStats.text = battle.playerStat
 		enemyStats.text = battle.enemyStat
@@ -149,5 +150,27 @@ class BattleViewController: UIViewController {
 		secondButton.setTitle(battle.getAttackLabel(1), forState: UIControlState.Normal)
 		thirdButton.setTitle(battle.getAttackLabel(2), forState: UIControlState.Normal)
 		fourthButton.setTitle(battle.getAttackLabel(3), forState: UIControlState.Normal)
+	}
+	
+	func runMessage(message:String)
+	{
+		messages.append(message)
+		if !writingMessages
+		{
+			writingMessages = true
+			dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), messageThread)
+		}
+	}
+	
+	func victory()
+	{
+		//TODO: you won!
+		print("You won!")
+	}
+	
+	func defeat()
+	{
+		//TODO: you lost!
+		print("You lost!")
 	}
 }

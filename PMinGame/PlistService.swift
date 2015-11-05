@@ -10,6 +10,7 @@ import UIKit
 
 class PlistService
 {
+	//MARK: value handlers
 	class func loadColor(colorCode:String!) -> UIColor
 	{
 		if colorCode == nil
@@ -53,7 +54,7 @@ class PlistService
 	}
 	
 	
-	//diagnostics
+	//MARK: diagnostics
 	class func jobStatDiagnostic()
 	{
 		print("Job stat balance diagnostic:")
@@ -67,6 +68,54 @@ class PlistService
 			points += ((entry["brute attack"] as! Int) + (entry["brute defense"] as! Int)) * 5
 			points += ((entry["clever attack"] as! Int) + (entry["clever defense"] as! Int)) * 5
 			print("\(name): \(points)")
+		}
+	}
+	
+	class func jobAttackDiagnostic()
+	{
+		print("Job class distribution diagnostic:")
+		
+		let entries = loadEntries("Jobs") as! [String : [String : AnyObject]]
+		for (name, entry) in entries
+		{
+			var types = [String : Int]()
+			var clever = [0, 0]
+			var levels = [0, 0, 0]
+			if let attacks = entry["attacks"] as? [String : String]
+			{
+				print("\(name) has \(attacks.count) attacks:")
+				
+				for (level, attack) in attacks
+				{
+					if let attack = loadValueFlat("Attacks", attack) as? NSDictionary
+					{
+						let type = (attack["type"] as? String) ?? "untyped"
+						types[type] = (types[type] ?? 0) + 1
+						levels[Int(level)! / 10] += 1
+						if attack["damage"] != nil
+						{
+							clever[(attack["clever"] != nil ? 0 : 1)] += 1
+						}
+					}
+					else
+					{
+						print("   Invalid attack \(attack)!")
+					}
+				}
+				
+				for (type, amount) in types
+				{
+					print("   \(amount * 100 / attacks.count)% \(type)")
+				}
+				print("")
+				for i in 0..<levels.count
+				{
+					print("   \(levels[i] * 100 / attacks.count)% tier \(i + 1)")
+				}
+				print("")
+				print("   \(clever[0] * 100 / (clever[0] + clever[1]))% clever")
+				print("   \(clever[1] * 100 / (clever[0] + clever[1]))% brute")
+			}
 		}
 	}
 }

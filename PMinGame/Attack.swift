@@ -43,6 +43,10 @@ struct AttackEffect
 	{
 		return contents["burning chance"] as? Int
 	}
+	var sleepChance:Int?
+	{
+		return contents["sleep chance"] as? Int
+	}
 	var mug:Bool
 	{
 		return contents["mug"] != nil

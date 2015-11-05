@@ -31,6 +31,7 @@
 			<key>freeze chance</key> <integer>50</integer>
 			<key>bleed chance</key> <integer>50</integer>
 			<key>burning chance</key> <integer>50</integer>
+			<key>sleep chance</key> <integer>50</integer>
 			<key>mug</key> <true/>
 			<key>nonlethal</key> <true/>
 			<key>cleanse</key> <true/>
@@ -45,6 +46,7 @@
 			<key>freeze chance</key> <integer>50</integer>
 			<key>bleed chance</key> <integer>50</integer>
 			<key>burning chance</key> <integer>50</integer>
+			<key>sleep chance</key> <integer>50</integer>
 			<key>mug</key> <true/>
 			<key>leech</key> <true/>
 			<key>nonlethal</key> <true/>
@@ -264,7 +266,22 @@
 		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name throw a grenade at *OnName!</string>
+		<key>message</key> <string>*Name threw a grenade at *OnName!</string>
+	</dict>
+	<key>storm hammer</key>
+	<dict>
+		<key>damage</key> <integer>40</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>10</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name swung *his mighty storm hammer into *OnName!</string>
 	</dict>
 	<key>mug</key>
 	<dict>
@@ -384,7 +401,7 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released an intense light!</string>
 	</dict>
-	<key>astral lens</key>
+	<key>astral wheel</key>
 	<dict>
 		<key>damage</key> <integer>55</integer>
 		<key>accuracy</key> <integer>50</integer>
@@ -396,7 +413,7 @@
 		<!-- TODO: shouldn't use power points on a miss -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name conjured up an astral lens and began to channel through it!</string>
+		<key>message</key> <string>*Name summons the astral wheel and strikes *OnName with it!</string>
 	</dict>
 	<!-- -->
 	<!-- flame attacks -->
@@ -470,6 +487,23 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with *his red-hot hands!</string>
+	</dict>
+	<key>flame grenade</key>
+	<dict>
+		<key>damage</key> <integer>31</integer>
+		<key>accuracy</key> <integer>100</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>4</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>75</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name threw a flame grenade at *OnName!</string>
 	</dict>
 	<key>ignite</key>
 	<dict>
@@ -816,6 +850,58 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name calmed *himself down!</string>
+	</dict>
+	<key>hypnotize</key>
+	<dict>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>sleep chance</key> <integer>75</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name stare at *OnName with enthralling eyes!</string>
+	</dict>
+	<key>explode</key>
+	<dict>
+		<key>damage</key> <integer>50</integer>
+		<key>power points</key> <integer>4</integer>
+		<!-- properties -->
+		<key>user effects</key>
+		<dict>
+			<key>defense steps</key> <integer>-6</integer>
+			<key>bleed chance</key> <integer>100</integer>
+		</dict>
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>25</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name yelled madly and exploded, blowing *his own armor into disarray!</string>
+	</dict>
+	<key>experimental blaster</key>
+	<dict>
+		<key>damage</key> <integer>35</integer>
+		<key>accuracy</key> <integer>85</integer>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>5</integer>
+			<key>freeze chance</key> <integer>5</integer>
+			<key>bleed chance</key> <integer>5</integer>
+			<key>burning chance</key> <integer>5</integer>
+			<key>sleep chance</key> <integer>5</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name blasted *OnName with an experimental weapon!</string>
 	</dict>
 </dict>
 </plist>
