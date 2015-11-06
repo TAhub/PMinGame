@@ -31,7 +31,7 @@
 			<key>1</key> <string>sword</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>template</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- player starting jobs -->
@@ -60,7 +60,7 @@
 			<key>26</key> <string>astral wheel</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>soldier</key>
@@ -88,7 +88,7 @@
 			<key>26</key> <string>hellfire</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>inventor</key>
@@ -116,7 +116,7 @@
 			<key>26</key> <string>monoedge</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>barbarian</key>
@@ -144,7 +144,7 @@
 			<key>26</key> <string>ice fling</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- ne'er-do-wells -->
@@ -170,7 +170,7 @@
 			<key>24</key> <string>shockwave</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>rogue</key>
@@ -196,7 +196,7 @@
 			<key>23</key> <string>monoedge</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>pyromaniac</key>
@@ -224,7 +224,7 @@
 			<key>26</key> <string>vibrating blade</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>cryoman</key>
@@ -250,7 +250,7 @@
 			<key>26</key> <string>freeze ray</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- machines -->
@@ -278,7 +278,7 @@
 			<key>24</key> <string>net gun</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>robot</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>AI</key>
@@ -305,7 +305,7 @@
 			<key>25</key> <string>lightning bolt</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>robot</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>lightning bot</key>
@@ -332,7 +332,7 @@
 			<key>25</key> <string>power up</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>robot</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>soldier robot</key>
@@ -359,7 +359,7 @@
 			<key>24</key> <string>hunker down</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>robot</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>exterminator</key>
@@ -386,7 +386,7 @@
 			<key>23</key> <string>hellfire</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>robot</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- undead -->
@@ -413,7 +413,7 @@
 			<key>25</key> <string>astral wheel</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>undead</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>life thief</key>
@@ -439,7 +439,7 @@
 			<key>24</key> <string>heavy slam</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>undead</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>frozen soul</key>
@@ -465,7 +465,7 @@
 			<key>27</key> <string>astral wheel</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>undead</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>shape of fire</key>
@@ -493,7 +493,7 @@
 			<key>23</key> <string>rage</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>undead</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>dancing lights</key>
@@ -519,7 +519,7 @@
 			<key>28</key> <string>shockwave</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>undead</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- mercenaries -->
@@ -546,7 +546,7 @@
 			<key>24</key> <string>vibrating blade</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>cold killer</key>
@@ -571,7 +571,7 @@
 			<key>22</key> <string>ice shower</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>scout</key>
@@ -598,7 +598,7 @@
 			<key>24</key> <string>lightning combo</string>
 		</dict>
 		<!-- appearance -->
-		<!-- TODO: race -->
+		<key>race</key> <string>human</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 </dict>

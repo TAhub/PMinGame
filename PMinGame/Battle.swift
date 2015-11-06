@@ -46,14 +46,14 @@ class Battle
 	
 	init()
 	{
-		players.append(Creature(job: "inventor", level: 1, good: true))
-		players.append(Creature(job: "barbarian", level: 1, good: true))
-		players.append(Creature(job: "soldier", level: 1, good: true))
-		players.append(Creature(job: "mystic", level: 1, good: true))
-		players.append(Creature(job: "rogue", level: 1, good: true))
-		players.append(Creature(job: "honored dead", level: 1, good: true))
+		players.append(Creature(job: "inventor", level: 10, good: true))
+		players.append(Creature(job: "barbarian", level: 10, good: true))
+		players.append(Creature(job: "soldier", level: 10, good: true))
+		players.append(Creature(job: "mystic", level: 10, good: true))
+		players.append(Creature(job: "rogue", level: 10, good: true))
+		players.append(Creature(job: "honored dead", level: 10, good: true))
 		
-		enemies.append(Creature(job: "shape of fire", level: 1, good: false))
+		enemies.append(Creature(job: "shape of fire", level: 10, good: false))
 		
 		//TODO: if loading people externally (IE loading players from the party from another view)
 		//be sure to reset their steps and status effects here, before anything major happens

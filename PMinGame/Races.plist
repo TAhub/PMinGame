@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Races.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/6/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>template</key>
+	<dict>
+		<!-- overall data -->
+		<key>gendered</key> <true/>
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName died!</string>
+		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>human</key>
+	<dict>
+		<!-- overall data -->
+		<key>gendered</key> <true/>
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName died!</string>
+		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>robot</key>
+	<dict>
+		<!-- overall data -->
+		<key>gendered</key> <true/>
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName was scrapped!</string>
+		<key>unconscious message</key> <string>*OnName powered down!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>undead</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName faded away!</string>
+		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
+		<!-- TODO: name generator -->
+	</dict>
+</dict>
+</plist>

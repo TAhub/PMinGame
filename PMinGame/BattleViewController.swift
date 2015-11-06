@@ -123,7 +123,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 			{
 				let subMessage = message.substringToIndex(i)
 				messageThreadWrite(oldMessages, extraMessage: subMessage)
-				usleep(1000)
+				usleep(800)
 			}
 			
 			oldMessages.append(message)
@@ -163,7 +163,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 
 		//diagnostics
 //		PlistService.jobStatDiagnostic()
-		PlistService.jobAttackDiagnostic()
+//		PlistService.jobAttackDiagnostic()
 		
 		//do a little animation
 		animating = true

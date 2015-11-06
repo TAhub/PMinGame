@@ -112,6 +112,10 @@ class Attack
 	{
 		return PlistService.loadValue("Attacks", attack, "message") as! String
 	}
+	var missMessage:String
+	{
+		return PlistService.loadValue("Attacks", attack, "miss message") as! String
+	}
 	var userEffects:AttackEffect?
 	{
 		if let contents = PlistService.loadValue("Attacks", attack, "user effects") as? [String : AnyObject]

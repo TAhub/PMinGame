@@ -19,6 +19,7 @@ class Creature
 	private var job:String
 	internal var name:String
 	internal var good:Bool
+	private var gender:Bool?
 	
 	//MARK: permanent stats
 	private var level:Int
@@ -105,6 +106,10 @@ class Creature
 	{
 		return PlistService.loadValue("Jobs", job, "type") as! String
 	}
+	private var race:String
+	{
+		return PlistService.loadValue("Jobs", job, "race") as! String
+	}
 	private var burningImmunity:Bool
 	{
 		return PlistService.loadValue("Jobs", job, "burning immunity") != nil
@@ -133,6 +138,14 @@ class Creature
 		name = job.capitalizedString
 		self.level = level
 		self.good = good
+		
+		//pick a gender
+		if PlistService.loadValue("Races", race, "gendered") != nil
+		{
+			gender = arc4random_uniform(100) < 50
+		}
+		
+		//TODO: generate an appearance
 		
 		getLevelAppropriateAttacks()
 		
@@ -278,9 +291,9 @@ class Creature
 	private func runMessage(messageHandler:(String)->(), on:Creature)(message:String)
 	{ 
 		let onName = on.name
-		let he = "he"
-		let his = "his"
-		let himself = "himself"
+		let he =  (gender == nil ? "it" : (gender! ? "she" : "he"))
+		let his = (gender == nil ? "its" : (gender! ? "her" : "his"))
+		let himself = (gender == nil ? "itself" : (gender! ? "herself" : "himself"))
 		let finalMessage = message.stringByReplacingOccurrencesOfString("*Name", withString: name).stringByReplacingOccurrencesOfString("*OnName", withString: onName).stringByReplacingOccurrencesOfString("*his", withString: his).stringByReplacingOccurrencesOfString("*himself", withString: himself).stringByReplacingOccurrencesOfString("*he", withString: he)
 		messageHandler(finalMessage)
 	}
@@ -530,18 +543,18 @@ class Creature
 			{
 				if on.good
 				{
-					runM(message: "*OnName fell unconscious!")
+					runM(message: PlistService.loadValue("Races", on.race, "unconscious message") as! String)
 				}
 				else
 				{
-					runM(message: "*OnName died!")
+					runM(message: PlistService.loadValue("Races", on.race, "death message") as! String)
 				}
 			}
 		}
 		else
 		{
-			//TODO: output a miss message
-			runM(message: "*Name tried to use \(attack.attack), but *he missed!")
+			//output a miss message
+			runM(message: attack.missMessage)
 		}
 	}
 	
@@ -565,73 +578,10 @@ class Creature
 		
 		if let attackEffect = attackEffect
 		{
-			//TODO: maybe status effect messages?
-			
-			if bleedImmunity && attackEffect.bleedChance != nil
+			if attackEffect.nonlethal && health == 0
 			{
-				runM(message: "*Name was immune to bleeding!")
+				health = 1
 			}
-			else if statusEffectCheck(attackEffect.bleedChance, crit: crit)
-			{
-				bleed = 0
-				runM(message: "*Name was given a bleeding wound!")
-			}
-			
-			if paralysisImmunity && attackEffect.paralysisChance != nil
-			{
-				runM(message: "*Name was immune to being paralyized!")
-			}
-			else if statusEffectCheck(attackEffect.paralysisChance, crit: crit)
-			{
-				paralysis = 0
-				runM(message: "*Name was paralyzed!")
-			}
-			
-			if burningImmunity && attackEffect.burningChance != nil
-			{
-				runM(message: "*Name was immune to being set on fire!")
-			}
-			else if statusEffectCheck(attackEffect.burningChance, crit: crit)
-			{
-				burning = 0
-				runM(message: "*Name was set on fire!")
-			}
-			
-			if freezeImmunity && attackEffect.freezeChance != nil
-			{
-				runM(message: "*Name was immune to being frozen!")
-			}
-			else if statusEffectCheck(attackEffect.freezeChance, crit: crit)
-			{
-				freeze = 0
-				runM(message: "*Name was frozen!")
-			}
-			
-			if sleepImmunity && attackEffect.sleepChance != nil
-			{
-				runM(message: "*Name was immune to being put to sleep!")
-			}
-			else if statusEffectCheck(attackEffect.sleepChance, crit: crit)
-			{
-				sleep = 0
-				runM(message: "*Name fell asleep!")
-			}
-			
-			let oldAS = attackStep
-			attackStep += attackEffect.attackStep ?? 0
-			stepEffectMessage("attack", oldStep: oldAS, newStep: attackStep, messageHandler: messageHandler)
-			
-			let oldDS = defenseStep
-			defenseStep += attackEffect.defenseStep ?? 0
-			stepEffectMessage("defense", oldStep: oldDS, newStep: defenseStep, messageHandler: messageHandler)
-			
-			let oldCS = accuracyStep
-			accuracyStep += attackEffect.accuracyStep ?? 0
-			stepEffectMessage("accuracy", oldStep: oldCS, newStep: accuracyStep, messageHandler: messageHandler)
-			
-			let oldGS = dodgeStep
-			dodgeStep += attackEffect.dodgeStep ?? 0
-			stepEffectMessage("dodge", oldStep: oldGS, newStep: dodgeStep, messageHandler: messageHandler)
 			
 			if attackEffect.mug
 			{
@@ -647,24 +597,90 @@ class Creature
 				}
 			}
 			
-			if attackEffect.nonlethal && health == 0
+			if !dead
 			{
-				health = 1
-			}
-			
-			if attackEffect.cleanse && (freeze != nil || burning != nil || bleed != nil || paralysis != nil || attackStep < 0 || defenseStep < 0 || accuracyStep < 0 || dodgeStep < 0)
-			{
-				//only display the message if there's something to be cleansed
-				runM(message: "*Name was cleansed of *his ailments!")
+				//don't bother inflicting status effects on dead people
 				
-				freeze = nil
-				burning = nil
-				bleed = nil
-				paralysis = nil
-				attackStep = max(attackStep, 0)
-				defenseStep = max(defenseStep, 0)
-				accuracyStep = max(accuracyStep, 0)
-				dodgeStep = max(dodgeStep, 0)
+				if bleedImmunity && attackEffect.bleedChance != nil
+				{
+					runM(message: "*Name was immune to bleeding!")
+				}
+				else if statusEffectCheck(attackEffect.bleedChance, crit: crit)
+				{
+					bleed = 0
+					runM(message: "*Name was given a bleeding wound!")
+				}
+				
+				if paralysisImmunity && attackEffect.paralysisChance != nil
+				{
+					runM(message: "*Name was immune to being paralyized!")
+				}
+				else if statusEffectCheck(attackEffect.paralysisChance, crit: crit)
+				{
+					paralysis = 0
+					runM(message: "*Name was paralyzed!")
+				}
+				
+				if burningImmunity && attackEffect.burningChance != nil
+				{
+					runM(message: "*Name was immune to being set on fire!")
+				}
+				else if statusEffectCheck(attackEffect.burningChance, crit: crit)
+				{
+					burning = 0
+					runM(message: "*Name was set on fire!")
+				}
+				
+				if freezeImmunity && attackEffect.freezeChance != nil
+				{
+					runM(message: "*Name was immune to being frozen!")
+				}
+				else if statusEffectCheck(attackEffect.freezeChance, crit: crit)
+				{
+					freeze = 0
+					runM(message: "*Name was frozen!")
+				}
+				
+				if sleepImmunity && attackEffect.sleepChance != nil
+				{
+					runM(message: "*Name was immune to being put to sleep!")
+				}
+				else if statusEffectCheck(attackEffect.sleepChance, crit: crit)
+				{
+					sleep = 0
+					runM(message: "*Name fell asleep!")
+				}
+				
+				let oldAS = attackStep
+				attackStep += attackEffect.attackStep ?? 0
+				stepEffectMessage("attack", oldStep: oldAS, newStep: attackStep, messageHandler: messageHandler)
+				
+				let oldDS = defenseStep
+				defenseStep += attackEffect.defenseStep ?? 0
+				stepEffectMessage("defense", oldStep: oldDS, newStep: defenseStep, messageHandler: messageHandler)
+				
+				let oldCS = accuracyStep
+				accuracyStep += attackEffect.accuracyStep ?? 0
+				stepEffectMessage("accuracy", oldStep: oldCS, newStep: accuracyStep, messageHandler: messageHandler)
+				
+				let oldGS = dodgeStep
+				dodgeStep += attackEffect.dodgeStep ?? 0
+				stepEffectMessage("dodge", oldStep: oldGS, newStep: dodgeStep, messageHandler: messageHandler)
+				
+				if attackEffect.cleanse && (freeze != nil || burning != nil || bleed != nil || paralysis != nil || attackStep < 0 || defenseStep < 0 || accuracyStep < 0 || dodgeStep < 0)
+				{
+					//only display the message if there's something to be cleansed
+					runM(message: "*Name was cleansed of *his ailments!")
+					
+					freeze = nil
+					burning = nil
+					bleed = nil
+					paralysis = nil
+					attackStep = max(attackStep, 0)
+					defenseStep = max(defenseStep, 0)
+					accuracyStep = max(accuracyStep, 0)
+					dodgeStep = max(dodgeStep, 0)
+				}
 			}
 		}
 	}

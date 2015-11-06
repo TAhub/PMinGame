@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E43A757B1BED3B5B00367863 /* Races.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43A757A1BED3B5B00367863 /* Races.plist */; };
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
 		E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */; };
 		E4F3C83D1BE9AD2D00D29811 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E43A757A1BED3B5B00367863 /* Races.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Races.plist; sourceTree = "<group>"; };
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		E4F3C8341BE9AD2D00D29811 /* PMinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		E4F3C8491BE9AD4900D29811 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E43A757A1BED3B5B00367863 /* Races.plist */,
 				E4F3C84A1BE9B17100D29811 /* Jobs.plist */,
 				E4F3C84C1BE9B17E00D29811 /* Attacks.plist */,
 				E4F3C84E1BE9B18600D29811 /* Types.plist */,
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43A757B1BED3B5B00367863 /* Races.plist in Resources */,
 				E4F3C84F1BE9B18600D29811 /* Types.plist in Resources */,
 				E4F3C8421BE9AD2D00D29811 /* LaunchScreen.storyboard in Resources */,
 				E4F3C84D1BE9B17E00D29811 /* Attacks.plist in Resources */,

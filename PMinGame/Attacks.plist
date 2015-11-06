@@ -55,6 +55,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name did a sample thing!</string>
+		<key>miss message</key> <string>*Name tried to do a sample thing, but missed!</string>
 	</dict>
 	<!-- -->
 	<!-- desperation attacks -->
@@ -73,6 +74,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name struggled desperately!</string>
+		<key>miss message</key> <string>*Name struggled desperately, but to no avail!</string>
 	</dict>
 	<key>ice tackle</key>
 	<dict>
@@ -88,6 +90,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name flung *himself into *OnName with a crack!</string>
+		<key>miss message</key> <string>*Name flung *himself towards *OnName, but missed!</string>
 	</dict>
 	<key>spook</key>
 	<dict>
@@ -103,21 +106,19 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name spooked *OnName!</string>
+		<key>miss message</key> <string>*Name acted scary, but *OnName was unimpressed!</string>
 	</dict>
-	<key>struggle</key>
+	<key>jolt</key>
 	<dict>
-		<key>damage</key> <integer>10</integer>
-		<key>accuracy</key> <integer>70</integer>
-		<key>type</key> <string>physical</string>
+		<key>damage</key> <integer>6</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>spark</string>
 		<key>power points</key> <integer>999</integer>
 		<!-- properties -->
-		<key>user effects</key>
-		<dict>
-			<key>bleed chance</key> <integer>5</integer>
-		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name struggled desperately!</string>
+		<key>message</key> <string>*Name released a small bolt of static electricity!</string>
+		<key>miss message</key> <string>*Name tried to release electricity, but *he was grounded!</string>
 	</dict>
 	<key>heat</key>
 	<dict>
@@ -151,6 +152,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name slashed *his sword at *OnName!</string>
+		<key>miss message</key> <string>*Name tried to slash *his sword at *OnName, but missed!</string>
 	</dict>
 	<key>chainsaw</key>
 	<dict>
@@ -167,6 +169,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name revved up *his chainsaw and swung it at *OnName!</string>
+		<key>miss message</key> <string>*Name tried to hit *OnName with a chainsaw, but swung wide!</string>
 	</dict>
 	<key>vibrating blade</key>
 	<dict>
@@ -183,6 +186,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name swiped at *OnName with *his vibrating blade!</string>
+		<key>miss message</key> <string>*Name tried to slash *his vibrating blade at *OnName, but missed!</string>
 	</dict>
 	<!-- slam line -->
 	<key>slam</key>
@@ -195,6 +199,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name slammed *OnName!</string>
+		<key>miss message</key> <string>*Name tried to slam *OnName, but missed!</string>
 	</dict>
 	<key>heavy slam</key>
 	<dict>
@@ -207,6 +212,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name mightily slammed *OnName!</string>
+		<key>miss message</key> <string>*Name tried to slam *OnName, but missed!</string>
 	</dict>
 	<!-- knife line -->
 	<key>knife</key>
@@ -223,6 +229,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name jabbed *his knife at *OnName!</string>
+		<key>miss message</key> <string>*Name jabbed *his knife at *OnName, but missed!</string>
 	</dict>
 	<key>barbed knife</key>
 	<dict>
@@ -238,7 +245,8 @@
 		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name stabbed *OnName with his barbed knife!</string>
+		<key>message</key> <string>*Name stabbed *OnName with *his barbed knife!</string>
+		<key>miss message</key> <string>*Name tried to stab *OnName with *his barbed knife, but missed!</string>
 	</dict>
 	<key>monoedge</key>
 	<dict>
@@ -254,7 +262,8 @@
 		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name cut *OnName with his monoedge knife!</string>
+		<key>message</key> <string>*Name cut *OnName with *his monoedge knife!</string>
+		<key>miss message</key> <string>*Name tried to cut *OnName with *his monoedge knife, but cut the air instead!</string>
 	</dict>
 	<!-- musket line -->
 	<key>musket</key>
@@ -268,6 +277,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired at *OnName with *his musket!</string>
+		<key>miss message</key> <string>*Name fired *his musket and hit the horizon!</string>
 	</dict>
 	<key>rifle</key>
 	<dict>
@@ -281,6 +291,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name carefully shot *OnName with *his rifle!</string>
+		<key>miss message</key> <string>*Name tried to shoot *OnName with *his rifle, but was unable to line up a shot!</string>
 	</dict>
 	<key>clockwork rifle</key>
 	<dict>
@@ -294,6 +305,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name unloaded a clip at *OnName with *his clockwork rifle!</string>
+		<key>miss message</key> <string>*Name unloaded a clip at *OnName, but none of the bullets hit!</string>
 	</dict>
 	<!-- misc physical attacks -->
 	<key>subdue</key>
@@ -311,6 +323,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name tackled *OnName to the ground!</string>
+		<key>miss message</key> <string>*Name tried to tackle *OnName, who sidestepped!</string>
 	</dict>
 	<key>feint</key>
 	<dict>
@@ -327,6 +340,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name feinted at *OnName!</string>
+		<key>miss message</key> <string>*Name feinted, but *OnName wasn't fooled!</string>
 	</dict>
 	<key>grenade</key>
 	<dict>
@@ -344,6 +358,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw a grenade at *OnName!</string>
+		<key>miss message</key> <string>*Name threw a grenade, but *OnName kicked it safely away!</string>
 	</dict>
 	<key>storm hammer</key>
 	<dict>
@@ -359,6 +374,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name swung *his mighty storm hammer into *OnName!</string>
+		<key>miss message</key> <string>*Name swung *his mighty storm hammer, and it hit the ground!</string>
 	</dict>
 	<key>mug</key>
 	<dict>
@@ -375,6 +391,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name leapt at *OnName!</string>
+		<key>miss message</key> <string>*Name leapt at *OnName, who backed away!</string>
 	</dict>
 	<key>net gun</key>
 	<dict>
@@ -392,6 +409,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name pulled out a net gun and fired it at *OnName!</string>
+		<key>miss message</key> <string>*Name tried to shoot *OnName with a net gun, but it jammed!</string>
 	</dict>
 	<!-- -->
 	<!-- astral attacks -->
@@ -407,6 +425,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name sunk *his hand into *OnName!</string>
+		<key>miss message</key> <string>*Name tried to touch *OnName, but *he passed through harmlessly!</string>
 	</dict>
 	<key>ghost touch</key>
 	<dict>
@@ -419,6 +438,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name thrust *his arm into *OnName!</string>
+		<key>miss message</key> <string>*Name tried to touch *OnName, but *he passed through harmlessly!</string>
 	</dict>
 	<key>heartstopper</key>
 	<dict>
@@ -431,6 +451,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name reached into *OnName in search of vitals!</string>
+		<key>miss message</key> <string>*Name tried to touch *OnName, but *he passed through harmlessly!</string>
 	</dict>
 	<!-- energy drain line -->
 	<key>energy drain</key>
@@ -445,6 +466,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name pressed *his hand against *OnName. *OnName began to glow!</string>
+		<key>miss message</key> <string>*Name tried to drain *OnName, but was unable to land a touch!</string>
 	</dict>
 	<key>super drain</key>
 	<dict>
@@ -459,6 +481,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name pressed both hands against *OnName. *OnName began to glow!</string>
+		<key>miss message</key> <string>*Name tried to drain *OnName, but was unable to land a touch!</string>
 	</dict>
 	<!-- misc astral attacks -->
 	<key>blinding light</key>
@@ -477,6 +500,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released an intense light!</string>
+		<key>miss message</key> <string>*Name released an intense light, but *OnName looked away!</string>
 	</dict>
 	<key>astral wheel</key>
 	<dict>
@@ -490,7 +514,8 @@
 		<!-- TODO: shouldn't use power points on a miss -->
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name summons the astral wheel and strikes *OnName with it!</string>
+		<key>message</key> <string>*Name summoned the astral wheel and struck *OnName with it!</string>
+		<key>miss message</key> <string>*Name summoned the astral wheel, but was unable to control it!</string>
 	</dict>
 	<!-- -->
 	<!-- flame attacks -->
@@ -512,6 +537,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a puff of flame at *OnName!</string>
+		<key>miss message</key> <string>*Name fired a puff of flame at *OnName, who hopped away!</string>
 	</dict>
 	<key>flamethrower</key>
 	<dict>
@@ -530,6 +556,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a jet of flames at *OnName!</string>
+		<key>miss message</key> <string>*Name fired a jet of flames at *OnName, who hopped away!</string>
 	</dict>
 	<key>hellfire</key>
 	<dict>
@@ -548,6 +575,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a jet of intense flames at *OnName!</string>
+		<key>miss message</key> <string>*Name fired a jet of intense flames at *OnName, who hopped away!</string>
 	</dict>
 	<!-- misc flame attacks -->
 	<key>brand</key>
@@ -564,6 +592,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with *his red-hot hands!</string>
+		<key>miss message</key> <string>*Name heat up *his hands, but was unable to touch *OnName!</string>
 	</dict>
 	<key>flame grenade</key>
 	<dict>
@@ -581,6 +610,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw a flame grenade at *OnName!</string>
+		<key>miss message</key> <string>*Name threw a flame grenade at *OnName, but it was a dud!</string>
 	</dict>
 	<key>ignite</key>
 	<dict>
@@ -597,6 +627,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name engulfed *OnName in flames!</string>
+		<key>miss message</key> <string>*Name tried to ignite *OnName, but it didn't work!</string>
 	</dict>
 	<key>ultra heat</key>
 	<dict>
@@ -632,6 +663,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released a bolt of static electricity at *OnName!</string>
+		<key>miss message</key> <string>*Name released a bolt of static electricity, which grounded itself nearby!</string>
 	</dict>
 	<key>electrocute</key>
 	<dict>
@@ -650,6 +682,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released a blast of electricity at *OnName!</string>
+		<key>miss message</key> <string>*Name released a blast of electricity, which grounded itself nearby!</string>
 	</dict>
 	<key>lightning bolt</key>
 	<dict>
@@ -668,6 +701,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released a bolt of lightning at *OnName!</string>
+		<key>miss message</key> <string>*Name released a bolt of lightning at *OnName, which grounded itself nearby!</string>
 	</dict>
 	<!-- lightning blow line -->
 	<key>lightning blow</key>
@@ -681,6 +715,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name launched a lightning-fast attack at *OnName!</string>
+		<key>miss message</key> <string>*Name launched a lightning-fast attack at *OnName, but it went wide!</string>
 	</dict>
 	<key>lightning combo</key>
 	<dict>
@@ -694,6 +729,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name launched a series of lightning-fast attacks at *OnName!</string>
+		<key>miss message</key> <string>*Name tried to launch into an impressive combo, but was unable to land the first blow!</string>
 	</dict>
 	<!-- misc spark attacks -->
 	<key>paralyzing touch</key>
@@ -710,6 +746,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with his crackling hand!</string>
+		<key>miss message</key> <string>*Name electrocuted *his hand, but was unable to touch *OnName!</string>
 	</dict>
 	<key>electric sight</key>
 	<dict>
@@ -750,6 +787,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name flung a wave of thunder at *OnName!</string>
+		<key>miss message</key> <string>*Name flung a wave of thunder, which flew off harmlessly into the distance!</string>
 	</dict>
 	<!-- -->
 	<!-- frost attacks -->
@@ -766,6 +804,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw a snowball at *OnName!</string>
+		<key>miss message</key> <string>*Name threw a snowball, but missed the mark!</string>
 	</dict>
 	<key>snow slam</key>
 	<dict>
@@ -779,6 +818,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw an armful of snow at *OnName!</string>
+		<key>miss message</key> <string>*Name tried to throw an armful of snow, but it came apart in the arm!</string>
 	</dict>
 	<key>ice fling</key>
 	<dict>
@@ -792,6 +832,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name flung a big chunk of ice at *OnName!</string>
+		<key>miss message</key> <string>*Name flung a big chunk of ice, but it completely missed!</string>
 	</dict>
 	<!-- icicle line -->
 	<key>icicle</key>
@@ -805,6 +846,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name tossed an icicle at *OnName!</string>
+		<key>miss message</key> <string>*Name tossed an icicle at *OnName, who dodged it!</string>
 	</dict>
 	<key>ice shower</key>
 	<dict>
@@ -818,6 +860,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name tossed a dozen icicles at *OnName!</string>
+		<key>miss message</key> <string>*Name tossed a dozen icicles at *OnName, who dodged every one!</string>
 	</dict>
 	<!-- misc frost attacks -->
 	<key>rime</key>
@@ -835,6 +878,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with *his chilling hand!</string>
+		<key>miss message</key> <string>*Name cooled down *his hand, but was unable to touch *OnName!</string>
 	</dict>
 	<key>freeze ray</key>
 	<dict>
@@ -852,6 +896,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a pale blue ray at *OnName!</string>
+		<key>miss message</key> <string>*Name fired a pale blue ray, but it dissolved before it could do anything to *OnName!</string>
 	</dict>
 	<!-- -->
 	<!-- typeless attacks -->
@@ -993,6 +1038,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name blasted *OnName with an experimental weapon!</string>
+		<key>miss message</key> <string>*Name took out an experimental weapon, but it wouldn't fire!</string>
 	</dict>
 </dict>
 </plist>

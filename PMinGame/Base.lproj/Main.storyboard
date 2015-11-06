@@ -175,8 +175,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="RlB-PZ-KZR"/>
-                                <exclude reference="z0N-tD-ZOt"/>
                                 <exclude reference="SFX-3i-3YU"/>
                                 <exclude reference="X1F-kA-I5j"/>
                                 <exclude reference="nIh-jt-duS"/>
@@ -185,6 +183,8 @@
                                 <exclude reference="6E1-R5-9Mn"/>
                                 <exclude reference="zz3-M1-qPh"/>
                                 <exclude reference="y2L-R3-UOj"/>
+                                <exclude reference="RlB-PZ-KZR"/>
+                                <exclude reference="z0N-tD-ZOt"/>
                             </mask>
                         </variation>
                     </view>
