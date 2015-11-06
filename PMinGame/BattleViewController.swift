@@ -8,6 +8,15 @@
 
 import UIKit
 
+enum MenuState
+{
+	case Main
+	case Attack
+	case Switch(Int)
+	case Item(Int)
+	case ItemTarget(Int)
+}
+
 class BattleViewController: UIViewController, BattleDelegate {
 
 	//MARK: outlets and actions
@@ -26,28 +35,39 @@ class BattleViewController: UIViewController, BattleDelegate {
 	@IBOutlet weak var thirdButton: UIButton!
 	@IBOutlet weak var fourthButton: UIButton!
 	
+	@IBOutlet weak var nextButton: UIButton!
+	@IBOutlet weak var cancelButton: UIButton!
+	
+	
+	
 	@IBAction func pressButton(sender: UIButton)
 	{
 		if !writingMessages && !animating
 		{
-			if sender === firstButton
+			if sender == nextButton
 			{
-				battle.pickAttack(0)
+				pressButton(4)
+			}
+			else if sender == cancelButton
+			{
+				pressButton(5)
+			}
+			else if sender === firstButton
+			{
+				pressButton(0)
 			}
 			else if sender === secondButton
 			{
-				battle.pickAttack(1)
+				pressButton(1)
 			}
 			else if sender === thirdButton
 			{
-				battle.pickAttack(2)
+				pressButton(2)
 			}
 			else if sender === fourthButton
 			{
-				battle.pickAttack(3)
+				pressButton(3)
 			}
-			battle.turnOperation()
-			labelsChanged()
 		}
 	}
 	
@@ -55,6 +75,12 @@ class BattleViewController: UIViewController, BattleDelegate {
 	private var oldMessages = [String]()
 	private var messages = [String]()
 	private var writingMessages:Bool = false
+	{
+		didSet
+		{
+			labelsChanged()
+		}
+	}
 	
 	private func messageThread()
 	{
@@ -87,7 +113,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		
 		while messages.count > 0
 		{
-			if oldMessages.count >= 3
+			if oldMessages.count >= self.textParser.numberOfLines
 			{
 				oldMessages.removeAtIndex(0)
 			}
@@ -118,6 +144,19 @@ class BattleViewController: UIViewController, BattleDelegate {
 	//MARK: central stuff
 	private var battle:Battle!
 	private var animating:Bool = false
+	{
+		didSet
+		{
+			labelsChanged()
+		}
+	}
+	private var menuState:MenuState = .Main
+	{
+		didSet
+		{
+			labelsChanged()
+		}
+	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,8 +171,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		enemyPosition.constant = 0
 		UIView.animateWithDuration(2.0, animations:
 		{
-			self.enemyView.layoutIfNeeded()
-			self.playerView.layoutIfNeeded()
+			self.view.layoutIfNeeded()
 			self.playerStats.alpha = 1
 			self.enemyStats.alpha = 1
 		})
@@ -151,15 +189,133 @@ class BattleViewController: UIViewController, BattleDelegate {
 		textParser.text = ""
     }
 	
-	//MARK: delegate functions
-	func labelsChanged()
+	private func pressButton(num:Int)
 	{
-		playerStats.text = battle.playerStat
-		enemyStats.text = battle.enemyStat
-		firstButton.setTitle(battle.getAttackLabel(0), forState: UIControlState.Normal)
-		secondButton.setTitle(battle.getAttackLabel(1), forState: UIControlState.Normal)
-		thirdButton.setTitle(battle.getAttackLabel(2), forState: UIControlState.Normal)
-		fourthButton.setTitle(battle.getAttackLabel(3), forState: UIControlState.Normal)
+		switch menuState
+		{
+		case .Main:
+			switch num
+			{
+			case 0: menuState = .Attack
+			case 1: menuState = .Item(0)
+			case 2: menuState = .Switch(0)
+			case 3: print("ATTEMPT TO FLEE")
+			default: break
+			}
+		case .Attack:
+			if num == 5
+			{
+				menuState = .Main
+			}
+			else if num < 4
+			{
+				battle.pickAttack(num)
+				battle.turnOperation()
+				menuState = .Main
+			}
+		case .Switch(let page):
+			if num == 5
+			{
+				menuState = .Main
+			}
+			else if num == 4
+			{
+				let newPage = (page + 1) % Int(ceil(Float(battle.players.count) * 0.25))
+				menuState = .Switch(newPage)
+			}
+			else
+			{
+				battle.pickSwitch(page * 4 + num)
+				battle.turnOperation()
+				menuState = .Main
+			}
+		default: break
+		}
+	}
+	
+	private func labelsChanged()
+	{
+		if playerStats == nil || battle == nil
+		{
+			return
+		}
+		
+		if !writingMessages
+		{
+			playerStats.text = battle.playerStat
+			enemyStats.text = battle.enemyStat
+		}
+		
+		if animating || writingMessages
+		{
+			firstButton.setTitle(nil, forState: UIControlState.Normal)
+			secondButton.setTitle(nil, forState: UIControlState.Normal)
+			thirdButton.setTitle(nil, forState: UIControlState.Normal)
+			fourthButton.setTitle(nil, forState: UIControlState.Normal)
+			nextButton.setTitle(nil, forState: UIControlState.Normal)
+			cancelButton.setTitle(nil, forState: UIControlState.Normal)
+			return
+		}
+		
+		switch(menuState)
+		{
+		case .Main:
+			firstButton.setTitle("Attack", forState: UIControlState.Normal)
+			secondButton.setTitle("Item", forState: UIControlState.Normal)
+			thirdButton.setTitle("Switch", forState: UIControlState.Normal)
+			fourthButton.setTitle("Flee", forState: UIControlState.Normal)
+			nextButton.setTitle(nil, forState: UIControlState.Normal)
+			cancelButton.setTitle(nil, forState: UIControlState.Normal)
+		case .Attack:
+			firstButton.setTitle(battle.getAttackLabel(0), forState: UIControlState.Normal)
+			secondButton.setTitle(battle.getAttackLabel(1), forState: UIControlState.Normal)
+			thirdButton.setTitle(battle.getAttackLabel(2), forState: UIControlState.Normal)
+			fourthButton.setTitle(battle.getAttackLabel(3), forState: UIControlState.Normal)
+			nextButton.setTitle(nil, forState: UIControlState.Normal)
+			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
+		case .Switch(let page):
+			firstButton.setTitle(battle.getPersonlabel(page * 4), forState: UIControlState.Normal)
+			secondButton.setTitle(battle.getPersonlabel(page * 4 + 1), forState: UIControlState.Normal)
+			thirdButton.setTitle(battle.getPersonlabel(page * 4 + 2), forState: UIControlState.Normal)
+			fourthButton.setTitle(battle.getPersonlabel(page * 4 + 3), forState: UIControlState.Normal)
+			nextButton.setTitle("Next", forState: UIControlState.Normal)
+			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
+		default: assertionFailure("ERROR: I haven't made the other states yet"); break
+		}
+	}
+	
+	//MARK: delegate functions
+	func switchAnim(onPlayer: Bool)
+	{
+//		let actingOn = (onPlayer ? playerView : enemyView)
+		let actingOnPosition = (onPlayer ? playerPosition : enemyPosition)
+		let actingOnLabel = (onPlayer ? playerStats : enemyStats)
+		
+		//do the actual animation
+		animating = true
+		actingOnPosition.constant = 300 * (onPlayer ? 1 : -1)
+		UIView.animateWithDuration(1.0, animations:
+		{
+			self.view.layoutIfNeeded()
+			actingOnLabel.alpha = 0
+			
+		})
+		{ (success) in
+			//TODO: switch the appearance of actingOn
+			//to the new person
+			
+			self.labelsChanged()
+			
+			actingOnPosition.constant = 0
+			UIView.animateWithDuration(1.0, animations:
+			{
+				self.view.layoutIfNeeded()
+				actingOnLabel.alpha = 1
+			})
+			{ (success) in
+				self.animating = false
+			}
+		}
 	}
 	
 	func runMessage(message:String)

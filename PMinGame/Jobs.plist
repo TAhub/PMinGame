@@ -488,6 +488,7 @@
 			<key>8</key> <string>brand</string>
 			<key>10</key> <string>flamethrower</string>
 			<key>15</key> <string>ignite</string>
+			<key>18</key> <string>ultra heat</string>
 			<key>20</key> <string>hellfire</string>
 			<key>23</key> <string>rage</string>
 		</dict>

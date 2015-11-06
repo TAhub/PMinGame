@@ -57,6 +57,83 @@
 		<key>message</key> <string>*Name did a sample thing!</string>
 	</dict>
 	<!-- -->
+	<!-- desperation attacks -->
+	<!-- -->
+	<key>struggle</key>
+	<dict>
+		<key>damage</key> <integer>10</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>999</integer>
+		<!-- properties -->
+		<key>user effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>5</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name struggled desperately!</string>
+	</dict>
+	<key>ice tackle</key>
+	<dict>
+		<key>damage</key> <integer>20</integer>
+		<key>accuracy</key> <integer>60</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>999</integer>
+		<!-- properties -->
+		<key>user effects</key>
+		<dict>
+			<key>defense steps</key> <integer>-1</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name flung *himself into *OnName with a crack!</string>
+	</dict>
+	<key>spook</key>
+	<dict>
+		<key>damage</key> <integer>2</integer>
+		<key>accuracy</key> <integer>50</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>999</integer>
+		<!-- properties -->
+		<key>enemy effects</key>
+		<dict>
+			<key>accuracy steps</key> <integer>-1</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name spooked *OnName!</string>
+	</dict>
+	<key>struggle</key>
+	<dict>
+		<key>damage</key> <integer>10</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>999</integer>
+		<!-- properties -->
+		<key>user effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>5</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name struggled desperately!</string>
+	</dict>
+	<key>heat</key>
+	<dict>
+		<key>damage</key> <integer>10</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>999</integer>
+		<!-- properties -->
+		<key>user effects</key>
+		<dict>
+			<key>freeze chance</key> <integer>30</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name radiated off some of *his body heat!</string>
+	</dict>
+	<!-- -->
 	<!-- physical attacks -->
 	<!-- -->
 	<!-- sword line -->
@@ -520,6 +597,20 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name engulfed *OnName in flames!</string>
+	</dict>
+	<key>ultra heat</key>
+	<dict>
+		<key>damage</key> <integer>38</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>user effects</key>
+		<dict>
+			<key>freeze chance</key> <integer>100</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name radiated off all of *his body heat!</string>
 	</dict>
 	<!-- -->
 	<!-- spark attacks -->

@@ -132,6 +132,14 @@ class Attack
 	//diagnostics
 	var label:String
 	{
-		return "\(attack) (\(powerPoints)/\(maxPowerPoints))"
+		if powerPoints > 100
+		{
+			//it's basically infinite, so don't list the power points at all
+			return attack
+		}
+		else
+		{
+			return "\(attack) (\(powerPoints)/\(maxPowerPoints))"
+		}
 	}
 }

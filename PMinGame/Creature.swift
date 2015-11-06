@@ -17,8 +17,8 @@ class Creature
 {
 	//MARK: identity
 	private var job:String
-	private var name:String
-	private var good:Bool
+	internal var name:String
+	internal var good:Bool
 	
 	//MARK: permanent stats
 	private var level:Int
@@ -33,6 +33,7 @@ class Creature
 	}
 	internal var attacks = [Attack]()
 	internal var dead:Bool { return health == 0 }
+	internal var injured:Bool { return health < maxHealth / 2 }
 	
 	//MARK: status
 	private var paralysis:Int?
@@ -226,6 +227,24 @@ class Creature
 	}
 	
 	//MARK: attack functions
+	internal var desperationAttack:Attack
+	{
+		let desp:Attack
+		switch(type)
+		{
+		case "physical": desp = Attack(attack: "struggle")
+		case "frost": desp = Attack(attack: "ice tackle")
+		case "flame": desp = Attack(attack: "heat")
+		case "spark": desp = Attack(attack: "jolt")
+		case "astral": desp = Attack(attack: "spook")
+		default:
+			assertionFailure("ERROR: invalid type for desperation attack")
+			desp = Attack(attack: "struggle")
+		}
+		desp.powerPoints = desp.maxPowerPoints
+		return desp
+	}
+	
 	private func stepMultiplier(steps:Int) -> Int
 	{
 		switch(steps)
@@ -448,6 +467,8 @@ class Creature
 						finalDamage = finalDamage + finalDamage / 2
 						
 						//TODO: this message should shake
+						//to get some shaking, maybe use
+						//https://github.com/haaakon/SingleLineShakeAnimation
 						runM(message: "WHAM!")
 					}
 					
@@ -668,7 +689,12 @@ class Creature
 	}
 	internal var statLine:String
 	{
-		var label = "\(name)\nlevel \(level) \(type)\n\(health)/\(maxHealth) health"
+		var label = "\(name): level \(level) \(type)\n\(health)/\(maxHealth) health"
+		if dead
+		{
+			label += "\n\((good ? "UNCONSCIOUS" : "DEAD"))"
+			return label
+		}
 		if attackStep != 0 || defenseStep != 0 || accuracyStep != 0 || dodgeStep != 0
 		{
 			label += "\n"

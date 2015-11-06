@@ -8,27 +8,37 @@
 
 import Foundation
 
+let kWorstEffectivenessLabel = " 👎"
+let kBestEffectivenessLabel = " 👍"
+
 protocol BattleDelegate
 {
-	func labelsChanged()
 	func runMessage(message:String)
 	func victory()
 	func defeat()
+	func switchAnim(onPlayer:Bool)
+}
+
+enum Order
+{
+	case UseAttack(Attack)
+	case SwitchTo(Creature)
+//	case UseItem(Item, Creature)
 }
 
 class Battle
 {
 	//contents data
-	private var players = [Creature]()
-	private var enemies = [Creature]()
+	internal var players = [Creature]()
+	internal var enemies = [Creature]()
 	private weak var player:Creature!
 	private weak var enemy:Creature!
 	
 	//turn order data
 	private let defaultTurnOrder:Bool
 	private var turnOrder:Bool?
-	private var playerAttack:Attack?
-	private var enemyAttack:Attack?
+	private var playerOrder:Order?
+	private var enemyOrder:Order?
 	
 	//external variables
 	var delegate:BattleDelegate!
@@ -37,7 +47,13 @@ class Battle
 	init()
 	{
 		players.append(Creature(job: "inventor", level: 1, good: true))
-		enemies.append(Creature(job: "fencer", level: 1, good: false))
+		players.append(Creature(job: "barbarian", level: 1, good: true))
+		players.append(Creature(job: "soldier", level: 1, good: true))
+		players.append(Creature(job: "mystic", level: 1, good: true))
+		players.append(Creature(job: "rogue", level: 1, good: true))
+		players.append(Creature(job: "honored dead", level: 1, good: true))
+		
+		enemies.append(Creature(job: "shape of fire", level: 1, good: false))
 		
 		//TODO: if loading people externally (IE loading players from the party from another view)
 		//be sure to reset their steps and status effects here, before anything major happens
@@ -54,11 +70,26 @@ class Battle
 	}
 	
 	//MARK: operation
+	func pickSwitch(num:Int)
+	{
+		if players.count > num && !players[num].dead && !(players[num] === player)
+		{
+			playerOrder = .SwitchTo(players[num])
+		}
+	}
+	
 	func pickAttack(num:Int)
 	{
-		if player.attacks.count > num && player.attacks[num].powerPoints > 0
+		if getValidAttacksFor(player).count == 0
 		{
-			playerAttack = player.attacks[num]
+			if num == 0
+			{
+				playerOrder = .UseAttack(player.desperationAttack)
+			}
+		}
+		else if player.attacks.count > num && player.attacks[num].powerPoints > 0
+		{
+			playerOrder = .UseAttack(player.attacks[num])
 		}
 	}
 	private func useAttack(user:Creature, usee:Creature, used:Attack)
@@ -67,27 +98,101 @@ class Battle
 		{ (message) in
 			self.delegate.runMessage(message)
 		}
-		delegate.labelsChanged()
 	}
+	private func useSwitch(from:Creature, to:Creature)
+	{
+		if from.good
+		{
+			player = to
+		}
+		else
+		{
+			enemy = to
+		}
+		if from.dead
+		{
+			delegate.runMessage("\(to.name) switched in!")
+		}
+		else if from.injured && !to.injured
+		{
+			delegate.runMessage("\(to.name) leapt in to protect \(from.name)!")
+		}
+		else
+		{
+			delegate.runMessage("\(to.name) switched in for \(from.name)!")
+		}
+		delegate.switchAnim(from.good)
+	}
+	private func useOrder(user:Creature, usee:Creature, used:Order)
+	{
+		switch(used)
+		{
+		case .UseAttack(let attack): useAttack(user, usee: usee, used: attack)
+		case .SwitchTo(let to): useSwitch(user, to: to)
+		}
+	}
+	
+	//organizational getters
+	private var playerAttack:Attack?
+	{
+		switch(playerOrder!)
+		{
+		case .UseAttack(let attack): return attack
+		default: return nil
+		}
+	}
+	
+	private var enemyAttack:Attack?
+		{
+			switch(enemyOrder!)
+			{
+			case .UseAttack(let attack): return attack
+			default: return nil
+			}
+	}
+	private var playerSwitch:Creature?
+	{
+		switch(playerOrder!)
+		{
+		case .SwitchTo(let to): return to
+		default: return nil
+		}
+	}
+	
+	private var enemySwitch:Creature?
+	{
+		switch(enemyOrder!)
+		{
+		case .SwitchTo(let to): return to
+		default: return nil
+		}
+	}
+	
 	func turnOperation()
 	{
-		if playerAttack != nil && turnOrder == nil
+		if playerOrder != nil && turnOrder == nil
 		{
 			//pick an attack for the enemy
-			enemyAttack = aiPickFor(enemy)
+			enemyOrder = .UseAttack(aiPickFor(enemy))
 			
 			//get the turn order
-			if playerAttack!.quick && !enemyAttack!.quick
+			if playerAttack != nil && enemyAttack != nil && playerAttack!.quick && !enemyAttack!.quick
 			{
 				turnOrder = true
 			}
-			else if !playerAttack!.quick && enemyAttack!.quick
+			else if playerAttack != nil && enemyAttack != nil && !playerAttack!.quick && enemyAttack!.quick
 			{
 				turnOrder = false
 			}
 			//TODO: if one player is using an item, and the other player isn't, that player goes FIRST
-			//TODO: if one player is switching people, and that player's person out is dead, that player goes FIRST
-			//TODO: if one player is switching people, that player goes LAST
+			else if playerSwitch != nil && enemySwitch == nil
+			{
+				turnOrder = player.dead
+			}
+			else if playerSwitch == nil && enemySwitch != nil
+			{
+				turnOrder = !enemy.dead
+			}
 			else
 			{
 				turnOrder = defaultTurnOrder
@@ -96,47 +201,45 @@ class Battle
 		if turnOrder != nil
 		{
 			//null the attacks of dead people
-			//TODO: once I add person switching, this SHOULDN'T nil that
-			//I don't want the person switch to fail because the parting attacking killed the old person
-			if player.dead
+			if player.dead && playerAttack != nil && playerAttack != nil
 			{
-				playerAttack = nil
+				playerOrder = nil
 			}
-			if enemy.dead
+			if enemy.dead && enemyOrder != nil && enemyAttack != nil
 			{
-				enemyAttack = nil
+				enemyOrder = nil
 			}
 			
 			//also null the turn order, if both sides died
-			if playerAttack == nil && enemyAttack == nil
+			if playerOrder == nil && enemyOrder == nil
 			{
 				turnOrder = nil
 			}
 			else if turnOrder!
 			{
-				if playerAttack != nil
+				if playerOrder != nil
 				{
-					useAttack(player, usee: enemy, used: playerAttack!)
-					playerAttack = nil
+					useOrder(player, usee: enemy, used: playerOrder!)
+					playerOrder = nil
 				}
 				else
 				{
-					useAttack(enemy, usee: player, used: enemyAttack!)
-					enemyAttack = nil
+					useOrder(enemy, usee: player, used: enemyOrder!)
+					enemyOrder = nil
 					turnOrder = nil
 				}
 			}
 			else
 			{
-				if enemyAttack != nil
+				if enemyOrder != nil
 				{
-					useAttack(enemy, usee: player, used: enemyAttack!)
-					enemyAttack = nil
+					useOrder(enemy, usee: player, used: enemyOrder!)
+					enemyOrder = nil
 				}
 				else
 				{
-					useAttack(player, usee: enemy, used: playerAttack!)
-					playerAttack = nil
+					useOrder(player, usee: enemy, used: playerOrder!)
+					playerOrder = nil
 					turnOrder = nil
 				}
 			}
@@ -148,10 +251,22 @@ class Battle
 			//and if they come up, call the "victory" or "defeat" delegate functions
 		}
 	}
+	
+	private func getValidAttacksFor(cr:Creature) -> [Attack]
+	{
+		return cr.attacks.filter() { $0.powerPoints > 0 }
+	}
+	
 	private func aiPickFor(cr:Creature) -> Attack
 	{
 		//don't use attacks with no pp
-		let valid = cr.attacks.filter() { $0.powerPoints > 0 }
+		let valid = getValidAttacksFor(cr)
+		
+		//if there are no valid attacks, use a desperation attack
+		if valid.count == 0
+		{
+			return cr.desperationAttack
+		}
 		
 		//pick a random attack from that list
 		return valid[Int(arc4random_uniform(UInt32(valid.count)))]
@@ -168,25 +283,76 @@ class Battle
 		return enemy.statLine
 	}
 	
+	private func getBestEffectivenessLabel(player:Creature) -> String
+	{
+		var bestLabel = ""
+		for attack in player.attacks
+		{
+			let label = getEffectivenessLabel(attack.type)
+			if label == kBestEffectivenessLabel
+			{
+				return label
+			}
+			else if label != kWorstEffectivenessLabel || bestLabel == ""
+			{
+				bestLabel = label
+			}
+		}
+		return bestLabel
+	}
+	
+	private func getEffectivenessLabel(type:String?) -> String
+	{
+		if let type = type
+		{
+			let multiplier = enemy.typeMultiplier(type)
+			if multiplier > 100
+			{
+				return kBestEffectivenessLabel
+			}
+			else if (multiplier < 100)
+			{
+				return kWorstEffectivenessLabel
+			}
+		}
+		return ""
+	}
+	
+	func getPersonlabel(num:Int) -> String?
+	{
+		if players.count > num
+		{
+			if players[num] === player
+			{
+				return "ALREADY OUT"
+			}
+			else if players[num].dead
+			{
+				return "UNCONSCIOUS"
+			}
+			else
+			{
+				let player = players[num]
+				return player.name + getBestEffectivenessLabel(player)
+			}
+		}
+		return nil
+	}
+	
 	func getAttackLabel(num:Int) -> String?
 	{
-		if player.attacks.count > num
+		if getValidAttacksFor(player).count == 0
+		{
+			if num == 0
+			{
+				let attack = player.desperationAttack
+				return attack.label + getEffectivenessLabel(attack.type)
+			}
+		}
+		else if player.attacks.count > num
 		{
 			let attack = player.attacks[num]
-			var label = attack.label
-			if let type = attack.type
-			{
-				let multiplier = enemy.typeMultiplier(type)
-				if multiplier > 100
-				{
-					label += " 👍"
-				}
-				else if (multiplier < 100)
-				{
-					label += " 👎"
-				}
-			}
-			return label
+			return attack.label + getEffectivenessLabel(attack.type)
 		}
 		return nil
 	}

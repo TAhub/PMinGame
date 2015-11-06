@@ -18,10 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ser-JI-4bF">
-                                <rect key="frame" x="20" y="244" width="560" height="348"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guR-Xe-xa5">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="45"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Third">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhQ-67-uvg"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uel-xm-0kI">
                                 <rect key="frame" x="740" y="28" width="140" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -31,7 +37,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcz-hh-tjf">
-                                <rect key="frame" x="-280" y="136" width="140" height="100"/>
+                                <rect key="frame" x="-280" y="98" width="140" height="100"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="U7P-CM-UYl"/>
@@ -39,47 +45,67 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ip-nC-bP9">
-                                <rect key="frame" x="308" y="297" width="272" height="45"/>
+                                <rect key="frame" x="308" y="259" width="272" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Fourth">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zkU-pK-Oqd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioe-9c-mEH">
-                                <rect key="frame" x="20" y="244" width="272" height="45"/>
+                                <rect key="frame" x="20" y="206" width="272" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="First">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fns-iI-DTK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9m-1Q-xvq">
-                                <rect key="frame" x="308" y="244" width="272" height="45"/>
+                                <rect key="frame" x="308" y="206" width="272" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Second">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xp-PD-joA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKv-aG-M0l">
-                                <rect key="frame" x="20" y="297" width="272" height="45"/>
+                                <rect key="frame" x="20" y="259" width="272" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Third">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hiO-1N-yny"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1X-IT-7xZ">
+                                <rect key="frame" x="20" y="312" width="272" height="38"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKq-K2-bxE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoB-1I-Zfw" userLabel="Cancel">
+                                <rect key="frame" x="308" y="312" width="272" height="38"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XaY-oL-dai"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enemy Stats" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jl-Yw-omZ">
-                                <rect key="frame" x="20" y="28" width="712" height="20"/>
+                                <rect key="frame" x="641" y="28" width="91" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -91,67 +117,85 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Stats" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYa-XW-cSL">
-                                <rect key="frame" x="-132" y="136" width="712" height="20"/>
+                                <rect key="frame" x="-132" y="98" width="86" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Parser" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csw-EZ-dDu">
-                                <rect key="frame" x="20" y="350" width="560" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Parser" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csw-EZ-dDu">
+                                <rect key="frame" x="20" y="358" width="560" height="20"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8jl-Yw-omZ" firstAttribute="top" secondItem="Uel-xm-0kI" secondAttribute="top" id="0Qg-jm-QfN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="csw-EZ-dDu" secondAttribute="trailing" id="13R-QS-AP6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ser-JI-4bF" secondAttribute="trailing" id="1WL-Mf-V3q"/>
+                            <constraint firstItem="8Ip-nC-bP9" firstAttribute="centerY" secondItem="pKv-aG-M0l" secondAttribute="centerY" id="186-xd-q0U"/>
                             <constraint firstItem="8Ip-nC-bP9" firstAttribute="top" secondItem="y9m-1Q-xvq" secondAttribute="bottom" constant="8" symbolic="YES" id="6E1-R5-9Mn"/>
                             <constraint firstItem="Uel-xm-0kI" firstAttribute="leading" secondItem="8jl-Yw-omZ" secondAttribute="trailing" constant="8" symbolic="YES" id="6RM-wa-bgO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GoB-1I-Zfw" secondAttribute="trailing" id="7Q8-9Y-3ta"/>
                             <constraint firstAttribute="leadingMargin" secondItem="zcz-hh-tjf" secondAttribute="leading" constant="300" id="7vb-RF-3Dr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Uel-xm-0kI" secondAttribute="trailing" constant="-300" id="B3u-n2-mpw"/>
                             <constraint firstItem="ioe-9c-mEH" firstAttribute="top" secondItem="zcz-hh-tjf" secondAttribute="bottom" constant="8" symbolic="YES" id="Ccg-EB-e3w"/>
                             <constraint firstItem="Uel-xm-0kI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="DEZ-6s-eDn"/>
-                            <constraint firstItem="ser-JI-4bF" firstAttribute="top" secondItem="zcz-hh-tjf" secondAttribute="bottom" constant="8" symbolic="YES" id="FcH-4O-rLQ"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ser-JI-4bF" secondAttribute="bottom" constant="8" symbolic="YES" id="H3G-0L-kIL"/>
+                            <constraint firstItem="y9m-1Q-xvq" firstAttribute="centerY" secondItem="ioe-9c-mEH" secondAttribute="centerY" id="F3u-6r-g8H"/>
                             <constraint firstItem="RYa-XW-cSL" firstAttribute="leading" secondItem="zcz-hh-tjf" secondAttribute="trailing" constant="8" symbolic="YES" id="IgX-MX-usZ"/>
+                            <constraint firstItem="y9m-1Q-xvq" firstAttribute="top" secondItem="ioe-9c-mEH" secondAttribute="bottom" id="JBO-qO-wfZ"/>
                             <constraint firstItem="ioe-9c-mEH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="JqA-iB-f9Q"/>
                             <constraint firstItem="SfA-Mc-hTd" firstAttribute="leading" secondItem="ioe-9c-mEH" secondAttribute="trailing" constant="8" symbolic="YES" id="MrW-fl-jfW"/>
-                            <constraint firstItem="ser-JI-4bF" firstAttribute="top" secondItem="RYa-XW-cSL" secondAttribute="bottom" constant="8" symbolic="YES" id="NwT-aP-ZYN"/>
+                            <constraint firstItem="RYa-XW-cSL" firstAttribute="top" secondItem="zcz-hh-tjf" secondAttribute="top" id="NVf-7i-5bz"/>
                             <constraint firstItem="SfA-Mc-hTd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ONN-yY-QZa"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ser-JI-4bF" secondAttribute="leading" id="Qgj-Yq-Hjz"/>
                             <constraint firstItem="8jl-Yw-omZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="RlB-PZ-KZR"/>
                             <constraint firstItem="RYa-XW-cSL" firstAttribute="top" secondItem="Uel-xm-0kI" secondAttribute="bottom" constant="8" symbolic="YES" id="SFX-3i-3YU"/>
+                            <constraint firstItem="csw-EZ-dDu" firstAttribute="top" secondItem="W1X-IT-7xZ" secondAttribute="bottom" constant="8" symbolic="YES" id="TG2-8O-WvL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RYa-XW-cSL" secondAttribute="trailing" id="X1F-kA-I5j"/>
+                            <constraint firstItem="SfA-Mc-hTd" firstAttribute="leading" secondItem="W1X-IT-7xZ" secondAttribute="trailing" constant="8" symbolic="YES" id="YEJ-oD-jkP"/>
                             <constraint firstItem="SfA-Mc-hTd" firstAttribute="leading" secondItem="pKv-aG-M0l" secondAttribute="trailing" constant="8" symbolic="YES" id="ZJr-mO-ZYw"/>
                             <constraint firstItem="y9m-1Q-xvq" firstAttribute="top" secondItem="zcz-hh-tjf" secondAttribute="bottom" constant="8" symbolic="YES" id="ZUB-Tf-zie"/>
                             <constraint firstAttribute="trailingMargin" secondItem="y9m-1Q-xvq" secondAttribute="trailing" id="ZXV-zo-qs8"/>
                             <constraint firstItem="csw-EZ-dDu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aaJ-h3-Olh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Ip-nC-bP9" secondAttribute="trailing" id="akB-h8-36K"/>
+                            <constraint firstItem="W1X-IT-7xZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hYH-kF-Iu6"/>
                             <constraint firstItem="csw-EZ-dDu" firstAttribute="top" secondItem="pKv-aG-M0l" secondAttribute="bottom" constant="8" symbolic="YES" id="nIh-jt-duS"/>
                             <constraint firstItem="pKv-aG-M0l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pPa-Gh-fXh"/>
                             <constraint firstItem="SfA-Mc-hTd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rNR-x8-d6d"/>
                             <constraint firstItem="8Ip-nC-bP9" firstAttribute="leading" secondItem="SfA-Mc-hTd" secondAttribute="trailing" constant="8" symbolic="YES" id="rO0-BI-bXt"/>
+                            <constraint firstItem="GoB-1I-Zfw" firstAttribute="centerY" secondItem="W1X-IT-7xZ" secondAttribute="centerY" id="s4f-cj-jw8"/>
                             <constraint firstItem="pKv-aG-M0l" firstAttribute="top" secondItem="ioe-9c-mEH" secondAttribute="bottom" constant="8" symbolic="YES" id="tgh-3b-Kd0"/>
-                            <constraint firstItem="zcz-hh-tjf" firstAttribute="top" secondItem="Uel-xm-0kI" secondAttribute="bottom" constant="8" symbolic="YES" id="wk9-1r-gy5"/>
+                            <constraint firstItem="GoB-1I-Zfw" firstAttribute="leading" secondItem="SfA-Mc-hTd" secondAttribute="trailing" constant="8" symbolic="YES" id="u6F-zS-rF8"/>
+                            <constraint firstItem="W1X-IT-7xZ" firstAttribute="top" secondItem="pKv-aG-M0l" secondAttribute="bottom" constant="8" symbolic="YES" id="uS8-xN-KCB"/>
+                            <constraint firstItem="zcz-hh-tjf" firstAttribute="top" secondItem="Uel-xm-0kI" secondAttribute="bottom" constant="-30" id="wk9-1r-gy5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SfA-Mc-hTd" secondAttribute="bottom" constant="100" id="y2L-R3-UOj"/>
                             <constraint firstItem="8jl-Yw-omZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="z0N-tD-ZOt"/>
                             <constraint firstItem="y9m-1Q-xvq" firstAttribute="leading" secondItem="SfA-Mc-hTd" secondAttribute="trailing" constant="8" symbolic="YES" id="zEs-Oo-hxC"/>
+                            <constraint firstItem="GoB-1I-Zfw" firstAttribute="top" secondItem="8Ip-nC-bP9" secondAttribute="bottom" constant="8" symbolic="YES" id="zz3-M1-qPh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="NwT-aP-ZYN"/>
+                                <exclude reference="RlB-PZ-KZR"/>
+                                <exclude reference="z0N-tD-ZOt"/>
+                                <exclude reference="SFX-3i-3YU"/>
+                                <exclude reference="X1F-kA-I5j"/>
+                                <exclude reference="nIh-jt-duS"/>
+                                <exclude reference="JBO-qO-wfZ"/>
+                                <exclude reference="ZUB-Tf-zie"/>
+                                <exclude reference="6E1-R5-9Mn"/>
+                                <exclude reference="zz3-M1-qPh"/>
                                 <exclude reference="y2L-R3-UOj"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="GoB-1I-Zfw" id="P06-5M-Ogy"/>
                         <outlet property="enemyPosition" destination="B3u-n2-mpw" id="QFd-qR-RdI"/>
                         <outlet property="enemyStats" destination="8jl-Yw-omZ" id="Geo-kp-njM"/>
                         <outlet property="enemyView" destination="Uel-xm-0kI" id="1KU-iB-Odn"/>
                         <outlet property="firstButton" destination="ioe-9c-mEH" id="YlL-ED-Qnf"/>
                         <outlet property="fourthButton" destination="8Ip-nC-bP9" id="k9x-zL-U2H"/>
+                        <outlet property="nextButton" destination="W1X-IT-7xZ" id="hKQ-c8-v1D"/>
                         <outlet property="playerPosition" destination="7vb-RF-3Dr" id="RfN-ZB-3uy"/>
                         <outlet property="playerStats" destination="RYa-XW-cSL" id="bVF-qE-lzV"/>
                         <outlet property="playerView" destination="zcz-hh-tjf" id="hXQ-x1-ESa"/>
