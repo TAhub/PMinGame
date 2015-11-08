@@ -37,4 +37,8 @@ class Item
 	{
 		return PlistService.loadValue("Items", type, "targets dead") != nil
 	}
+	var message:String
+	{
+		return PlistService.loadValue("Items", type, "message") as! String
+	}
 }

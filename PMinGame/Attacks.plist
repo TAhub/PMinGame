@@ -818,7 +818,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw an armful of snow at *OnName!</string>
-		<key>miss message</key> <string>*Name tried to throw an armful of snow, but it came apart in the arm!</string>
+		<key>miss message</key> <string>*Name tried to throw an armful of snow, but it came apart in *his arms!</string>
 	</dict>
 	<key>ice fling</key>
 	<dict>

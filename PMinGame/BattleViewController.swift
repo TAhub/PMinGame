@@ -13,7 +13,7 @@ enum MenuState
 	case Main
 	case Attack
 	case Switch(Int)
-	case Item(Int)
+	case ItemPick(Int)
 	case ItemTarget(Int, Item)
 }
 
@@ -196,8 +196,16 @@ class BattleViewController: UIViewController, BattleDelegate {
 		case .Main:
 			switch num
 			{
-			case 0: menuState = .Attack
-			case 1: menuState = .Item(0)
+			case 0:
+				if !battle.player.dead
+				{
+					menuState = .Attack
+				}
+			case 1:
+				if !battle.player.dead
+				{
+					menuState = .ItemPick(0)
+				}
 			case 2: menuState = .Switch(0)
 			case 3: print("ATTEMPT TO FLEE")
 			default: break
@@ -209,9 +217,10 @@ class BattleViewController: UIViewController, BattleDelegate {
 			}
 			else if num < 4
 			{
-				battle.pickAttack(num)
-				battle.turnOperation()
-				menuState = .Main
+				if battle.pickAttack(num)
+				{
+					menuState = .Main
+				}
 			}
 		case .Switch(let page):
 			if num == 5
@@ -225,11 +234,43 @@ class BattleViewController: UIViewController, BattleDelegate {
 			}
 			else
 			{
-				battle.pickSwitch(page * 4 + num)
-				battle.turnOperation()
+				if battle.pickSwitch(page * 4 + num)
+				{
+					menuState = .Main
+				}
+			}
+		case .ItemPick(let page):
+			if num == 5
+			{
 				menuState = .Main
 			}
-		default: break
+			else if num == 4
+			{
+				let newPage = (page + 1) % Int(ceil(Float(battle.playerItems.count) * 0.25))
+				menuState = .ItemPick(newPage)
+			}
+			else
+			{
+				menuState = .ItemTarget(0, battle.playerItems[num + page * 4])
+			}
+		case .ItemTarget(let page, let item):
+			if num == 5
+			{
+				menuState = .ItemPick(0)
+			}
+			else if num == 4
+			{
+				let newPage = (page + 1) % Int(ceil(Float(battle.players.count) * 0.25))
+				menuState = .ItemTarget(newPage, item)
+			}
+			else
+			{
+				if battle.pickItem(page * 4 + num, item: item)
+				{
+					menuState = .Main
+				}
+			}
+			break
 		}
 	}
 	
@@ -274,27 +315,27 @@ class BattleViewController: UIViewController, BattleDelegate {
 			nextButton.setTitle(nil, forState: UIControlState.Normal)
 			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
 		case .Switch(let page):
-			firstButton.setTitle(battle.getPersonlabel(page * 4), forState: UIControlState.Normal)
-			secondButton.setTitle(battle.getPersonlabel(page * 4 + 1), forState: UIControlState.Normal)
-			thirdButton.setTitle(battle.getPersonlabel(page * 4 + 2), forState: UIControlState.Normal)
-			fourthButton.setTitle(battle.getPersonlabel(page * 4 + 3), forState: UIControlState.Normal)
+			firstButton.setTitle(battle.getPersonLabel(page * 4), forState: UIControlState.Normal)
+			secondButton.setTitle(battle.getPersonLabel(page * 4 + 1), forState: UIControlState.Normal)
+			thirdButton.setTitle(battle.getPersonLabel(page * 4 + 2), forState: UIControlState.Normal)
+			fourthButton.setTitle(battle.getPersonLabel(page * 4 + 3), forState: UIControlState.Normal)
 			nextButton.setTitle("Next", forState: UIControlState.Normal)
 			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
-		case .Item(let page):
+		case .ItemPick(let page):
 			firstButton.setTitle(battle.getItemLabel(page * 4), forState: UIControlState.Normal)
 			secondButton.setTitle(battle.getItemLabel(page * 4 + 1), forState: UIControlState.Normal)
 			thirdButton.setTitle(battle.getItemLabel(page * 4 + 2), forState: UIControlState.Normal)
 			fourthButton.setTitle(battle.getItemLabel(page * 4 + 3), forState: UIControlState.Normal)
 			nextButton.setTitle("Next", forState: UIControlState.Normal)
 			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
-		case .ItemTarget(let page, let item):
-			firstButton.setTitle(battle.getPersonlabel(page * 4), forState: UIControlState.Normal)
-			secondButton.setTitle(battle.getPersonlabel(page * 4 + 1), forState: UIControlState.Normal)
-			thirdButton.setTitle(battle.getPersonlabel(page * 4 + 2), forState: UIControlState.Normal)
-			fourthButton.setTitle(battle.getPersonlabel(page * 4 + 3), forState: UIControlState.Normal)
+		case .ItemTarget(let page, _):
+			firstButton.setTitle(battle.getItemTargetlabel(page * 4), forState: UIControlState.Normal)
+			secondButton.setTitle(battle.getItemTargetlabel(page * 4 + 1), forState: UIControlState.Normal)
+			thirdButton.setTitle(battle.getItemTargetlabel(page * 4 + 2), forState: UIControlState.Normal)
+			fourthButton.setTitle(battle.getItemTargetlabel(page * 4 + 3), forState: UIControlState.Normal)
 			nextButton.setTitle("Next", forState: UIControlState.Normal)
 			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
-		default: assertionFailure("ERROR: I haven't made the other states yet"); break
+			break
 		}
 	}
 	

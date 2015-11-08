@@ -170,7 +170,7 @@ class Creature
 		bleed = nil
 		paralysis = nil
 		burning = nil
-		frozen = nil
+		freeze = nil
 		attackStep = 0
 		defenseStep = 0
 		accuracyStep = 0
@@ -333,6 +333,38 @@ class Creature
 	private func shouldSkipTurnFromParalysis()->Bool
 	{
 		return arc4random_uniform(100) <= 90
+	}
+	
+	internal func useItem(item:Item, messageHandler:(String)->())
+	{
+		//play the message
+		runMessage(messageHandler, on: self)(message: item.message)
+		
+		//remove the item count
+		item.number -= 1
+		
+		//also, like, use the item, haha
+		if let heals = item.heals
+		{
+			health += heals
+		}
+		
+		if item.cureStatus
+		{
+			bleed = nil
+			freeze = nil
+			paralysis = nil
+			burning = nil
+			sleep = nil
+		}
+		
+		if item.cureSteps
+		{
+			attackStep = max(attackStep, 0)
+			defenseStep = max(defenseStep, 0)
+			accuracyStep = max(accuracyStep, 0)
+			dodgeStep = max(dodgeStep, 0)
+		}
 	}
 	
 	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())

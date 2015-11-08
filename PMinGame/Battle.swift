@@ -32,8 +32,8 @@ class Battle
 	internal var players = [Creature]()
 	internal var enemies = [Creature]()
 	internal var playerItems = [Item]()
-	private weak var player:Creature!
-	private weak var enemy:Creature!
+	internal weak var player:Creature!
+	internal weak var enemy:Creature!
 	
 	//turn order data
 	private let defaultTurnOrder:Bool
@@ -56,7 +56,7 @@ class Battle
 		players.append(Creature(job: "honored dead", level: 10, good: true))
 		
 		//TODO: load the real encounter
-		enemies.append(Creature(job: "shape of fire", level: 10, good: false))
+		enemies.append(Creature(job: "frozen soul", level: 10, good: false))
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))
@@ -85,28 +85,48 @@ class Battle
 	}
 	
 	//MARK: operation
-	func pickSwitch(num:Int)
+	func pickSwitch(num:Int) -> Bool
 	{
 		if players.count > num && !players[num].dead && !(players[num] === player)
 		{
 			playerOrder = .SwitchTo(players[num])
+			turnOperation()
+			return true
 		}
+		return false
 	}
 	
-	func pickAttack(num:Int)
+	func pickAttack(num:Int) -> Bool
 	{
 		if getValidAttacksFor(player).count == 0
 		{
 			if num == 0
 			{
 				playerOrder = .UseAttack(player.desperationAttack)
+				turnOperation()
+				return true
 			}
 		}
 		else if player.attacks.count > num && player.attacks[num].powerPoints > 0
 		{
 			playerOrder = .UseAttack(player.attacks[num])
+			turnOperation()
+			return true
 		}
+		return false
 	}
+	
+	func pickItem(num:Int, item:Item) -> Bool
+	{
+		if players.count > num && ((players[num].dead && item.targetsDead) || (!players[num].dead && item.targetsAlive))
+		{
+			playerOrder = .UseItem(item, players[num])
+			turnOperation()
+			return true
+		}
+		return false
+	}
+	
 	private func useAttack(user:Creature, usee:Creature, used:Attack)
 	{
 		user.useAttackOn(used, on: usee)
@@ -138,12 +158,31 @@ class Battle
 		}
 		delegate.switchAnim(from.good)
 	}
+	private func useItem(item:Item, on:Creature)
+	{
+		on.useItem(item)
+		{ (message) in
+			self.delegate.runMessage(message)
+		}
+		
+		if on.good
+		{
+			playerItems = playerItems.filter() { $0.number > 0 }
+		}
+		else
+		{
+			//TODO: remove expended items from the enemy item list
+			//dunno if I'll let enemies use items, though
+		}
+	}
+	
 	private func useOrder(user:Creature, usee:Creature, used:Order)
 	{
 		switch(used)
 		{
 		case .UseAttack(let attack): useAttack(user, usee: usee, used: attack)
 		case .SwitchTo(let to): useSwitch(user, to: to)
+		case .UseItem(let item, let on): useItem(item, on: on)
 		}
 	}
 	
@@ -158,13 +197,14 @@ class Battle
 	}
 	
 	private var enemyAttack:Attack?
+	{
+		switch(enemyOrder!)
 		{
-			switch(enemyOrder!)
-			{
 			case .UseAttack(let attack): return attack
 			default: return nil
-			}
+		}
 	}
+	
 	private var playerSwitch:Creature?
 	{
 		switch(playerOrder!)
@@ -179,6 +219,24 @@ class Battle
 		switch(enemyOrder!)
 		{
 		case .SwitchTo(let to): return to
+		default: return nil
+		}
+	}
+	
+	private var playerItem:Item?
+	{
+		switch(playerOrder!)
+		{
+		case .UseItem(let item, _): return item
+		default: return nil
+		}
+	}
+	
+	private var enemyItem:Item?
+	{
+		switch(enemyOrder!)
+		{
+		case .UseItem(let item, _): return item
 		default: return nil
 		}
 	}
@@ -199,7 +257,14 @@ class Battle
 			{
 				turnOrder = false
 			}
-			//TODO: if one player is using an item, and the other player isn't, that player goes FIRST
+			else if playerItem != nil && enemyItem == nil
+			{
+				turnOrder = true
+			}
+			else if playerItem == nil && enemyItem != nil
+			{
+				turnOrder = false
+			}
 			else if playerSwitch != nil && enemySwitch == nil
 			{
 				turnOrder = player.dead
@@ -216,7 +281,7 @@ class Battle
 		if turnOrder != nil
 		{
 			//null the attacks of dead people
-			if player.dead && playerAttack != nil && playerAttack != nil
+			if player.dead && playerOrder != nil && playerAttack != nil
 			{
 				playerOrder = nil
 			}
@@ -342,7 +407,16 @@ class Battle
 		return nil
 	}
 	
-	func getPersonlabel(num:Int) -> String?
+	func getItemTargetlabel(num:Int) -> String?
+	{
+		if players.count > num
+		{
+			return players[num].name
+		}
+		return nil
+	}
+	
+	func getPersonLabel(num:Int) -> String?
 	{
 		if players.count > num
 		{
