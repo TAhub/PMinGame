@@ -207,7 +207,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 					menuState = .ItemPick(0)
 				}
 			case 2: menuState = .Switch(0)
-			case 3: print("ATTEMPT TO FLEE")
+			case 3: battle.pickFlee()
 			default: break
 			}
 		case .Attack:
@@ -393,5 +393,11 @@ class BattleViewController: UIViewController, BattleDelegate {
 	{
 		//TODO: you lost!
 		print("You lost!")
+	}
+	
+	func flee()
+	{
+		//TODO: you (or the enemy) ran away!
+		print("You coward!")
 	}
 }

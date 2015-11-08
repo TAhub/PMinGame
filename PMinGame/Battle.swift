@@ -16,6 +16,7 @@ protocol BattleDelegate
 	func runMessage(message:String)
 	func victory()
 	func defeat()
+	func flee()
 	func switchAnim(onPlayer:Bool)
 }
 
@@ -24,6 +25,7 @@ enum Order
 	case UseAttack(Attack)
 	case SwitchTo(Creature)
 	case UseItem(Item, Creature)
+	case TryFlee()
 }
 
 class Battle
@@ -116,6 +118,15 @@ class Battle
 		return false
 	}
 	
+	func pickFlee()
+	{
+		if !player.dead
+		{
+			playerOrder = .TryFlee()
+			turnOperation()
+		}
+	}
+	
 	func pickItem(num:Int, item:Item) -> Bool
 	{
 		if players.count > num && ((players[num].dead && item.targetsDead) || (!players[num].dead && item.targetsAlive))
@@ -182,6 +193,25 @@ class Battle
 			//dunno if I'll let enemies use items, though
 		}
 	}
+	private func useFlee(user:Creature)
+	{
+		//TODO: add a "sneaky" property that increases the flee chance
+		//to some jobs
+		//like rogue and scout
+		
+		if user.statusEffectTurn(messageHandler)
+		{
+			if arc4random_uniform(100) < 50
+			{
+				messageHandler("\(user.name) ran away!")
+				delegate.flee()
+			}
+			else
+			{
+				messageHandler("\(user.name) tried to run away, but failed!")
+			}
+		}
+	}
 	
 	private func useOrder(user:Creature, usee:Creature, used:Order)
 	{
@@ -190,6 +220,7 @@ class Battle
 		case .UseAttack(let attack): useAttack(user, usee: usee, used: attack)
 		case .SwitchTo(let to): useSwitch(user, to: to)
 		case .UseItem(let item, let on): useItem(user, item: item, on: on)
+		case .TryFlee(): useFlee(user)
 		}
 	}
 	
@@ -248,12 +279,45 @@ class Battle
 		}
 	}
 	
+	private var playerFlee:Bool
+	{
+		switch(playerOrder!)
+		{
+		case .TryFlee(): return true
+		default: return false
+		}
+	}
+	
+	private var enemyFlee:Bool
+	{
+		switch(enemyOrder!)
+		{
+		case .TryFlee(): return true
+		default: return false
+		}
+	}
+	
 	func turnOperation()
 	{
 		if playerOrder != nil && turnOrder == nil
 		{
-			//pick an attack for the enemy
-			enemyOrder = .UseAttack(aiPickFor(enemy))
+			if enemy.dead
+			{
+				//switch to another enemy if you can
+				for enemy in enemies
+				{
+					if !enemy.dead
+					{
+						enemyOrder = .SwitchTo(enemy)
+						break
+					}
+				}
+			}
+			else
+			{
+				//pick an attack for the enemy
+				enemyOrder = .UseAttack(aiPickFor(enemy))
+			}
 			
 			//get the turn order
 			if playerAttack != nil && enemyAttack != nil && playerAttack!.quick && !enemyAttack!.quick
@@ -261,6 +325,14 @@ class Battle
 				turnOrder = true
 			}
 			else if playerAttack != nil && enemyAttack != nil && !playerAttack!.quick && enemyAttack!.quick
+			{
+				turnOrder = false
+			}
+			else if playerFlee && !enemyFlee
+			{
+				turnOrder = true
+			}
+			else if !playerFlee && enemyFlee
 			{
 				turnOrder = false
 			}
@@ -334,8 +406,36 @@ class Battle
 		
 		if turnOrder == nil
 		{
-			//TODO: check for victory or defeat
-			//and if they come up, call the "victory" or "defeat" delegate functions
+			//check for victory or defeat
+			var playerAlive = false
+			for player in players
+			{
+				if !player.dead
+				{
+					playerAlive = true
+					break
+				}
+			}
+			if !playerAlive
+			{
+				delegate.defeat()
+				return
+			}
+			
+			var enemyAlive = false
+			for enemy in enemies
+			{
+				if !enemy.dead
+				{
+					enemyAlive = true
+					break
+				}
+			}
+			if !enemyAlive
+			{
+				delegate.victory()
+				return
+			}
 		}
 	}
 	
