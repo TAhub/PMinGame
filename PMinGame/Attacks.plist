@@ -795,8 +795,8 @@
 	<!-- snowball line -->
 	<key>snowball</key>
 	<dict>
-		<key>damage</key> <integer>23</integer>
-		<key>accuracy</key> <integer>60</integer>
+		<key>damage</key> <integer>20</integer>
+		<key>accuracy</key> <integer>70</integer>
 		<key>type</key> <string>frost</string>
 		<key>power points</key> <integer>15</integer>
 		<!-- properties -->
@@ -808,8 +808,8 @@
 	</dict>
 	<key>snow slam</key>
 	<dict>
-		<key>damage</key> <integer>34</integer>
-		<key>accuracy</key> <integer>60</integer>
+		<key>damage</key> <integer>31</integer>
+		<key>accuracy</key> <integer>65</integer>
 		<key>type</key> <string>frost</string>
 		<key>power points</key> <integer>13</integer>
 		<key>upgrade for</key> <string>snowball</string>

@@ -34,7 +34,6 @@
 	<key>robot</key>
 	<dict>
 		<!-- overall data -->
-		<key>gendered</key> <true/>
 		<!-- appearance data -->
 		<!-- TODO: appearance data -->
 		<!-- text prompt data -->
@@ -45,6 +44,7 @@
 	<key>undead</key>
 	<dict>
 		<!-- overall data -->
+		<key>gendered</key> <true/>
 		<!-- appearance data -->
 		<!-- TODO: appearance data -->
 		<!-- text prompt data -->

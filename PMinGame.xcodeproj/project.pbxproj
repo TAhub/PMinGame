@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E411BFAB1BEEEA7C0047CE6A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E411BFAA1BEEEA7C0047CE6A /* Item.swift */; };
+		E411BFAD1BEEEA8F0047CE6A /* Items.plist in Resources */ = {isa = PBXBuildFile; fileRef = E411BFAC1BEEEA8F0047CE6A /* Items.plist */; };
 		E43A757B1BED3B5B00367863 /* Races.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43A757A1BED3B5B00367863 /* Races.plist */; };
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
 		E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E411BFAA1BEEEA7C0047CE6A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E411BFAC1BEEEA8F0047CE6A /* Items.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Items.plist; sourceTree = "<group>"; };
 		E43A757A1BED3B5B00367863 /* Races.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Races.plist; sourceTree = "<group>"; };
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		E4F3C8341BE9AD2D00D29811 /* PMinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +77,7 @@
 				E4F3C8491BE9AD4900D29811 /* Supporting Files */,
 				E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */,
 				E4F3C8501BE9B20300D29811 /* Creature.swift */,
+				E411BFAA1BEEEA7C0047CE6A /* Item.swift */,
 				E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */,
 				E4F3C8561BE9BD9C00D29811 /* Attack.swift */,
 				E4F3C8541BE9BB1900D29811 /* PlistService.swift */,
@@ -84,6 +89,7 @@
 		E4F3C8491BE9AD4900D29811 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E411BFAC1BEEEA8F0047CE6A /* Items.plist */,
 				E43A757A1BED3B5B00367863 /* Races.plist */,
 				E4F3C84A1BE9B17100D29811 /* Jobs.plist */,
 				E4F3C84C1BE9B17E00D29811 /* Attacks.plist */,
@@ -161,6 +167,7 @@
 				E4F3C83F1BE9AD2D00D29811 /* Assets.xcassets in Resources */,
 				E4F3C84B1BE9B17100D29811 /* Jobs.plist in Resources */,
 				E4F3C83D1BE9AD2D00D29811 /* Main.storyboard in Resources */,
+				E411BFAD1BEEEA8F0047CE6A /* Items.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +182,7 @@
 				E4F3C8511BE9B20300D29811 /* Creature.swift in Sources */,
 				E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */,
 				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,
+				E411BFAB1BEEEA7C0047CE6A /* Item.swift in Sources */,
 				E4F3C8571BE9BD9C00D29811 /* Attack.swift in Sources */,
 				E4F3C8531BE9B20C00D29811 /* Battle.swift in Sources */,
 			);

@@ -164,6 +164,19 @@ class Creature
 		}
 	}
 	
+	func resetStatus()
+	{
+		sleep = nil
+		bleed = nil
+		paralysis = nil
+		burning = nil
+		frozen = nil
+		attackStep = 0
+		defenseStep = 0
+		accuracyStep = 0
+		dodgeStep = 0
+	}
+	
 	private func unlearnObsoleteAttack() -> Bool
 	{
 		//try to unlearn a single obsolete attack
@@ -549,6 +562,9 @@ class Creature
 				{
 					runM(message: PlistService.loadValue("Races", on.race, "death message") as! String)
 				}
+				
+				//restore status too, so if you are revived you don't come back with status effects
+				resetStatus()
 			}
 		}
 		else
@@ -676,6 +692,7 @@ class Creature
 					burning = nil
 					bleed = nil
 					paralysis = nil
+					sleep = nil
 					attackStep = max(attackStep, 0)
 					defenseStep = max(defenseStep, 0)
 					accuracyStep = max(accuracyStep, 0)

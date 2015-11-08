@@ -14,7 +14,7 @@ enum MenuState
 	case Attack
 	case Switch(Int)
 	case Item(Int)
-	case ItemTarget(Int)
+	case ItemTarget(Int, Item)
 }
 
 class BattleViewController: UIViewController, BattleDelegate {
@@ -274,6 +274,20 @@ class BattleViewController: UIViewController, BattleDelegate {
 			nextButton.setTitle(nil, forState: UIControlState.Normal)
 			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
 		case .Switch(let page):
+			firstButton.setTitle(battle.getPersonlabel(page * 4), forState: UIControlState.Normal)
+			secondButton.setTitle(battle.getPersonlabel(page * 4 + 1), forState: UIControlState.Normal)
+			thirdButton.setTitle(battle.getPersonlabel(page * 4 + 2), forState: UIControlState.Normal)
+			fourthButton.setTitle(battle.getPersonlabel(page * 4 + 3), forState: UIControlState.Normal)
+			nextButton.setTitle("Next", forState: UIControlState.Normal)
+			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
+		case .Item(let page):
+			firstButton.setTitle(battle.getItemLabel(page * 4), forState: UIControlState.Normal)
+			secondButton.setTitle(battle.getItemLabel(page * 4 + 1), forState: UIControlState.Normal)
+			thirdButton.setTitle(battle.getItemLabel(page * 4 + 2), forState: UIControlState.Normal)
+			fourthButton.setTitle(battle.getItemLabel(page * 4 + 3), forState: UIControlState.Normal)
+			nextButton.setTitle("Next", forState: UIControlState.Normal)
+			cancelButton.setTitle("Cancel", forState: UIControlState.Normal)
+		case .ItemTarget(let page, let item):
 			firstButton.setTitle(battle.getPersonlabel(page * 4), forState: UIControlState.Normal)
 			secondButton.setTitle(battle.getPersonlabel(page * 4 + 1), forState: UIControlState.Normal)
 			thirdButton.setTitle(battle.getPersonlabel(page * 4 + 2), forState: UIControlState.Normal)

@@ -23,7 +23,7 @@ enum Order
 {
 	case UseAttack(Attack)
 	case SwitchTo(Creature)
-//	case UseItem(Item, Creature)
+	case UseItem(Item, Creature)
 }
 
 class Battle
@@ -31,6 +31,7 @@ class Battle
 	//contents data
 	internal var players = [Creature]()
 	internal var enemies = [Creature]()
+	internal var playerItems = [Item]()
 	private weak var player:Creature!
 	private weak var enemy:Creature!
 	
@@ -46,6 +47,7 @@ class Battle
 	
 	init()
 	{
+		//TODO: load the real party
 		players.append(Creature(job: "inventor", level: 10, good: true))
 		players.append(Creature(job: "barbarian", level: 10, good: true))
 		players.append(Creature(job: "soldier", level: 10, good: true))
@@ -53,12 +55,25 @@ class Battle
 		players.append(Creature(job: "rogue", level: 10, good: true))
 		players.append(Creature(job: "honored dead", level: 10, good: true))
 		
+		//TODO: load the real encounter
 		enemies.append(Creature(job: "shape of fire", level: 10, good: false))
 		
-		//TODO: if loading people externally (IE loading players from the party from another view)
-		//be sure to reset their steps and status effects here, before anything major happens
-		//they can walk around with bleed, etc, in the overworld
-		//because it doesn't matter there
+		//TODO: get the real inventory
+		playerItems.append(Item(type: "poultice"))
+		playerItems.append(Item(type: "miracle cure"))
+		playerItems.append(Item(type: "smelling salts"))
+		
+		//reset everyone's status
+		for player in players
+		{
+			player.resetStatus()
+		}
+		//it's probably not strictly necessary to reset the status of the enemies, but I'm doing it just in case
+		//I add the ability to fight the same group of enemies again
+		for enemy in enemies
+		{
+			enemy.resetStatus()
+		}
 		
 		//get the first player and the first enemy
 		//TODO: make sure you don't pick a 0 health party member as the first person out, etc
@@ -316,6 +331,15 @@ class Battle
 			}
 		}
 		return ""
+	}
+	
+	func getItemLabel(num:Int) -> String?
+	{
+		if playerItems.count > num
+		{
+			return playerItems[num].type
+		}
+		return nil
 	}
 	
 	func getPersonlabel(num:Int) -> String?
