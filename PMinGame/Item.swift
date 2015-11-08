@@ -37,6 +37,10 @@ class Item
 	{
 		return PlistService.loadValue("Items", type, "targets dead") != nil
 	}
+	var useWhileImmobile:Bool
+	{
+		return PlistService.loadValue("Items", type, "use while immobile") != nil
+	}
 	var message:String
 	{
 		return PlistService.loadValue("Items", type, "message") as! String

@@ -335,41 +335,9 @@ class Creature
 		return arc4random_uniform(100) <= 90
 	}
 	
-	internal func useItem(item:Item, messageHandler:(String)->())
+	internal func statusEffectTurn(messageHandler:(String)->())->Bool
 	{
-		//play the message
-		runMessage(messageHandler, on: self)(message: item.message)
-		
-		//remove the item count
-		item.number -= 1
-		
-		//also, like, use the item, haha
-		if let heals = item.heals
-		{
-			health += heals
-		}
-		
-		if item.cureStatus
-		{
-			bleed = nil
-			freeze = nil
-			paralysis = nil
-			burning = nil
-			sleep = nil
-		}
-		
-		if item.cureSteps
-		{
-			attackStep = max(attackStep, 0)
-			defenseStep = max(defenseStep, 0)
-			accuracyStep = max(accuracyStep, 0)
-			dodgeStep = max(dodgeStep, 0)
-		}
-	}
-	
-	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())
-	{
-		let runM = runMessage(messageHandler, on: on)
+		let runM = runMessage(messageHandler, on: self)
 		
 		//check status effects that do damage to you
 		let bleedFunction = shouldShakeOffStatus(baseChance: 10, chanceRamp: 5)
@@ -416,8 +384,8 @@ class Creature
 				paralysis! += 1
 				if shouldSkipTurnFromParalysis()
 				{
-					runM(message: "*Name was unable to act due to being paralyzed!")
-					return
+					runM(message: "*Name was still paralyzed!")
+					return false
 				}
 			}
 		}
@@ -433,8 +401,8 @@ class Creature
 				freeze! += 1
 				if shouldSkipTurnFromParalysis()
 				{
-					runM(message: "*Name was unable to act due to being frozen!")
-					return
+					runM(message: "*Name was still frozen!")
+					return false
 				}
 			}
 		}
@@ -448,9 +416,49 @@ class Creature
 			else
 			{
 				sleep! += 1
-				runM(message: "*Name was unable to attack due to being asleep!")
+				runM(message: "*Name was still asleep!")
+				return false
 			}
 		}
+		
+		return true
+	}
+	
+	internal func useItem(item:Item, messageHandler:(String)->())
+	{
+		//play the message
+		runMessage(messageHandler, on: self)(message: item.message)
+		
+		//remove the item count
+		item.number -= 1
+		
+		//also, like, use the item, haha
+		if let heals = item.heals
+		{
+			health += heals
+		}
+		
+		if item.cureStatus
+		{
+			bleed = nil
+			freeze = nil
+			paralysis = nil
+			burning = nil
+			sleep = nil
+		}
+		
+		if item.cureSteps
+		{
+			attackStep = max(attackStep, 0)
+			defenseStep = max(defenseStep, 0)
+			accuracyStep = max(accuracyStep, 0)
+			dodgeStep = max(dodgeStep, 0)
+		}
+	}
+	
+	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())
+	{
+		let runM = runMessage(messageHandler, on: on)
 		
 		//use power points
 		attack.powerPoints -= 1

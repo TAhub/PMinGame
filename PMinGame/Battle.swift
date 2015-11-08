@@ -127,15 +127,22 @@ class Battle
 		return false
 	}
 	
+	private func messageHandler(message:String)
+	{
+		self.delegate.runMessage(message)
+	}
+	
 	private func useAttack(user:Creature, usee:Creature, used:Attack)
 	{
-		user.useAttackOn(used, on: usee)
-		{ (message) in
-			self.delegate.runMessage(message)
+		if user.statusEffectTurn(messageHandler)
+		{
+			user.useAttackOn(used, on: usee, messageHandler: messageHandler)
 		}
 	}
 	private func useSwitch(from:Creature, to:Creature)
 	{
+		from.statusEffectTurn(messageHandler)
+		
 		if from.good
 		{
 			player = to
@@ -158,11 +165,11 @@ class Battle
 		}
 		delegate.switchAnim(from.good)
 	}
-	private func useItem(item:Item, on:Creature)
+	private func useItem(user:Creature, item:Item, on:Creature)
 	{
-		on.useItem(item)
-		{ (message) in
-			self.delegate.runMessage(message)
+		if user.statusEffectTurn(messageHandler) || (item.useWhileImmobile && on === user)
+		{
+			on.useItem(item, messageHandler: messageHandler)
 		}
 		
 		if on.good
@@ -182,7 +189,7 @@ class Battle
 		{
 		case .UseAttack(let attack): useAttack(user, usee: usee, used: attack)
 		case .SwitchTo(let to): useSwitch(user, to: to)
-		case .UseItem(let item, let on): useItem(item, on: on)
+		case .UseItem(let item, let on): useItem(user, item: item, on: on)
 		}
 	}
 	

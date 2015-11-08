@@ -16,6 +16,7 @@
 		<key>cure steps</key> <true/>
 		<key>targets dead</key> <true/>
 		<key>targets alive</key> <true/>
+		<key>use while immobile</key> <true/>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -40,7 +41,7 @@
 		<!-- message info -->
 		<key>message</key> <string>*Name was healed by the medicinal salve!</string>
 	</dict>
-	<key>dr thomas's healing oil</key>
+	<key>dr tom's healing oil</key>
 	<dict>
 		<key>heals</key> <integer>80</integer>
 		<key>targets alive</key> <true/>
@@ -62,6 +63,7 @@
 	<dict>
 		<key>cure status</key> <true/>
 		<key>targets alive</key> <true/>
+		<key>use while immobile</key> <true/>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -81,6 +83,7 @@
 		<key>cure status</key> <true/>
 		<key>cure steps</key> <true/>
 		<key>targets alive</key> <true/>
+		<key>use while immobile</key> <true/>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
