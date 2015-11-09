@@ -77,6 +77,41 @@ class PlistService
 		}
 	}
 	
+	class func attackDiagnostic()
+	{
+		print("Attack type distribution diagnostic:")
+		
+		var formattedData = [String : (Int, Int)]()
+		formattedData["physical"] = (0, 0)
+		formattedData["flame"] = (0, 0)
+		formattedData["spark"] = (0, 0)
+		formattedData["frost"] = (0, 0)
+		formattedData["astral"] = (0, 0)
+		formattedData["typeless"] = (0, 0)
+		
+		var total = 0
+		let entries = loadEntries("Attacks") as! [String : [String : AnyObject]]
+		for (_, entry) in entries
+		{
+			//ignore non-damaging attacks, their types are irrelevant
+			if entry["damage"] != nil
+			{
+				let type = (entry["type"] as? String) ?? "typeless"
+				if entry["clever"] != nil
+				{
+					formattedData[type]!.1 += 1
+				}
+				else
+				{
+					formattedData[type]!.0 += 1
+				}
+				total += 1
+			}
+		}
+		
+		
+	}
+	
 	class func jobAttackDiagnostic()
 	{
 		print("Job class distribution diagnostic:")

@@ -150,7 +150,11 @@ class Creature
 			gender = arc4random_uniform(100) < 50
 		}
 		generateAppearance()
-		//TODO: generate a name
+		
+		if good
+		{
+			//TODO: generate a name
+		}
 		
 		getLevelAppropriateAttacks()
 		
@@ -869,5 +873,44 @@ class Creature
 			label += (sleep != nil ? " asleep" : "")
 		}
 		return label
+	}
+	
+	//MARK: capturing
+	internal var captureChance:Int
+	{
+		if !injured
+		{
+			return 0
+		}
+		var chance = 60 - (health * 100 / maxHealth)
+		if health <= maxHealth / 4
+		{
+			//bonus capture chance for bringing their health under 25%
+			chance += 25
+		}
+		
+		if health <= 10
+		{
+			//bonus capture chance for bringing their health very low
+			//because this is an absolute value rather than a percentage, it's easy at the beginning
+			//but complicated later on
+			//consider getting subdue!
+			chance += 10
+		}
+		
+		return chance
+	}
+	internal func capture()
+	{
+		//you've become a good guy!
+		good = true
+		//TODO: generate a real name, not just your creature name
+		
+		//fall unconscious and make sure all of your attacks have at least one use
+		health = 0
+		for attack in attacks
+		{
+			attack.powerPoints = max(attack.powerPoints, 1)
+		}
 	}
 }

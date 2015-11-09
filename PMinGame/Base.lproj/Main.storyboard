@@ -6,6 +6,28 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Main Map View Controller-->
+        <scene sceneID="gzk-Ls-jJ3">
+            <objects>
+                <viewController id="ex8-3z-blJ" customClass="MainMapViewController" customModule="PMinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V5V-ns-y4h"/>
+                        <viewControllerLayoutGuide type="bottom" id="JGb-iC-Miy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O0d-Co-KRn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Edy-iw-Ex9"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="StartBattle" id="iUV-4e-B81"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9oD-e1-W81" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2615" y="229"/>
+        </scene>
         <!--Battle View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -206,6 +228,63 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="3415" y="229"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="neE-aT-FiI">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="dxs-hQ-I51" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Xsi-dy-UrU">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="CSP-8M-UNg" kind="relationship" relationship="viewControllers" id="9SU-Rs-VRE"/>
+                        <segue destination="mqa-3d-0kI" kind="relationship" relationship="viewControllers" id="9Ls-FP-cAb"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JLh-8r-q1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991" y="229"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="EbW-Bp-imm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="CSP-8M-UNg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="sVF-lT-3DU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PeD-8g-BBh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ex8-3z-blJ" kind="relationship" relationship="rootViewController" id="YRR-sl-SNq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rDq-FB-rFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="229"/>
+        </scene>
+        <!--Party-->
+        <scene sceneID="Pdk-AD-qaL">
+            <objects>
+                <viewController id="mqa-3d-0kI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IrZ-Ct-dHf"/>
+                        <viewControllerLayoutGuide type="bottom" id="gYu-AO-uL5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TFW-h4-BlD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Party" id="r1m-oh-Tyn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HrO-xC-NPc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="931"/>
         </scene>
     </scenes>
 </document>

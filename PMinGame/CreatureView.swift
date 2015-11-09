@@ -8,29 +8,10 @@
 
 import UIKit
 
-extension UIImage
-{
-	func colorImage(color:UIColor) -> UIImage
-	{
-		let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
-		
-		//get the color space and context
-		let colorSpace = CGColorSpaceCreateDeviceRGB()
-		let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
-		let bitmapContext = CGBitmapContextCreate(nil, Int(self.size.width), Int(self.size.height), 8, 0, colorSpace, bitmapInfo.rawValue)
-		
-		//draw and fill it
-		CGContextClipToMask(bitmapContext, rect, self.CGImage)
-		CGContextSetFillColorWithColor(bitmapContext, color.CGColor)
-		CGContextFillRect(bitmapContext, rect)
-		
-		//return a snapshot of that
-		return UIImage(CGImage: CGBitmapContextCreateImage(bitmapContext)!)
-	}
-}
-
 class CreatureView:UIView
 {
+	private var subview:UIImageView?
+	
 	internal var creature:Creature?
 	{
 		didSet
@@ -39,28 +20,40 @@ class CreatureView:UIView
 			{
 				if let creature = creature
 				{
-					func addView(name:String, color:UIColor)
+					var images = [UIImage]()
+					
+					func addImage(name:String, color:UIColor)
 					{
 						if let image = PlistService.loadImage(name)?.colorImage(color)
 						{
-							let subview = UIImageView(image: image)
-							if !creature.good
-							{
-								subview.image = UIImage(CGImage: subview.image!.CGImage!, scale: 1.0, orientation: .UpMirrored)
-							}
-							subview.tintColor = color
-							subview.layer.position.x = bounds.width / 2
-							subview.layer.position.y = bounds.height - image.size.height / 2
-							addSubview(subview)
+							images.append(image)
 						}
+						
+						//TODO: add a system for back sprites (back of hair, etc)
+						//it should go here
+						//as it should allow you to have backsprites for things without, uh
+						//front-sprites I guess?
 					}
 					
 					for i in 0..<creature.sprites.count
 					{
-						addView(creature.sprites[i], color: creature.colors[i])
+						addImage(creature.sprites[i], color: creature.colors[i])
 					}
 					
-					addView(creature.jobSprite, color: UIColor.grayColor())
+					addImage(creature.jobSprite, color: (creature.good ? UIColor.greenColor() : UIColor.redColor()))
+					
+					if subview != nil
+					{
+						subview!.removeFromSuperview()
+					}
+					subview = UIImageView(image: UIImage.combineImages(images, anchorAt: CGPoint(x: 0.5, y: 1)))
+					if !creature.good
+					{
+						subview!.image = UIImage(CGImage: subview!.image!.CGImage!, scale: 1.0, orientation: .UpMirrored)
+					}
+					subview!.layer.position.x = bounds.width / 2
+					subview!.layer.position.y = bounds.height - subview!.image!.size.height / 2
+					addSubview(subview!)
 				}
 			}
 		}

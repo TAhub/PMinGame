@@ -26,6 +26,7 @@ enum Order
 	case SwitchTo(Creature)
 	case UseItem(Item, Creature)
 	case TryFlee()
+	case TryCapture()
 }
 
 class Battle
@@ -58,7 +59,7 @@ class Battle
 		players.append(Creature(job: "honored dead", level: 10, good: true))
 		
 		//TODO: load the real encounter
-		enemies.append(Creature(job: "barbarian", level: 10, good: false))
+		enemies.append(Creature(job: "barbarian", level: 1, good: false))
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))
@@ -116,6 +117,16 @@ class Battle
 			return true
 		}
 		return false
+	}
+	
+	func pickCapture()
+	{
+		//TODO: you shouldn't be able to capture bosses, etc
+		if !player.dead && !enemy.dead && enemy.injured
+		{
+			playerOrder = .TryCapture()
+			turnOperation()
+		}
 	}
 	
 	func pickFlee()
@@ -212,6 +223,18 @@ class Battle
 			}
 		}
 	}
+	private func useCapture(user:Creature)
+	{
+		if Int(arc4random_uniform(100)) < enemy.captureChance
+		{
+			messageHandler("\(user.name) successfully captured \(enemy.name)!")
+			enemy.capture()
+		}
+		else
+		{
+			messageHandler("\(user.name) tried to capture \(enemy.name), but failed!")
+		}
+	}
 	
 	private func useOrder(user:Creature, usee:Creature, used:Order)
 	{
@@ -221,6 +244,7 @@ class Battle
 		case .SwitchTo(let to): useSwitch(user, to: to)
 		case .UseItem(let item, let on): useItem(user, item: item, on: on)
 		case .TryFlee(): useFlee(user)
+		case .TryCapture(): useCapture(user)
 		}
 	}
 	
@@ -297,6 +321,17 @@ class Battle
 		}
 	}
 	
+	private var playerCapture:Bool
+	{
+		switch(playerOrder!)
+		{
+		case .TryFlee(): return true
+		default: return false
+		}
+	}
+	
+	//no need for an enemyCapture, enemies will never try to capture players
+	
 	func turnOperation()
 	{
 		if playerOrder != nil && turnOrder == nil
@@ -327,6 +362,10 @@ class Battle
 			else if playerAttack != nil && enemyAttack != nil && !playerAttack!.quick && enemyAttack!.quick
 			{
 				turnOrder = false
+			}
+			else if playerCapture
+			{
+				turnOrder = true
 			}
 			else if playerFlee && !enemyFlee
 			{

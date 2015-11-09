@@ -208,6 +208,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 				}
 			case 2: menuState = .Switch(0)
 			case 3: battle.pickFlee()
+			case 4: battle.pickCapture()
 			default: break
 			}
 		case .Attack:
@@ -308,7 +309,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 			secondButton.setTitle("Item", forState: UIControlState.Normal)
 			thirdButton.setTitle("Switch", forState: UIControlState.Normal)
 			fourthButton.setTitle("Flee", forState: UIControlState.Normal)
-			nextButton.setTitle(nil, forState: UIControlState.Normal)
+			nextButton.setTitle("Capture", forState: UIControlState.Normal)
 			cancelButton.setTitle(nil, forState: UIControlState.Normal)
 		case .Attack:
 			firstButton.setTitle(battle.getAttackLabel(0), forState: UIControlState.Normal)
@@ -390,6 +391,8 @@ class BattleViewController: UIViewController, BattleDelegate {
 	{
 		//TODO: you won!
 		print("You won!")
+		
+		//TODO: any enemies who now are "good" should join your party
 	}
 	
 	func defeat()
@@ -402,5 +405,10 @@ class BattleViewController: UIViewController, BattleDelegate {
 	{
 		//TODO: you (or the enemy) ran away!
 		print("You coward!")
+		
+		//TODO: if there are any enemies who are now "good", output a message that says you left them behind
+		//you shouldn't be able to capture someone then flee
+		//actually, this might not be an issue, since random encounters probably shouldn't have multiple people
+		//whatever
 	}
 }
