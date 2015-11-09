@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //constants
 private let kStatBonus = 5
@@ -20,6 +21,10 @@ class Creature
 	internal var name:String
 	internal var good:Bool
 	private var gender:Bool?
+	
+	//MARK* appearance stats
+	internal var sprites = [String]()
+	internal var colors = [UIColor]()
 	
 	//MARK: permanent stats
 	private var level:Int
@@ -139,13 +144,13 @@ class Creature
 		self.level = level
 		self.good = good
 		
-		//pick a gender
+		//pick a gender and an appearance
 		if PlistService.loadValue("Races", race, "gendered") != nil
 		{
 			gender = arc4random_uniform(100) < 50
 		}
-		
-		//TODO: generate an appearance
+		generateAppearance()
+		//TODO: generate a name
 		
 		getLevelAppropriateAttacks()
 		
@@ -161,6 +166,84 @@ class Creature
 			{
 				attack.powerPoints = Int(ceil(Float(attack.maxPowerPoints) * 0.25))
 			}
+		}
+	}
+	
+	private func generateAppearance()
+	{
+		func generateAppearancePart(list:[AnyObject]) -> [String]
+		{
+			return list.map()
+			{ (element) in
+				if let array = element as? [String]
+				{
+					let pick = Int(arc4random_uniform(UInt32(array.count)))
+					return array[pick]
+				}
+				else if let string = element as? String
+				{
+					return string
+				}
+				else
+				{
+					return "INVALID"
+				}
+			}
+		}
+		
+		sprites = [String]()
+		if let gender = gender
+		{
+			if gender
+			{
+				if let appearance = PlistService.loadValue("Races", race, "appearance female") as? [AnyObject]
+				{
+					sprites = generateAppearancePart(appearance)
+				}
+			}
+			else
+			{
+				if let appearance = PlistService.loadValue("Races", race, "appearance male") as? [AnyObject]
+				{
+					sprites = generateAppearancePart(appearance)
+				}
+			}
+		}
+		else if let appearance = PlistService.loadValue("Races", race, "appearance") as? [AnyObject]
+		{
+			sprites = generateAppearancePart(appearance)
+		}
+		
+		if let appearanceColors = PlistService.loadValue("Races", race, "appearance color") as? [AnyObject]
+		{
+			colors = generateAppearancePart(appearanceColors).map() { PlistService.loadColor($0) }
+		}
+		else
+		{
+			colors = [UIColor]()
+		}
+		while colors.count < sprites.count
+		{
+			colors.append(UIColor.whiteColor())
+		}
+	}
+	
+	var jobSprite:String
+	{
+		if let gender = gender
+		{
+			if gender
+			{
+				return "\(job)_f"
+			}
+			else
+			{
+				return "\(job)_m"
+			}
+		}
+		else
+		{
+			return job
 		}
 	}
 	

@@ -58,7 +58,7 @@ class Battle
 		players.append(Creature(job: "honored dead", level: 10, good: true))
 		
 		//TODO: load the real encounter
-		enemies.append(Creature(job: "frozen soul", level: 10, good: false))
+		enemies.append(Creature(job: "barbarian", level: 10, good: false))
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))

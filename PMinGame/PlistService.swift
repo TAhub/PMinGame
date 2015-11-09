@@ -8,9 +8,15 @@
 
 import UIKit
 
+
 class PlistService
 {
 	//MARK: value handlers
+	class func loadImage(sprite:String) -> UIImage?
+	{
+		return UIImage(named: sprite)
+	}
+	
 	class func loadColor(colorCode:String!) -> UIColor
 	{
 		if colorCode == nil

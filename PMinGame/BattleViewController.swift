@@ -21,11 +21,11 @@ class BattleViewController: UIViewController, BattleDelegate {
 
 	//MARK: outlets and actions
 	@IBOutlet weak var playerPosition: NSLayoutConstraint!
-	@IBOutlet weak var playerView: UIView!
+	@IBOutlet weak var playerView: CreatureView!
 	@IBOutlet weak var playerStats: UILabel!
 	
 	@IBOutlet weak var enemyPosition: NSLayoutConstraint!
-	@IBOutlet weak var enemyView: UIView!
+	@IBOutlet weak var enemyView: CreatureView!
 	@IBOutlet weak var enemyStats: UILabel!
 	
 	@IBOutlet weak var textParser: UILabel!
@@ -285,6 +285,9 @@ class BattleViewController: UIViewController, BattleDelegate {
 		{
 			playerStats.text = battle.playerStat
 			enemyStats.text = battle.enemyStat
+			
+			playerView.creature = battle.player
+			enemyView.creature = battle.enemy
 		}
 		
 		if animating || writingMessages

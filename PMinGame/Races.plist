@@ -14,7 +14,18 @@
 		<!-- overall data -->
 		<key>gendered</key> <true/>
 		<!-- appearance data -->
-		<!-- TODO: appearance data -->
+		<key>appearance</key>
+		<array>
+		</array>
+		<key>appearance male</key>
+		<array>
+		</array>
+		<key>appearance female</key>
+		<array>
+		</array>
+		<key>appearance color</key>
+		<array>
+		</array>
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
@@ -25,7 +36,28 @@
 		<!-- overall data -->
 		<key>gendered</key> <true/>
 		<!-- appearance data -->
-		<!-- TODO: appearance data -->
+		<key>appearance male</key>
+		<array>
+			<string>human_m</string>
+			<string>human_eye</string>
+			<array>
+				<string>human_hair1_m</string>
+			</array>
+		</array>
+		<key>appearance female</key>
+		<array>
+			<string>human_f</string>
+			<string>human_eye</string>
+			<array>
+				<string>human_hair1_f</string>
+			</array>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<string>FFDDEE</string>
+			<string>FFFFFF</string>
+			<string>FF0000</string>
+		</array>
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>

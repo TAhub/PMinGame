@@ -32,7 +32,6 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>template</string>
-		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- player starting jobs -->
 	<key>mystic</key>
@@ -61,7 +60,6 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
-		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>soldier</key>
 	<dict>
@@ -89,7 +87,6 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
-		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>inventor</key>
 	<dict>
