@@ -119,11 +119,11 @@
 	<key>barbarian</key>
 	<dict>
 		<!-- stats -->
-		<key>health</key> <integer>55</integer>
+		<key>health</key> <integer>60</integer>
 		<key>accuracy</key> <integer>9</integer>
 		<key>dodge</key> <integer>10</integer>
 		<key>brute attack</key> <integer>13</integer>
-		<key>brute defense</key> <integer>10</integer>
+		<key>brute defense</key> <integer>9</integer>
 		<key>clever attack</key> <integer>9</integer>
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->

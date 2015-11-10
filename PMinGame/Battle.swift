@@ -32,7 +32,7 @@ enum Order
 class Battle
 {
 	//contents data
-	internal var players = [Creature]()
+	internal var players:[Creature]
 	internal var enemies = [Creature]()
 	internal var playerItems = [Item]()
 	internal weak var player:Creature!
@@ -48,15 +48,10 @@ class Battle
 	var delegate:BattleDelegate!
 	
 	
-	init()
+	init(players:[Creature])
 	{
 		//TODO: load the real party
-		players.append(Creature(job: "inventor", level: 10, good: true))
-		players.append(Creature(job: "barbarian", level: 10, good: true))
-		players.append(Creature(job: "soldier", level: 10, good: true))
-		players.append(Creature(job: "mystic", level: 10, good: true))
-		players.append(Creature(job: "rogue", level: 10, good: true))
-		players.append(Creature(job: "honored dead", level: 10, good: true))
+		self.players = players
 		
 		//TODO: load the real encounter
 		enemies.append(Creature(job: "dancing lights", level: 1, good: false))
@@ -338,7 +333,7 @@ class Battle
 	{
 		switch(playerOrder!)
 		{
-		case .TryFlee(): return true
+		case .TryCapture(): return true
 		default: return false
 		}
 	}

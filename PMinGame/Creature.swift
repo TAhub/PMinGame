@@ -79,27 +79,27 @@ class Creature
 	//MARK: derived stats
 	private var accuracy:Int
 	{
-		return PlistService.loadValue("Jobs", job, "accuracy") as! Int + level
+		return PlistService.loadValue("Jobs", job, "accuracy") as! Int + level - 1
 	}
 	private var dodge:Int
 	{
-		return PlistService.loadValue("Jobs", job, "dodge") as! Int + level
+		return PlistService.loadValue("Jobs", job, "dodge") as! Int + level - 1
 	}
 	private var bruteAttack:Int
 	{
-		return PlistService.loadValue("Jobs", job, "brute attack") as! Int + level
+		return PlistService.loadValue("Jobs", job, "brute attack") as! Int + level - 1
 	}
 	private var bruteDefense:Int
 	{
-		return PlistService.loadValue("Jobs", job, "brute defense") as! Int + level
+		return PlistService.loadValue("Jobs", job, "brute defense") as! Int + level - 1
 	}
 	private var cleverAttack:Int
 	{
-		return PlistService.loadValue("Jobs", job, "clever attack") as! Int + level
+		return PlistService.loadValue("Jobs", job, "clever attack") as! Int + level - 1
 	}
 	private var cleverDefense:Int
 	{
-		return PlistService.loadValue("Jobs", job, "clever defense") as! Int + level
+		return PlistService.loadValue("Jobs", job, "clever defense") as! Int + level - 1
 	}
 	private var maxHealth:Int
 	{
@@ -881,6 +881,21 @@ class Creature
 			label += (bleed != nil ? " bleeding" : "")
 			label += (burning != nil ? " burning" : "")
 			label += (sleep != nil ? " asleep" : "")
+		}
+		return label
+	}
+	internal var longLabel:String
+	{
+		let genderLabel = (gender == nil ? "" : (gender! ? "female " : "male "))
+		var label = "level \(level) \(genderLabel)\(job)"
+		label += "\n\(type)"
+		label += "\n\(health) health   \(accuracy) accuracy   \(dodge) dodge"
+		label += "\n\(bruteAttack) attack   \(bruteDefense) defense   \(cleverAttack) sp. attack   \(cleverDefense) sp. defense"
+		//TODO: add a job description
+		label += "\n\nAttacks:"
+		for attack in attacks
+		{
+			label += "\n  \(attack.attack) (\(attack.type ?? "typeless"))"
 		}
 		return label
 	}

@@ -137,8 +137,15 @@ class BattleViewController: UIViewController, BattleDelegate {
 	{
 		writingMessages = false
 		
-		//advance the battle
-		battle.turnOperation()
+		if let endingHook = endingHook
+		{
+			endingHook()
+		}
+		else
+		{
+			//advance the battle
+			battle.turnOperation()
+		}
 	}
 	
 	//MARK: central stuff
@@ -158,49 +165,39 @@ class BattleViewController: UIViewController, BattleDelegate {
 		}
 	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-		//diagnostics
-		
-		//turn this diagnostic on if you want to see if a job's stats are in-line with the standard
-//		PlistService.jobStatDiagnostic()
-		
-		//turn this diagnostic on if you want to see if a job's attacks have the right balance of brute and clever, types, etc
-//		PlistService.jobAttackDiagnostic()
-		
-		//turn this diagnostic on if you want to see if one type has too many attacks, etc
-//		PlistService.attackDiagnostic()
-		
-		//turn this diagnostic on if you want to see if any attack is overused, underused, or not used at all
-//		PlistService.attackUsageDiagnostic()
-		
-		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
-//		PlistService.attackPowerDiagnostic()
-		
+	override func viewWillAppear(animated: Bool)
+	{
+		super.viewWillAppear(animated)
 		
 		//do a little animation
 		animating = true
 		playerPosition.constant = 0
 		enemyPosition.constant = 0
 		UIView.animateWithDuration(2.0, animations:
-		{
-			self.view.layoutIfNeeded()
-			self.playerStats.alpha = 1
-			self.enemyStats.alpha = 1
-		})
-		{ (finished) in
-			self.animating = false
+			{
+				self.view.layoutIfNeeded()
+				self.playerStats.alpha = 1
+				self.enemyStats.alpha = 1
+			})
+			{ (finished) in
+				self.animating = false
 		}
-		
-		//initialize the battle
-		battle = Battle()
-		battle.delegate = self
 		
 		//initialize the labels
 		labelsChanged()
 		
 		textParser.text = ""
+	}
+	
+	private var endOfBattleHook:((Bool, [Creature]?, Int)->())!
+	private var endingHook:(()->())?
+	func setup(party:[Creature], endOfBattleHook:(Bool, [Creature]?, Int)->())
+	{
+		//initialize the battle
+		battle = Battle(players: party)
+		battle.delegate = self
+		
+		self.endOfBattleHook = endOfBattleHook
     }
 	
 	private func pressButton(num:Int)
@@ -403,26 +400,69 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	func victory()
 	{
-		//TODO: you won!
-		print("You won!")
+		endingHook = victoryHook
+		runMessage("The party was victorious!")
 		
-		//TODO: any enemies who now are "good" should join your party
+		//TODO: run a message based on the money won/lost
+		
+		//TODO: run a message based on the experience awarded
+		
+		printFillerLine()
+	}
+	
+	private func victoryHook()
+	{
+		//TODO: get the actual net money change here (you should know it earlier, since you'll run a message for it)
+		let moneyChange:Int = 0
+		
+		//any enemies who are good should join the party reserve
+		var newAdditions = [Creature]()
+		for enemy in battle.enemies
+		{
+			if enemy.good
+			{
+				newAdditions.append(enemy)
+			}
+		}
+		endOfBattleHook(false, newAdditions, moneyChange)
+		navigationController!.popViewControllerAnimated(true)
 	}
 	
 	func defeat()
 	{
-		//TODO: you lost!
-		print("You lost!")
+		endingHook = defeatHook
+		runMessage("The party was annihilated!")
+		printFillerLine()
+	}
+	
+	private func defeatHook()
+	{
+		endOfBattleHook(true, nil, 0)
+		navigationController!.popViewControllerAnimated(true)
 	}
 	
 	func flee()
 	{
-		//TODO: you (or the enemy) ran away!
-		print("You coward!")
-		
-		//TODO: if there are any enemies who are now "good", output a message that says you left them behind
-		//you shouldn't be able to capture someone then flee
-		//actually, this might not be an issue, since random encounters probably shouldn't have multiple people
-		//whatever
+		endingHook = fleeHook
+		runMessage("The battle is over!")
+		for enemy in battle.enemies
+		{
+			if enemy.good
+			{
+				runMessage("\(enemy.name) was left behind!")
+			}
+		}
+		printFillerLine()
+	}
+	
+	private func fleeHook()
+	{
+		endOfBattleHook(false, nil, 0)
+		navigationController!.popViewControllerAnimated(true)
+	}
+	
+	private func printFillerLine()
+	{
+		runMessage("                                                 ")
 	}
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E411BFAB1BEEEA7C0047CE6A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E411BFAA1BEEEA7C0047CE6A /* Item.swift */; };
 		E411BFAD1BEEEA8F0047CE6A /* Items.plist in Resources */ = {isa = PBXBuildFile; fileRef = E411BFAC1BEEEA8F0047CE6A /* Items.plist */; };
+		E427F2FD1BF246C0005AB626 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E427F2FC1BF246C0005AB626 /* PartyViewController.swift */; };
+		E427F2FF1BF24A7B005AB626 /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E427F2FE1BF24A7B005AB626 /* PersonDetailViewController.swift */; };
 		E42803761BF101A100174F37 /* MainMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42803751BF101A100174F37 /* MainMapViewController.swift */; };
 		E42803781BF1051200174F37 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42803771BF1051200174F37 /* ImageExtensions.swift */; };
 		E43A757B1BED3B5B00367863 /* Races.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43A757A1BED3B5B00367863 /* Races.plist */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		E411BFAA1BEEEA7C0047CE6A /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		E411BFAC1BEEEA8F0047CE6A /* Items.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Items.plist; sourceTree = "<group>"; };
+		E427F2FC1BF246C0005AB626 /* PartyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
+		E427F2FE1BF24A7B005AB626 /* PersonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		E42803751BF101A100174F37 /* MainMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewController.swift; sourceTree = "<group>"; };
 		E42803771BF1051200174F37 /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
 		E43A757A1BED3B5B00367863 /* Races.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Races.plist; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 		E428037B1BF1052C00174F37 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E427F2FC1BF246C0005AB626 /* PartyViewController.swift */,
+				E427F2FE1BF24A7B005AB626 /* PersonDetailViewController.swift */,
 				E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */,
 				E42803751BF101A100174F37 /* MainMapViewController.swift */,
 			);
@@ -211,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E427F2FD1BF246C0005AB626 /* PartyViewController.swift in Sources */,
 				E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */,
 				E4F3C8511BE9B20300D29811 /* Creature.swift in Sources */,
 				E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */,
@@ -218,6 +225,7 @@
 				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,
 				E42803781BF1051200174F37 /* ImageExtensions.swift in Sources */,
 				E411BFAB1BEEEA7C0047CE6A /* Item.swift in Sources */,
+				E427F2FF1BF24A7B005AB626 /* PersonDetailViewController.swift in Sources */,
 				E42803761BF101A100174F37 /* MainMapViewController.swift in Sources */,
 				E4F3C8571BE9BD9C00D29811 /* Attack.swift in Sources */,
 				E4F3C8531BE9B20C00D29811 /* Battle.swift in Sources */,
