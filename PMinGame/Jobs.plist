@@ -410,7 +410,8 @@
 			<key>25</key> <string>astral wheel</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>undead</string>
+		<key>race</key> <string>honored dead</string>
+		<key>job appearance</key> <string>ghost_halo</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>life thief</key>
@@ -436,7 +437,7 @@
 			<key>24</key> <string>heavy slam</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>undead</string>
+		<key>race</key> <string>life thief</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>frozen soul</key>
@@ -462,7 +463,8 @@
 			<key>27</key> <string>astral wheel</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>undead</string>
+		<key>race</key> <string>frozen soul</string>
+		<key>job appearance</key> <string>ghost_halo</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>shape of fire</key>
@@ -490,7 +492,8 @@
 			<key>23</key> <string>rage</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>undead</string>
+		<key>race</key> <string>shape of fire</string>
+		<key>job appearance</key> <string>ghost_halo</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<key>dancing lights</key>
@@ -516,7 +519,8 @@
 			<key>28</key> <string>shockwave</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>undead</string>
+		<key>race</key> <string>dancing lights</string>
+		<key>job appearance</key> <string>ghost_halo</string>
 		<!-- TODO: appearance variables I guess -->
 	</dict>
 	<!-- mercenaries -->

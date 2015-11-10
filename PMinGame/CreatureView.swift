@@ -8,6 +8,9 @@
 
 import UIKit
 
+let kColorGood = UIColor(red: 0.4, green: 0.4, blue: 0.65, alpha: 1)
+let kColorBad = UIColor(red: 0.65, green: 0.4, blue: 0.4, alpha: 1)
+
 class CreatureView:UIView
 {
 	private var subview:UIImageView?
@@ -28,11 +31,10 @@ class CreatureView:UIView
 						{
 							images.append(image)
 						}
-						
-						//TODO: add a system for back sprites (back of hair, etc)
-						//it should go here
-						//as it should allow you to have backsprites for things without, uh
-						//front-sprites I guess?
+						if let image = PlistService.loadImage("\(name)_back")?.colorImage(color)
+						{
+							images.insert(image, atIndex: 0)
+						}
 					}
 					
 					for i in 0..<creature.sprites.count
@@ -40,7 +42,7 @@ class CreatureView:UIView
 						addImage(creature.sprites[i], color: creature.colors[i])
 					}
 					
-					addImage(creature.jobSprite, color: (creature.good ? UIColor.greenColor() : UIColor.redColor()))
+					addImage(creature.jobSprite, color: (creature.good ? kColorGood : kColorBad))
 					
 					if subview != nil
 					{

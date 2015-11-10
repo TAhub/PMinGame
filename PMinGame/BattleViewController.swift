@@ -162,8 +162,22 @@ class BattleViewController: UIViewController, BattleDelegate {
         super.viewDidLoad()
 
 		//diagnostics
+		
+		//turn this diagnostic on if you want to see if a job's stats are in-line with the standard
 //		PlistService.jobStatDiagnostic()
+		
+		//turn this diagnostic on if you want to see if a job's attacks have the right balance of brute and clever, types, etc
 //		PlistService.jobAttackDiagnostic()
+		
+		//turn this diagnostic on if you want to see if one type has too many attacks, etc
+//		PlistService.attackDiagnostic()
+		
+		//turn this diagnostic on if you want to see if any attack is overused, underused, or not used at all
+//		PlistService.attackUsageDiagnostic()
+		
+		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
+//		PlistService.attackPowerDiagnostic()
+		
 		
 		//do a little animation
 		animating = true

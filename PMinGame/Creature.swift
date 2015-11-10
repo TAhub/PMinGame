@@ -234,20 +234,30 @@ class Creature
 	
 	var jobSprite:String
 	{
+		var baseName:String
+		if let specialBaseName = PlistService.loadValue("Jobs", job, "job appearance") as? String
+		{
+			baseName = specialBaseName
+		}
+		else
+		{
+			baseName = job.stringByReplacingOccurrencesOfString(" ", withString: "_")
+		}
+		
 		if let gender = gender
 		{
 			if gender
 			{
-				return "\(job)_f"
+				return "\(baseName)_f"
 			}
 			else
 			{
-				return "\(job)_m"
+				return "\(baseName)_m"
 			}
 		}
 		else
 		{
-			return job
+			return baseName
 		}
 	}
 	

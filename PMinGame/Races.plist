@@ -42,6 +42,56 @@
 			<string>human_eye</string>
 			<array>
 				<string>human_hair1_m</string>
+				<string>human_hair2_m</string>
+			</array>
+			<string>human_iris</string>
+		</array>
+		<key>appearance female</key>
+		<array>
+			<string>human_f</string>
+			<string>human_eye</string>
+			<array>
+				<string>human_hair1_f</string>
+				<string>human_hair2_f</string>
+			</array>
+			<string>human_iris</string>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<array>
+				<string>FFDDEE</string>
+				<string>CCAABB</string>
+			</array>
+			<string>FFFFFF</string>
+			<array>
+				<string>DD4444</string>
+				<string>DDDD44</string>
+				<string>559955</string>
+				<string>555599</string>
+			</array>
+			<array>
+				<string>BB9999</string>
+				<string>99BB99</string>
+				<string>9999BB</string>
+			</array>
+		</array>
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName died!</string>
+		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>life thief</key>
+	<dict>
+		<!-- overall data -->
+		<key>gendered</key> <true/>
+		<!-- appearance data -->
+		<key>appearance male</key>
+		<array>
+			<string>human_m</string>
+			<string>human_eye</string>
+			<array>
+				<string>human_hair1_m</string>
+				<string>human_hair2_m</string>
 			</array>
 		</array>
 		<key>appearance female</key>
@@ -50,13 +100,21 @@
 			<string>human_eye</string>
 			<array>
 				<string>human_hair1_f</string>
+				<string>human_hair2_f</string>
 			</array>
 		</array>
 		<key>appearance color</key>
 		<array>
-			<string>FFDDEE</string>
-			<string>FFFFFF</string>
-			<string>FF0000</string>
+			<string>FFEFF0</string>
+			<array>
+				<string>DD3333</string>
+				<string>BB4444</string>
+			</array>
+			<array>
+				<string>332222</string>
+				<string>223322</string>
+				<string>222233</string>
+			</array>
 		</array>
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
@@ -73,14 +131,118 @@
 		<key>unconscious message</key> <string>*OnName powered down!</string>
 		<!-- TODO: name generator -->
 	</dict>
-	<key>undead</key>
+	<key>dancing lights</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<key>appearance</key>
+		<array>
+			<array>
+				<string>dancing_lights1</string>
+				<string>dancing_lights2</string>
+			</array>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<array>
+				<string>FFFF33</string>
+				<string>EEFF44</string>
+				<string>FFEE44</string>
+			</array>
+		</array>
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName faded away!</string>
+		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>honored dead</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<key>appearance</key>
+		<array>
+			<string>honored_dead</string>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<array>
+				<string>AAEEEE</string>
+				<string>BBEEFF</string>
+				<string>BBFFEE</string>
+			</array>
+		</array>
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName faded away!</string>
+		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>shape of fire</key>
 	<dict>
 		<!-- overall data -->
 		<key>gendered</key> <true/>
 		<!-- appearance data -->
-		<!-- TODO: appearance data -->
+		<key>appearance male</key>
+		<array>
+			<array>
+				<string>flame1</string>
+				<string>flame2</string>
+			</array>
+			<string>human_m</string>
+		</array>
+		<key>appearance female</key>
+		<array>
+			<array>
+				<string>fire1</string>
+				<string>fire2</string>
+			</array>
+			<string>human_f</string>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<array>
+				<string>FF5555</string>
+				<string>EE6666</string>
+				<string>F66655</string>
+				<string>F65566</string>
+			</array>
+			<array>
+				<string>332222</string>
+				<string>223333</string>
+			</array>
+		</array>
 		<!-- text prompt data -->
-		<key>death message</key> <string>*OnName faded away!</string>
+		<key>death message</key> <string>*OnName burned out!</string>
+		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
+		<!-- TODO: name generator -->
+	</dict>
+	<key>frozen soul</key>
+	<dict>
+		<!-- overall data -->
+		<key>gendered</key> <true/>
+		<!-- appearance data -->
+		<key>appearance male</key>
+		<array>
+			<string>human_m</string>
+			<string>human_eye</string>
+		</array>
+		<key>appearance female</key>
+		<array>
+			<string>human_f</string>
+			<string>human_eye</string>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<array>
+				<string>444488</string>
+				<string>333377</string>
+			</array>
+			<array>
+				<string>AAAAEE</string>
+				<string>BBBBFF</string>
+			</array>
+		</array>
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName broke apart!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
 		<!-- TODO: name generator -->
 	</dict>

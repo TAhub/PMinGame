@@ -798,7 +798,7 @@
 		<key>damage</key> <integer>20</integer>
 		<key>accuracy</key> <integer>70</integer>
 		<key>type</key> <string>frost</string>
-		<key>power points</key> <integer>15</integer>
+		<key>power points</key> <integer>17</integer>
 		<!-- properties -->
 		<key>ranged</key> <true/>
 		<!-- appearance -->
@@ -808,10 +808,10 @@
 	</dict>
 	<key>snow slam</key>
 	<dict>
-		<key>damage</key> <integer>31</integer>
+		<key>damage</key> <integer>30</integer>
 		<key>accuracy</key> <integer>65</integer>
 		<key>type</key> <string>frost</string>
-		<key>power points</key> <integer>13</integer>
+		<key>power points</key> <integer>15</integer>
 		<key>upgrade for</key> <string>snowball</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
@@ -825,7 +825,7 @@
 		<key>damage</key> <integer>46</integer>
 		<key>accuracy</key> <integer>60</integer>
 		<key>type</key> <string>frost</string>
-		<key>power points</key> <integer>11</integer>
+		<key>power points</key> <integer>13</integer>
 		<key>upgrade for</key> <string>snow slam</string>
 		<!-- properties -->
 		<key>ranged</key> <true/>
@@ -898,6 +898,25 @@
 		<key>message</key> <string>*Name fired a pale blue ray at *OnName!</string>
 		<key>miss message</key> <string>*Name fired a pale blue ray, but it dissolved before it could do anything to *OnName!</string>
 	</dict>
+	<key>hypothermia</key>
+	<dict>
+		<key>damage</key> <integer>25</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>frost</string>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>paralysis chance</key> <integer>35</integer>
+			<key>freeze chance</key> <integer>35</integer>
+			<key>sleep chance</key> <integer>35</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name lowered *OnName's body heat to dangerous levels!</string>
+		<key>miss message</key> <string>*Name tried to lower *OnName's body heat, but failed!</string>
+	</dict>
 	<!-- -->
 	<!-- typeless attacks -->
 	<!-- -->
@@ -947,7 +966,7 @@
 		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name began to concentrate heavily!</string>
+		<key>message</key> <string>*Name began to concentrate!</string>
 	</dict>
 	<key>intimidate</key>
 	<dict>
@@ -999,7 +1018,7 @@
 		</dict>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
-		<key>message</key> <string>*Name stare at *OnName with enthralling eyes!</string>
+		<key>message</key> <string>*Name stared at *OnName with enthralling eyes!</string>
 	</dict>
 	<key>explode</key>
 	<dict>

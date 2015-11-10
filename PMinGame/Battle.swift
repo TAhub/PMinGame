@@ -59,7 +59,7 @@ class Battle
 		players.append(Creature(job: "honored dead", level: 10, good: true))
 		
 		//TODO: load the real encounter
-		enemies.append(Creature(job: "barbarian", level: 1, good: false))
+		enemies.append(Creature(job: "dancing lights", level: 1, good: false))
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))
@@ -79,9 +79,22 @@ class Battle
 		}
 		
 		//get the first player and the first enemy
-		//TODO: make sure you don't pick a 0 health party member as the first person out, etc
-		enemy = enemies[0]
-		player = players[0]
+		for cr in enemies
+		{
+			if !cr.dead
+			{
+				enemy = cr
+				break
+			}
+		}
+		for cr in players
+		{
+			if !cr.dead
+			{
+				player = cr
+				break
+			}
+		}
 		
 		//get the default turn order
 		defaultTurnOrder = arc4random_uniform(100) < 50
