@@ -232,6 +232,11 @@ class Creature
 		}
 	}
 	
+	var jobDescription:String
+	{
+		return formatMessagePersonal(PlistService.loadValue("Jobs", job, "description") as! String)
+	}
+	
 	var jobSprite:String
 	{
 		var baseName:String
@@ -398,13 +403,19 @@ class Creature
 		}
 		return 100 //you do full damage always
 	}
+	private func formatMessagePersonal(message:String)->String
+	{
+		let he =  (gender == nil ? "it" : (gender! ? "she" : "he"))
+		let him = (gender == nil ? "it" : (gender! ? "her" : "him"))
+		let his = (gender == nil ? "its" : (gender! ? "her" : "his"))
+		let himself = (gender == nil ? "itself" : (gender! ? "herself" : "himself"))
+		return message.stringByReplacingOccurrencesOfString("*Name", withString: name).stringByReplacingOccurrencesOfString("*his", withString: his).stringByReplacingOccurrencesOfString("*him", withString: him).stringByReplacingOccurrencesOfString("*himself", withString: himself).stringByReplacingOccurrencesOfString("*he", withString: he)
+		
+	}
 	private func runMessage(messageHandler:(String)->(), on:Creature)(message:String)
 	{ 
 		let onName = on.name
-		let he =  (gender == nil ? "it" : (gender! ? "she" : "he"))
-		let his = (gender == nil ? "its" : (gender! ? "her" : "his"))
-		let himself = (gender == nil ? "itself" : (gender! ? "herself" : "himself"))
-		let finalMessage = message.stringByReplacingOccurrencesOfString("*Name", withString: name).stringByReplacingOccurrencesOfString("*OnName", withString: onName).stringByReplacingOccurrencesOfString("*his", withString: his).stringByReplacingOccurrencesOfString("*himself", withString: himself).stringByReplacingOccurrencesOfString("*he", withString: he)
+		let finalMessage = formatMessagePersonal(message).stringByReplacingOccurrencesOfString("*OnName", withString: onName)
 		messageHandler(finalMessage)
 	}
 	
@@ -887,15 +898,19 @@ class Creature
 	internal var longLabel:String
 	{
 		let genderLabel = (gender == nil ? "" : (gender! ? "female " : "male "))
-		var label = "level \(level) \(genderLabel)\(job)"
-		label += "\n\(type)"
+		var label = "level \(level) \(genderLabel)\(job) (\(type))"
 		label += "\n\(health) health   \(accuracy) accuracy   \(dodge) dodge"
 		label += "\n\(bruteAttack) attack   \(bruteDefense) defense   \(cleverAttack) sp. attack   \(cleverDefense) sp. defense"
 		//TODO: add a job description
-		label += "\n\nAttacks:"
-		for attack in attacks
+		label += "\n\(jobDescription)"
+		label += "\n\nAttacks:\n"
+		for (num, attack) in attacks.enumerate()
 		{
-			label += "\n  \(attack.attack) (\(attack.type ?? "typeless"))"
+			if num == 2
+			{
+				label += "\n"
+			}
+			label += "  \(attack.attack) (\(attack.type ?? "typeless"))"
 		}
 		return label
 	}

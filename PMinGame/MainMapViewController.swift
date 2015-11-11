@@ -43,11 +43,11 @@ class MainMapViewController: UIViewController {
 		map = Map()
 		
 		//sample starting party
-		map.party.append(Creature(job: "barbarian", level: 1, good: true))
-		map.party.append(Creature(job: "mystic", level: 1, good: true))
-		map.party.append(Creature(job: "inventor", level: 1, good: true))
-		map.party.append(Creature(job: "soldier", level: 1, good: true))
-		map.reserve.append(Creature(job: "rogue", level: 1, good: true))
+		map.party.append(Creature(job: "barbarian", level: 10, good: true))
+		map.party.append(Creature(job: "mystic", level: 10, good: true))
+		map.party.append(Creature(job: "inventor", level: 10, good: true))
+		map.party.append(Creature(job: "soldier", level: 10, good: true))
+		map.reserve.append(Creature(job: "rogue", level: 10, good: true))
 		
 		//TODO: the reserve should be cleared when you get to a new map
 		//output a message in the camp screen saying those people ran away, whatever

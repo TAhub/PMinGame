@@ -79,6 +79,7 @@
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the human name generator -->
 	</dict>
 	<key>life thief</key>
 	<dict>
@@ -120,6 +121,7 @@
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the human name generator -->
 	</dict>
 	<key>robot</key>
 	<dict>
@@ -130,6 +132,7 @@
 		<key>death message</key> <string>*OnName was scrapped!</string>
 		<key>unconscious message</key> <string>*OnName powered down!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the robot name generator -->
 	</dict>
 	<key>dancing lights</key>
 	<dict>
@@ -154,6 +157,7 @@
 		<key>death message</key> <string>*OnName faded away!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the astral being name generator -->
 	</dict>
 	<key>honored dead</key>
 	<dict>
@@ -175,6 +179,7 @@
 		<key>death message</key> <string>*OnName faded away!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the human name generator -->
 	</dict>
 	<key>shape of fire</key>
 	<dict>
@@ -214,6 +219,7 @@
 		<key>death message</key> <string>*OnName burned out!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the astral being name generator -->
 	</dict>
 	<key>frozen soul</key>
 	<dict>
@@ -245,6 +251,7 @@
 		<key>death message</key> <string>*OnName broke apart!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
 		<!-- TODO: name generator -->
+		<!-- specifically, the human name generator -->
 	</dict>
 </dict>
 </plist>

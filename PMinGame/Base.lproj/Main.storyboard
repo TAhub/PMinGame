@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Map-->
@@ -359,7 +360,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wkm-uX-nu8">
-                                <rect key="frame" x="277" y="513" width="46" height="30"/>
+                                <rect key="frame" x="427" y="513" width="46" height="30"/>
                                 <state key="normal" title="Return"/>
                                 <connections>
                                     <action selector="returnButton" destination="fwl-Mn-TAn" eventType="touchUpInside" id="dZ4-Gi-NNA"/>
@@ -384,7 +385,7 @@
                             <constraint firstItem="H7c-U9-oXb" firstAttribute="top" secondItem="Wkm-uX-nu8" secondAttribute="bottom" constant="8" symbolic="YES" id="Wco-qe-LmO"/>
                             <constraint firstItem="g89-hH-JKS" firstAttribute="leading" secondItem="TFo-MP-fO7" secondAttribute="trailing" constant="8" symbolic="YES" id="Z6u-qa-keV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g89-hH-JKS" secondAttribute="trailing" id="bn2-vg-JIl"/>
-                            <constraint firstItem="Wkm-uX-nu8" firstAttribute="centerX" secondItem="5l5-ao-mBf" secondAttribute="centerX" id="kVo-tu-5p9"/>
+                            <constraint firstItem="Wkm-uX-nu8" firstAttribute="centerX" secondItem="5l5-ao-mBf" secondAttribute="centerX" multiplier="1.5" id="kVo-tu-5p9"/>
                             <constraint firstItem="GCJ-zA-07D" firstAttribute="centerX" secondItem="5l5-ao-mBf" secondAttribute="centerX" id="rlb-YC-Q3X"/>
                             <constraint firstItem="GCJ-zA-07D" firstAttribute="top" secondItem="TFo-MP-fO7" secondAttribute="bottom" constant="8" symbolic="YES" id="tqe-7L-fs1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GCJ-zA-07D" secondAttribute="trailing" id="zfx-Vm-qMa"/>
