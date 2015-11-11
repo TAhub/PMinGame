@@ -28,7 +28,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	@IBOutlet weak var enemyView: CreatureView!
 	@IBOutlet weak var enemyStats: UILabel!
 	
-	@IBOutlet weak var textParser: UILabel!
+	@IBOutlet weak var textParser: UITextView!
 	
 	@IBOutlet weak var firstButton: UIButton!
 	@IBOutlet weak var secondButton: UIButton!
@@ -72,8 +72,8 @@ class BattleViewController: UIViewController, BattleDelegate {
 	}
 	
 	//MARK: text parser stuff
-	private var oldMessages = [String]()
 	private var messages = [String]()
+	private var storeMessages = [String]()
 	private var writingMessages:Bool = false
 	{
 		didSet
@@ -87,47 +87,39 @@ class BattleViewController: UIViewController, BattleDelegate {
 		func messageThreadWrite(messages:[String], extraMessage:String?)
 		{
 			//set the text parser
-			var tParse = ""
-			for message in messages
-			{
-				if tParse != ""
-				{
-					tParse += "\n"
-				}
-				tParse += message
-			}
+			var fullMessages = messages
 			if let extraMessage = extraMessage
 			{
-				if tParse != ""
+				if extraMessage.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) != ""
 				{
-					tParse += "\n"
+					fullMessages.append(extraMessage)
 				}
-				tParse += extraMessage
 			}
-			
 			dispatch_async(dispatch_get_main_queue())
 			{
-				self.textParser.text = tParse
+				//set text
+				self.textParser.text = fullMessages.joinWithSeparator("\n")
+				
+				//move to bottom
+				UIView.setAnimationsEnabled(false)
+				let range = NSMakeRange(self.textParser.text.characters.count, 0)
+				self.textParser.scrollRangeToVisible(range)
+				UIView.setAnimationsEnabled(true)
 			}
 		}
 		
 		while messages.count > 0
 		{
-			if oldMessages.count >= self.textParser.numberOfLines
-			{
-				oldMessages.removeAtIndex(0)
-			}
-			
 			let message = messages.removeAtIndex(0)
 			for i in message.startIndex..<message.endIndex
 			{
 				let subMessage = message.substringToIndex(i)
-				messageThreadWrite(oldMessages, extraMessage: subMessage)
+				messageThreadWrite(storeMessages, extraMessage: subMessage)
 				usleep(800)
 			}
 			
-			oldMessages.append(message)
-			messageThreadWrite(oldMessages, extraMessage: nil)
+			storeMessages.append(message)
+			messageThreadWrite(storeMessages, extraMessage: nil)
 		}
 		
 		dispatch_async(dispatch_get_main_queue(), messageThreadOver)
@@ -357,7 +349,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 	//MARK: delegate functions
 	func switchAnim(onPlayer: Bool)
 	{
-//		let actingOn = (onPlayer ? playerView : enemyView)
 		let actingOnPosition = (onPlayer ? playerPosition : enemyPosition)
 		let actingOnLabel = (onPlayer ? playerStats : enemyStats)
 		
@@ -371,9 +362,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 			
 		})
 		{ (success) in
-			//TODO: switch the appearance of actingOn
-			//to the new person
-			
 			self.labelsChanged()
 			
 			actingOnPosition.constant = 0
@@ -421,6 +409,12 @@ class BattleViewController: UIViewController, BattleDelegate {
 		{
 			if enemy.good
 			{
+				//give that enemy a name now that they're a party member
+				//this is done here and not in the capture code, because otherwise you'd see
+				//the enemy suddenly become named when you capture it
+				//TODO: generate a name for that enemy
+				
+				//add it to the new additions list
 				newAdditions.append(enemy)
 			}
 		}
@@ -463,6 +457,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private func printFillerLine()
 	{
-		runMessage("                                                 ")
+		runMessage("                                       ")
 	}
 }

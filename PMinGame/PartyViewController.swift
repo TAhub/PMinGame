@@ -16,6 +16,8 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		{
 			table.delegate = self
 			table.dataSource = self
+			
+			table.editing = true
 		}
 	}
 	
@@ -26,7 +28,7 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		return (section == 0 ? mvc.party.count : mvc.reserve.count)
+		return (section == 0 ? mvc.map.party.count : mvc.map.reserve.count)
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -64,7 +66,7 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	
 	private func personAtIndexPath(indexPath: NSIndexPath) -> Creature
 	{
-		return (indexPath.section == 0 ? mvc.party[indexPath.row] : mvc.reserve[indexPath.row])
+		return (indexPath.section == 0 ? mvc.map.party[indexPath.row] : mvc.map.reserve[indexPath.row])
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -78,5 +80,50 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	private var mvc:MainMapViewController
 	{
 		return (tabBarController!.viewControllers!)[0] as! MainMapViewController
+	}
+	
+	//MARK: delegate stuff for move
+	func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
+	{
+		if destinationIndexPath.section == 0 && sourceIndexPath.section != 0 && mvc.map.party.count >= kMaxPartySize
+		{
+			//can't do anything
+			table.reloadData()
+			return;
+		}
+		
+		let from = personAtIndexPath(sourceIndexPath)
+		
+		if sourceIndexPath.section == 0
+		{
+			mvc.map.party.removeAtIndex(sourceIndexPath.row)
+		}
+		else
+		{
+			mvc.map.reserve.removeAtIndex(sourceIndexPath.row)
+		}
+		
+		if destinationIndexPath.section == 0
+		{
+			mvc.map.party.insert(from, atIndex: destinationIndexPath.row)
+		}
+		else
+		{
+			mvc.map.reserve.insert(from, atIndex: destinationIndexPath.row)
+		}
+		
+		table.reloadData()
+	}
+	func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
+	{
+		return UITableViewCellEditingStyle.None
+	}
+	func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool
+	{
+		return false
+	}
+	func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
+	{
+		return true
 	}
 }

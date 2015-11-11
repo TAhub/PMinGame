@@ -929,7 +929,6 @@ class Creature
 	{
 		//you've become a good guy!
 		good = true
-		//TODO: generate a real name, not just your creature name
 		
 		//fall unconscious and make sure all of your attacks have at least one use
 		health = 0

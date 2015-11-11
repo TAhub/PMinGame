@@ -11,14 +11,13 @@ import UIKit
 let kMaxPartySize:Int = 6
 
 class MainMapViewController: UIViewController {
+	internal var map:Map!
+	
 	//TODO: this should have a collection view in it
 	//each cell has a background color and (optionally) a transparent png in front of it
 	//for example, a tile of red brick would have a dark red background color and a generic "brick pattern" image in front of it
 	//this should be a nice way to handle the map, and using background colors will make the images popping in as they load not be too bad
 	//obviously you then draw the map objects over this, etc
-	
-	internal var party = [Creature]()
-	internal var reserve = [Creature]()
 	
 	override func viewDidLoad()
 	{
@@ -41,13 +40,14 @@ class MainMapViewController: UIViewController {
 		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
 //		PlistService.attackPowerDiagnostic()
 		
+		map = Map()
 		
 		//sample starting party
-		party.append(Creature(job: "barbarian", level: 1, good: true))
-		party.append(Creature(job: "mystic", level: 1, good: true))
-		party.append(Creature(job: "inventor", level: 1, good: true))
-		party.append(Creature(job: "soldier", level: 1, good: true))
-		reserve.append(Creature(job: "rogue", level: 1, good: true))
+		map.party.append(Creature(job: "barbarian", level: 1, good: true))
+		map.party.append(Creature(job: "mystic", level: 1, good: true))
+		map.party.append(Creature(job: "inventor", level: 1, good: true))
+		map.party.append(Creature(job: "soldier", level: 1, good: true))
+		map.reserve.append(Creature(job: "rogue", level: 1, good: true))
 		
 		//TODO: the reserve should be cleared when you get to a new map
 		//output a message in the camp screen saying those people ran away, whatever
@@ -72,7 +72,7 @@ class MainMapViewController: UIViewController {
 	{
 		if let bvc = segue.destinationViewController as? BattleViewController
 		{
-			bvc.setup(party)
+			bvc.setup(map.party)
 			{ (lost, newAdditions, moneyChange) in
 				
 				if lost
@@ -88,13 +88,13 @@ class MainMapViewController: UIViewController {
 					{
 						for new in newAdditions
 						{
-							if self.party.count < kMaxPartySize
+							if self.map.party.count < kMaxPartySize
 							{
-								self.party.append(new)
+								self.map.party.append(new)
 							}
 							else
 							{
-								self.reserve.append(new)
+								self.map.reserve.append(new)
 							}
 						}
 					}
