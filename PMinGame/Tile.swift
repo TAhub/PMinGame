@@ -14,11 +14,11 @@ struct Tile
 	let type:String
 	
 	//MARK: derived variables
-	private var solid:Bool
+	var solid:Bool
 	{
 		return false
 	}
-	private var color:UIColor
+	var color:UIColor
 	{
 		return UIColor.blackColor()
 	}

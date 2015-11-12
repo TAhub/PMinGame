@@ -922,11 +922,11 @@ class Creature
 		{
 			return 0
 		}
-		var chance = 60 - (health * 100 / maxHealth)
+		var chance = 70 - (health * 100 / maxHealth)
 		if health <= maxHealth / 4
 		{
 			//bonus capture chance for bringing their health under 25%
-			chance += 25
+			chance += 20
 		}
 		
 		if health <= 10

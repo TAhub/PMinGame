@@ -165,7 +165,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		animating = true
 		playerPosition.constant = 0
 		enemyPosition.constant = 0
-		UIView.animateWithDuration(2.0, animations:
+		UIView.animateWithDuration(2.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
 			{
 				self.view.layoutIfNeeded()
 				self.playerStats.alpha = 1
@@ -355,7 +355,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		//do the actual animation
 		animating = true
 		actingOnPosition.constant = 300 * (onPlayer ? 1 : -1)
-		UIView.animateWithDuration(1.0, animations:
+		UIView.animateWithDuration(1.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
 		{
 			self.view.layoutIfNeeded()
 			actingOnLabel.alpha = 0
@@ -365,7 +365,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 			self.labelsChanged()
 			
 			actingOnPosition.constant = 0
-			UIView.animateWithDuration(1.0, animations:
+			UIView.animateWithDuration(1.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
 			{
 				self.view.layoutIfNeeded()
 				actingOnLabel.alpha = 1

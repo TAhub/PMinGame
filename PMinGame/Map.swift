@@ -17,4 +17,16 @@ class Map
 	//map content variables
 	internal var party = [Creature]()
 	internal var reserve = [Creature]()
+	
+	init()
+	{
+		//initialize the map
+		//TODO: get a real map
+		width = 100
+		tiles = [Tile]()
+		for _ in 0..<10000
+		{
+			tiles.append(Tile(type: "floor"))
+		}
+	}
 }
