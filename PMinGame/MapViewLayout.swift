@@ -20,7 +20,7 @@ class MapViewLayout: UICollectionViewLayout
 	
 	override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool
 	{
-		return true
+		return false
 	}
 	
 	override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]?
@@ -43,7 +43,7 @@ class MapViewLayout: UICollectionViewLayout
 	override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes?
 	{
 		let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-		attributes.frame = CGRect(x: collectionView!.contentOffset.x + kTileSize.width * CGFloat(indexPath.row), y: collectionView!.contentOffset.y + kTileSize.height * CGFloat(indexPath.section), width: kTileSize.width, height: kTileSize.height)
+		attributes.frame = CGRect(x: kTileSize.width * CGFloat(indexPath.row), y: kTileSize.height * CGFloat(indexPath.section), width: kTileSize.width, height: kTileSize.height)
 		return attributes
 	}
 	

@@ -27,12 +27,12 @@ class Map
 		for y in 0..<100
 		{
 			var row = [Tile]()
-			tiles.append(row)
 			for x in 0..<100
 			{
 				let wall = y < 3 || y >= 97 || x < 3 || x >= 97
 				row.append(Tile(type: wall ? "wall" : "floor"))
 			}
+			tiles.append(row)
 		}
 	}
 }

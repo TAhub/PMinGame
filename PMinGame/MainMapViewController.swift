@@ -49,6 +49,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.attackPowerDiagnostic()
 		
 		map = Map()
+		mapView.reloadData()
 		
 		//sample starting party
 		map.party.append(Creature(job: "barbarian", level: 10, good: true))
@@ -123,7 +124,6 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath)
-		print(map.tiles[indexPath.section][indexPath.row].type)
 		cell.backgroundColor = map.tiles[indexPath.section][indexPath.row].color
 		return cell
 	}
