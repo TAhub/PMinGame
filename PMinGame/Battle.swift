@@ -50,7 +50,6 @@ class Battle
 	
 	init(players:[Creature])
 	{
-		//TODO: load the real party
 		self.players = players
 		
 		//TODO: load the real encounter
@@ -214,13 +213,19 @@ class Battle
 	}
 	private func useFlee(user:Creature)
 	{
-		//TODO: add a "sneaky" property that increases the flee chance
-		//to some jobs
-		//like rogue and scout
-		
 		if user.statusEffectTurn(messageHandler)
 		{
-			if arc4random_uniform(100) < 50
+			let chance:UInt32
+			if user.jobSneaky
+			{
+				chance = 85
+			}
+			else
+			{
+				chance = 45
+			}
+			
+			if arc4random_uniform(100) < chance
 			{
 				messageHandler("\(user.name) ran away!")
 				delegate.flee()

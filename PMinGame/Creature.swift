@@ -237,6 +237,19 @@ class Creature
 		return formatMessagePersonal(PlistService.loadValue("Jobs", job, "description") as! String)
 	}
 	
+	var jobSneaky:Bool
+	{
+		//this increases your chance of running successfully
+		return PlistService.loadValue("Jobs", job, "sneaky") != nil
+	}
+	
+	var jobHardy:Bool
+	{
+		//this makes you immune to environmental damage
+		//TODO: don't forget to implement this!
+		return PlistService.loadValue("Jobs", job, "hardy") != nil
+	}
+	
 	var jobSprite:String
 	{
 		var baseName:String

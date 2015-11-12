@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Tiles.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/12/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>template</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>damaging</key> <true/>
+		<key>dart</key> <string>dartimage</string>
+		<key>image</key> <string>tileimage</string>
+		<key>color</key> <string>00AA77</string>
+	</dict>
+	<!-- real tiles -->
+	<key>wall</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>665555</string>
+	</dict>
+	<key>floor</key>
+	<dict>
+		<key>color</key> <string>112211</string>
+	</dict>
+</dict>
+</plist>

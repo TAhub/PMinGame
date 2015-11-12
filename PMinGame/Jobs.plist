@@ -26,6 +26,8 @@
 		<key>paralysis immunity</key> <true/>
 		<key>freeze immunity</key> <true/>
 		<key>sleep immunity</key> <true/>
+		<key>sneaky</key> <true/>
+		<key>hardy</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>sword</string>
@@ -185,6 +187,7 @@
 		<key>clever defense</key> <integer>13</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
+		<key>sneaky</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>knife</string>
@@ -268,6 +271,7 @@
 		<key>type</key> <string>physical</string>
 		<key>bleed immunity</key> <true/>
 		<key>sleep immunity</key> <true/>
+		<key>hardy</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>slam</string>
@@ -430,6 +434,7 @@
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
 		<key>sleep immunity</key> <true/>
+		<key>sneaky</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>energy drain</string>
@@ -456,6 +461,7 @@
 		<!-- misc -->
 		<key>type</key> <string>frost</string>
 		<key>freeze immunity</key> <true/>
+		<key>hardy</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>snowball</string>
@@ -539,6 +545,7 @@
 		<key>clever defense</key> <integer>11</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
+		<key>hardy</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>slam</string>
@@ -590,6 +597,7 @@
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->
 		<key>type</key> <string>spark</string>
+		<key>sneaky</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>musket</string>

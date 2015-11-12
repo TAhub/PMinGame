@@ -8,11 +8,15 @@
 
 import UIKit
 
+let kTileSize = CGSize(width: 60, height: 60)
+
 class MapViewLayout: UICollectionViewLayout
 {
-	private var itemAttributes = [[UICollectionViewLayoutAttributes]]()
-	private var itemsSize = [CGSize]()
-	private var contentSize:CGSize!
+	//I was following
+	//http://www.brightec.co.uk/ideas/uicollectionview-using-horizontal-and-vertical-scrolling-sticky-rows-and-columns
+	//but it didn't seem to work?
+	//I tried messing with it some but eh
+	//try again later I guess
 	
 	override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool
 	{
@@ -22,76 +26,29 @@ class MapViewLayout: UICollectionViewLayout
 	override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]?
 	{
 		var attributes = [UICollectionViewLayoutAttributes]()
-		for section in itemAttributes
+		for section in 0..<collectionView!.numberOfSections()
 		{
-			let filtered = section.filter()
+			for row in 0..<collectionView!.numberOfItemsInSection(section)
 			{
-				CGRectIntersectsRect(rect, $0.frame)
+				let attr = layoutAttributesForItemAtIndexPath(NSIndexPath(forItem: row, inSection: section))!
+				if attr.frame.intersects(rect)
+				{
+					attributes.append(attr)
+				}
 			}
-			attributes.appendContentsOf(filtered)
 		}
 		return attributes
 	}
 	
 	override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes?
 	{
-		return self.itemAttributes[indexPath.section][indexPath.row]
+		let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+		attributes.frame = CGRect(x: collectionView!.contentOffset.x + kTileSize.width * CGFloat(indexPath.row), y: collectionView!.contentOffset.y + kTileSize.height * CGFloat(indexPath.section), width: kTileSize.width, height: kTileSize.height)
+		return attributes
 	}
 	
 	override func collectionViewContentSize() -> CGSize
 	{
-		return self.contentSize
-	}
-	
-	override func prepareLayout()
-	{
-		if self.collectionView!.numberOfSections() == 0
-		{
-			return
-		}
-		
-		//setup attributes
-		let rows = self.collectionView!.numberOfSections()
-		let columns = self.collectionView!.numberOfItemsInSection(0)
-		let size = CGSize(width: 60, height: 60)
-		
-		if itemAttributes.count == 0
-		{
-			//initialize all the attributes
-			for section in 0..<rows
-			{
-				var sectionAttributes = [UICollectionViewLayoutAttributes]()
-				for index in 0..<columns
-				{
-					let indexPath = NSIndexPath(forItem: index, inSection: section)
-					let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-					attributes.frame = CGRect(x: CGFloat(index) * size.width, y: CGFloat(section) * size.height, width: size.width, height: size.height)
-					sectionAttributes.append(attributes)
-				}
-				itemAttributes.append(sectionAttributes)
-			}
-			
-			contentSize = CGSize(width: size.width * CGFloat(columns), height: size.height * CGFloat(rows))
-		}
-		
-		//just offset the attributes
-		for section in 0..<rows
-		{
-			for index in 0..<columns
-			{
-				if section == 0 || index == 0
-				{
-					let attribute = itemAttributes[section][index]
-					if section == 0
-					{
-						attribute.frame.origin.y = self.collectionView!.contentOffset.y
-					}
-					if index == 0
-					{
-						attribute.frame.origin.x = self.collectionView!.contentOffset.x
-					}
-				}
-			}
-		}
+		return CGSize(width: kTileSize.width * CGFloat(collectionView!.numberOfItemsInSection(0)), height: kTileSize.height * CGFloat(collectionView!.numberOfSections()))
 	}
 }

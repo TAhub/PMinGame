@@ -16,10 +16,22 @@ struct Tile
 	//MARK: derived variables
 	var solid:Bool
 	{
-		return false
+		return PlistService.loadValue("Tiles", type, "solid") != nil
+	}
+	var damaging:Bool
+	{
+		return PlistService.loadValue("Tiles", type, "damaging") != nil
+	}
+	var image:String?
+	{
+		return PlistService.loadValue("Tiles", type, "image") as? String
+	}
+	var dart:String?
+	{
+		return PlistService.loadValue("Tiles", type, "dart") as? String
 	}
 	var color:UIColor
 	{
-		return type == "wall" ? UIColor.blackColor() : UIColor.whiteColor()
+		return PlistService.loadColor(PlistService.loadValue("Tiles", type, "color") as! String)
 	}
 }
