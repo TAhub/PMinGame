@@ -20,6 +20,6 @@ struct Tile
 	}
 	var color:UIColor
 	{
-		return UIColor.blackColor()
+		return type == "wall" ? UIColor.blackColor() : UIColor.whiteColor()
 	}
 }

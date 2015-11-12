@@ -10,7 +10,7 @@ import UIKit
 
 let kMaxPartySize:Int = 6
 
-class MainMapViewController: UIViewController {
+class MainMapViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 	internal var map:Map!
 	
 	//TODO: this should have a collection view in it
@@ -18,6 +18,14 @@ class MainMapViewController: UIViewController {
 	//for example, a tile of red brick would have a dark red background color and a generic "brick pattern" image in front of it
 	//this should be a nice way to handle the map, and using background colors will make the images popping in as they load not be too bad
 	//obviously you then draw the map objects over this, etc
+	@IBOutlet weak var mapView: UICollectionView!
+	{
+		didSet
+		{
+			mapView.dataSource = self
+			mapView.delegate = self
+		}
+	}
 	
 	override func viewDidLoad()
 	{
@@ -101,5 +109,22 @@ class MainMapViewController: UIViewController {
 				}
 			}
 		}
+	}
+	
+	//MARK: collection view datasource and delegate
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+	{
+		return map.tiles.count
+	}
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+	{
+		return map.tiles[section].count
+	}
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+	{
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath)
+		print(map.tiles[indexPath.section][indexPath.row].type)
+		cell.backgroundColor = map.tiles[indexPath.section][indexPath.row].color
+		return cell
 	}
 }

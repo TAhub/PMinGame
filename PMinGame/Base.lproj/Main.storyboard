@@ -19,6 +19,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kZs-hE-qzz">
+                                <rect key="frame" x="20" y="28" width="560" height="515"/>
+                                <collectionViewLayout key="collectionViewLayout" id="rRd-Gi-UaP" customClass="MapViewLayout" customModule="PMinGame" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapCell" id="0Ez-3s-j9b">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAC-rL-OvF">
                                 <rect key="frame" x="257" y="285" width="86" height="30"/>
                                 <state key="normal" title="Test a Battle"/>
@@ -27,15 +42,20 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="kZs-hE-qzz" firstAttribute="leading" secondItem="O0d-Co-KRn" secondAttribute="leadingMargin" id="94K-Yn-6fH"/>
                             <constraint firstItem="eAC-rL-OvF" firstAttribute="centerX" secondItem="O0d-Co-KRn" secondAttribute="centerX" id="MhK-Nt-Vhd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kZs-hE-qzz" secondAttribute="trailing" id="Nc9-nN-CyI"/>
                             <constraint firstItem="eAC-rL-OvF" firstAttribute="centerY" secondItem="O0d-Co-KRn" secondAttribute="centerY" id="RTH-vo-PxQ"/>
+                            <constraint firstItem="kZs-hE-qzz" firstAttribute="top" secondItem="V5V-ns-y4h" secondAttribute="bottom" constant="8" symbolic="YES" id="d54-nZ-1ZX"/>
+                            <constraint firstItem="JGb-iC-Miy" firstAttribute="top" secondItem="kZs-hE-qzz" secondAttribute="bottom" constant="8" symbolic="YES" id="jcN-PG-80o"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="zd4-iL-9Ts"/>
                     <navigationItem key="navigationItem" id="Edy-iw-Ex9"/>
                     <connections>
+                        <outlet property="mapView" destination="kZs-hE-qzz" id="10k-NB-VV2"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="startBattle" id="iUV-4e-B81"/>
                     </connections>
                 </viewController>

@@ -12,7 +12,7 @@ class Map
 {
 	//map variables
 	var width:Int!
-	var tiles:[Tile]!
+	var tiles:[[Tile]]!
 	
 	//map content variables
 	internal var party = [Creature]()
@@ -23,10 +23,16 @@ class Map
 		//initialize the map
 		//TODO: get a real map
 		width = 100
-		tiles = [Tile]()
-		for _ in 0..<10000
+		tiles = [[Tile]]()
+		for y in 0..<100
 		{
-			tiles.append(Tile(type: "floor"))
+			var row = [Tile]()
+			tiles.append(row)
+			for x in 0..<100
+			{
+				let wall = y < 3 || y >= 97 || x < 3 || x >= 97
+				row.append(Tile(type: wall ? "wall" : "floor"))
+			}
 		}
 	}
 }
