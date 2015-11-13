@@ -89,10 +89,17 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		{
 			//can't do anything
 			table.reloadData()
-			return;
+			return
 		}
 		
 		let from = personAtIndexPath(sourceIndexPath)
+		
+		if destinationIndexPath.section != 0 && sourceIndexPath.section == 0 && from.jobMain
+		{
+			//can't move the main character to the reserve
+			table.reloadData()
+			return
+		}
 		
 		if sourceIndexPath.section == 0
 		{

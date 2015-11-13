@@ -42,7 +42,8 @@ class CreatureView:UIView
 						addImage(creature.sprites[i], color: creature.colors[i])
 					}
 					
-					addImage(creature.jobSprite, color: (creature.good ? kColorGood : kColorBad))
+					let sideColor = (creature.good ? kColorGood : kColorBad)
+					addImage(creature.jobSprite, color: sideColor)
 					
 					if subview != nil
 					{

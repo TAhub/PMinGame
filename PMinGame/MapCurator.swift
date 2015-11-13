@@ -39,20 +39,16 @@ class MapCurator
 		
 		//possibly others in the future?
 		
+		//note that it's probably good to have at least one sketcher be twiggy
+		//or another sketcher who is guaranteed to draw a floor at the start position
+		//otherwise you could easily end up with a completely empty map when you discard all unreachable tiles
+		
 		sketches.append(MapSketcher.twiggy(1, width: startingWidth, height: startingHeight, rectangles: 5, minSize: 4, maxSize: 7, startPosition: startPosition))
+		sketches.append(MapSketcher.ultimateLifeform(2, width: startingWidth, height: startingHeight, startChance: 55, smooths: 2))
 		
 		
 		//next up, overlay the sketches
-		var finalSketch = [[UInt16]]()
-		for _ in 0..<startingHeight
-		{
-			var sketchC = [UInt16]()
-			for _ in 0..<startingWidth
-			{
-				sketchC.append(0)
-			}
-			finalSketch.append(sketchC)
-		}
+		var finalSketch = MapSketcher.makeEmptyArray(width: startingWidth, height: startingHeight)
 		for sketch in sketches
 		{
 			for y in 0..<startingHeight
@@ -79,8 +75,12 @@ class MapCurator
 		
 		//TODO: clip the final sketch to size
 		//remember to move the start and end positions
-		let newWidth = startingWidth
-		let newHeight = startingHeight
+		let results2 = mapResize(finalSketch, startPosition: startPosition, endPosition: destPosition, width: startingWidth, height: startingHeight)
+		finalSketch = results2.0
+		startPosition = results2.1
+		destPosition = results2.2
+		let newWidth = results2.3
+		let newHeight = results2.4
 		
 		
 		//TODO: place traps, encounters, etc
@@ -112,6 +112,54 @@ class MapCurator
 	}
 	
 	//MARK: helper functions
+	private class func mapResize(finalSketch:[[UInt16]], startPosition:(Int, Int), endPosition:(Int, Int), width:Int, height:Int) -> ([[UInt16]], (Int, Int), (Int, Int), Int, Int)
+	{
+		//find the size of the map
+		var top = height + 1
+		var bottom = -1
+		var left = width + 1
+		var right = -1
+		for y in 0..<height
+		{
+			for x in 0..<width
+			{
+				if finalSketch[y][x] != 0
+				{
+					top = min(top, y)
+					bottom = max(bottom, y)
+					left = min(left, x)
+					right = max(right, x)
+				}
+			}
+		}
+		
+		//get the new bounds
+		let borderSize = 2
+		let newWidth = (right - left + 1) + 2 * borderSize
+		let newHeight = (bottom - top + 1) + 2 * borderSize
+		
+		//resize the map
+		var resizedSketch = MapSketcher.makeEmptyArray(width: newWidth, height: newHeight)
+		for y in top...bottom
+		{
+			for x in left...right
+			{
+				resizedSketch[y - top + borderSize][x - left + borderSize] = finalSketch[y][x]
+			}
+		}
+		
+		//move the positions
+		var resizedStart = startPosition
+		resizedStart.0 += borderSize - left
+		resizedStart.1 += borderSize - top
+		var resizedEnd = endPosition
+		resizedEnd.0 += borderSize - left
+		resizedEnd.1 += borderSize - top
+		
+		return (resizedSketch, resizedStart, resizedEnd, newWidth, newHeight)
+	}
+	
+	
 	private class func mapExplore(var finalSketch:[[UInt16]], startPosition:(Int, Int)) -> ([[UInt16]], Int, (Int, Int))
 	{
 		var distances = [[Int]]()

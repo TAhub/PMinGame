@@ -28,6 +28,7 @@
 		<key>sleep immunity</key> <true/>
 		<key>sneaky</key> <true/>
 		<key>hardy</key> <true/>
+		<key>main character</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>sword</string>
@@ -49,6 +50,7 @@
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
+		<key>main character</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>phase touch</string>
@@ -77,6 +79,7 @@
 		<key>clever defense</key> <integer>13</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
+		<key>main character</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>musket</string>
@@ -105,6 +108,7 @@
 		<key>clever defense</key> <integer>10</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
+		<key>main character</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>knife</string>
@@ -133,6 +137,7 @@
 		<key>clever defense</key> <integer>8</integer>
 		<!-- misc -->
 		<key>type</key> <string>physical</string>
+		<key>main character</key> <true/>
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>sword</string>

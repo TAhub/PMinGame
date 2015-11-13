@@ -73,9 +73,65 @@ class MapSketcher
 		return ar
 	}
 	
+	class func ultimateLifeform(myNumber:UInt16, width:Int, height:Int, startChance:Int, smooths:Int) -> [[UInt16]]
+	{
+		var ar = makeEmptyArray(width: width, height: height)
+		
+		//this algorithm is based on the algorithm at
+		//http://www.roguebasin.com/index.php?title=Cellular_Automata_Method_for_Generating_Random_Cave-Like_Levels
+		//all thanks to them
+		
+		for y in 0..<height
+		{
+			for x in 0..<width
+			{
+				if Int(arc4random_uniform(100)) <= startChance
+				{
+					ar[y][x] = myNumber
+				}
+			}
+		}
+		
+		func smooth()
+		{
+			var newAr = makeEmptyArray(width: width, height: height)
+			for y in 0..<height
+			{
+				for x in 0..<width
+				{
+					//count the number of neighbors who are walls
+					var wallNeighbors = 0
+					for y2 in y-1...y+1
+					{
+						for x2 in x-1...x+1
+						{
+							if x2 < 0 || y2 < 0 || x2 >= width || y2 >= height || ar[y2][x2] == 0
+							{
+								wallNeighbors += 1
+							}
+						}
+					}
+					
+					//TODO: set newAr based on the old ar value and the number of wall neighbors I guess
+					let wall = (ar[y][x] == 0 && wallNeighbors >= 4) || (ar[y][x] != 0 && wallNeighbors >= 5)
+					newAr[y][x] = (wall ? 0 : myNumber)
+				}
+			}
+			
+			ar = newAr
+		}
+		
+		for _ in 0..<smooths
+		{
+			smooth()
+		}
+		
+		return ar
+	}
+	
 	
 	//MARK: helper functions
-	private class func makeEmptyArray(width width:Int, height:Int) -> [[UInt16]]
+	class func makeEmptyArray(width width:Int, height:Int) -> [[UInt16]]
 	{
 		var a = [[UInt16]]()
 		for _ in 0..<height

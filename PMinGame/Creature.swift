@@ -250,6 +250,12 @@ class Creature
 		return PlistService.loadValue("Jobs", job, "hardy") != nil
 	}
 	
+	var jobMain:Bool
+	{
+		//this means you can't be put in reserve
+		return PlistService.loadValue("Jobs", job, "main character") != nil
+	}
+	
 	var jobSprite:String
 	{
 		var baseName:String
