@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Maps.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/13/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>template</key>
+	<dict>
+		<key>start size</key> <integer>50</integer>
+		<key>sketchers</key>
+		<array>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>5</integer>
+				<key>min size</key> <integer>4</integer>
+				<key>max size</key> <integer>7</integer>
+				<!-- TODO: tileset -->
+			</dict>
+			<dict>
+				<key>type</key> <string>ultimate lifeform</string>
+				<key>start chance</key> <integer>55</integer>
+				<key>smooths</key> <integer>3</integer>
+				<!-- TODO: tileset -->
+			</dict>
+		</array>
+	</dict>
+	<!-- real maps -->
+	<key>shrine</key>
+	<dict>
+		<key>start size</key> <integer>45</integer>
+		<key>sketchers</key>
+		<array>
+			<dict>
+				<key>type</key> <string>ultimate lifeform</string>
+				<key>start chance</key> <integer>45</integer>
+				<key>smooths</key> <integer>1</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like a garden of some sort -->
+			</dict>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>10</integer>
+				<key>min size</key> <integer>4</integer>
+				<key>max size</key> <integer>8</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like a temple -->
+			</dict>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>15</integer>
+				<key>min size</key> <integer>2</integer>
+				<key>max size</key> <integer>4</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like a temple -->
+			</dict>
+		</array>
+	</dict>
+	<key>ruins</key>
+	<dict>
+		<key>start size</key> <integer>50</integer>
+		<key>sketchers</key>
+		<array>
+			<dict>
+				<key>type</key> <string>ultimate lifeform</string>
+				<key>start chance</key> <integer>48</integer>
+				<key>smooths</key> <integer>2</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like caves -->
+			</dict>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>25</integer>
+				<key>min size</key> <integer>2</integer>
+				<key>max size</key> <integer>4</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like rubble-y stone rooms -->
+			</dict>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>4</integer>
+				<key>min size</key> <integer>6</integer>
+				<key>max size</key> <integer>8</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like cleaner stone rooms -->
+			</dict>
+		</array>
+	</dict>
+	<key>caves</key>
+	<dict>
+		<key>start size</key> <integer>60</integer>
+		<key>sketchers</key>
+		<array>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>4</integer>
+				<key>min size</key> <integer>3</integer>
+				<key>max size</key> <integer>4</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like rubble-y stone rooms -->
+			</dict>
+			<dict>
+				<key>type</key> <string>ultimate lifeform</string>
+				<key>start chance</key> <integer>56</integer>
+				<key>smooths</key> <integer>3</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like a cave -->
+			</dict>
+		</array>
+	</dict>
+	<key>meadows</key>
+	<dict>
+		<key>start size</key> <integer>55</integer>
+		<key>sketchers</key>
+		<array>
+			<dict>
+				<key>type</key> <string>twiggy</string>
+				<key>rectangles</key> <integer>1</integer>
+				<key>min size</key> <integer>4</integer>
+				<key>max size</key> <integer>6</integer>
+				<!-- TODO: tileset -->
+				<!-- should look a meadow -->
+			</dict>
+			<dict>
+				<key>type</key> <string>ultimate lifeform</string>
+				<key>start chance</key> <integer>54</integer>
+				<key>smooths</key> <integer>2</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like a darker meadow -->
+			</dict>
+			<dict>
+				<key>type</key> <string>ultimate lifeform</string>
+				<key>start chance</key> <integer>56</integer>
+				<key>smooths</key> <integer>3</integer>
+				<!-- TODO: tileset -->
+				<!-- should look like a meadow -->
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

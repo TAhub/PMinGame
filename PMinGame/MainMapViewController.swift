@@ -72,10 +72,29 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		//TODO: the reserve should be cleared when you get to a new map
 		//output a message in the camp screen saying those people ran away, whatever
 		
-		self.mapView.layoutIfNeeded()
-		self.moveCameraToPlayer(false)
+		//move the camera
+//		self.mapView.layoutIfNeeded()
+//		self.moveCameraToPlayer(false)
+		
+		//show the debug minimap
+		loadDebugMinimap()
 	}
 	
+	private func loadDebugMinimap()
+	{
+		MapCurator.drawMap(map.tiles, canvas: view)
+		let button = UIButton(frame: CGRect(x: 0, y: 0, width: 3 * CGFloat(map.tiles[0].count), height: 3 * CGFloat(map.tiles.count)))
+		view.addSubview(button)
+		button.addTarget(self, action: "reloadDebugMinimap", forControlEvents: .TouchUpInside)
+	}
+	
+	func reloadDebugMinimap()
+	{
+		let newView = UIView(frame: view.bounds)
+		view = newView
+		map = Map()
+		loadDebugMinimap()
+	}
 	
 	@IBAction func tempBattleButton()
 	{

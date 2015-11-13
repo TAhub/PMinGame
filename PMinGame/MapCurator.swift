@@ -7,74 +7,32 @@
 //
 
 import Foundation
+import UIKit
 
 class MapCurator
 {
 	class func makeMap(type:String) -> ([[Tile]], Int, (Int, Int))
 	{
-		var sketches = [[[UInt16]]]()
-		let startingWidth = 50
-		let startingHeight = 50
+		var finalSketch:[[UInt16]]!
+		var startPosition:(Int, Int)!
+		var destPosition:(Int, Int)!
+		var startingWidth:Int!
+		var startingHeight:Int!
 		
-		//TODO: get the start position
-		var startPosition = (25, 5)
-		
-		//TODO: each sketcher should have a go at it
-		//a sketcher will make a sketch, which is a layout of a map
-		//a 0 means a wall, and a *sketcher number + 1* means a floor
-		//each sketcher has a different identity, and different initial values
-		//the map type determines the number of sketchers, their identities, and their values
-		//the sketches are effectively overlayed over each other
-		//and thus the last sketcher has priority, basically
-		
-		//the ultimate lifeform (cellular smoothing)
-		//he is obsessed with perfection
-		//he starts with a random group of walls and floors, and smooths them into a nice cave shape
-		//he requires a starting chance to place a wall, and a number of smoothings
-		
-		//ol' twiggy (rooms and coridoors)
-		//he has a lewd mind
-		//he places rectangles and connects them with lines
-		//he requires a min rectangle size, a max rectangle size, a number of rectangles, and a start position
-		
-		//possibly others in the future?
-		
-		//note that it's probably good to have at least one sketcher be twiggy
-		//or another sketcher who is guaranteed to draw a floor at the start position
-		//otherwise you could easily end up with a completely empty map when you discard all unreachable tiles
-		
-		sketches.append(MapSketcher.twiggy(1, width: startingWidth, height: startingHeight, rectangles: 5, minSize: 4, maxSize: 7, startPosition: startPosition))
-		sketches.append(MapSketcher.ultimateLifeform(2, width: startingWidth, height: startingHeight, startChance: 55, smooths: 2))
-		
-		
-		//next up, overlay the sketches
-		var finalSketch = MapSketcher.makeEmptyArray(width: startingWidth, height: startingHeight)
-		for sketch in sketches
+		while finalSketch == nil
 		{
-			for y in 0..<startingHeight
+			if let results = getGoodFinalSketch(type)
 			{
-				for x in 0..<startingWidth
-				{
-					finalSketch[y][x] = max(finalSketch[y][x], sketch[y][x])
-				}
+				finalSketch = results.0
+				startPosition = results.1
+				destPosition = results.2
+				startingWidth = results.3
+				startingHeight = results.4
 			}
 		}
 		
-		//TODO: remove all inaccessable areas (from the perspective of the start position)
-		//while you are at it, detect the number of accessable tiles and the furthest tile
 		
-		//TODO: set the destination position to the furthest point
-		let results = mapExplore(finalSketch, startPosition: startPosition)
-		finalSketch = results.0
-		let accessableTiles = results.1
-		var destPosition = results.2
-		
-		//TODO: if there aren't enough accessable tiles, restart the algorithm
-		print("\(accessableTiles) accessable tiles")
-		
-		
-		//TODO: clip the final sketch to size
-		//remember to move the start and end positions
+		//clip the final sketch to size
 		let results2 = mapResize(finalSketch, startPosition: startPosition, endPosition: destPosition, width: startingWidth, height: startingHeight)
 		finalSketch = results2.0
 		startPosition = results2.1
@@ -111,7 +69,88 @@ class MapCurator
 		return (tiles, newWidth, startPosition)
 	}
 	
+	class func drawMap(map:[[Tile]], canvas:UIView)
+	{
+		let backer = UIView(frame: canvas.bounds)
+		backer.backgroundColor = UIColor.blackColor()
+		canvas.addSubview(backer)
+		
+		for y in 0..<map.count
+		{
+			for x in 0..<map[y].count
+			{
+				if map[y][x].color != UIColor.blackColor()
+				{
+					let tile = UIView(frame: CGRect(x: 3 * CGFloat(x), y: 3 * CGFloat(y), width: 3, height: 3))
+					tile.backgroundColor = map[y][x].color
+					canvas.addSubview(tile)
+				}
+			}
+		}
+	}
+	
 	//MARK: helper functions
+	private class func getGoodFinalSketch(type:String)->([[UInt16]], (Int, Int), (Int, Int), Int, Int)?
+	{
+		var sketches = [[[UInt16]]]()
+		let startingWidth = PlistService.loadValue("Maps", type, "start size") as! Int
+		let startingHeight = startingWidth
+		
+		//TODO: generate a random starting position
+		let startPosition = (startingWidth / 2, 5)
+		
+		//each sketcher should have a go at it
+		//note that at least one sketcher should be twiggy, or someone else who will always draw floors at the start position
+		let sketchers = PlistService.loadValue("Maps", type, "sketchers") as! [[String : AnyObject]]
+		for (i, sketcher) in sketchers.enumerate()
+		{
+			switch(sketcher["type"] as! String)
+			{
+			case "twiggy":
+				//ol' twiggy (rooms and coridoors)
+				//he has a lewd mind
+				//he places rectangles and connects them with lines
+				sketches.append(MapSketcher.twiggy(UInt16(i + 1), width: startingWidth, height: startingHeight, rectangles: sketcher["rectangles"] as! Int, minSize: sketcher["min size"] as! Int, maxSize: sketcher["max size"] as! Int, startPosition: startPosition))
+			case "ultimate lifeform":
+				//the ultimate lifeform (cellular smoothing)
+				//he is obsessed with perfection
+				//he starts with a random group of walls and floors, and smooths them into a nice cave shape
+				sketches.append(MapSketcher.ultimateLifeform(UInt16(i + 1), width: startingWidth, height: startingHeight, startChance: sketcher["start chance"] as! Int, smooths: sketcher["smooths"] as! Int))
+			default: break
+			}
+		}
+		
+		
+		//next up, overlay the sketches
+		var finalSketch = MapSketcher.makeEmptyArray(width: startingWidth, height: startingHeight)
+		for sketch in sketches
+		{
+			for y in 0..<startingHeight
+			{
+				for x in 0..<startingWidth
+				{
+					finalSketch[y][x] = max(finalSketch[y][x], sketch[y][x])
+				}
+			}
+		}
+		
+		//remove all accessable tiles
+		let results = mapExplore(finalSketch, startPosition: startPosition)
+		finalSketch = results.0
+		let accessableTiles = results.1
+		let destPosition = results.2
+		
+		//if there aren't enough accessable tiles, restart the algorithm
+		let desiredAccessable = startingWidth * startingHeight * 3 / 10
+		print("\(accessableTiles) accessable tiles, compared to \(desiredAccessable) desired")
+		if accessableTiles < desiredAccessable
+		{
+			return nil
+		}
+		
+		return (finalSketch, startPosition, destPosition, startingWidth, startingHeight)
+	}
+	
 	private class func mapResize(finalSketch:[[UInt16]], startPosition:(Int, Int), endPosition:(Int, Int), width:Int, height:Int) -> ([[UInt16]], (Int, Int), (Int, Int), Int, Int)
 	{
 		//find the size of the map

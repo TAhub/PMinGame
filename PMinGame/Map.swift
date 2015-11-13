@@ -32,7 +32,7 @@ class Map
 	init()
 	{
 		//initialize the map and party position
-		let results = MapCurator.makeMap("test")
+		let results = MapCurator.makeMap("meadows")
 		tiles = results.0
 		width = results.1
 		partyPosition = results.2

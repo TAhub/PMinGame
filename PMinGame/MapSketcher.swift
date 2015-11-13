@@ -14,11 +14,15 @@ class MapSketcher
 	{
 		var ar = makeEmptyArray(width: width, height: height)
 		
+		let maxMove = min(width, height) / 4
+		
 		var pos = startPosition
 		func drawRectAtPos()
 		{
 			var w = Int(arc4random_uniform(UInt32(maxSize - minSize))) + minSize
 			var h = Int(arc4random_uniform(UInt32(maxSize - minSize))) + minSize
+			var centerX = pos.0
+			var centerY = pos.1
 			
 			//the math is easier if it's an even number, so just make sure it's one
 			if w % 2 == 1
@@ -30,9 +34,18 @@ class MapSketcher
 				h += 1
 			}
 			
-			for y in pos.1-(h/2)...pos.1+(h/2)
+			if w > 2
 			{
-				for x in pos.0-(w/2)...pos.0+(w/2)
+				centerX += Int(arc4random_uniform(UInt32(w - 2))) - w/2 + 1
+			}
+			if h > 2
+			{
+				centerY += Int(arc4random_uniform(UInt32(h - 2))) - h/2 + 1
+			}
+			
+			for y in centerY-(h/2)...centerY+(h/2)
+			{
+				for x in centerX-(w/2)...centerX+(w/2)
 				{
 					if x >= 0 && y >= 0 && x < width && y < height
 					{
@@ -49,13 +62,22 @@ class MapSketcher
 			let oldPos = pos
 			
 			//move to a new position
-			if arc4random_uniform(2) == 1
+			while (true)
 			{
-				pos.0 = Int(arc4random_uniform(UInt32(width)))
-			}
-			else
-			{
-				pos.1 = Int(arc4random_uniform(UInt32(height)))
+				var newPos = pos
+				if arc4random_uniform(2) == 1
+				{
+					newPos.0 = Int(arc4random_uniform(UInt32(width)))
+				}
+				else
+				{
+					newPos.1 = Int(arc4random_uniform(UInt32(height)))
+				}
+				if abs(newPos.0 - pos.0) + abs(newPos.1 - pos.1) < maxMove
+				{
+					pos = newPos
+					break
+				}
 			}
 			
 			//draw a line between your old and new positions
