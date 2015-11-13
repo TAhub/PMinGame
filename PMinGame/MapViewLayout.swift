@@ -12,12 +12,6 @@ let kTileSize = CGSize(width: 60, height: 60)
 
 class MapViewLayout: UICollectionViewLayout
 {
-	//I was following
-	//http://www.brightec.co.uk/ideas/uicollectionview-using-horizontal-and-vertical-scrolling-sticky-rows-and-columns
-	//but it didn't seem to work?
-	//I tried messing with it some but eh
-	//try again later I guess
-	
 	override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool
 	{
 		return false

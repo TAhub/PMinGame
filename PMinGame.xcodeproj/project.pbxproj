@@ -20,6 +20,8 @@
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
 		E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485F95A1BF02494005E6402 /* CreatureView.swift */; };
 		E490037C1BF4315000707443 /* MapViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E490037B1BF4315000707443 /* MapViewLayout.swift */; };
+		E4B8E9801BF569B100CC2C85 /* MapCurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E97F1BF569B100CC2C85 /* MapCurator.swift */; };
+		E4B8E98A1BF59B2200CC2C85 /* MapSketcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B8E9891BF59B2200CC2C85 /* MapSketcher.swift */; };
 		E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */; };
 		E4F3C83D1BE9AD2D00D29811 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */; };
 		E4F3C83F1BE9AD2D00D29811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4F3C83E1BE9AD2D00D29811 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		E485F95A1BF02494005E6402 /* CreatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureView.swift; sourceTree = "<group>"; };
 		E490037B1BF4315000707443 /* MapViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewLayout.swift; sourceTree = "<group>"; };
+		E4B8E97F1BF569B100CC2C85 /* MapCurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCurator.swift; sourceTree = "<group>"; };
+		E4B8E9891BF59B2200CC2C85 /* MapSketcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSketcher.swift; sourceTree = "<group>"; };
 		E4F3C8341BE9AD2D00D29811 /* PMinGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMinGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F3C8371BE9AD2D00D29811 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4F3C83C1BE9AD2D00D29811 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 		E42803791BF1052300174F37 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E4B8E9891BF59B2200CC2C85 /* MapSketcher.swift */,
+				E4B8E97F1BF569B100CC2C85 /* MapCurator.swift */,
 				E45DEDC61BF2C78A00A9F5D3 /* Map.swift */,
 				E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */,
 				E4F3C8501BE9B20300D29811 /* Creature.swift */,
@@ -239,6 +245,8 @@
 				E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */,
 				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,
 				E42803781BF1051200174F37 /* ImageExtensions.swift in Sources */,
+				E4B8E98A1BF59B2200CC2C85 /* MapSketcher.swift in Sources */,
+				E4B8E9801BF569B100CC2C85 /* MapCurator.swift in Sources */,
 				E490037C1BF4315000707443 /* MapViewLayout.swift in Sources */,
 				E411BFAB1BEEEA7C0047CE6A /* Item.swift in Sources */,
 				E427F2FF1BF24A7B005AB626 /* PersonDetailViewController.swift in Sources */,

@@ -10,8 +10,12 @@ import UIKit
 
 let kMaxPartySize:Int = 6
 
-class MainMapViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class MainMapViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MapDelegate {
 	internal var map:Map!
+	
+	//walkers
+	private var partyWalker:UIView!
+	private var encounterWalkers = [UIView]()
 	
 	//TODO: this should have a collection view in it
 	//each cell has a background color and (optionally) a transparent png in front of it
@@ -49,7 +53,14 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.attackPowerDiagnostic()
 		
 		map = Map()
-		mapView.reloadData()
+		map.delegate = self
+		
+		//setup the walkers
+		partyWalker = setUpWalker(map.partyPosition)
+		for position in map.enemyEncounters
+		{
+			encounterWalkers.append(setUpWalker(position))
+		}
 		
 		//sample starting party
 		map.party.append(Creature(job: "barbarian", level: 10, good: true))
@@ -60,6 +71,9 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		
 		//TODO: the reserve should be cleared when you get to a new map
 		//output a message in the camp screen saying those people ran away, whatever
+		
+		self.mapView.layoutIfNeeded()
+		self.moveCameraToPlayer(false)
 	}
 	
 	
@@ -112,6 +126,29 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		}
 	}
 	
+	//MARK: walker code
+	private var animating = false
+	private func setUpWalker(position:(Int, Int))->UIView
+	{
+		let walker = UIView(frame: CGRect(x: kTileSize.width * CGFloat(position.0), y: kTileSize.height * CGFloat(position.1), width: kTileSize.width, height: kTileSize.height))
+		walker.backgroundColor = UIColor.redColor()
+		mapView.addSubview(walker)
+		return walker
+	}
+	
+	private func moveWalker(walker:UIView, to:(Int, Int))
+	{
+		animating = true
+		UIView.animateWithDuration(0.25, animations:
+		{
+			walker.frame.origin.x = CGFloat(to.0) * kTileSize.width
+			walker.frame.origin.y = CGFloat(to.1) * kTileSize.height
+		})
+		{ (success) in
+			self.animating = false
+		}
+	}
+	
 	//MARK: collection view datasource and delegate
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
 	{
@@ -127,4 +164,30 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		cell.backgroundColor = map.tiles[indexPath.section][indexPath.row].color
 		return cell
 	}
+	func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool
+	{
+		//try to move there
+		if !animating
+		{
+			map.moveTo((indexPath.row, indexPath.section))
+		}
+		return false
+	}
+	
+	//MARK: map delegate functions
+	func playerMoved()
+	{
+		//move the player
+		moveWalker(partyWalker, to: map.partyPosition)
+		
+		//and move the "camera"
+		moveCameraToPlayer(true)
+	}
+	private func moveCameraToPlayer(animated:Bool)
+	{
+		let scrollPosition = UICollectionViewScrollPosition.CenteredHorizontally.rawValue | UICollectionViewScrollPosition.CenteredVertically.rawValue
+		mapView.scrollToItemAtIndexPath(NSIndexPath(forItem: map.partyPosition.0, inSection: map.partyPosition.1), atScrollPosition: UICollectionViewScrollPosition.init(rawValue: scrollPosition), animated: animated)
+	}
 }
+
+

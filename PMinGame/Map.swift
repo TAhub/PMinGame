@@ -8,31 +8,44 @@
 
 import Foundation
 
+protocol MapDelegate
+{
+	func playerMoved()
+	
+}
+
 class Map
 {
+	var delegate:MapDelegate!
+	
 	//map variables
 	var width:Int!
 	var tiles:[[Tile]]!
 	
 	//map content variables
-	internal var party = [Creature]()
-	internal var reserve = [Creature]()
+	var party = [Creature]()
+	var reserve = [Creature]()
+	
+	var partyPosition:(Int, Int)
+	var enemyEncounters = [(Int, Int)]()
 	
 	init()
 	{
-		//initialize the map
-		//TODO: get a real map
-		width = 100
-		tiles = [[Tile]]()
-		for y in 0..<100
+		//initialize the map and party position
+		let results = MapCurator.makeMap("test")
+		tiles = results.0
+		width = results.1
+		partyPosition = results.2
+	}
+	
+	func moveTo(to: (Int, Int))
+	{
+		if abs(partyPosition.0 - to.0) + abs(partyPosition.1 - to.1) == 1 && !tiles[to.1][to.0].solid
 		{
-			var row = [Tile]()
-			for x in 0..<100
-			{
-				let wall = y < 3 || y >= 97 || x < 3 || x >= 97
-				row.append(Tile(type: wall ? "wall" : "floor"))
-			}
-			tiles.append(row)
+			//move there
+			partyPosition.0 = to.0
+			partyPosition.1 = to.1
+			delegate.playerMoved()
 		}
 	}
 }
