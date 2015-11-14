@@ -53,7 +53,7 @@ class Battle
 		self.players = players
 		
 		//TODO: load the real encounter
-		enemies.append(Creature(job: "dancing lights", level: 1, good: false))
+		enemies.append(Creature(job: "life thief", level: 1, good: false))
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))
@@ -527,7 +527,7 @@ class Battle
 		var bestLabel = ""
 		for attack in player.attacks
 		{
-			let label = getEffectivenessLabel(attack.type)
+			let label = getEffectivenessLabel(attack.type, ranged: attack.ranged)
 			if label == kBestEffectivenessLabel
 			{
 				return label
@@ -540,11 +540,11 @@ class Battle
 		return bestLabel
 	}
 	
-	private func getEffectivenessLabel(type:String?) -> String
+	private func getEffectivenessLabel(type:String?, ranged:Bool) -> String
 	{
 		if let type = type
 		{
-			let multiplier = enemy.typeMultiplier(type)
+			let multiplier = enemy.typeAndRangeMultiplier(type, attackRanged: ranged)
 			if multiplier > 100
 			{
 				return kBestEffectivenessLabel
@@ -603,13 +603,13 @@ class Battle
 			if num == 0
 			{
 				let attack = player.desperationAttack
-				return attack.label + getEffectivenessLabel(attack.type)
+				return attack.label + getEffectivenessLabel(attack.type, ranged: attack.ranged)
 			}
 		}
 		else if player.attacks.count > num
 		{
 			let attack = player.attacks[num]
-			return attack.label + getEffectivenessLabel(attack.type)
+			return attack.label + getEffectivenessLabel(attack.type, ranged: attack.ranged)
 		}
 		return nil
 	}

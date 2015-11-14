@@ -28,6 +28,8 @@
 		<key>sleep immunity</key> <true/>
 		<key>sneaky</key> <true/>
 		<key>hardy</key> <true/>
+		<key>parrying</key> <true/>
+		<key>shielding</key> <true/>
 		<key>main character</key> <true/>
 		<key>attacks</key>
 		<dict>
@@ -382,7 +384,7 @@
 		<key>clever attack</key> <integer>11</integer>
 		<key>clever defense</key> <integer>10</integer>
 		<!-- misc -->
-		<key>type</key> <string>physical</string>
+		<key>type</key> <string>flame</string>
 		<key>bleed immunity</key> <true/>
 		<key>sleep immunity</key> <true/>
 		<key>attacks</key>
@@ -617,6 +619,31 @@
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
 		<key>description</key> <string>This human is an experienced pathfinder, probably ex-military. Why *he is now a mercenary is unknown.</string>
+	</dict>
+	<key>flameguard</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>55</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>8</integer>
+		<key>brute attack</key> <integer>10</integer>
+		<key>brute defense</key> <integer>13</integer>
+		<key>clever attack</key> <integer>8</integer>
+		<key>clever defense</key> <integer>11</integer>
+		<!-- misc -->
+		<key>type</key> <string>flame</string>
+		<key>burning immunity</key> <true/>
+		<key>shielding</key> <true/>
+		<!-- they have a shitty attack list to make up for having the awesome "shielding" property -->
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>flame punch</string>
+			<key>10</key> <string>subdue</string>
+			<key>20</key> <string>inferno punch</string>
+		</dict>
+		<!-- appearance -->
+		<key>race</key> <string>human</string>
+		<key>description</key> <string>This ex-soldier has a flaming gauntlet and a shield that protects *him from ranged attacks.</string>
 	</dict>
 </dict>
 </plist>

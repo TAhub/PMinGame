@@ -130,7 +130,7 @@
 				<key>start chance</key> <integer>54</integer>
 				<key>smooths</key> <integer>2</integer>
 				<!-- TODO: tileset -->
-				<!-- should look like a darker meadow -->
+				<!-- should look like a forest -->
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>

@@ -577,6 +577,40 @@
 		<key>message</key> <string>*Name fired a jet of intense flames at *OnName!</string>
 		<key>miss message</key> <string>*Name fired a jet of intense flames at *OnName, who hopped away!</string>
 	</dict>
+	<!-- flame punch line -->
+	<key>flame punch</key>
+	<dict>
+		<key>damage</key> <integer>17</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>15</integer>
+		<!-- properties -->
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>10</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name swung a fiery fist *OnName!</string>
+		<key>miss message</key> <string>*Name swung a fiery fist, but *OnName dodged it!</string>
+	</dict>
+	<key>inferno punch</key>
+	<dict>
+		<key>damage</key> <integer>34</integer>
+		<key>accuracy</key> <integer>75</integer>
+		<key>type</key> <string>flame</string>
+		<key>power points</key> <integer>11</integer>
+		<key>upgrade for</key> <string>flame punch</string>
+		<!-- properties -->
+		<key>enemy effects</key>
+		<dict>
+			<key>burning chance</key> <integer>10</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name swung a blazing fist *OnName!</string>
+		<key>miss message</key> <string>*Name swung a blazing fist, but *OnName dodged it!</string>
+	</dict>
 	<!-- misc flame attacks -->
 	<key>brand</key>
 	<dict>

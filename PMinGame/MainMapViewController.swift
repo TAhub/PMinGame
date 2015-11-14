@@ -73,11 +73,11 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		//output a message in the camp screen saying those people ran away, whatever
 		
 		//move the camera
-//		self.mapView.layoutIfNeeded()
-//		self.moveCameraToPlayer(false)
+		self.mapView.layoutIfNeeded()
+		self.moveCameraToPlayer(false)
 		
 		//show the debug minimap
-		loadDebugMinimap()
+//		loadDebugMinimap()
 	}
 	
 	private func loadDebugMinimap()

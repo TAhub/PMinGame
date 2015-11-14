@@ -250,6 +250,18 @@ class Creature
 		return PlistService.loadValue("Jobs", job, "hardy") != nil
 	}
 	
+	var jobParrying:Bool
+	{
+		//this makes you take half damage from melee attacks
+		return PlistService.loadValue("Jobs", job, "parrying") != nil
+	}
+	
+	var jobShielding:Bool
+	{
+		//this makes you take half damage from ranged attacks
+		return PlistService.loadValue("Jobs", job, "shielding") != nil
+	}
+	
 	var jobMain:Bool
 	{
 		//this means you can't be put in reserve
@@ -406,19 +418,25 @@ class Creature
 		default: assertionFailure("ERROR: Invalid step modifier!"); return 100
 		}
 	}
-	internal func typeMultiplier(attackType:String?) -> Int
+	internal func typeAndRangeMultiplier(attackType:String?, attackRanged:Bool) -> Int
 	{
+		var tM:Int
 		if let attackType = attackType
 		{
 			switch(PlistService.loadValue("Types", attackType, type) as! Int)
 			{
-			case -2: return 0
-			case -1: return 50
-			case 0: return 100
-			case 1: return 140
-			case 2: return 180
+			case -2: tM = 0
+			case -1: tM = 50
+			case 0: tM = 100
+			case 1: tM = 140
+			case 2: tM = 180
 			default: assertionFailure("ERROR: Invalid type modifier!"); return 100
 			}
+			if (jobShielding && attackRanged) || (jobParrying && !attackRanged)
+			{
+				return tM / 2
+			}
+			return tM
 		}
 		return 100 //you do full damage always
 	}
@@ -644,7 +662,7 @@ class Creature
 			if let damage = attack.damage
 			{
 				//apply element
-				let typeMultiplier = on.typeMultiplier(attack.type)
+				let typeMultiplier = on.typeAndRangeMultiplier(attack.type, attackRanged: attack.ranged)
 				var finalDamage = damage * typeMultiplier / 100
 				if finalDamage == 0
 				{
