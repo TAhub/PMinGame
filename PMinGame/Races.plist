@@ -81,6 +81,42 @@
 		<!-- TODO: name generator -->
 		<!-- specifically, the human name generator -->
 	</dict>
+	<key>hairless human</key>
+	<dict>
+		<!-- overall data -->
+		<key>gendered</key> <true/>
+		<!-- appearance data -->
+		<key>appearance male</key>
+		<array>
+			<string>human_m</string>
+			<string>human_eye</string>
+			<string>human_iris</string>
+		</array>
+		<key>appearance female</key>
+		<array>
+			<string>human_f</string>
+			<string>human_eye</string>
+			<string>human_iris</string>
+		</array>
+		<key>appearance color</key>
+		<array>
+			<array>
+				<string>FFDDEE</string>
+				<string>CCAABB</string>
+			</array>
+			<string>FFFFFF</string>
+			<array>
+				<string>BB9999</string>
+				<string>99BB99</string>
+				<string>9999BB</string>
+			</array>
+		</array>
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName died!</string>
+		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
+		<!-- TODO: name generator -->
+		<!-- specifically, the human name generator -->
+	</dict>
 	<key>life thief</key>
 	<dict>
 		<!-- overall data -->

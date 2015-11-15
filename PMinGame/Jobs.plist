@@ -28,6 +28,7 @@
 		<key>sleep immunity</key> <true/>
 		<key>sneaky</key> <true/>
 		<key>hardy</key> <true/>
+		<!-- TODO: nobody has the parrying property yet. should probably give it to somebody! -->
 		<key>parrying</key> <true/>
 		<key>shielding</key> <true/>
 		<key>main character</key> <true/>
@@ -37,6 +38,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>template</string>
+		<key>job appearance</key> <string>template</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
 	<!-- player starting jobs -->
@@ -179,7 +181,7 @@
 			<key>24</key> <string>shockwave</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>human</string>
+		<key>race</key> <string>hairless human</string>
 		<key>description</key> <string>This human revels in honorable, and less-than-honorable, combat.</string>
 	</dict>
 	<key>rogue</key>
@@ -234,7 +236,7 @@
 			<key>26</key> <string>vibrating blade</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>human</string>
+		<key>race</key> <string>hairless human</string>
 		<key>description</key> <string>This human is carrying stolen military-issue flamethrower, and seems much too fond of it.</string>
 	</dict>
 	<key>cryoman</key>
@@ -260,7 +262,7 @@
 			<key>26</key> <string>freeze ray</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>human</string>
+		<key>race</key> <string>hairless human</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
 	<!-- machines -->
@@ -564,7 +566,8 @@
 			<key>24</key> <string>vibrating blade</string>
 		</dict>
 		<!-- appearance -->
-		<key>race</key> <string>human</string>
+		<key>race</key> <string>hairless human</string>
+		<key>job appearance</key> <string>knight</string>
 		<key>description</key> <string>This human was once an honorable knight, but now *he has fallen into dishonor.</string>
 	</dict>
 	<key>cold killer</key>
@@ -590,6 +593,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>job appearance</key> <string>killer</string>
 		<key>description</key> <string>This human is a hardened killer and a strong believer in sticking to a theme.</string>
 	</dict>
 	<key>scout</key>
