@@ -153,7 +153,7 @@ class Creature
 		
 		if good
 		{
-			//TODO: generate a name
+			generateName()
 		}
 		
 		getLevelAppropriateAttacks()
@@ -229,6 +229,54 @@ class Creature
 		while colors.count < sprites.count
 		{
 			colors.append(UIColor.whiteColor())
+		}
+	}
+	
+	func generateName()
+	{
+		var nameGen = (PlistService.loadValue("Races", race, "name generator") as! String) as NSString
+		if let gender = gender
+		{
+			nameGen = "\(nameGen) \(gender ? "female" : "male")"
+		}
+		
+		do
+		{
+			let regex = try NSRegularExpression(pattern: "\\([a-zA-Z\\s]+\\)", options: NSRegularExpressionOptions())
+			
+			func getFromGen(gen:NSString)->NSString
+			{
+				let ar = PlistService.loadValueFlat("NameGenerator", gen as String) as! [String]
+				let pick = Int(arc4random_uniform(UInt32(ar.count)))
+				return ar[pick] as NSString
+			}
+			
+			var nameString = getFromGen(nameGen)
+			while (true)
+			{
+				let match = regex.firstMatchInString(nameString as String, options: NSMatchingOptions(), range: NSMakeRange(0, nameString.length))
+				if let match = match
+				{
+					var matchWithoutParens = match.range
+					matchWithoutParens.location += 1
+					matchWithoutParens.length -= 2
+					let matchString = nameString.substringWithRange(matchWithoutParens)
+					let newPiece = getFromGen(matchString)
+					nameString = regex.stringByReplacingMatchesInString(nameString as String, options: NSMatchingOptions(), range: match.range, withTemplate: newPiece as String)
+				}
+				else
+				{
+					//no more matches, so you're done
+					break
+				}
+			}
+			
+			//if you got this far, you have a new name!
+			name = nameString as String
+		}
+		catch _
+		{
+			//you had an exception
 		}
 	}
 	
@@ -937,13 +985,13 @@ class Creature
 		}
 		return label
 	}
+	
 	internal var longLabel:String
 	{
 		let genderLabel = (gender == nil ? "" : (gender! ? "female " : "male "))
 		var label = "level \(level) \(genderLabel)\(job) (\(type))"
 		label += "\n\(health) health   \(accuracy) accuracy   \(dodge) dodge"
 		label += "\n\(bruteAttack) attack   \(bruteDefense) defense   \(cleverAttack) sp. attack   \(cleverDefense) sp. defense"
-		//TODO: add a job description
 		label += "\n\(jobDescription)"
 		label += "\n\nAttacks:\n"
 		for (num, attack) in attacks.enumerate()

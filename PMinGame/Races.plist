@@ -29,7 +29,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
-		<!-- TODO: name generator -->
+		<key>name generator</key> <string>human</string>
 	</dict>
 	<key>human</key>
 	<dict>
@@ -61,6 +61,7 @@
 			<array>
 				<string>FFDDEE</string>
 				<string>CCAABB</string>
+				<string>997788</string>
 			</array>
 			<string>FFFFFF</string>
 			<array>
@@ -78,8 +79,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the human name generator -->
+		<key>name generator</key> <string>human</string>
 	</dict>
 	<key>hairless human</key>
 	<dict>
@@ -103,6 +103,7 @@
 			<array>
 				<string>FFDDEE</string>
 				<string>CCAABB</string>
+				<string>997788</string>
 			</array>
 			<string>FFFFFF</string>
 			<array>
@@ -114,8 +115,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the human name generator -->
+		<key>name generator</key> <string>human</string>
 	</dict>
 	<key>life thief</key>
 	<dict>
@@ -156,8 +156,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName died!</string>
 		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the human name generator -->
+		<key>name generator</key> <string>human</string>
 	</dict>
 	<key>robot</key>
 	<dict>
@@ -214,8 +213,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName faded away!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the human name generator -->
+		<key>name generator</key> <string>human</string>
 	</dict>
 	<key>shape of fire</key>
 	<dict>
@@ -286,8 +284,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName broke apart!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the human name generator -->
+		<key>name generator</key> <string>human</string>
 	</dict>
 </dict>
 </plist>

@@ -44,7 +44,8 @@ class CreatureView:UIView
 					}
 					
 					let sideColor = (creature.good ? kColorGood : kColorBad)
-					addImage(creature.jobSprite, color: UIColor.colorLerp(kColorBlendAmount, color1: creature.jobBlendColor, color2: sideColor))
+					let blendColor = creature.jobBlendColor
+					addImage(creature.jobSprite, color: UIColor.colorLerp(kColorBlendAmount, color1: blendColor, color2: sideColor))
 					
 					if subview != nil
 					{

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   NameGenerator.plist
+   PMinGame
+
+   Created by Theodore Abshire on 11/15/15.
+   Copyright (c) 2015 Theodore Abshire. All rights reserved.
+-->
+<plist version="1.0">
+<dict>
+	<key>template</key>
+	<array>
+	</array>
+	<!-- base name generators -->
+	<key>human male</key>
+	<array>
+		<string>(human male first) (human last)</string>
+		<string>(human male first) (human last)</string>
+		<string>(human male first) (human last)</string>
+		<string>(human male first)</string>
+		<string>(human male first) (human last) (human number)</string>
+		<string>(human male first) (human male first) (human last)</string>
+	</array>
+	<key>human female</key>
+	<array>
+		<string>(human female first) (human last)</string>
+		<string>(human female first) (human last)</string>
+		<string>(human female first) (human last)</string>
+		<string>(human female first)</string>
+		<string>(human female first) (human last) (human number)</string>
+		<string>(human female first) (human female first) (human last)</string>
+	</array>
+	<!-- name generator parts -->
+	<key>human number</key>
+	<array>
+		<string>the second</string>
+		<string>the third</string>
+		<string>the fourth</string>
+		<string>junior</string>
+	</array>
+	<key>human male first</key>
+	<array>
+		<string>Aaron</string>
+		<string>Albert</string>
+		<string>Alexander</string>
+		<string>Ambrose</string>
+		<string>Arnold</string>
+		<string>Benjamin</string>
+		<string>Benedict</string>
+		<string>Bernard</string>
+		<string>Calvin</string>
+		<string>Charles</string>
+		<string>Clement</string>
+		<string>Daniel</string>
+		<string>David</string>
+		<string>Edward</string>
+		<string>Elijah</string>
+		<string>Francis</string>
+		<string>Gabriel</string>
+		<string>Gideon</string>
+		<string>Harold</string>
+		<string>Horace</string>
+		<string>Hugh</string>
+		<string>Isaac</string>
+		<string>Jacob</string>
+		<string>James</string>
+		<string>Joel</string>
+		<string>Joseph</string>
+		<string>Lafayette</string>
+		<string>Lawrence</string>
+		<string>Lewis</string>
+		<string>Lucas</string>
+		<string>Levi</string>
+		<string>Luther</string>
+		<string>Matthew</string>
+		<string>Marcellus</string>
+		<string>Mark</string>
+		<string>Maxwell</string>
+		<string>Meriwether</string>
+		<string>Michael</string>
+		<string>Mordecai</string>
+		<string>Morgan</string>
+		<string>Morris</string>
+		<string>Nathaniel</string>
+		<string>Newton</string>
+		<string>Nicholas</string>
+		<string>Ninian</string>
+		<string>Obediah</string>
+		<string>Octavius</string>
+		<string>Orville</string>
+		<string>Oscar</string>
+		<string>Owen</string>
+		<string>Paul</string>
+		<string>Patrick</string>
+		<string>Peter</string>
+		<string>Ralph</string>
+		<string>Raymond</string>
+		<string>Robert</string>
+		<string>Richard</string>
+		<string>Rudolph</string>
+		<string>Samuel</string>
+		<string>Seth</string>
+		<string>Simon</string>
+		<string>Stephen</string>
+		<string>Thomas</string>
+		<string>Timothy</string>
+		<string>Ulysses</string>
+		<string>Uriah</string>
+		<string>Victor</string>
+		<string>Walter</string>
+		<string>Warren</string>
+		<string>Wilfred</string>
+		<string>Zebulon</string>
+	</array>
+	<key>human female first</key>
+	<array>
+		<string>Abigale</string>
+		<string>Adella</string>
+		<string>Agnes</string>
+		<string>Allie</string>
+		<string>Annie</string>
+		<string>Beatrice</string>
+		<string>Bernice</string>
+		<string>Charlotte</string>
+		<string>Claire</string>
+		<string>Cynthia</string>
+		<string>Dorothy</string>
+		<string>Edith</string>
+		<string>Edna</string>
+		<string>Eleanor</string>
+		<string>Elizabeth</string>
+		<string>Esther</string>
+		<string>Eva</string>
+		<string>Ettie</string>
+		<string>Frances</string>
+		<string>Geneve</string>
+		<string>Gladys</string>
+		<string>Grace</string>
+		<string>Hannah</string>
+		<string>Helen</string>
+		<string>Hortence</string>
+		<string>Isabella</string>
+		<string>Jane</string>
+		<string>Juliet</string>
+		<string>Katherine</string>
+		<string>Laura</string>
+		<string>Lenora</string>
+		<string>Lilly</string>
+		<string>Lucy</string>
+		<string>Lydia</string>
+		<string>Mary</string>
+		<string>Mercy</string>
+		<string>Mildred</string>
+		<string>Natalie</string>
+		<string>Nettie</string>
+		<string>Orpha</string>
+		<string>Phoebe</string>
+		<string>Preshea</string>
+		<string>Rachel</string>
+		<string>Rebecca</string>
+		<string>Samantha</string>
+		<string>Sally</string>
+		<string>Sarah</string>
+		<string>Victoria</string>
+		<string>Vivian</string>
+		<string>Zona</string>
+	</array>
+	<key>human last</key>
+	<array>
+		<string>Angus</string>
+		<string>Ashdown</string>
+		<string>Ayre</string>
+		<string>Barber</string>
+		<string>Beaton</string>
+		<string>Benjamin</string>
+		<string>Bowden</string>
+		<string>Bowler</string>
+		<string>Brewer</string>
+		<string>Butler</string>
+		<string>Cameron</string>
+		<string>Carroll</string>
+		<string>Clark</string>
+		<string>Claxton</string>
+		<string>Connor</string>
+		<string>Conway</string>
+		<string>Cullen</string>
+		<string>Cunningham</string>
+		<string>Curnow</string>
+		<string>Dagon</string>
+		<string>Dalton</string>
+		<string>Dickenson</string>
+		<string>Dyball</string>
+		<string>Farley</string>
+		<string>Fitzgerald</string>
+		<string>Fitzpatrick</string>
+		<string>Forrester</string>
+		<string>Fulton</string>
+		<string>Gallagher</string>
+		<string>Gibbons</string>
+		<string>Glover</string>
+		<string>Goodwin</string>
+		<string>Green</string>
+		<string>Hammond</string>
+		<string>Hanlon</string>
+		<string>Harding</string>
+		<string>Harris</string>
+		<string>Hill</string>
+		<string>Hughes</string>
+		<string>Hyem</string>
+		<string>Johnson</string>
+		<string>Joplin</string>
+		<string>Keane</string>
+		<string>Kelly</string>
+		<string>Kennedy</string>
+		<string>King</string>
+		<string>Kirkland</string>
+		<string>Knight</string>
+		<string>Lee</string>
+		<string>Liddle</string>
+		<string>Lindsay</string>
+		<string>Lord</string>
+		<string>Marshall</string>
+		<string>Mather</string>
+		<string>Mitchell</string>
+		<string>Moore</string>
+		<string>Morrison</string>
+		<string>Nolan</string>
+		<string>North</string>
+		<string>Palmer</string>
+		<string>Pattison</string>
+		<string>Phillips</string>
+		<string>Porter</string>
+		<string>Price</string>
+		<string>Rickard</string>
+		<string>Roberts</string>
+		<string>Sawyer</string>
+		<string>Sharp</string>
+		<string>Smith</string>
+		<string>Smith</string>
+		<string>Sommer</string>
+		<string>Stone</string>
+		<string>Stuart</string>
+		<string>Tanner</string>
+		<string>Taylor</string>
+		<string>Urwin</string>
+		<string>Walker</string>
+		<string>Warner</string>
+		<string>Webb</string>
+		<string>Wells</string>
+		<string>Wilson</string>
+		<string>Wood</string>
+		<string>Wright</string>
+		<string>Young</string>
+	</array>
+</dict>
+</plist>

@@ -412,7 +412,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 				//give that enemy a name now that they're a party member
 				//this is done here and not in the capture code, because otherwise you'd see
 				//the enemy suddenly become named when you capture it
-				//TODO: generate a name for that enemy
+				enemy.generateName()
 				
 				//add it to the new additions list
 				newAdditions.append(enemy)
