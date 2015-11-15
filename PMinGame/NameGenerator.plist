@@ -31,7 +31,90 @@
 		<string>(human female first) (human last) (human number)</string>
 		<string>(human female first) (human female first) (human last)</string>
 	</array>
+	<key>robot</key>
+	<array>
+		<string>(robot block)-(greek)</string>
+		<string>(robot block)-(greek)</string>
+		<string>(robot block)-(robot block)</string>
+		<string>(robot block)-(robot block)</string>
+		<string>(greek) (letter)-(robot block)</string>
+	</array>
 	<!-- name generator parts -->
+	<key>robot block</key>
+	<array>
+		<string>(digit)(digit)(digit)</string>
+		<string>(letter)(digit)(digit)</string>
+		<string>(digit)(digit)(letter)</string>
+	</array>
+	<key>letter</key>
+	<array>
+		<string>A</string>
+		<string>B</string>
+		<string>C</string>
+		<string>D</string>
+		<string>E</string>
+		<string>F</string>
+		<string>G</string>
+		<string>H</string>
+		<string>I</string>
+		<string>J</string>
+		<string>K</string>
+		<string>L</string>
+		<string>M</string>
+		<string>N</string>
+		<string>O</string>
+		<string>P</string>
+		<string>Q</string>
+		<string>R</string>
+		<string>S</string>
+		<string>T</string>
+		<string>U</string>
+		<string>V</string>
+		<string>W</string>
+		<string>X</string>
+		<string>Y</string>
+		<string>Z</string>
+	</array>
+	<key>digit</key>
+	<array>
+		<string>0</string>
+		<string>1</string>
+		<string>2</string>
+		<string>3</string>
+		<string>4</string>
+		<string>5</string>
+		<string>6</string>
+		<string>7</string>
+		<string>8</string>
+		<string>9</string>
+	</array>
+	<key>greek</key>
+	<array>
+		<string>Alpha</string>
+		<string>Beta</string>
+		<string>Gamma</string>
+		<string>Delta</string>
+		<string>Epsilon</string>
+		<string>Zeta</string>
+		<string>Eta</string>
+		<string>Theta</string>
+		<string>Iota</string>
+		<string>Kappa</string>
+		<string>Lambda</string>
+		<string>Mu</string>
+		<string>Nu</string>
+		<string>Xi</string>
+		<string>Omicron</string>
+		<string>Pi</string>
+		<string>Rho</string>
+		<string>Sigma</string>
+		<string>Tau</string>
+		<string>Upsilon</string>
+		<string>Phi</string>
+		<string>Chi</string>
+		<string>Psi</string>
+		<string>Omega</string>
+	</array>
 	<key>human number</key>
 	<array>
 		<string>the second</string>

@@ -166,8 +166,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName was scrapped!</string>
 		<key>unconscious message</key> <string>*OnName powered down!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the robot name generator -->
+		<key>name generator</key> <string>robot</string>
 	</dict>
 	<key>dancing lights</key>
 	<dict>

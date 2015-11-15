@@ -70,6 +70,13 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		map.party.append(Creature(job: "cold killer", level: 1, good: true))
 		map.party.append(Creature(job: "cryoman", level: 1, good: true))
 		
+//		map.party.append(Creature(job: "warbot", level: 1, good: true))
+//		map.party.append(Creature(job: "exterminator", level: 1, good: true))
+//		map.party.append(Creature(job: "AI", level: 1, good: true))
+//		map.party.append(Creature(job: "lightning bot", level: 1, good: true))
+//		map.party.append(Creature(job: "soldier robot", level: 1, good: true))
+//		map.party.append(Creature(job: "AI", level: 1, good: true))
+		
 		//TODO: the reserve should be cleared when you get to a new map
 		//output a message in the camp screen saying those people ran away, whatever
 		
