@@ -39,6 +39,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>template</string>
 		<key>job appearance</key> <string>template</string>
+		<key>blend color</key> <string>FFFFFF</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
 	<!-- player starting jobs -->
@@ -69,6 +70,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>667777</string>
 		<key>description</key> <string>This human has unlocked the secrets of the astral world. Now *he is on a spiritual journey.</string>
 	</dict>
 	<key>soldier</key>
@@ -98,6 +100,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>776666</string>
 		<key>description</key> <string>This human has military training, and access to a military-issue flamethrower. The downside to that is *he must obey military orders, such as to go on this quest.</string>
 	</dict>
 	<key>inventor</key>
@@ -127,6 +130,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>777766</string>
 		<key>description</key> <string>This human has many clever ideas for how to harness the power of lightning itself. An expedition like this is a perfect way to test *his theories.</string>
 	</dict>
 	<key>barbarian</key>
@@ -156,6 +160,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>666677</string>
 		<key>description</key> <string>This human has trained long and hard in the art of combat, up in the frigid northlands. This quest seems to be the perfect way for *him to test *his mettle.</string>
 	</dict>
 	<!-- ne'er-do-wells -->
@@ -182,6 +187,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
+		<key>blend color</key> <string>FFFFFF</string>
 		<key>description</key> <string>This human revels in honorable, and less-than-honorable, combat.</string>
 	</dict>
 	<key>rogue</key>
@@ -209,6 +215,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>887755</string>
 		<key>description</key> <string>This human is a thief and a scallywag. No doubt *he came here to avoid the police, or something like that.</string>
 	</dict>
 	<key>pyromaniac</key>
@@ -237,6 +244,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
+		<key>blend color</key> <string>886666</string>
 		<key>description</key> <string>This human is carrying stolen military-issue flamethrower, and seems much too fond of it.</string>
 	</dict>
 	<key>cryoman</key>
@@ -263,6 +271,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
+		<key>blend color</key> <string>666688</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
 	<!-- machines -->
@@ -292,6 +301,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
+		<key>blend color</key> <string>makeBlendColor</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
 	<key>AI</key>
@@ -319,6 +329,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
+		<key>blend color</key> <string>makeBlendColor</string>
 		<key>description</key> <string>This astral being is an artificial creation of humanity, a testament to the intelligence of the scientists and mystics that designed *him.</string>
 	</dict>
 	<key>lightning bot</key>
@@ -346,6 +357,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
+		<key>blend color</key> <string>makeBlendColor</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
 	<key>soldier robot</key>
@@ -373,6 +385,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
+		<key>blend color</key> <string>makeBlendColor</string>
 		<key>description</key> <string>This robot was designed by the military to replace human soldiers. The fact that *he has gone rogue shows that might not have been a good idea.</string>
 	</dict>
 	<key>exterminator</key>
@@ -400,6 +413,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
+		<key>blend color</key> <string>makeBlendColor</string>
 		<key>description</key> <string>This robot seems to have been designed to wipe out infestations of human-sized creatures. It should not be surprising that *he went rogue.</string>
 	</dict>
 	<!-- undead -->
@@ -428,6 +442,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>honored dead</string>
 		<key>job appearance</key> <string>ghost_halo</string>
+		<key>blend color</key> <string>CCFFFF</string>
 		<key>description</key> <string>This former human seems to have left *his body after death. Normally the dead should be left to lie, but this one doesn't seem to want to cooperate.</string>
 	</dict>
 	<key>life thief</key>
@@ -455,6 +470,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>life thief</string>
+		<key>blend color</key> <string>664444</string>
 		<key>description</key> <string>This former human seems to have a strange affliction, and now *he must feed on others to survive. You know what *he is.</string>
 	</dict>
 	<key>frozen soul</key>
@@ -483,6 +499,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>frozen soul</string>
 		<key>job appearance</key> <string>ghost_halo</string>
+		<key>blend color</key> <string>CCCCFF</string>
 		<key>description</key> <string>This former human must have died somewhere very cold, because *his body is now mostly ice.</string>
 	</dict>
 	<key>shape of fire</key>
@@ -512,6 +529,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>shape of fire</string>
 		<key>job appearance</key> <string>ghost_halo</string>
+		<key>blend color</key> <string>FFCCCC</string>
 		<key>description</key> <string>This astral being takes the shape of a human, but never was one. Despite that, *he seems to be reasonably intelligent, if alien in demeanor.</string>
 	</dict>
 	<key>dancing lights</key>
@@ -539,6 +557,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>dancing lights</string>
 		<key>job appearance</key> <string>ghost_halo</string>
+		<key>blend color</key> <string>FFFFCC</string>
 		<key>description</key> <string>This astral being loves to trick humans. Hopefully *he will not play any tricks on you, now that *he has joined your side.</string>
 	</dict>
 	<!-- mercenaries -->
@@ -568,6 +587,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
 		<key>job appearance</key> <string>knight</string>
+		<key>blend color</key> <string>9999A9</string>
 		<key>description</key> <string>This human was once an honorable knight, but now *he has fallen into dishonor.</string>
 	</dict>
 	<key>cold killer</key>
@@ -594,6 +614,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
 		<key>job appearance</key> <string>killer</string>
+		<key>blend color</key> <string>AAAAEE</string>
 		<key>description</key> <string>This human is a hardened killer and a strong believer in sticking to a theme.</string>
 	</dict>
 	<key>scout</key>
@@ -622,6 +643,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>CCCC99</string>
 		<key>description</key> <string>This human is an experienced pathfinder, probably ex-military. Why *he is now a mercenary is unknown.</string>
 	</dict>
 	<key>flameguard</key>
@@ -647,6 +669,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>blend color</key> <string>BB9999</string>
 		<key>description</key> <string>This ex-soldier has a flaming gauntlet and a shield that protects *him from ranged attacks.</string>
 	</dict>
 </dict>

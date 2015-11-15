@@ -9,6 +9,26 @@
 import UIKit
 import CoreImage
 
+extension UIColor
+{
+	public class func colorLerp(per:CGFloat, color1:UIColor, color2:UIColor)->UIColor
+	{
+		assert(per >= 0 && per <= 1)
+		var r1:CGFloat = 0
+		var r2:CGFloat = 0
+		var g1:CGFloat = 0
+		var g2:CGFloat = 0
+		var b1:CGFloat = 0
+		var b2:CGFloat = 0
+		var a1:CGFloat = 0
+		var a2:CGFloat = 0
+		color1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+		color2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+		let neg = 1 - per
+		return UIColor(red: r1*per + r2*neg, green: g1*per + g2*neg, blue: b1*per + b2*neg, alpha: a1*per + a2*neg)
+	}
+}
+
 extension UIImage
 {
 	private func solidColorImage(color:UIColor) -> UIImage

@@ -268,6 +268,11 @@ class Creature
 		return PlistService.loadValue("Jobs", job, "main character") != nil
 	}
 	
+	var jobBlendColor:UIColor
+	{
+		return PlistService.loadColor(PlistService.loadValue("Jobs", job, "blend color") as! String)
+	}
+	
 	var jobSprite:String
 	{
 		var baseName:String

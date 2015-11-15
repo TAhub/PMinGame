@@ -63,14 +63,12 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		}
 		
 		//sample starting party
-		map.party.append(Creature(job: "sour knight", level: 10, good: true))
-		map.party.append(Creature(job: "rogue", level: 10, good: true))
-		map.party.append(Creature(job: "fencer", level: 10, good: true))
-		map.party.append(Creature(job: "cold killer", level: 10, good: true))
-		map.party.append(Creature(job: "cryoman", level: 10, good: true))
-		map.party.append(Creature(job: "pyromaniac", level: 10, good: true))
-		map.party.append(Creature(job: "scout", level: 10, good: true))
-		map.party.append(Creature(job: "flameguard", level: 10, good: true))
+		map.party.append(Creature(job: "inventor", level: 1, good: true))
+		map.party.append(Creature(job: "sour knight", level: 1, good: true))
+		map.party.append(Creature(job: "rogue", level: 1, good: true))
+		map.party.append(Creature(job: "fencer", level: 1, good: true))
+		map.party.append(Creature(job: "cold killer", level: 1, good: true))
+		map.party.append(Creature(job: "cryoman", level: 1, good: true))
 		
 		//TODO: the reserve should be cleared when you get to a new map
 		//output a message in the camp screen saying those people ran away, whatever
