@@ -66,7 +66,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		map.party.append(Creature(job: "inventor", level: 1, good: true))
 		map.party.append(Creature(job: "sour knight", level: 1, good: true))
 		map.party.append(Creature(job: "rogue", level: 1, good: true))
-		map.party.append(Creature(job: "fencer", level: 1, good: true))
+		map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
 		map.party.append(Creature(job: "cold killer", level: 1, good: true))
 		map.party.append(Creature(job: "cryoman", level: 1, good: true))
 		
