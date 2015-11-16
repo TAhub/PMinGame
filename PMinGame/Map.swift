@@ -14,6 +14,8 @@ protocol MapDelegate
 	
 }
 
+let kMaxFloor = 3
+
 class Map
 {
 	var delegate:MapDelegate!
@@ -21,6 +23,10 @@ class Map
 	//map variables
 	var width:Int!
 	var tiles:[[Tile]]!
+	let floor:Int
+	let mapType:String
+	let encounterType:String
+	let difficulty:Int
 	
 	//map content variables
 	var party = [Creature]()
@@ -29,10 +35,60 @@ class Map
 	var partyPosition:(Int, Int)
 	var enemyEncounters = [(Int, Int)]()
 	
-	init()
+	init(from:Map?)
 	{
+		if let from = from
+		{
+			if from.floor < kMaxFloor && arc4random_uniform(100) < 45
+			{
+				//this is a continuation of the previous map type
+				floor = from.floor + 1
+				encounterType = from.encounterType
+				mapType = from.mapType
+			}
+			else
+			{
+				//this is a new map entirely
+				floor = 1
+				
+				func pickFromFlat(flat:[String : AnyObject]) -> String
+				{
+					var possibilities = [String]()
+					for (name, _) in flat
+					{
+						if name != "template"
+						{
+							possibilities.append(name)
+						}
+					}
+					let pick = Int(arc4random_uniform(UInt32(possibilities.count)))
+					return possibilities[pick]
+				}
+				
+				//pick an encounter type
+				let encountersFlat = PlistService.loadEntries("EncounterGenerator") as! [String : AnyObject]
+				encounterType = pickFromFlat(encountersFlat)
+				
+				//pick a map generator
+				let typesFlat = PlistService.loadEntries("Maps") as! [String : AnyObject]
+				mapType = pickFromFlat(typesFlat)
+			}
+
+			//and, no matter if it's a continuation or not, this should be one difficulty higher
+			difficulty = from.difficulty + 1
+		}
+		else
+		{
+			//the starting map type
+			floor = 1
+			mapType = "meadows"
+			encounterType = "bandits"
+			difficulty = 1
+		}
+		
+		
 		//initialize the map and party position
-		let results = MapCurator.makeMap("meadows")
+		let results = MapCurator.makeMap(mapType)
 		tiles = results.0
 		width = results.1
 		partyPosition = results.2

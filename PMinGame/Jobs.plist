@@ -221,8 +221,8 @@
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
 		<key>weapon appearance</key> <string>weapon_knife</string>
-		<key>blend color</key> <string>887755</string>
-		<key>description</key> <string>This human is a thief and a scallywag. No doubt *he came here to avoid the police, or something like that.</string>
+		<key>blend color</key> <string>AA6644</string>
+		<key>description</key> <string>This human is a thief and a scallywag. No doubt *he came here to avoid the police, or something like that. It is true that *he is good at avoiding fights.</string>
 	</dict>
 	<key>pyromaniac</key>
 	<dict>
@@ -309,7 +309,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
 		<key>blend color</key> <string>makeBlendColor</string>
-		<key>description</key> <string>TODO: write a description</string>
+		<key>description</key> <string>TODO: write a description. Be sure to mention that it is hardy!</string>
 	</dict>
 	<key>AI</key>
 	<dict>
@@ -479,7 +479,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>life thief</string>
 		<key>blend color</key> <string>664444</string>
-		<key>description</key> <string>This former human seems to have a strange affliction, and now *he must feed on others to survive. You know what *he is.</string>
+		<key>description</key> <string>This former human seems to have a strange affliction, and now *he must feed on others to survive. You know what *he is... *he is good at running away.</string>
 	</dict>
 	<key>frozen soul</key>
 	<dict>
@@ -508,7 +508,7 @@
 		<key>race</key> <string>frozen soul</string>
 		<key>job appearance</key> <string>ghost_halo</string>
 		<key>blend color</key> <string>CCCCFF</string>
-		<key>description</key> <string>This former human must have died somewhere very cold, because *his body is now mostly ice.</string>
+		<key>description</key> <string>This former human must have died somewhere very cold, because *his body is now mostly ice. Now, *he is very determined to avoid dying to the environment again.</string>
 	</dict>
 	<key>shape of fire</key>
 	<dict>
@@ -597,7 +597,7 @@
 		<key>job appearance</key> <string>knight</string>
 		<key>weapon appearance</key> <string>weapon_sword</string>
 		<key>blend color</key> <string>9999A9</string>
-		<key>description</key> <string>This human was once an honorable knight, but now *he has fallen into dishonor.</string>
+		<key>description</key> <string>This human was once an honorable knight, but now *he has fallen into dishonor. But at least *he got to keep *his neat knight armor, which is hardened against environmental damage!</string>
 	</dict>
 	<key>cold killer</key>
 	<dict>
@@ -655,7 +655,7 @@
 		<key>race</key> <string>human</string>
 		<key>weapon appearance</key> <string>weapon_musket</string>
 		<key>blend color</key> <string>CCCC99</string>
-		<key>description</key> <string>This human is an experienced pathfinder, probably ex-military. Why *he is now a mercenary is unknown.</string>
+		<key>description</key> <string>This human is an experienced pathfinder, probably ex-military. Why *he is now a mercenary is unknown, but *he retains *his skill at escaping fights.</string>
 	</dict>
 	<key>flameguard</key>
 	<dict>

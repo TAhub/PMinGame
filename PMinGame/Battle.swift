@@ -48,12 +48,26 @@ class Battle
 	var delegate:BattleDelegate!
 	
 	
-	init(players:[Creature])
+	init(players:[Creature], encounterType:String, difficulty:Int)
 	{
 		self.players = players
 		
-		//TODO: load the real encounter
-		enemies.append(Creature(job: "life thief", level: 1, good: false))
+		//load an encounter
+		let numberEnemies = 1
+		let encounterFlat = PlistService.loadValueFlat("EncounterGenerator", encounterType) as! [[String : AnyObject]]
+		for _ in 0..<numberEnemies
+		{
+			var possibilities = [String]()
+			for enemy in encounterFlat
+			{
+				if difficulty >= enemy["minimum level"] as! Int
+				{
+					possibilities.append(enemy["job"] as! String)
+				}
+			}
+			let pick = Int(arc4random_uniform(UInt32(possibilities.count)))
+			enemies.append(Creature(job: possibilities[pick], level: difficulty, good: false))
+		}
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))

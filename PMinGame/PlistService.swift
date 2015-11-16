@@ -35,7 +35,7 @@ class PlistService
 		return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: 1)
 	}
 	
-	private class func loadEntries(category:String) -> AnyObject?
+	class func loadEntries(category:String) -> AnyObject?
 	{
 		let p = NSBundle.mainBundle().pathForResource(category, ofType: "plist")
 		return NSDictionary(contentsOfFile: p!)

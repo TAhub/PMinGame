@@ -183,10 +183,10 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private var endOfBattleHook:((Bool, [Creature]?, Int)->())!
 	private var endingHook:(()->())?
-	func setup(party:[Creature], endOfBattleHook:(Bool, [Creature]?, Int)->())
+	func setup(party:[Creature], encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->())
 	{
 		//initialize the battle
-		battle = Battle(players: party)
+		battle = Battle(players: party, encounterType: encounterType, difficulty: difficulty)
 		battle.delegate = self
 		
 		self.endOfBattleHook = endOfBattleHook

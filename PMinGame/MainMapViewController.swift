@@ -52,7 +52,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
 //		PlistService.attackPowerDiagnostic()
 		
-		map = Map()
+		map = Map(from: nil)
 		map.delegate = self
 		
 		//setup the walkers
@@ -100,7 +100,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	{
 		let newView = UIView(frame: view.bounds)
 		view = newView
-		map = Map()
+		map = Map(from: nil)
 		loadDebugMinimap()
 	}
 	
@@ -122,7 +122,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	{
 		if let bvc = segue.destinationViewController as? BattleViewController
 		{
-			bvc.setup(map.party)
+			bvc.setup(map.party, encounterType: map.encounterType, difficulty: map.difficulty)
 			{ (lost, newAdditions, moneyChange) in
 				
 				if lost
