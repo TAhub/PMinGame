@@ -386,6 +386,11 @@ class BattleViewController: UIViewController, BattleDelegate {
 		}
 	}
 	
+	func shake()
+	{
+		textParser.shake(1)
+	}
+	
 	func victory()
 	{
 		endingHook = victoryHook

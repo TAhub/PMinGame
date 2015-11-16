@@ -18,6 +18,7 @@ protocol BattleDelegate
 	func defeat()
 	func flee()
 	func switchAnim(onPlayer:Bool)
+	func shake()
 }
 
 enum Order
@@ -170,9 +171,13 @@ class Battle
 		return false
 	}
 	
-	private func messageHandler(message:String)
+	private func messageHandler(message:String, shake:Bool = false)
 	{
 		self.delegate.runMessage(message)
+		if shake
+		{
+			self.delegate.shake()
+		}
 	}
 	
 	private func useAttack(user:Creature, usee:Creature, used:Attack)

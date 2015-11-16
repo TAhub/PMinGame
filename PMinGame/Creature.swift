@@ -507,11 +507,11 @@ class Creature
 		return message.stringByReplacingOccurrencesOfString("*Name", withString: name).stringByReplacingOccurrencesOfString("*his", withString: his).stringByReplacingOccurrencesOfString("*him", withString: him).stringByReplacingOccurrencesOfString("*himself", withString: himself).stringByReplacingOccurrencesOfString("*he", withString: he)
 		
 	}
-	private func runMessage(messageHandler:(String)->(), on:Creature)(message:String)
+	private func runMessage(messageHandler:(String, Bool)->(), on:Creature)(message:String, shake:Bool)
 	{ 
 		let onName = on.name
 		let finalMessage = formatMessagePersonal(message).stringByReplacingOccurrencesOfString("*OnName", withString: onName)
-		messageHandler(finalMessage)
+		messageHandler(finalMessage, shake)
 	}
 	
 	private func shouldShakeOffStatus(baseChance baseChance:Int, chanceRamp:Int)(status:Int)->Bool
@@ -538,7 +538,7 @@ class Creature
 		return arc4random_uniform(100) <= 90
 	}
 	
-	internal func statusEffectTurn(messageHandler:(String)->())->Bool
+	internal func statusEffectTurn(messageHandler:(String, Bool)->())->Bool
 	{
 		let runM = runMessage(messageHandler, on: self)
 		
@@ -548,28 +548,28 @@ class Creature
 		{
 			if health < 2 || bleedFunction(status: bleed!)
 			{
-				runM(message: "*Name stopped bleeding!")
+				runM(message: "*Name stopped bleeding!", shake: false)
 				bleed = nil
 			}
 			else
 			{
 				bleed! += 1
 				let bleedDamage = takeBleedDamage()
-				runM(message: "*Name bled out \(bleedDamage) health!")
+				runM(message: "*Name bled out \(bleedDamage) health!", shake: false)
 			}
 		}
 		if burning != nil
 		{
 			if health < 2 || bleedFunction(status: burning!)
 			{
-				runM(message: "*Name put *himself out!")
+				runM(message: "*Name put *himself out!", shake: false)
 				burning = nil
 			}
 			else
 			{
 				burning! += 1
 				let burnDamage = takeBleedDamage()
-				runM(message: "*Name burned away \(burnDamage) health!")
+				runM(message: "*Name burned away \(burnDamage) health!", shake: false)
 			}
 		}
 		
@@ -579,7 +579,7 @@ class Creature
 		{
 			if paralFunction(status: paralysis!)
 			{
-				runM(message: "*Name shook off paralysis!")
+				runM(message: "*Name shook off paralysis!", shake: false)
 				paralysis = nil
 			}
 			else
@@ -587,7 +587,7 @@ class Creature
 				paralysis! += 1
 				if shouldSkipTurnFromParalysis()
 				{
-					runM(message: "*Name was still paralyzed!")
+					runM(message: "*Name was still paralyzed!", shake: false)
 					return false
 				}
 			}
@@ -596,7 +596,7 @@ class Creature
 		{
 			if paralFunction(status: freeze!)
 			{
-				runM(message: "*Name stopped being frozen!")
+				runM(message: "*Name stopped being frozen!", shake: false)
 				freeze = nil
 			}
 			else
@@ -604,7 +604,7 @@ class Creature
 				freeze! += 1
 				if shouldSkipTurnFromParalysis()
 				{
-					runM(message: "*Name was still frozen!")
+					runM(message: "*Name was still frozen!", shake: false)
 					return false
 				}
 			}
@@ -613,13 +613,13 @@ class Creature
 		{
 			if shouldShakeOffStatus(baseChance: 25, chanceRamp: 20)(status: sleep!)
 			{
-				runM(message: "*Name woke up!")
+				runM(message: "*Name woke up!", shake: false)
 				sleep = nil
 			}
 			else
 			{
 				sleep! += 1
-				runM(message: "*Name was still asleep!")
+				runM(message: "*Name was still asleep!", shake: false)
 				return false
 			}
 		}
@@ -627,10 +627,10 @@ class Creature
 		return true
 	}
 	
-	internal func useItem(item:Item, messageHandler:(String)->())
+	internal func useItem(item:Item, messageHandler:(String, Bool)->())
 	{
 		//play the message
-		runMessage(messageHandler, on: self)(message: item.message)
+		runMessage(messageHandler, on: self)(message: item.message, shake: false)
 		
 		//remove the item count
 		item.number -= 1
@@ -659,7 +659,7 @@ class Creature
 		}
 	}
 	
-	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String)->())
+	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String, Bool)->())
 	{
 		let runM = runMessage(messageHandler, on: on)
 		
@@ -713,7 +713,7 @@ class Creature
 		
 		if hit
 		{
-			runM(message: attack.message)
+			runM(message: attack.message, shake: false)
 			
 			var applyEffects:Bool = true
 			
@@ -725,7 +725,7 @@ class Creature
 				if finalDamage == 0
 				{
 					//TODO: output a "the attack was ineffective!" message
-					runM(message: "The attack was ineffective!")
+					runM(message: "The attack was ineffective!", shake: false)
 					applyEffects = false
 				}
 				else
@@ -738,7 +738,7 @@ class Creature
 						//TODO: this message should shake
 						//to get some shaking, maybe use
 						//https://github.com/haaakon/SingleLineShakeAnimation
-						runM(message: "WHAM!")
+						runM(message: "WHAM!", shake: true)
 					}
 					
 					//apply stats
@@ -769,18 +769,18 @@ class Creature
 					on.health -= finalDamage
 					
 					//TODO: if typeMultiplier > 150 or if it's a crit, this message should shake
-					runM(message: "*OnName took \(finalDamage) damage!")
+					runM(message: "*OnName took \(finalDamage) damage!", shake: false)
 					
 					if on.sleep != nil
 					{
-						runM(message: "*OnName woke up!")
+						runM(message: "*OnName woke up!", shake: false)
 						on.sleep = nil
 					}
 					
 					if attack.leech
 					{
 						health += finalDamage
-						runM(message: "*Name is healed for \(finalDamage) health!")
+						runM(message: "*Name is healed for \(finalDamage) health!", shake: false)
 					}
 				}
 			}
@@ -799,11 +799,11 @@ class Creature
 			{
 				if on.good
 				{
-					runM(message: PlistService.loadValue("Races", on.race, "unconscious message") as! String)
+					runM(message: PlistService.loadValue("Races", on.race, "unconscious message") as! String, shake: false)
 				}
 				else
 				{
-					runM(message: PlistService.loadValue("Races", on.race, "death message") as! String)
+					runM(message: PlistService.loadValue("Races", on.race, "death message") as! String, shake: false)
 				}
 				
 				//restore status too, so if you are revived you don't come back with status effects
@@ -813,25 +813,25 @@ class Creature
 		else
 		{
 			//output a miss message
-			runM(message: attack.missMessage)
+			runM(message: attack.missMessage, shake: false)
 		}
 	}
 	
-	private func stepEffectMessage(descriptor:String, oldStep:Int, newStep:Int, messageHandler:(String)->())
+	private func stepEffectMessage(descriptor:String, oldStep:Int, newStep:Int, messageHandler:(String, Bool)->())
 	{
 		let runM = runMessage(messageHandler, on: self)
 		
 		if oldStep > newStep
 		{
-			runM(message: "*Name's \(descriptor) lowered!")
+			runM(message: "*Name's \(descriptor) lowered!", shake: false)
 		}
 		else if oldStep < newStep
 		{
-			runM(message: "*Name's \(descriptor) rose!")
+			runM(message: "*Name's \(descriptor) rose!", shake: false)
 		}
 	}
 	
-	private func applyEffectsTo(attackEffect:AttackEffect?, crit:Bool, messageHandler:(String)->())
+	private func applyEffectsTo(attackEffect:AttackEffect?, crit:Bool, messageHandler:(String, Bool)->())
 	{
 		let runM = runMessage(messageHandler, on: self)
 		
@@ -862,52 +862,52 @@ class Creature
 				
 				if bleedImmunity && attackEffect.bleedChance != nil
 				{
-					runM(message: "*Name was immune to bleeding!")
+					runM(message: "*Name was immune to bleeding!", shake: false)
 				}
 				else if statusEffectCheck(attackEffect.bleedChance, crit: crit)
 				{
 					bleed = 0
-					runM(message: "*Name was given a bleeding wound!")
+					runM(message: "*Name was given a bleeding wound!", shake: false)
 				}
 				
 				if paralysisImmunity && attackEffect.paralysisChance != nil
 				{
-					runM(message: "*Name was immune to being paralyized!")
+					runM(message: "*Name was immune to being paralyized!", shake: false)
 				}
 				else if statusEffectCheck(attackEffect.paralysisChance, crit: crit)
 				{
 					paralysis = 0
-					runM(message: "*Name was paralyzed!")
+					runM(message: "*Name was paralyzed!", shake: false)
 				}
 				
 				if burningImmunity && attackEffect.burningChance != nil
 				{
-					runM(message: "*Name was immune to being set on fire!")
+					runM(message: "*Name was immune to being set on fire!", shake: false)
 				}
 				else if statusEffectCheck(attackEffect.burningChance, crit: crit)
 				{
 					burning = 0
-					runM(message: "*Name was set on fire!")
+					runM(message: "*Name was set on fire!", shake: false)
 				}
 				
 				if freezeImmunity && attackEffect.freezeChance != nil
 				{
-					runM(message: "*Name was immune to being frozen!")
+					runM(message: "*Name was immune to being frozen!", shake: false)
 				}
 				else if statusEffectCheck(attackEffect.freezeChance, crit: crit)
 				{
 					freeze = 0
-					runM(message: "*Name was frozen!")
+					runM(message: "*Name was frozen!", shake: false)
 				}
 				
 				if sleepImmunity && attackEffect.sleepChance != nil
 				{
-					runM(message: "*Name was immune to being put to sleep!")
+					runM(message: "*Name was immune to being put to sleep!", shake: false)
 				}
 				else if statusEffectCheck(attackEffect.sleepChance, crit: crit)
 				{
 					sleep = 0
-					runM(message: "*Name fell asleep!")
+					runM(message: "*Name fell asleep!", shake: false)
 				}
 				
 				let oldAS = attackStep
@@ -929,7 +929,7 @@ class Creature
 				if attackEffect.cleanse && (freeze != nil || burning != nil || bleed != nil || paralysis != nil || attackStep < 0 || defenseStep < 0 || accuracyStep < 0 || dodgeStep < 0)
 				{
 					//only display the message if there's something to be cleansed
-					runM(message: "*Name was cleansed of *his ailments!")
+					runM(message: "*Name was cleansed of *his ailments!", shake: false)
 					
 					freeze = nil
 					burning = nil
