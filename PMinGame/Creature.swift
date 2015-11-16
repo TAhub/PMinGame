@@ -321,6 +321,11 @@ class Creature
 		return PlistService.loadColor(PlistService.loadValue("Jobs", job, "blend color") as! String)
 	}
 	
+	var weaponSprite:String?
+	{
+		return PlistService.loadValue("Jobs", job, "weapon appearance") as? String
+	}
+	
 	var jobSprite:String
 	{
 		var baseName:String

@@ -43,9 +43,16 @@ class CreatureView:UIView
 						addImage(creature.sprites[i], color: creature.colors[i])
 					}
 					
+					//add the job's armor (or top layer, anyway)
 					let sideColor = (creature.good ? kColorGood : kColorBad)
 					let blendColor = creature.jobBlendColor
 					addImage(creature.jobSprite, color: UIColor.colorLerp(kColorBlendAmount, color1: blendColor, color2: sideColor))
+					
+					//add the job's weapon
+					if let weaponSprite = creature.weaponSprite
+					{
+						addImage(weaponSprite, color: blendColor)
+					}
 					
 					if subview != nil
 					{

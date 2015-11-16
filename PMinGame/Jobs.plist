@@ -39,6 +39,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>template</string>
 		<key>job appearance</key> <string>template</string>
+		<key>weapon appearance</key> <string>template</string>
 		<key>blend color</key> <string>FFFFFF</string>
 		<key>description</key> <string>TODO: write a description</string>
 	</dict>
@@ -100,6 +101,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>weapon appearance</key> <string>weapon_musket</string>
 		<key>blend color</key> <string>776666</string>
 		<key>description</key> <string>This human has military training, and access to a military-issue flamethrower. The downside to that is *he must obey military orders, such as to go on this quest.</string>
 	</dict>
@@ -130,6 +132,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>weapon appearance</key> <string>weapon_invention</string>
 		<key>blend color</key> <string>777766</string>
 		<key>description</key> <string>This human has many clever ideas for how to harness the power of lightning itself. An expedition like this is a perfect way to test *his theories.</string>
 	</dict>
@@ -160,6 +163,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>weapon appearance</key> <string>weapon_sword</string>
 		<key>blend color</key> <string>666677</string>
 		<key>description</key> <string>This human has trained long and hard in the art of combat, up in the frigid northlands. This quest seems to be the perfect way for *him to test *his mettle.</string>
 	</dict>
@@ -187,6 +191,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
+		<key>weapon appearance</key> <string>weapon_sword</string>
 		<key>blend color</key> <string>FFFFFF</string>
 		<key>description</key> <string>This human revels in honorable, and less-than-honorable, combat.</string>
 	</dict>
@@ -215,6 +220,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>weapon appearance</key> <string>weapon_knife</string>
 		<key>blend color</key> <string>887755</string>
 		<key>description</key> <string>This human is a thief and a scallywag. No doubt *he came here to avoid the police, or something like that.</string>
 	</dict>
@@ -244,6 +250,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
+		<key>weapon appearance</key> <string>weapon_flamethrower</string>
 		<key>blend color</key> <string>886666</string>
 		<key>description</key> <string>This human is carrying stolen military-issue flamethrower, and seems much too fond of it.</string>
 	</dict>
@@ -385,6 +392,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>robot</string>
+		<key>weapon appearance</key> <string>weapon_musket</string>
 		<key>blend color</key> <string>makeBlendColor</string>
 		<key>description</key> <string>This robot was designed by the military to replace human soldiers. The fact that *he has gone rogue shows that might not have been a good idea.</string>
 	</dict>
@@ -587,6 +595,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
 		<key>job appearance</key> <string>knight</string>
+		<key>weapon appearance</key> <string>weapon_sword</string>
 		<key>blend color</key> <string>9999A9</string>
 		<key>description</key> <string>This human was once an honorable knight, but now *he has fallen into dishonor.</string>
 	</dict>
@@ -614,6 +623,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
 		<key>job appearance</key> <string>killer</string>
+		<key>weapon appearance</key> <string>weapon_knife</string>
 		<key>blend color</key> <string>AAAAEE</string>
 		<key>description</key> <string>This human is a hardened killer and a strong believer in sticking to a theme.</string>
 	</dict>
@@ -643,6 +653,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>weapon appearance</key> <string>weapon_musket</string>
 		<key>blend color</key> <string>CCCC99</string>
 		<key>description</key> <string>This human is an experienced pathfinder, probably ex-military. Why *he is now a mercenary is unknown.</string>
 	</dict>
@@ -669,6 +680,7 @@
 		</dict>
 		<!-- appearance -->
 		<key>race</key> <string>human</string>
+		<key>weapon appearance</key> <string>weapon_shield</string>
 		<key>blend color</key> <string>BB9999</string>
 		<key>description</key> <string>This ex-soldier has a flaming gauntlet and a shield that protects *him from ranged attacks.</string>
 	</dict>
