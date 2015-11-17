@@ -10,11 +10,14 @@ import Foundation
 
 protocol MapDelegate
 {
-	func playerMoved()
-	
+	func playerMoved(completion:()->())
+	func startBattle()
+	func partyDamageEffect()
 }
 
 let kMaxFloor = 3
+let kEncounterChance:UInt32 = 13
+let kPartyDamagePercent = 5
 
 class Map
 {
@@ -94,6 +97,38 @@ class Map
 		partyPosition = results.2
 	}
 	
+	private func partyDamage()
+	{
+		//damage every non-hardy party member
+		//including people in the reserve
+		func partyDamageOne(person:Creature) -> Bool
+		{
+			if !person.jobHardy && person.health > 1
+			{
+				let damage = min(person.health - 1, person.maxHealth * kPartyDamagePercent / 100)
+				person.health -= damage
+				return damage > 0
+			}
+			return false
+		}
+		
+		var hurtAnybody = false
+		for p in party
+		{
+			hurtAnybody = partyDamageOne(p) || hurtAnybody
+		}
+		for r in reserve
+		{
+			hurtAnybody = partyDamageOne(r) || hurtAnybody
+		}
+		
+		//only play this effect if people are actually being hurt
+		if hurtAnybody
+		{
+			delegate.partyDamageEffect()
+		}
+	}
+	
 	func moveTo(to: (Int, Int))
 	{
 		if abs(partyPosition.0 - to.0) + abs(partyPosition.1 - to.1) == 1 && !tiles[to.1][to.0].solid
@@ -102,6 +137,17 @@ class Map
 			partyPosition.0 = to.0
 			partyPosition.1 = to.1
 			delegate.playerMoved()
+			{
+				//move effects
+				if self.tiles[to.1][to.0].damaging
+				{
+					self.partyDamage()
+				}
+				if self.tiles[to.1][to.0].encounters && arc4random_uniform(100) < kEncounterChance
+				{
+					self.delegate.startBattle()
+				}
+			}
 		}
 	}
 }

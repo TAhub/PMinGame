@@ -10,25 +10,11 @@ import UIKit
 
 extension UIView
 {
-	func shake(delay:UInt32)
+	func shake()
 	{
 		let shakeMag:CGFloat = 8
 		let shakeLength = 0.1
-		if delay == 0
-		{
-			shakePart(shakeMag, length: shakeLength)
-		}
-		else
-		{
-			dispatch_async(dispatch_queue_create("waitQueue", nil))
-			{
-				sleep(delay)
-				dispatch_async(dispatch_get_main_queue())
-				{
-					self.shakePart(shakeMag, length: shakeLength)
-				}
-			}
-		}
+		shakePart(shakeMag, length: shakeLength)
 	}
 	
 	private func shakePart(mag:CGFloat, length:Double)

@@ -104,20 +104,6 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		loadDebugMinimap()
 	}
 	
-	@IBAction func tempBattleButton()
-	{
-		startBattle()
-	}
-	
-	private func startBattle()
-	{
-		performSegueWithIdentifier("startBattle", sender: self)
-		
-		//TODO: this should have a cool custom transition
-		//some kind of dissolve maybe
-		//think a final fantasy battle start
-	}
-	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 	{
 		if let bvc = segue.destinationViewController as? BattleViewController
@@ -163,7 +149,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		return walker
 	}
 	
-	private func moveWalker(walker:UIView, to:(Int, Int))
+	private func moveWalker(walker:UIView, to:(Int, Int), completion:()->())
 	{
 		animating = true
 		UIView.animateWithDuration(0.25, animations:
@@ -173,6 +159,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		})
 		{ (success) in
 			self.animating = false
+			completion()
 		}
 	}
 	
@@ -201,19 +188,47 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		return false
 	}
 	
-	//MARK: map delegate functions
-	func playerMoved()
-	{
-		//move the player
-		moveWalker(partyWalker, to: map.partyPosition)
-		
-		//and move the "camera"
-		moveCameraToPlayer(true)
-	}
 	private func moveCameraToPlayer(animated:Bool)
 	{
 		let scrollPosition = UICollectionViewScrollPosition.CenteredHorizontally.rawValue | UICollectionViewScrollPosition.CenteredVertically.rawValue
 		mapView.scrollToItemAtIndexPath(NSIndexPath(forItem: map.partyPosition.0, inSection: map.partyPosition.1), atScrollPosition: UICollectionViewScrollPosition.init(rawValue: scrollPosition), animated: animated)
+	}
+	
+	//MARK: map delegate functions
+	func playerMoved(completion:()->())
+	{
+		//move the player
+		moveWalker(partyWalker, to: map.partyPosition, completion: completion)
+		
+		//and move the "camera"
+		moveCameraToPlayer(true)
+	}
+	func startBattle()
+	{
+		performSegueWithIdentifier("startBattle", sender: self)
+		
+		//TODO: this should have a cool custom transition
+		//some kind of dissolve maybe
+		//think a final fantasy battle start
+	}
+	func partyDamageEffect()
+	{
+		//play a graphical effect to warn the player that they took damage
+		
+		//make the view
+		let effectView = UIView(frame: view.frame)
+		effectView.backgroundColor = UIColor.redColor()
+		effectView.alpha = 0
+		view.addSubview(effectView)
+		
+		//and animate it
+		UIView.animateWithDuration(0.1, animations: { effectView.alpha = 1 })
+		{ (success) in
+			UIView.animateWithDuration(0.1, animations: { effectView.alpha = 0 })
+			{ (success) in
+				effectView.removeFromSuperview()
+			}
+		}
 	}
 }
 

@@ -22,6 +22,10 @@ struct Tile
 	{
 		return PlistService.loadValue("Tiles", type, "damaging") != nil
 	}
+	var encounters:Bool
+	{
+		return PlistService.loadValue("Tiles", type, "encounters") != nil
+	}
 	var image:String?
 	{
 		return PlistService.loadValue("Tiles", type, "image") as? String

@@ -110,7 +110,15 @@ class BattleViewController: UIViewController, BattleDelegate {
 		
 		while messages.count > 0
 		{
-			let message = messages.removeAtIndex(0)
+			var message = messages.removeAtIndex(0)
+			if message.characters.first == "%"
+			{
+				message = message.substringFromIndex(message.startIndex.advancedBy(1))
+				dispatch_async(dispatch_get_main_queue())
+				{
+					self.shake()
+				}
+			}
 			for i in message.startIndex..<message.endIndex
 			{
 				let subMessage = message.substringToIndex(i)
@@ -376,9 +384,9 @@ class BattleViewController: UIViewController, BattleDelegate {
 		}
 	}
 	
-	func runMessage(message:String)
+	func runMessage(message:String, shake:Bool)
 	{
-		messages.append(message)
+		messages.append("\(shake ? "%" : "")\(message)")
 		if !writingMessages
 		{
 			writingMessages = true
@@ -388,13 +396,13 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	func shake()
 	{
-		textParser.shake(1)
+		textParser.shake()
 	}
 	
 	func victory()
 	{
 		endingHook = victoryHook
-		runMessage("The party was victorious!")
+		runMessage("The party was victorious!", shake: false)
 		
 		//TODO: run a message based on the money won/lost
 		
@@ -430,7 +438,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	func defeat()
 	{
 		endingHook = defeatHook
-		runMessage("The party was annihilated!")
+		runMessage("The party was annihilated!", shake: true)
 		printFillerLine()
 	}
 	
@@ -443,12 +451,12 @@ class BattleViewController: UIViewController, BattleDelegate {
 	func flee()
 	{
 		endingHook = fleeHook
-		runMessage("The battle is over!")
+		runMessage("The battle is over!", shake: false)
 		for enemy in battle.enemies
 		{
 			if enemy.good
 			{
-				runMessage("\(enemy.name) was left behind!")
+				runMessage("\(enemy.name) was left behind!", shake: false)
 			}
 		}
 		printFillerLine()
@@ -462,6 +470,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private func printFillerLine()
 	{
-		runMessage("                                       ")
+		runMessage("                                       ", shake: false)
 	}
 }

@@ -13,12 +13,11 @@ let kBestEffectivenessLabel = " 👍"
 
 protocol BattleDelegate
 {
-	func runMessage(message:String)
+	func runMessage(message:String, shake: Bool)
 	func victory()
 	func defeat()
 	func flee()
 	func switchAnim(onPlayer:Bool)
-	func shake()
 }
 
 enum Order
@@ -173,11 +172,7 @@ class Battle
 	
 	private func messageHandler(message:String, shake:Bool = false)
 	{
-		self.delegate.runMessage(message)
-		if shake
-		{
-			self.delegate.shake()
-		}
+		self.delegate.runMessage(message, shake: shake)
 	}
 	
 	private func useAttack(user:Creature, usee:Creature, used:Attack)
@@ -201,15 +196,15 @@ class Battle
 		}
 		if from.dead
 		{
-			delegate.runMessage("\(to.name) switched in!")
+			delegate.runMessage("\(to.name) switched in!", shake: false)
 		}
 		else if from.injured && !to.injured
 		{
-			delegate.runMessage("\(to.name) leapt in to protect \(from.name)!")
+			delegate.runMessage("\(to.name) leapt in to protect \(from.name)!", shake: false)
 		}
 		else
 		{
-			delegate.runMessage("\(to.name) switched in for \(from.name)!")
+			delegate.runMessage("\(to.name) switched in for \(from.name)!", shake: false)
 		}
 		delegate.switchAnim(from.good)
 	}

@@ -30,7 +30,7 @@ class Creature
 	private var level:Int
 	
 	//MARK: variable stats
-	private var health:Int = 0
+	var health:Int = 0
 	{
 		didSet
 		{
@@ -101,7 +101,7 @@ class Creature
 	{
 		return PlistService.loadValue("Jobs", job, "clever defense") as! Int + level - 1
 	}
-	private var maxHealth:Int
+	var maxHealth:Int
 	{
 		let baseHealth = PlistService.loadValue("Jobs", job, "health") as! Int
 		let healthMult = 100 + kHealthLevelBonus * min(level - 1, 30)
@@ -294,7 +294,6 @@ class Creature
 	var jobHardy:Bool
 	{
 		//this makes you immune to environmental damage
-		//TODO: don't forget to implement this!
 		return PlistService.loadValue("Jobs", job, "hardy") != nil
 	}
 	
@@ -724,7 +723,6 @@ class Creature
 				var finalDamage = damage * typeMultiplier / 100
 				if finalDamage == 0
 				{
-					//TODO: output a "the attack was ineffective!" message
 					runM(message: "The attack was ineffective!", shake: false)
 					applyEffects = false
 				}
@@ -735,9 +733,6 @@ class Creature
 					{
 						finalDamage = finalDamage + finalDamage / 2
 						
-						//TODO: this message should shake
-						//to get some shaking, maybe use
-						//https://github.com/haaakon/SingleLineShakeAnimation
 						runM(message: "WHAM!", shake: true)
 					}
 					
@@ -768,8 +763,8 @@ class Creature
 					//do the damage
 					on.health -= finalDamage
 					
-					//TODO: if typeMultiplier > 150 or if it's a crit, this message should shake
-					runM(message: "*OnName took \(finalDamage) damage!", shake: false)
+					//the damage message shakes if it's a crit, or has a high multiplier
+					runM(message: "*OnName took \(finalDamage) damage!", shake: typeMultiplier >= 150 || crit)
 					
 					if on.sleep != nil
 					{

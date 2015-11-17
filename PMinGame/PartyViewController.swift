@@ -36,7 +36,7 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		let cell = table.dequeueReusableCellWithIdentifier("personCell")!
 		let person = personAtIndexPath(indexPath)
 		
-		cell.textLabel!.text = person.name
+		cell.textLabel!.text = "\(person.name)  \(person.health)/\(person.maxHealth)"
 		
 		return cell
 	}
