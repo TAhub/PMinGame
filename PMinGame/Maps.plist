@@ -32,7 +32,7 @@
 	<!-- real maps -->
 	<key>shrine</key>
 	<dict>
-		<key>start size</key> <integer>45</integer>
+		<key>start size</key> <integer>23</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
@@ -44,7 +44,7 @@
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
-				<key>rectangles</key> <integer>10</integer>
+				<key>rectangles</key> <integer>6</integer>
 				<key>min size</key> <integer>4</integer>
 				<key>max size</key> <integer>8</integer>
 				<!-- TODO: tileset -->
@@ -52,7 +52,7 @@
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
-				<key>rectangles</key> <integer>15</integer>
+				<key>rectangles</key> <integer>8</integer>
 				<key>min size</key> <integer>2</integer>
 				<key>max size</key> <integer>4</integer>
 				<!-- TODO: tileset -->
@@ -62,7 +62,7 @@
 	</dict>
 	<key>ruins</key>
 	<dict>
-		<key>start size</key> <integer>50</integer>
+		<key>start size</key> <integer>25</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
@@ -74,7 +74,7 @@
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
-				<key>rectangles</key> <integer>25</integer>
+				<key>rectangles</key> <integer>13</integer>
 				<key>min size</key> <integer>2</integer>
 				<key>max size</key> <integer>4</integer>
 				<!-- TODO: tileset -->
@@ -82,7 +82,7 @@
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
-				<key>rectangles</key> <integer>4</integer>
+				<key>rectangles</key> <integer>3</integer>
 				<key>min size</key> <integer>6</integer>
 				<key>max size</key> <integer>8</integer>
 				<!-- TODO: tileset -->
@@ -92,12 +92,12 @@
 	</dict>
 	<key>caves</key>
 	<dict>
-		<key>start size</key> <integer>60</integer>
+		<key>start size</key> <integer>30</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
 				<key>type</key> <string>twiggy</string>
-				<key>rectangles</key> <integer>4</integer>
+				<key>rectangles</key> <integer>3</integer>
 				<key>min size</key> <integer>3</integer>
 				<key>max size</key> <integer>4</integer>
 				<!-- TODO: tileset -->
@@ -114,7 +114,7 @@
 	</dict>
 	<key>meadows</key>
 	<dict>
-		<key>start size</key> <integer>55</integer>
+		<key>start size</key> <integer>27</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>

@@ -17,11 +17,6 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	private var partyWalker:UIView!
 	private var encounterWalkers = [UIView]()
 	
-	//TODO: this should have a collection view in it
-	//each cell has a background color and (optionally) a transparent png in front of it
-	//for example, a tile of red brick would have a dark red background color and a generic "brick pattern" image in front of it
-	//this should be a nice way to handle the map, and using background colors will make the images popping in as they load not be too bad
-	//obviously you then draw the map objects over this, etc
 	@IBOutlet weak var mapView: UICollectionView!
 	{
 		didSet
@@ -52,15 +47,9 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
 //		PlistService.attackPowerDiagnostic()
 		
-		map = Map(from: nil)
-		map.delegate = self
 		
-		//setup the walkers
-		partyWalker = setUpWalker(map.partyPosition)
-		for position in map.enemyEncounters
-		{
-			encounterWalkers.append(setUpWalker(position))
-		}
+		map = Map(from: nil)
+		loadMap()
 		
 		//sample starting party
 		map.party.append(Creature(job: "inventor", level: 10, good: true))
@@ -70,22 +59,31 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		map.party.append(Creature(job: "cold killer", level: 1, good: true))
 		map.party.append(Creature(job: "cryoman", level: 1, good: true))
 		
-//		map.party.append(Creature(job: "warbot", level: 1, good: true))
-//		map.party.append(Creature(job: "exterminator", level: 1, good: true))
-//		map.party.append(Creature(job: "AI", level: 1, good: true))
-//		map.party.append(Creature(job: "lightning bot", level: 1, good: true))
-//		map.party.append(Creature(job: "soldier robot", level: 1, good: true))
-//		map.party.append(Creature(job: "AI", level: 1, good: true))
 		
-		//TODO: the reserve should be cleared when you get to a new map
-		//output a message in the camp screen saying those people ran away, whatever
+		
+		
+		//show the debug minimap
+//		loadDebugMinimap()
+	}
+	
+	private func loadMap()
+	{
+		//set yourself as delegate
+		map.delegate = self
+		
+		//setup the walkers
+		partyWalker = setUpWalker(map.partyPosition)
+		for position in map.enemyEncounters
+		{
+			encounterWalkers.append(setUpWalker(position))
+		}
 		
 		//move the camera
 		self.mapView.layoutIfNeeded()
 		self.moveCameraToPlayer(false)
 		
-		//show the debug minimap
-//		loadDebugMinimap()
+		//reload the appearance
+		mapView.reloadData()
 	}
 	
 	private func loadDebugMinimap()
@@ -115,6 +113,16 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				person.experience += mapEXP
 			}
 			
+			
+			//unload the walkers
+			partyWalker.removeFromSuperview()
+			for walker in encounterWalkers
+			{
+				walker.removeFromSuperview()
+			}
+			encounterWalkers = [UIView]()
+			
+			
 			//prepare the segue
 			cvc.party = map.party
 			let nextMap = Map(from: map)
@@ -124,6 +132,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			{ (nextMap) in
 				//generate the next map
 				self.map = nextMap
+				self.loadMap()
 			}
 		}
 		else if let bvc = segue.destinationViewController as? BattleViewController
