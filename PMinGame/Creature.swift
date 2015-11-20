@@ -14,6 +14,11 @@ private let kStatBonus = 5
 private let kHealthLevelBonus = 5
 private let kBleedDamage = 5
 
+func expToNextLevel(level:Int) -> Int
+{
+	return 30 * (10 + level)
+}
+
 class Creature
 {
 	//MARK: identity
@@ -22,12 +27,13 @@ class Creature
 	internal var good:Bool
 	private var gender:Bool?
 	
-	//MARK* appearance stats
+	//MARK: appearance stats
 	internal var sprites = [String]()
 	internal var colors = [UIColor]()
 	
-	//MARK: permanent stats
+	//MARK: level-up stats
 	private var level:Int
+	var experience:Int
 	
 	//MARK: variable stats
 	var health:Int = 0
@@ -143,6 +149,16 @@ class Creature
 		name = job.capitalizedString
 		self.level = level
 		self.good = good
+		
+		//set exp
+		if good
+		{
+			experience = 0
+		}
+		else
+		{
+			experience = expToNextLevel(level) / 11
+		}
 		
 		//pick a gender and an appearance
 		if PlistService.loadValue("Races", race, "gendered") != nil

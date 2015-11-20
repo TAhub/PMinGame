@@ -13,6 +13,7 @@ protocol MapDelegate
 	func playerMoved(completion:()->())
 	func startBattle()
 	func partyDamageEffect()
+	func nextMap()
 }
 
 let kMaxFloor = 3
@@ -30,6 +31,7 @@ class Map
 	let mapType:String
 	let encounterType:String
 	let difficulty:Int
+	let name:String = "MAP NAME HERE"
 	
 	//map content variables
 	var party = [Creature]()
@@ -139,13 +141,20 @@ class Map
 			delegate.playerMoved()
 			{
 				//move effects
-				if self.tiles[to.1][to.0].damaging
+				if self.tiles[to.1][to.0].gate
 				{
-					self.partyDamage()
+					self.delegate.nextMap()
 				}
-				if self.tiles[to.1][to.0].encounters && arc4random_uniform(100) < kEncounterChance
+				else
 				{
-					self.delegate.startBattle()
+					if self.tiles[to.1][to.0].damaging
+					{
+						self.partyDamage()
+					}
+					if self.tiles[to.1][to.0].encounters && arc4random_uniform(100) < kEncounterChance
+					{
+						self.delegate.startBattle()
+					}
 				}
 			}
 		}

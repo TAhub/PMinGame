@@ -106,7 +106,27 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 	{
-		if let bvc = segue.destinationViewController as? BattleViewController
+		if let cvc = segue.destinationViewController as? CampViewController
+		{
+			//award EXP for finishing the map
+			let mapEXP = expToNextLevel(map.difficulty) * 7 / 10
+			for person in map.party
+			{
+				person.experience += mapEXP
+			}
+			
+			//prepare the segue
+			cvc.party = map.party
+			let nextMap = Map(from: map)
+			cvc.nextMap = nextMap
+			nextMap.party = map.party
+			cvc.completionCallback =
+			{ (nextMap) in
+				//generate the next map
+				self.map = nextMap
+			}
+		}
+		else if let bvc = segue.destinationViewController as? BattleViewController
 		{
 			bvc.setup(map.party, encounterType: map.encounterType, difficulty: map.difficulty)
 			{ (lost, newAdditions, moneyChange) in
@@ -229,6 +249,11 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				effectView.removeFromSuperview()
 			}
 		}
+	}
+	func nextMap()
+	{
+		//go to the next map
+		performSegueWithIdentifier("toCamp", sender: self)
 	}
 }
 

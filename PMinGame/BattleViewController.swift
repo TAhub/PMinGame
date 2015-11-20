@@ -416,6 +416,27 @@ class BattleViewController: UIViewController, BattleDelegate {
 		//TODO: get the actual net money change here (you should know it earlier, since you'll run a message for it)
 		let moneyChange:Int = 0
 		
+		//award EXP
+		var battleEXP = 0
+		for enemy in battle.enemies
+		{
+			if !enemy.good
+			{
+				//you don't get experience for captured enemies
+				//so please don't capture everyone
+				battleEXP += enemy.experience
+			}
+		}
+		
+		//award EXP based on turns spent in battle
+		let netTurns = battle.playerTurnDist.reduce(0) { $0 + $1 }
+		for (i, player) in battle.players.enumerate()
+		{
+			let exp = netTurns * battle.playerTurnDist[i] / netTurns
+			player.experience += exp
+		}
+		
+		
 		//any enemies who are good should join the party reserve
 		var newAdditions = [Creature]()
 		for enemy in battle.enemies

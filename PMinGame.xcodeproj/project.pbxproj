@@ -20,6 +20,7 @@
 		E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC61BF2C78A00A9F5D3 /* Map.swift */; };
 		E45DEDC91BF2C7B100A9F5D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */; };
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
+		E46FC2F21BFEBE2D00F5DB90 /* CampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */; };
 		E47497831BF9C24600C75466 /* EncounterGenerator.plist in Resources */ = {isa = PBXBuildFile; fileRef = E47497821BF9C24600C75466 /* EncounterGenerator.plist */; };
 		E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485F95A1BF02494005E6402 /* CreatureView.swift */; };
 		E490037C1BF4315000707443 /* MapViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E490037B1BF4315000707443 /* MapViewLayout.swift */; };
@@ -53,6 +54,7 @@
 		E45DEDC61BF2C78A00A9F5D3 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampViewController.swift; sourceTree = "<group>"; };
 		E47497821BF9C24600C75466 /* EncounterGenerator.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EncounterGenerator.plist; sourceTree = "<group>"; };
 		E485F95A1BF02494005E6402 /* CreatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureView.swift; sourceTree = "<group>"; };
 		E490037B1BF4315000707443 /* MapViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewLayout.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		E428037B1BF1052C00174F37 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */,
 				E427F2FC1BF246C0005AB626 /* PartyViewController.swift */,
 				E427F2FE1BF24A7B005AB626 /* PersonDetailViewController.swift */,
 				E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */,
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46FC2F21BFEBE2D00F5DB90 /* CampViewController.swift in Sources */,
 				E427F2FD1BF246C0005AB626 /* PartyViewController.swift in Sources */,
 				E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */,
 				E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */,

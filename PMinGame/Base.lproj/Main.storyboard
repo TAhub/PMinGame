@@ -7,6 +7,40 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Camp View Controller-->
+        <scene sceneID="YMq-4B-H5Q">
+            <objects>
+                <viewController id="Y32-9c-aZ3" customClass="CampViewController" customModule="PMinGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nrc-SM-5u3"/>
+                        <viewControllerLayoutGuide type="bottom" id="MVp-8J-gfb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u0C-UI-2mi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ge-PL-oeI">
+                                <rect key="frame" x="267" y="483" width="66" height="30"/>
+                                <state key="normal" title="Next Map"/>
+                                <connections>
+                                    <action selector="nextMapAction" destination="Y32-9c-aZ3" eventType="touchUpInside" id="77R-AF-GbL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Ge-PL-oeI" firstAttribute="width" secondItem="u0C-UI-2mi" secondAttribute="width" id="POP-Hg-7f1"/>
+                            <constraint firstItem="MVp-8J-gfb" firstAttribute="top" secondItem="3Ge-PL-oeI" secondAttribute="bottom" constant="8" symbolic="YES" id="fUx-RV-SBC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nextMapButton" destination="3Ge-PL-oeI" id="Zkx-R0-fXl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U0z-YN-8ut" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="-471"/>
+        </scene>
         <!--Map-->
         <scene sceneID="gzk-Ls-jJ3">
             <objects>
@@ -48,6 +82,7 @@
                     <connections>
                         <outlet property="mapView" destination="kZs-hE-qzz" id="10k-NB-VV2"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="startBattle" id="iUV-4e-B81"/>
+                        <segue destination="Y32-9c-aZ3" kind="show" identifier="toCamp" id="oPo-sQ-Hhu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9oD-e1-W81" userLabel="First Responder" sceneMemberID="firstResponder"/>

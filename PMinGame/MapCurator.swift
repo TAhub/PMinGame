@@ -59,11 +59,17 @@ class MapCurator
 				//each sketcher has an associated floor and wall type (ie brick wall + tile floor, cave wall + dirt floor, w/e)
 				//also associated versions of traps, etc
 				
-				tileC.append(Tile(type: finalSketch[y][x] == 0 ? "wall" : "floor"))
+				if x == destPosition.0 && y == destPosition.1
+				{
+					tileC.append(Tile(type: "gate"))
+				}
+				else
+				{
+					tileC.append(Tile(type: finalSketch[y][x] == 0 ? "wall" : "floor"))
+				}
 			}
 			tiles.append(tileC)
 		}
-		
 		
 		//finally, return the map
 		return (tiles, newWidth, startPosition)

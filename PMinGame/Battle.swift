@@ -38,6 +38,8 @@ class Battle
 	internal weak var player:Creature!
 	internal weak var enemy:Creature!
 	
+	internal var playerTurnDist = [Int]()
+	
 	//turn order data
 	private let defaultTurnOrder:Bool
 	private var turnOrder:Bool?
@@ -78,6 +80,7 @@ class Battle
 		for player in players
 		{
 			player.resetStatus()
+			playerTurnDist.append(0)
 		}
 		//it's probably not strictly necessary to reset the status of the enemies, but I'm doing it just in case
 		//I add the ability to fight the same group of enemies again
@@ -363,6 +366,18 @@ class Battle
 	{
 		if playerOrder != nil && turnOrder == nil
 		{
+			//award a turn of player turn distribution
+			for (i, pl) in players.enumerate()
+			{
+				if pl === player
+				{
+					playerTurnDist[i] += 1
+					break
+				}
+			}
+			
+			
+			//give the enemy AI an order
 			if enemy.dead
 			{
 				//switch to another enemy if you can
