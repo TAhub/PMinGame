@@ -237,6 +237,9 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			}
 			
 			bvc.setup(map.party, encounterType: map.encounterType, difficulty: map.difficulty, endOfBattleHook: battleCallback)
+			{
+				self.map.saveParty()
+			}
 		}
 	}
 	

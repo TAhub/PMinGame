@@ -191,18 +191,9 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private var endOfBattleHook:((Bool, [Creature]?, Int)->())!
 	private var endingHook:(()->())?
-	func setup(party:[Creature], encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->())
+	func setup(party:[Creature], encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->(), savePlayersCallback:()->())
 	{
-		if saveState == kSaveStateBattle
-		{
-			//load a battle
-			//TODO: load a battle
-		}
-		else
-		{
-			//initialize the battle
-			battle = Battle(players: party, encounterType: encounterType, difficulty: difficulty)
-		}
+		battle = Battle(players: party, encounterType: encounterType, difficulty: difficulty, savePlayersCallback: savePlayersCallback)
 		
 		saveState = kSaveStateBattle
 		

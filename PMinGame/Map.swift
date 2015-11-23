@@ -42,7 +42,7 @@ class Map
 	
 	init(from:Map?)
 	{
-		if saveState == kSaveStateMap
+		if saveState != kSaveStateNone
 		{
 			//load the map from a save
 			load()

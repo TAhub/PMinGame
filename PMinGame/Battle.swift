@@ -48,67 +48,126 @@ class Battle
 	
 	//external variables
 	var delegate:BattleDelegate!
+	var savePlayersCallback:(()->())!
 	
+	private func save()
+	{
+		let d = NSUserDefaults.standardUserDefaults()
+		d.setBool(defaultTurnOrder, forKey: "battleTurnOrder")
+		d.setInteger(enemies.count, forKey: "battleEnemies")
+		for (i, en) in enemies.enumerate()
+		{
+			d.setObject(en.creatureString, forKey: "battleEnemy\(i)")
+		}
+		savePlayersCallback()
+		for (i, en) in enemies.enumerate()
+		{
+			if en === enemy
+			{
+				d.setInteger(i, forKey: "battleActiveEnemy")
+				break
+			}
+		}
+		for (i, pl) in players.enumerate()
+		{
+			if pl === player
+			{
+				d.setInteger(i, forKey: "battleActivePlayer")
+				break
+			}
+		}
+		for i in 0..<players.count
+		{
+			d.setInteger(playerTurnDist[i], forKey: "battlePlayerTurnDist\(i)")
+		}
+	}
 	
-	init(players:[Creature], encounterType:String, difficulty:Int)
+	init(players:[Creature], encounterType:String, difficulty:Int, savePlayersCallback: ()->())
 	{
 		self.players = players
-		
-		//load an encounter
-		let numberEnemies = 1
-		let encounterFlat = PlistService.loadValueFlat("EncounterGenerator", encounterType) as! [[String : AnyObject]]
-		for _ in 0..<numberEnemies
-		{
-			var possibilities = [String]()
-			for enemy in encounterFlat
-			{
-				if difficulty >= enemy["minimum level"] as! Int
-				{
-					possibilities.append(enemy["job"] as! String)
-				}
-			}
-			let pick = Int(arc4random_uniform(UInt32(possibilities.count)))
-			enemies.append(Creature(job: possibilities[pick], level: difficulty, good: false))
-		}
+		self.savePlayersCallback = savePlayersCallback
 		
 		//TODO: get the real inventory
 		playerItems.append(Item(type: "poultice"))
 		playerItems.append(Item(type: "miracle cure"))
 		playerItems.append(Item(type: "smelling salts"))
 		
-		//reset everyone's status
-		for player in players
+		if saveState == kSaveStateBattle
 		{
-			player.resetStatus()
-			playerTurnDist.append(0)
-		}
-		//it's probably not strictly necessary to reset the status of the enemies, but I'm doing it just in case
-		//I add the ability to fight the same group of enemies again
-		for enemy in enemies
-		{
-			enemy.resetStatus()
-		}
-		
-		//get the first player and the first enemy
-		for cr in enemies
-		{
-			if !cr.dead
+			//load battle
+			let d = NSUserDefaults.standardUserDefaults()
+			defaultTurnOrder = d.boolForKey("battleTurnOrder")
+			let battleEnemies = d.integerForKey("battleEnemies")
+			for i in 0..<battleEnemies
 			{
-				enemy = cr
-				break
+				enemies.append(Creature(string: d.stringForKey("battleEnemy\(i)")!))
+			}
+			
+			let enI = d.integerForKey("battleActiveEnemy")
+			let plI = d.integerForKey("battleActivePlayer")
+			enemy = enemies[enI]
+			player = players[plI]
+			
+			for i in 0..<players.count
+			{
+				playerTurnDist.append(d.integerForKey("battlePlayerTurnDist\(i)"))
 			}
 		}
-		for cr in players
+		else
 		{
-			if !cr.dead
+			//load an encounter
+			let numberEnemies = 1
+			let encounterFlat = PlistService.loadValueFlat("EncounterGenerator", encounterType) as! [[String : AnyObject]]
+			for _ in 0..<numberEnemies
 			{
-				player = cr
-				break
+				var possibilities = [String]()
+				for enemy in encounterFlat
+				{
+					if difficulty >= enemy["minimum level"] as! Int
+					{
+						possibilities.append(enemy["job"] as! String)
+					}
+				}
+				let pick = Int(arc4random_uniform(UInt32(possibilities.count)))
+				enemies.append(Creature(job: possibilities[pick], level: difficulty, good: false))
 			}
+			
+			//reset everyone's status
+			for player in players
+			{
+				player.resetStatus()
+				playerTurnDist.append(0)
+			}
+			//it's probably not strictly necessary to reset the status of the enemies, but I'm doing it just in case
+			//I add the ability to fight the same group of enemies again
+			for enemy in enemies
+			{
+				enemy.resetStatus()
+			}
+			
+			//get the first player and the first enemy
+			for cr in enemies
+			{
+				if !cr.dead
+				{
+					enemy = cr
+					break
+				}
+			}
+			for cr in players
+			{
+				if !cr.dead
+				{
+					player = cr
+					break
+				}
+			}
+			
+			//get the default turn order
+			defaultTurnOrder = arc4random_uniform(100) < 50
+			
+			save()
 		}
-		
-		//get the default turn order
-		defaultTurnOrder = arc4random_uniform(100) < 50
 	}
 	
 	//MARK: operation
@@ -517,6 +576,9 @@ class Battle
 				delegate.victory()
 				return
 			}
+			
+			//save the battle
+			save()
 		}
 	}
 	
