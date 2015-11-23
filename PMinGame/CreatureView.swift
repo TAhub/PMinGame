@@ -40,7 +40,7 @@ class CreatureView:UIView
 					
 					for i in 0..<creature.sprites.count
 					{
-						addImage(creature.sprites[i], color: creature.colors[i])
+						addImage(creature.sprites[i], color: PlistService.loadColor(creature.colors[i]))
 					}
 					
 					//add the job's armor (or top layer, anyway)

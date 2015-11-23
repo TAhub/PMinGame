@@ -30,7 +30,7 @@ class Creature
 	
 	//MARK: appearance stats
 	internal var sprites = [String]()
-	internal var colors = [UIColor]()
+	internal var colors = [String]()
 	
 	//MARK: level-up stats
 	internal var level:Int
@@ -146,7 +146,8 @@ class Creature
 	//MARK: saving and loading via creature strings
 	var creatureString:String
 	{
-		var s = "\(name)%\(job)%\(level)%\(good)%"
+		//save basic values
+		var s = "\(job)%\(level)%\(good)%\(name)%\(experience)%\(health)%"
 		if let gender = gender
 		{
 			s += gender ? "female%" : "male%"
@@ -156,6 +157,37 @@ class Creature
 			s += "neither%"
 		}
 		
+		//save attacks
+		s += "\(attacks.count)%"
+		for attack in attacks
+		{
+			s += "\(attack.attack)%\(attack.powerPoints)%"
+		}
+		
+		//save appearance
+		s += "\(sprites.count)%"
+		for i in 0..<sprites.count
+		{
+			s += "\(sprites[i])%\(colors[i])%"
+		}
+		
+		//save status
+		s += "\(attackStep)%\(defenseStep)%\(accuracyStep)%\(dodgeStep)%"
+		
+		func saveStatusString(status:Int?)->String
+		{
+			if let status = status
+			{
+				return "\(status)%"
+			}
+			return "no%"
+		}
+		s += saveStatusString(freeze)
+		s += saveStatusString(sleep)
+		s += saveStatusString(paralysis)
+		s += saveStatusString(bleed)
+		s += saveStatusString(burning)
+		
 		return s
 	}
 	
@@ -163,13 +195,53 @@ class Creature
 	convenience init(string:String)
 	{
 		let broken = string.characters.split{ $0 == "%" }.map(String.init)
+		var i = 0
 		
 		print(broken)
 		
-		self.init(job: broken[1], level: Int(broken[2])!, good: broken[3] == "true")
-		name = broken[0]
-		gender = broken[4] == "neither" ? nil : (broken[4] == "male" ? false : true)
+		self.init(job: broken[i++], level: Int(broken[i++])!, good: broken[i++] == "true")
+		name = broken[i++]
+		experience = Int(broken[i++])!
+		health = Int(broken[i++])!
+		switch broken[i++]
+		{
+		case "male": gender = false
+		case "female": gender = true
+		default: break
+		}
+		
+		//load attacks
+		let numAttacks = Int(broken[i++])!
+		attacks = [Attack]()
+		for _ in 0..<numAttacks
+		{
+			let attack = Attack(attack: broken[i++])
+			attack.powerPoints = Int(broken[i++])!
+			attacks.append(attack)
+		}
+		
+		//load appearance
+		let numSprites = Int(broken[i++])!
+		sprites = [String]()
+		colors = [String]()
+		for _ in 0..<numSprites
+		{
+			sprites.append(broken[i++])
+			colors.append(broken[i++])
+		}
+		
+		//load status
+		attackStep = Int(broken[i++])!
+		defenseStep = Int(broken[i++])!
+		accuracyStep = Int(broken[i++])!
+		dodgeStep = Int(broken[i++])!
+		freeze = Int(broken[i++])
+		sleep = Int(broken[i++])
+		paralysis = Int(broken[i++])
+		bleed = Int(broken[i++])
+		burning = Int(broken[i++])
 	}
+	
 	init(job:String, level:Int, good:Bool)
 	{
 		self.job = job
@@ -263,15 +335,15 @@ class Creature
 		
 		if let appearanceColors = PlistService.loadValue("Races", race, "appearance color") as? [AnyObject]
 		{
-			colors = generateAppearancePart(appearanceColors).map() { PlistService.loadColor($0) }
+			colors = generateAppearancePart(appearanceColors)
 		}
 		else
 		{
-			colors = [UIColor]()
+			colors = [String]()
 		}
 		while colors.count < sprites.count
 		{
-			colors.append(UIColor.whiteColor())
+			colors.append("FFFFFF")
 		}
 	}
 	
