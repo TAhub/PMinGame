@@ -12,6 +12,7 @@ let kMaxPartySize:Int = 6
 
 class MainMapViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MapDelegate {
 	internal var map:Map!
+	private var tileImages = [String:UIImage]()
 	
 	//walkers
 	private var partyWalker:UIView!
@@ -52,7 +53,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		loadMap()
 		
 		//sample starting party
-		map.party.append(Creature(job: "inventor", level: 10, good: true))
+		map.party.append(Creature(job: "inventor", level: 1, good: true))
 		map.party.append(Creature(job: "sour knight", level: 1, good: true))
 		map.party.append(Creature(job: "rogue", level: 1, good: true))
 		map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
@@ -81,6 +82,26 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		//move the camera
 		self.mapView.layoutIfNeeded()
 		self.moveCameraToPlayer(false)
+		
+		//load tile images
+		var tiles = Set<String>()
+		for col in map.tiles
+		{
+			for tile in col
+			{
+				tiles.insert(tile.type)
+			}
+		}
+		tileImages = [String:UIImage]()
+		for type in tiles
+		{
+			let tile = Tile(type: type)
+			if let imageString = tile.image, let image = UIImage(named: imageString)
+			{
+				let coloredImage = image.colorImage(tile.color)
+				tileImages[type] = coloredImage
+			}
+		}
 		
 		//reload the appearance
 		mapView.reloadData()
@@ -203,8 +224,10 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	}
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath)
-		cell.backgroundColor = map.tiles[indexPath.section][indexPath.row].color
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath) as! TileCollectionViewCell
+		let tile = map.tiles[indexPath.section][indexPath.row]
+		cell.backgroundColor = tile.color
+		cell.tileImage.image = tileImages[tile.type]
 		return cell
 	}
 	func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool

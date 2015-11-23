@@ -24,9 +24,11 @@
 	<dict>
 		<key>solid</key> <true/>
 		<key>color</key> <string>665555</string>
+		<key>image</key> <string>wall_brick</string>
 	</dict>
 	<key>floor</key>
 	<dict>
+		<key>gate</key> <true/>
 		<key>color</key> <string>112211</string>
 	</dict>
 	<key>gate</key>

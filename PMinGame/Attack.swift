@@ -108,6 +108,36 @@ class Attack
 	{
 		return PlistService.loadValue("Attacks", attack, "leech") != nil
 	}
+	var description:String
+	{
+		let baseD = PlistService.loadValue("Attacks", attack, "description") as! String
+		let tier = PlistService.loadValue("Attacks", attack, "tier") as! Int
+		
+		var d = "This "
+		switch(tier)
+		{
+		case 1: d += "basic "
+		case 2: d += "intermediate "
+		case 3: d += "advanced "
+		default: break
+		}
+		
+		if clever
+		{
+			d += "special "
+		}
+		
+		if damage != nil
+		{
+			d += "attack "
+		}
+		else
+		{
+			d += "technique "
+		}
+		
+		return d + baseD
+	}
 	var message:String
 	{
 		return PlistService.loadValue("Attacks", attack, "message") as! String

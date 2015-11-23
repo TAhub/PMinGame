@@ -21,13 +21,23 @@ class CampViewController: UIViewController {
 		navigationController!.popViewControllerAnimated(true)
 	}
 	
-	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		//TODO: there should be leveling up and whatnot
-		
 		//set up labels and stuff
 		nextMapButton.titleLabel!.text = nextMap.name
+		
+		//level up
+		if LevelViewController.checkLevel(party)
+		{
+			performSegueWithIdentifier("levelUp", sender: self)
+		}
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if let dest = segue.destinationViewController as? LevelViewController
+		{
+			dest.party = party
+		}
 	}
 }

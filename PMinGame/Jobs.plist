@@ -60,7 +60,7 @@
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>phase touch</string>
-			<key>4</key> <string>slam</string>
+			<key>2</key> <string>slam</string>
 			<key>8</key> <string>feint</string>
 			<key>10</key> <string>ghost touch</string>
 			<key>14</key> <string>cleanse</string>
@@ -121,7 +121,7 @@
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>knife</string>
-			<key>3</key> <string>shock</string>
+			<key>2</key> <string>shock</string>
 			<key>7</key> <string>net gun</string>
 			<key>10</key> <string>electrocute</string>
 			<key>14</key> <string>electric sight</string>

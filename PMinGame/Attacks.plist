@@ -56,6 +56,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name did a sample thing!</string>
 		<key>miss message</key> <string>*Name tried to do a sample thing, but missed!</string>
+		<key>description</key> <string>does things.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<!-- -->
 	<!-- desperation attacks -->
@@ -153,6 +155,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name slashed *his sword at *OnName!</string>
 		<key>miss message</key> <string>*Name tried to slash *his sword at *OnName, but missed!</string>
+		<key>description</key> <string>does physical damage and has a low chance of inflicting bleed.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>chainsaw</key>
 	<dict>
@@ -170,6 +174,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name revved up *his chainsaw and swung it at *OnName!</string>
 		<key>miss message</key> <string>*Name tried to hit *OnName with a chainsaw, but swung wide!</string>
+		<key>description</key> <string>does physical damage and has a low chance of inflicting bleed.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>vibrating blade</key>
 	<dict>
@@ -187,6 +193,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name swiped at *OnName with *his vibrating blade!</string>
 		<key>miss message</key> <string>*Name tried to slash *his vibrating blade at *OnName, but missed!</string>
+		<key>description</key> <string>does physical damage and has a low chance of inflicting bleed.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- slam line -->
 	<key>slam</key>
@@ -200,6 +208,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name slammed *OnName!</string>
 		<key>miss message</key> <string>*Name tried to slam *OnName, but missed!</string>
+		<key>description</key> <string>does physical damage.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>heavy slam</key>
 	<dict>
@@ -213,6 +223,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name mightily slammed *OnName!</string>
 		<key>miss message</key> <string>*Name tried to slam *OnName, but missed!</string>
+		<key>description</key> <string>does physical damage.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- knife line -->
 	<key>knife</key>
@@ -230,6 +242,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name jabbed *his knife at *OnName!</string>
 		<key>miss message</key> <string>*Name jabbed *his knife at *OnName, but missed!</string>
+		<key>description</key> <string>does light physical damage and has a moderate chance of inflicting bleed.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>barbed knife</key>
 	<dict>
@@ -247,6 +261,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name stabbed *OnName with *his barbed knife!</string>
 		<key>miss message</key> <string>*Name tried to stab *OnName with *his barbed knife, but missed!</string>
+		<key>description</key> <string>does light physical damage and has a moderate chance of inflicting bleed.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>monoedge</key>
 	<dict>
@@ -264,6 +280,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name cut *OnName with *his monoedge knife!</string>
 		<key>miss message</key> <string>*Name tried to cut *OnName with *his monoedge knife, but cut the air instead!</string>
+		<key>description</key> <string>does light physical damage and has a moderate chance of inflicting bleed.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- musket line -->
 	<key>musket</key>
@@ -278,6 +296,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired at *OnName with *his musket!</string>
 		<key>miss message</key> <string>*Name fired *his musket and hit the horizon!</string>
+		<key>description</key> <string>does physical damage.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>rifle</key>
 	<dict>
@@ -292,6 +312,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name carefully shot *OnName with *his rifle!</string>
 		<key>miss message</key> <string>*Name tried to shoot *OnName with *his rifle, but was unable to line up a shot!</string>
+		<key>description</key> <string>does physical damage.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>clockwork rifle</key>
 	<dict>
@@ -306,6 +328,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name unloaded a clip at *OnName with *his clockwork rifle!</string>
 		<key>miss message</key> <string>*Name unloaded a clip at *OnName, but none of the bullets hit!</string>
+		<key>description</key> <string>does physical damage.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- misc physical attacks -->
 	<key>subdue</key>
@@ -324,6 +348,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name tackled *OnName to the ground!</string>
 		<key>miss message</key> <string>*Name tried to tackle *OnName, who sidestepped!</string>
+		<key>description</key> <string>does physical damage and is unable to kill foes.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>feint</key>
 	<dict>
@@ -341,6 +367,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name feinted at *OnName!</string>
 		<key>miss message</key> <string>*Name feinted, but *OnName wasn't fooled!</string>
+		<key>description</key> <string>does physical damage and raises the user's evasion.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>grenade</key>
 	<dict>
@@ -359,6 +387,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw a grenade at *OnName!</string>
 		<key>miss message</key> <string>*Name threw a grenade, but *OnName kicked it safely away!</string>
+		<key>description</key> <string>does physical damage and has a high chance of inflicting bleed.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>storm hammer</key>
 	<dict>
@@ -375,6 +405,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name swung *his mighty storm hammer into *OnName!</string>
 		<key>miss message</key> <string>*Name swung *his mighty storm hammer, and it hit the ground!</string>
+		<key>description</key> <string>does physical damage and has a low chance of inflicting paralysis.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<key>mug</key>
 	<dict>
@@ -392,6 +424,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name leapt at *OnName!</string>
 		<key>miss message</key> <string>*Name leapt at *OnName, who backed away!</string>
+		<key>description</key> <string>does physical damage and steals from the enemy.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>net gun</key>
 	<dict>
@@ -410,6 +444,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name pulled out a net gun and fired it at *OnName!</string>
 		<key>miss message</key> <string>*Name tried to shoot *OnName with a net gun, but it jammed!</string>
+		<key>description</key> <string>does physical damage and lowers the enemy's evasion.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<!-- -->
 	<!-- astral attacks -->
@@ -426,6 +462,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name sunk *his hand into *OnName!</string>
 		<key>miss message</key> <string>*Name tried to touch *OnName, but *he passed through harmlessly!</string>
+		<key>description</key> <string>does astral damage.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>ghost touch</key>
 	<dict>
@@ -439,6 +477,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name thrust *his arm into *OnName!</string>
 		<key>miss message</key> <string>*Name tried to touch *OnName, but *he passed through harmlessly!</string>
+		<key>description</key> <string>does astral damage.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>heartstopper</key>
 	<dict>
@@ -452,6 +492,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name reached into *OnName in search of vitals!</string>
 		<key>miss message</key> <string>*Name tried to touch *OnName, but *he passed through harmlessly!</string>
+		<key>description</key> <string>does astral damage.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- energy drain line -->
 	<key>energy drain</key>
@@ -467,6 +509,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name pressed *his hand against *OnName. *OnName began to glow!</string>
 		<key>miss message</key> <string>*Name tried to drain *OnName, but was unable to land a touch!</string>
+		<key>description</key> <string>does light astral damage and heals the user.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>super drain</key>
 	<dict>
@@ -482,6 +526,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name pressed both hands against *OnName. *OnName began to glow!</string>
 		<key>miss message</key> <string>*Name tried to drain *OnName, but was unable to land a touch!</string>
+		<key>description</key> <string>does light astral damage and heals the user.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- misc astral attacks -->
 	<key>blinding light</key>
@@ -501,6 +547,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released an intense light!</string>
 		<key>miss message</key> <string>*Name released an intense light, but *OnName looked away!</string>
+		<key>description</key> <string>does light astral damage and lowers the accuracy of the enemy.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>astral wheel</key>
 	<dict>
@@ -516,6 +564,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name summoned the astral wheel and struck *OnName with it!</string>
 		<key>miss message</key> <string>*Name summoned the astral wheel, but was unable to control it!</string>
+		<key>description</key> <string>does heavy astral damage, but is highly inaccuracy.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- -->
 	<!-- flame attacks -->
@@ -538,6 +588,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a puff of flame at *OnName!</string>
 		<key>miss message</key> <string>*Name fired a puff of flame at *OnName, who hopped away!</string>
+		<key>description</key> <string>does flame damage and has a low chance of inflicting burning.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>flamethrower</key>
 	<dict>
@@ -557,6 +609,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a jet of flames at *OnName!</string>
 		<key>miss message</key> <string>*Name fired a jet of flames at *OnName, who hopped away!</string>
+		<key>description</key> <string>does flame damage and has a low chance of inflicting burning.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>hellfire</key>
 	<dict>
@@ -576,6 +630,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a jet of intense flames at *OnName!</string>
 		<key>miss message</key> <string>*Name fired a jet of intense flames at *OnName, who hopped away!</string>
+		<key>description</key> <string>does flame damage and has a low chance of inflicting burning.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- flame punch line -->
 	<key>flame punch</key>
@@ -593,6 +649,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name swung a fiery fist *OnName!</string>
 		<key>miss message</key> <string>*Name swung a fiery fist, but *OnName dodged it!</string>
+		<key>description</key> <string>does flame damage and has a moderate chance of inflicting burning.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>inferno punch</key>
 	<dict>
@@ -610,6 +668,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name swung a blazing fist *OnName!</string>
 		<key>miss message</key> <string>*Name swung a blazing fist, but *OnName dodged it!</string>
+		<key>description</key> <string>does flame damage and has a moderate chance of inflicting burning.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- misc flame attacks -->
 	<key>brand</key>
@@ -627,6 +687,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with *his red-hot hands!</string>
 		<key>miss message</key> <string>*Name heat up *his hands, but was unable to touch *OnName!</string>
+		<key>description</key> <string>does flame damage and lowers the enemy's defense.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>flame grenade</key>
 	<dict>
@@ -645,6 +707,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw a flame grenade at *OnName!</string>
 		<key>miss message</key> <string>*Name threw a flame grenade at *OnName, but it was a dud!</string>
+		<key>description</key> <string>does flame damage and has a high chance of inflicting burning.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<key>ignite</key>
 	<dict>
@@ -662,6 +726,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name engulfed *OnName in flames!</string>
 		<key>miss message</key> <string>*Name tried to ignite *OnName, but it didn't work!</string>
+		<key>description</key> <string>does light flame damage and has a high chance of inflicting burning.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>ultra heat</key>
 	<dict>
@@ -676,6 +742,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name radiated off all of *his body heat!</string>
+		<key>description</key> <string>does heavy flame damage, but freezes the user.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<!-- -->
 	<!-- spark attacks -->
@@ -698,6 +766,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released a bolt of static electricity at *OnName!</string>
 		<key>miss message</key> <string>*Name released a bolt of static electricity, which grounded itself nearby!</string>
+		<key>description</key> <string>does spark damage and has a low chance of inflicting paralysis.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>electrocute</key>
 	<dict>
@@ -717,6 +787,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released a blast of electricity at *OnName!</string>
 		<key>miss message</key> <string>*Name released a blast of electricity, which grounded itself nearby!</string>
+		<key>description</key> <string>does spark damage and has a low chance of inflicting paralysis.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>lightning bolt</key>
 	<dict>
@@ -736,6 +808,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released a bolt of lightning at *OnName!</string>
 		<key>miss message</key> <string>*Name released a bolt of lightning at *OnName, which grounded itself nearby!</string>
+		<key>description</key> <string>does spark damage and has a low chance of inflicting paralysis.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- lightning blow line -->
 	<key>lightning blow</key>
@@ -750,6 +824,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name launched a lightning-fast attack at *OnName!</string>
 		<key>miss message</key> <string>*Name launched a lightning-fast attack at *OnName, but it went wide!</string>
+		<key>description</key> <string>does spark damage and always goes first.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>lightning combo</key>
 	<dict>
@@ -764,6 +840,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name launched a series of lightning-fast attacks at *OnName!</string>
 		<key>miss message</key> <string>*Name tried to launch into an impressive combo, but was unable to land the first blow!</string>
+		<key>description</key> <string>does spark damage and always goes first.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- misc spark attacks -->
 	<key>paralyzing touch</key>
@@ -781,6 +859,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with his crackling hand!</string>
 		<key>miss message</key> <string>*Name electrocuted *his hand, but was unable to touch *OnName!</string>
+		<key>description</key> <string>does light spark damage and has a high chance of inflicting paralysis.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>electric sight</key>
 	<dict>
@@ -797,6 +877,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name activated *his deadly electric sight and turned it towards *OnName!</string>
+		<key>description</key> <string>does light spark damage, lowers the enemy's evasion, and never misses.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>guided bolt</key>
 	<dict>
@@ -809,6 +891,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released an unerring bolt of lightning at *OnName!</string>
+		<key>description</key> <string>does heavy spark damage and never misses.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>shockwave</key>
 	<dict>
@@ -822,6 +906,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name flung a wave of thunder at *OnName!</string>
 		<key>miss message</key> <string>*Name flung a wave of thunder, which flew off harmlessly into the distance!</string>
+		<key>description</key> <string>does spark damage.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- -->
 	<!-- frost attacks -->
@@ -839,6 +925,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw a snowball at *OnName!</string>
 		<key>miss message</key> <string>*Name threw a snowball, but missed the mark!</string>
+		<key>description</key> <string>does frost damage.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>snow slam</key>
 	<dict>
@@ -853,6 +941,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name threw an armful of snow at *OnName!</string>
 		<key>miss message</key> <string>*Name tried to throw an armful of snow, but it came apart in *his arms!</string>
+		<key>description</key> <string>does frost damage.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>ice fling</key>
 	<dict>
@@ -867,6 +957,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name flung a big chunk of ice at *OnName!</string>
 		<key>miss message</key> <string>*Name flung a big chunk of ice, but it completely missed!</string>
+		<key>description</key> <string>does frost damage.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- icicle line -->
 	<key>icicle</key>
@@ -881,6 +973,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name tossed an icicle at *OnName!</string>
 		<key>miss message</key> <string>*Name tossed an icicle at *OnName, who dodged it!</string>
+		<key>description</key> <string>does frost damage.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>ice shower</key>
 	<dict>
@@ -895,6 +989,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name tossed a dozen icicles at *OnName!</string>
 		<key>miss message</key> <string>*Name tossed a dozen icicles at *OnName, who dodged every one!</string>
+		<key>description</key> <string>does frost damage.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- misc frost attacks -->
 	<key>rime</key>
@@ -913,6 +1009,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name touched *OnName with *his chilling hand!</string>
 		<key>miss message</key> <string>*Name cooled down *his hand, but was unable to touch *OnName!</string>
+		<key>description</key> <string>does light frost damage and lowers the enemy's evasion.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>freeze ray</key>
 	<dict>
@@ -931,6 +1029,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name fired a pale blue ray at *OnName!</string>
 		<key>miss message</key> <string>*Name fired a pale blue ray, but it dissolved before it could do anything to *OnName!</string>
+		<key>description</key> <string>does light frost damage and has a high chance of inflicting freeze.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<key>hypothermia</key>
 	<dict>
@@ -950,6 +1050,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name lowered *OnName's body heat to dangerous levels!</string>
 		<key>miss message</key> <string>*Name tried to lower *OnName's body heat, but failed!</string>
+		<key>description</key> <string>does frost damage and has a moderate chance of inflicting paralysis, freeze, or sleep.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- -->
 	<!-- typeless attacks -->
@@ -965,6 +1067,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name began to move erratically!</string>
+		<key>description</key> <string>raises the user's evasion.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>hunker down</key>
 	<dict>
@@ -977,6 +1081,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name braced *himself for impact!</string>
+		<key>description</key> <string>raises the user's defense.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>power up</key>
 	<dict>
@@ -989,6 +1095,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name began to tense up!</string>
+		<key>description</key> <string>raises the user's attack.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>focus</key>
 	<dict>
@@ -1001,6 +1109,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name began to concentrate!</string>
+		<key>description</key> <string>raises the user's accuracy.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>intimidate</key>
 	<dict>
@@ -1014,6 +1124,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name shot a scary look at *OnName!</string>
+		<key>description</key> <string>lowers the enemy's attack.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>rage</key>
 	<dict>
@@ -1027,6 +1139,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name whipped *himself into a frenzy!</string>
+		<key>description</key> <string>raises the user's attack, but lowers their evasion.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>cleanse</key>
 	<dict>
@@ -1039,6 +1153,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name calmed *himself down!</string>
+		<key>description</key> <string>removes negative statuses from the user.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>hypnotize</key>
 	<dict>
@@ -1053,6 +1169,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name stared at *OnName with enthralling eyes!</string>
+		<key>description</key> <string>has a high chance of inflicting sleep.</string>
+		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>explode</key>
 	<dict>
@@ -1071,6 +1189,8 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name yelled madly and exploded, blowing *his own armor into disarray!</string>
+		<key>description</key> <string>does heavy typeless damage, but lowers the defense of the user and inflicts bleed on the user.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 	<key>experimental blaster</key>
 	<dict>
@@ -1092,6 +1212,8 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name blasted *OnName with an experimental weapon!</string>
 		<key>miss message</key> <string>*Name took out an experimental weapon, but it wouldn't fire!</string>
+		<key>description</key> <string>does typeless damage and has a low chance of inflicting any status effect.</string>
+		<key>tier</key> <integer>3</integer>
 	</dict>
 </dict>
 </plist>

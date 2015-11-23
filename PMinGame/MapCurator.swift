@@ -104,14 +104,7 @@ class MapCurator
 		
 		//generate a random starting position
 		let startPosition:(Int, Int)
-		if arc4random_uniform(2) == 0
-		{
-			startPosition = (arc4random_uniform(2) == 0 ? 5 : startingWidth - 5, startingHeight / 2)
-		}
-		else
-		{
-			startPosition = (startingWidth / 2, arc4random_uniform(2) == 0 ? 5 : startingHeight - 5)
-		}
+		startPosition = (arc4random_uniform(2) == 0 ? 5 : startingWidth - 5, arc4random_uniform(2) == 0 ? 5 : startingHeight - 5)
 		
 		//each sketcher should have a go at it
 		//note that at least one sketcher should be twiggy, or someone else who will always draw floors at the start position

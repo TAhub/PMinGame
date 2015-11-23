@@ -13,6 +13,7 @@ import UIKit
 private let kStatBonus = 5
 private let kHealthLevelBonus = 5
 private let kBleedDamage = 5
+let kMaxAttacks = 4
 
 func expToNextLevel(level:Int) -> Int
 {
@@ -32,7 +33,7 @@ class Creature
 	internal var colors = [UIColor]()
 	
 	//MARK: level-up stats
-	private var level:Int
+	internal var level:Int
 	var experience:Int
 	
 	//MARK: variable stats
@@ -425,7 +426,7 @@ class Creature
 				//learn that attack!
 				attacks.append(attack)
 				
-				if attacks.count > 4
+				if attacks.count > kMaxAttacks
 				{
 					//uh-oh, too many attacks
 					//time to unlearn one
@@ -445,7 +446,7 @@ class Creature
 		}
 	}
 	
-	private func getAttackForLevel(level:Int) -> Attack?
+	internal func getAttackForLevel(level:Int) -> Attack?
 	{
 		let attacks = PlistService.loadValue("Jobs", job, "attacks") as! [String : String]
 		for (attackLevel, attackName) in attacks
