@@ -193,10 +193,20 @@ class BattleViewController: UIViewController, BattleDelegate {
 	private var endingHook:(()->())?
 	func setup(party:[Creature], encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->())
 	{
-		//initialize the battle
-		battle = Battle(players: party, encounterType: encounterType, difficulty: difficulty)
-		battle.delegate = self
+		if saveState == kSaveStateBattle
+		{
+			//load a battle
+			//TODO: load a battle
+		}
+		else
+		{
+			//initialize the battle
+			battle = Battle(players: party, encounterType: encounterType, difficulty: difficulty)
+		}
 		
+		saveState = kSaveStateBattle
+		
+		battle.delegate = self
 		self.endOfBattleHook = endOfBattleHook
     }
 	
@@ -452,6 +462,8 @@ class BattleViewController: UIViewController, BattleDelegate {
 				newAdditions.append(enemy)
 			}
 		}
+		
+		saveState = kSaveStateNone
 		endOfBattleHook(false, newAdditions, moneyChange)
 		navigationController!.popViewControllerAnimated(true)
 	}
@@ -465,6 +477,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private func defeatHook()
 	{
+		saveState = kSaveStateNone
 		endOfBattleHook(true, nil, 0)
 		navigationController!.popViewControllerAnimated(true)
 	}
@@ -485,6 +498,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private func fleeHook()
 	{
+		saveState = kSaveStateNone
 		endOfBattleHook(false, nil, 0)
 		navigationController!.popViewControllerAnimated(true)
 	}

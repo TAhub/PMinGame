@@ -17,6 +17,7 @@ class CampViewController: UIViewController {
 	@IBOutlet weak var nextMapButton: UIButton!
 	@IBAction func nextMapAction()
 	{
+		saveState = kSaveStateNone
 		completionCallback(nextMap)
 		navigationController!.popViewControllerAnimated(true)
 	}
@@ -26,6 +27,8 @@ class CampViewController: UIViewController {
 		
 		//set up labels and stuff
 		nextMapButton.titleLabel!.text = nextMap.name
+		
+		saveState = kSaveStateCamp
 		
 		//level up
 		if LevelViewController.checkLevel(party)

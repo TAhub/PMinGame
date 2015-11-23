@@ -119,6 +119,8 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 			mvc.map.reserve.insert(from, atIndex: destinationIndexPath.row)
 		}
 		
+		mvc.map.saveParty()
+		
 		table.reloadData()
 	}
 	func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle

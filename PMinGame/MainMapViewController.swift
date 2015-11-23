@@ -10,6 +10,36 @@ import UIKit
 
 let kMaxPartySize:Int = 6
 
+//save stuff
+let kSaveStateNone:String = "NONE"
+let kSaveStateMap:String = "MAP"
+let kSaveStateKey:String = "saveState"
+
+let kSaveStateBattle:String = "BATTLE"
+let kSaveStateCamp:String = "CAMP"
+
+var saveState:String
+{
+	get
+	{
+		return NSUserDefaults.standardUserDefaults().stringForKey(kSaveStateKey) ?? kSaveStateNone
+	}
+	set(newSave)
+	{
+		NSUserDefaults.standardUserDefaults().setObject(newSave, forKey: kSaveStateKey)
+	}
+}
+
+func savePartyMember(member:Creature, party:Bool, number:Int)
+{
+	//TODO: get a creature save string
+	let creatureSaveString = member.creatureString
+	print(creatureSaveString)
+	
+	NSUserDefaults.standardUserDefaults().setObject(creatureSaveString, forKey: "\(party ? "party" : "reserve")\(number)")
+}
+
+
 class MainMapViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, MapDelegate {
 	internal var map:Map!
 	private var tileImages = [String:UIImage]()
@@ -49,18 +79,43 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.attackPowerDiagnostic()
 		
 		
-		map = Map(from: nil)
-		loadMap()
-		
-		//sample starting party
-		map.party.append(Creature(job: "inventor", level: 1, good: true))
-		map.party.append(Creature(job: "sour knight", level: 1, good: true))
-		map.party.append(Creature(job: "rogue", level: 1, good: true))
-		map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
-		map.party.append(Creature(job: "cold killer", level: 1, good: true))
-		map.party.append(Creature(job: "cryoman", level: 1, good: true))
-		
-		
+		//check save state
+		if saveState == kSaveStateNone
+		{
+			//load the first map
+			map = Map(from: nil)
+			loadMap()
+			
+			//sample starting party
+			map.party.append(Creature(job: "inventor", level: 1, good: true))
+			map.party.append(Creature(job: "sour knight", level: 1, good: true))
+			map.party.append(Creature(job: "rogue", level: 1, good: true))
+			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
+			map.party.append(Creature(job: "cold killer", level: 1, good: true))
+			map.party.append(Creature(job: "cryoman", level: 1, good: true))
+			
+			map.save()
+			
+			//set the save state
+			saveState = kSaveStateMap
+		}
+		else
+		{
+			//load the saved map
+			map = Map(from: nil)
+			loadMap()
+			
+			if saveState == kSaveStateCamp
+			{
+				//go to the camp instantly
+				performSegueWithIdentifier("toCamp", sender: self)
+			}
+			else if saveState == kSaveStateBattle
+			{
+				//go to the battle instantly
+				performSegueWithIdentifier("startBattle", sender: self)
+			}
+		}
 		
 		
 		//show the debug minimap
@@ -127,66 +182,93 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	{
 		if let cvc = segue.destinationViewController as? CampViewController
 		{
-			//award EXP for finishing the map
-			let mapEXP = expToNextLevel(map.difficulty) * 7 / 10
-			for person in map.party
+			if saveState != kSaveStateCamp
 			{
-				person.experience += mapEXP
+				saveState = kSaveStateNone
+				
+				//award EXP for finishing the map
+				let mapEXP = expToNextLevel(map.difficulty) * 7 / 10
+				for person in map.party
+				{
+					person.experience += mapEXP
+				}
+				
+				
+				//unload the walkers
+				partyWalker.removeFromSuperview()
+				for walker in encounterWalkers
+				{
+					walker.removeFromSuperview()
+				}
+				encounterWalkers = [UIView]()
+				
+				
+				//prepare the segue
+				cvc.party = map.party
+				let nextMap = Map(from: map)
+				cvc.nextMap = nextMap
+				nextMap.party = map.party
+				
+				//save the next map
+				nextMap.save()
+				
+				cvc.completionCallback =
+				{ (nextMap) in
+					//generate the next map
+					self.map = nextMap
+					self.loadMap()
+				}
 			}
-			
-			
-			//unload the walkers
-			partyWalker.removeFromSuperview()
-			for walker in encounterWalkers
+			else
 			{
-				walker.removeFromSuperview()
-			}
-			encounterWalkers = [UIView]()
-			
-			
-			//prepare the segue
-			cvc.party = map.party
-			let nextMap = Map(from: map)
-			cvc.nextMap = nextMap
-			nextMap.party = map.party
-			cvc.completionCallback =
-			{ (nextMap) in
-				//generate the next map
-				self.map = nextMap
-				self.loadMap()
+				//set up the camp you are loading
+				cvc.party = map.party
+				cvc.nextMap = map
+				cvc.completionCallback =
+				{ (nextMap) in
+				}
 			}
 		}
 		else if let bvc = segue.destinationViewController as? BattleViewController
 		{
-			bvc.setup(map.party, encounterType: map.encounterType, difficulty: map.difficulty)
-			{ (lost, newAdditions, moneyChange) in
-				
-				if lost
+			if saveState != kSaveStateBattle
+			{
+				saveState = kSaveStateNone
+			}
+			
+			bvc.setup(map.party, encounterType: map.encounterType, difficulty: map.difficulty, endOfBattleHook: battleCallback)
+		}
+	}
+	
+	private func battleCallback(lost:Bool, newAdditions:[Creature]?, moneyChange:Int)
+	{
+		if lost
+		{
+			//TODO: end the game or whatever
+			print("You lost!")
+		}
+		else
+		{
+			//TODO: change your money total based on moneyChange
+			
+			if let newAdditions = newAdditions
+			{
+				for new in newAdditions
 				{
-					//TODO: end the game or whatever
-					print("You lost!")
-				}
-				else
-				{
-					//TODO: change your money total based on moneyChange
-					
-					if let newAdditions = newAdditions
+					if self.map.party.count < kMaxPartySize
 					{
-						for new in newAdditions
-						{
-							if self.map.party.count < kMaxPartySize
-							{
-								self.map.party.append(new)
-							}
-							else
-							{
-								self.map.reserve.append(new)
-							}
-						}
+						self.map.party.append(new)
+					}
+					else
+					{
+						self.map.reserve.append(new)
 					}
 				}
 			}
 		}
+		
+		//save the party
+		map.saveParty()
 	}
 	
 	//MARK: walker code

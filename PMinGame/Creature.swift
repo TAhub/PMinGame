@@ -143,7 +143,33 @@ class Creature
 		return PlistService.loadValue("Jobs", job, "sleep immunity") != nil
 	}
 	
+	//MARK: saving and loading via creature strings
+	var creatureString:String
+	{
+		var s = "\(name)%\(job)%\(level)%\(good)%"
+		if let gender = gender
+		{
+			s += gender ? "female%" : "male%"
+		}
+		else
+		{
+			s += "neither%"
+		}
+		
+		return s
+	}
+	
 	//MARK: initialize and level up functions
+	convenience init(string:String)
+	{
+		let broken = string.characters.split{ $0 == "%" }.map(String.init)
+		
+		print(broken)
+		
+		self.init(job: broken[1], level: Int(broken[2])!, good: broken[3] == "true")
+		name = broken[0]
+		gender = broken[4] == "neither" ? nil : (broken[4] == "male" ? false : true)
+	}
 	init(job:String, level:Int, good:Bool)
 	{
 		self.job = job

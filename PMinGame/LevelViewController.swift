@@ -155,6 +155,19 @@ class LevelViewController: UIViewController {
 	
 	private func findToLoad()
 	{
+		if let toLevel = toLevel
+		{
+			//save them
+			for (i, p) in party.enumerate()
+			{
+				if p === toLevel
+				{
+					savePartyMember(p, party: true, number: i)
+					break
+				}
+			}
+		}
+		
 		for p in party
 		{
 			if p.experience >= expToNextLevel(p.level)
