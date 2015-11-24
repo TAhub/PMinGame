@@ -34,7 +34,6 @@ func savePartyMember(member:Creature, party:Bool, number:Int)
 {
 	//TODO: get a creature save string
 	let creatureSaveString = member.creatureString
-	print(creatureSaveString)
 	
 	NSUserDefaults.standardUserDefaults().setObject(creatureSaveString, forKey: "\(party ? "party" : "reserve")\(number)")
 }
@@ -87,17 +86,14 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			loadMap()
 			
 			//sample starting party
-			map.party.append(Creature(job: "inventor", level: 1, good: true))
-			map.party.append(Creature(job: "sour knight", level: 1, good: true))
-			map.party.append(Creature(job: "rogue", level: 1, good: true))
-			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
-			map.party.append(Creature(job: "cold killer", level: 1, good: true))
-			map.party.append(Creature(job: "cryoman", level: 1, good: true))
+			map.party.append(Creature(job: "inventor", level: 13, good: true))
+//			map.party.append(Creature(job: "sour knight", level: 1, good: true))
+//			map.party.append(Creature(job: "rogue", level: 1, good: true))
+//			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
+//			map.party.append(Creature(job: "cold killer", level: 1, good: true))
+//			map.party.append(Creature(job: "cryoman", level: 1, good: true))
 			
 			map.save()
-			
-			//set the save state
-			saveState = kSaveStateMap
 		}
 		else
 		{
@@ -134,9 +130,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			encounterWalkers.append(setUpWalker(position))
 		}
 		
-		//move the camera
-		self.mapView.layoutIfNeeded()
-		self.moveCameraToPlayer(false)
+		print("party position: \(map.partyPosition.0) \(map.partyPosition.1)     map dimensions: \(map.tiles[map.tiles.count - 1].count) \(map.tiles.count)")
 		
 		//load tile images
 		var tiles = Set<String>()
@@ -160,6 +154,10 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		
 		//reload the appearance
 		mapView.reloadData()
+		
+		//move the camera
+		self.mapView.layoutIfNeeded()
+		self.moveCameraToPlayer(false)
 	}
 	
 	private func loadDebugMinimap()
@@ -247,7 +245,8 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	{
 		if lost
 		{
-			//TODO: end the game or whatever
+			//because this DOESN'T set the save state, the next time you load it will automatically make a new game
+			//TODO: end the game
 			print("You lost!")
 		}
 		else
@@ -268,6 +267,8 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 					}
 				}
 			}
+			
+			saveState = kSaveStateMap
 		}
 		
 		//save the party

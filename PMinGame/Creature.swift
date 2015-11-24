@@ -197,8 +197,6 @@ class Creature
 		let broken = string.characters.split{ $0 == "%" }.map(String.init)
 		var i = 0
 		
-		print(broken)
-		
 		self.init(job: broken[i++], level: Int(broken[i++])!, good: broken[i++] == "true")
 		name = broken[i++]
 		experience = Int(broken[i++])!

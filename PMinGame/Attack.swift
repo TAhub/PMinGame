@@ -136,7 +136,24 @@ class Attack
 			d += "technique "
 		}
 		
-		return d + baseD
+		//add the base description
+		d += baseD
+		
+		//and add damage and accuracy info
+		if damage != nil || accuracy != nil
+		{
+			d += "\n"
+		}
+		if let damage = damage
+		{
+			d += "\(damage) damage"
+		}
+		if let accuracy = accuracy
+		{
+			d += "  \(accuracy)% accuracy"
+		}
+		
+		return d
 	}
 	var message:String
 	{
