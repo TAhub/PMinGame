@@ -22,18 +22,20 @@ class CampViewController: UIViewController {
 		navigationController!.popViewControllerAnimated(true)
 	}
 	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		//set up labels and stuff
-		nextMapButton.titleLabel!.text = nextMap.name
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
 		
 		saveState = kSaveStateCamp
 		
-		//level up
 		if LevelViewController.checkLevel(party)
 		{
+			//level up
 			performSegueWithIdentifier("levelUp", sender: self)
+		}
+		else
+		{
+			//set up labels and stuff
+			nextMapButton.setTitle(nextMap.name, forState: .Normal)
 		}
 	}
 	

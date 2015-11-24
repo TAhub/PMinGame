@@ -122,13 +122,13 @@ class Attack
 		default: break
 		}
 		
-		if clever
-		{
-			d += "special "
-		}
-		
 		if damage != nil
 		{
+			if clever
+			{
+				d += "special "
+			}
+			
 			d += "attack "
 		}
 		else
@@ -140,18 +140,27 @@ class Attack
 		d += baseD
 		
 		//and add damage and accuracy info
-		if damage != nil || accuracy != nil
-		{
-			d += "\n"
-		}
+		var dString = ""
+		var aString = ""
 		if let damage = damage
 		{
-			d += "\(damage) damage"
+			dString = "\(damage) damage   "
 		}
 		if let accuracy = accuracy
 		{
-			d += "  \(accuracy)% accuracy"
+			aString = "\(accuracy)% accuracy"
 		}
+		else if damage != nil || enemyEffects != nil
+		{
+			aString = "never misses"
+		}
+		
+		if !dString.isEmpty || !aString.isEmpty
+		{
+			d += "\n"
+		}
+		d += dString
+		d += aString
 		
 		return d
 	}

@@ -86,7 +86,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			loadMap()
 			
 			//sample starting party
-			map.party.append(Creature(job: "inventor", level: 13, good: true))
+			map.party.append(Creature(job: "mystic", level: 1, good: true))
 //			map.party.append(Creature(job: "sour knight", level: 1, good: true))
 //			map.party.append(Creature(job: "rogue", level: 1, good: true))
 //			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
@@ -94,23 +94,28 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //			map.party.append(Creature(job: "cryoman", level: 1, good: true))
 			
 			map.save()
+			saveState = kSaveStateMap
 		}
-		else
+		else if saveState != kSaveStateNone
 		{
 			//load the saved map
 			map = Map(from: nil)
 			loadMap()
-			
-			if saveState == kSaveStateCamp
-			{
-				//go to the camp instantly
-				performSegueWithIdentifier("toCamp", sender: self)
-			}
-			else if saveState == kSaveStateBattle
-			{
-				//go to the battle instantly
-				performSegueWithIdentifier("startBattle", sender: self)
-			}
+		}
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		if saveState == kSaveStateCamp
+		{
+			//go to the camp instantly
+			performSegueWithIdentifier("toCamp", sender: self)
+		}
+		else if saveState == kSaveStateBattle
+		{
+			//go to the battle instantly
+			performSegueWithIdentifier("startBattle", sender: self)
 		}
 		
 		

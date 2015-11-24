@@ -158,6 +158,7 @@ class LevelViewController: UIViewController {
 		if let toLevel = toLevel
 		{
 			//save them
+			//do it NOW, so you can save the player's choice of new attack
 			for (i, p) in party.enumerate()
 			{
 				if p === toLevel
@@ -174,6 +175,7 @@ class LevelViewController: UIViewController {
 			{
 				p.experience -= expToNextLevel(p.level)
 				p.level += 1
+				p.health = p.maxHealth
 				toLevel = p
 				return
 			}

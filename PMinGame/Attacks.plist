@@ -564,7 +564,7 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name summoned the astral wheel and struck *OnName with it!</string>
 		<key>miss message</key> <string>*Name summoned the astral wheel, but was unable to control it!</string>
-		<key>description</key> <string>does heavy astral damage, but is highly inaccuracy.</string>
+		<key>description</key> <string>does heavy astral damage.</string>
 		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- -->
@@ -877,7 +877,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name activated *his deadly electric sight and turned it towards *OnName!</string>
-		<key>description</key> <string>does light spark damage, lowers the enemy's evasion, and never misses.</string>
+		<key>description</key> <string>does light spark damage and lowers the enemy's evasion.</string>
 		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>guided bolt</key>
@@ -891,7 +891,7 @@
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name released an unerring bolt of lightning at *OnName!</string>
-		<key>description</key> <string>does heavy spark damage and never misses.</string>
+		<key>description</key> <string>does heavy spark damage.</string>
 		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>shockwave</key>
