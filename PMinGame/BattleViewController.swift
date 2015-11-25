@@ -410,7 +410,14 @@ class BattleViewController: UIViewController, BattleDelegate {
 		endingHook = victoryHook
 		runMessage("The party was victorious!", shake: false)
 		
-		//TODO: run a message based on the money won/lost
+		//award money
+		var battleMoney = 0
+		for enemy in battle.enemies
+		{
+			battleMoney += moneyForLevel(enemy.level)
+		}
+		battle.money += battleMoney
+		runMessage("You got \(battleMoney) karma!", shake: false)
 		
 		//award EXP
 		var battleEXP = 0

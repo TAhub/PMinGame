@@ -20,6 +20,11 @@ func expToNextLevel(level:Int) -> Int
 	return 30 * (10 + level)
 }
 
+func moneyForLevel(level:Int) -> Int
+{
+	return 20 + level
+}
+
 class Creature
 {
 	//MARK: identity

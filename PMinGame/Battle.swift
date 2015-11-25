@@ -247,9 +247,8 @@ class Battle
 		{
 			if (user.useAttackOn(used, on: usee, messageHandler: messageHandler) && used.mug)
 			{
-				//TODO: calculate a money amount based on the usee's level
-				let moneyAmount = 10
-				messageHandler("\(user) stole \(moneyAmount) karma from \(usee)!")
+				let moneyAmount = moneyForLevel(usee.level) / 2
+				messageHandler("\(user.name) stole \(moneyAmount) karma from \(usee.name)!")
 				if user.good
 				{
 					money += moneyAmount

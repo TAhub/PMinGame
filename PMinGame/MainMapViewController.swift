@@ -86,9 +86,9 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			loadMap()
 			
 			//sample starting party
+			map.party.append(Creature(job: "rogue", level: 5, good: true))
 			map.party.append(Creature(job: "mystic", level: 1, good: true))
 			map.party.append(Creature(job: "sour knight", level: 1, good: true))
-			map.party.append(Creature(job: "rogue", level: 1, good: true))
 			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
 			map.party.append(Creature(job: "cold killer", level: 1, good: true))
 			map.party.append(Creature(job: "cryoman", level: 1, good: true))
@@ -239,7 +239,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				saveState = kSaveStateNone
 			}
 			
-			bvc.setup(map.party, encounterType: map.encounterType, difficulty: map.difficulty, endOfBattleHook: battleCallback)
+			bvc.setup(map.party, money: map.money, encounterType: map.encounterType, difficulty: map.difficulty, endOfBattleHook: battleCallback)
 			{
 				self.map.saveParty()
 			}
@@ -257,6 +257,8 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		else
 		{
 			map.money = money
+			
+			print(map.money)
 			
 			if let newAdditions = newAdditions
 			{

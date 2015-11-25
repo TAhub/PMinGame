@@ -419,7 +419,7 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name leapt at *OnName!</string>
 		<key>miss message</key> <string>*Name leapt at *OnName, who backed away!</string>
-		<key>description</key> <string>does physical damage and steals from the enemy.</string>
+		<key>description</key> <string>does physical damage and steals karma from the enemy.</string>
 		<key>tier</key> <integer>1</integer>
 	</dict>
 	<key>net gun</key>
