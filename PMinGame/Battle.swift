@@ -39,6 +39,7 @@ class Battle
 	internal weak var enemy:Creature!
 	
 	internal var playerTurnDist = [Int]()
+	internal var money:Int
 	
 	//turn order data
 	private let defaultTurnOrder:Bool
@@ -53,6 +54,7 @@ class Battle
 	private func save()
 	{
 		let d = NSUserDefaults.standardUserDefaults()
+		d.setInteger(money, forKey: "battleMoney")
 		d.setBool(defaultTurnOrder, forKey: "battleTurnOrder")
 		d.setInteger(enemies.count, forKey: "battleEnemies")
 		for (i, en) in enemies.enumerate()
@@ -82,8 +84,9 @@ class Battle
 		}
 	}
 	
-	init(players:[Creature], encounterType:String, difficulty:Int, savePlayersCallback: ()->())
+	init(players:[Creature], money:Int, encounterType:String, difficulty:Int, savePlayersCallback: ()->())
 	{
+		self.money = money
 		self.players = players
 		self.savePlayersCallback = savePlayersCallback
 		
@@ -96,6 +99,7 @@ class Battle
 		{
 			//load battle
 			let d = NSUserDefaults.standardUserDefaults()
+			self.money = d.integerForKey("battleMoney")
 			defaultTurnOrder = d.boolForKey("battleTurnOrder")
 			let battleEnemies = d.integerForKey("battleEnemies")
 			for i in 0..<battleEnemies
@@ -241,7 +245,20 @@ class Battle
 	{
 		if user.statusEffectTurn(messageHandler)
 		{
-			user.useAttackOn(used, on: usee, messageHandler: messageHandler)
+			if (user.useAttackOn(used, on: usee, messageHandler: messageHandler) && used.mug)
+			{
+				//TODO: calculate a money amount based on the usee's level
+				let moneyAmount = 10
+				messageHandler("\(user) stole \(moneyAmount) karma from \(usee)!")
+				if user.good
+				{
+					money += moneyAmount
+				}
+				else
+				{
+					money -= moneyAmount
+				}
+			}
 		}
 	}
 	private func useSwitch(from:Creature, to:Creature)

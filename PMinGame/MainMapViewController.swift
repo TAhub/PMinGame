@@ -246,7 +246,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		}
 	}
 	
-	private func battleCallback(lost:Bool, newAdditions:[Creature]?, moneyChange:Int)
+	private func battleCallback(lost:Bool, newAdditions:[Creature]?, money:Int)
 	{
 		if lost
 		{
@@ -256,7 +256,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		}
 		else
 		{
-			//TODO: change your money total based on moneyChange
+			map.money = money
 			
 			if let newAdditions = newAdditions
 			{

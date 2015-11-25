@@ -196,9 +196,9 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private var endOfBattleHook:((Bool, [Creature]?, Int)->())!
 	private var endingHook:(()->())?
-	func setup(party:[Creature], encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->(), savePlayersCallback:()->())
+	func setup(party:[Creature], money:Int, encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->(), savePlayersCallback:()->())
 	{
-		battle = Battle(players: party, encounterType: encounterType, difficulty: difficulty, savePlayersCallback: savePlayersCallback)
+		battle = Battle(players: party, money: money, encounterType: encounterType, difficulty: difficulty, savePlayersCallback: savePlayersCallback)
 		
 		saveState = kSaveStateBattle
 		
@@ -441,9 +441,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private func victoryHook()
 	{
-		//TODO: get the actual net money change here (you should know it earlier, since you'll run a message for it)
-		let moneyChange:Int = 0
-		
 		//any enemies who are good should join the party reserve
 		var newAdditions = [Creature]()
 		for enemy in battle.enemies
@@ -461,7 +458,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		}
 		
 		saveState = kSaveStateNone
-		endOfBattleHook(false, newAdditions, moneyChange)
+		endOfBattleHook(false, newAdditions, battle.money)
 		navigationController!.popViewControllerAnimated(true)
 	}
 	

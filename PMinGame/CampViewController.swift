@@ -25,6 +25,8 @@ class CampViewController: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
+		//TODO: you can access money with "nextMap.money"
+
 		saveState = kSaveStateCamp
 		
 		if LevelViewController.checkLevel(party)

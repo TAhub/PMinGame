@@ -32,7 +32,6 @@
 			<key>bleed chance</key> <integer>50</integer>
 			<key>burning chance</key> <integer>50</integer>
 			<key>sleep chance</key> <integer>50</integer>
-			<key>mug</key> <true/>
 			<key>nonlethal</key> <true/>
 			<key>cleanse</key> <true/>
 		</dict>
@@ -47,7 +46,6 @@
 			<key>bleed chance</key> <integer>50</integer>
 			<key>burning chance</key> <integer>50</integer>
 			<key>sleep chance</key> <integer>50</integer>
-			<key>mug</key> <true/>
 			<key>leech</key> <true/>
 			<key>nonlethal</key> <true/>
 			<key>cleanse</key> <true/>
@@ -416,10 +414,7 @@
 		<key>power points</key> <integer>4</integer>
 		<!-- properties -->
 		<key>clever</key> <true/>
-		<key>enemy effects</key>
-		<dict>
-			<key>mug</key> <true/>
-		</dict>
+		<key>mug</key> <true/>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name leapt at *OnName!</string>

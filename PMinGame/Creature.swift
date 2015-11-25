@@ -771,7 +771,7 @@ class Creature
 		}
 	}
 	
-	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String, Bool)->())
+	internal func useAttackOn(attack:Attack, on:Creature, messageHandler:(String, Bool)->()) -> Bool
 	{
 		let runM = runMessage(messageHandler, on: on)
 		
@@ -923,6 +923,8 @@ class Creature
 			//output a miss message
 			runM(message: attack.missMessage, shake: false)
 		}
+		
+		return hit
 	}
 	
 	private func stepEffectMessage(descriptor:String, oldStep:Int, newStep:Int, messageHandler:(String, Bool)->())
@@ -948,20 +950,6 @@ class Creature
 			if attackEffect.nonlethal && health == 0
 			{
 				health = 1
-			}
-			
-			if attackEffect.mug
-			{
-				if good
-				{
-					//this is targeting the player, so the player should lose money
-					//TODO: destroy money based on level
-				}
-				else
-				{
-					//this is targeting an enemy, so the player should get money
-					//TODO: create money based on level
-				}
 			}
 			
 			if !dead

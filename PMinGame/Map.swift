@@ -36,6 +36,7 @@ class Map
 	//map content variables
 	var party = [Creature]()
 	var reserve = [Creature]()
+	var money:Int = 0
 	
 	var partyPosition:(Int, Int)!
 	var enemyEncounters = [(Int, Int)]()
@@ -88,6 +89,8 @@ class Map
 
 				//and, no matter if it's a continuation or not, this should be one difficulty higher
 				difficulty = from.difficulty + 1
+				
+				money = from.money
 			}
 			else
 			{
@@ -270,7 +273,8 @@ class Map
 	func saveParty()
 	{
 		let d = NSUserDefaults.standardUserDefaults()
-		
+	
+		d.setInteger(money, forKey: "partyMoney")
 		d.setInteger(party.count, forKey: "partySize")
 		d.setInteger(reserve.count, forKey: "reserveSize")
 		
@@ -288,6 +292,7 @@ class Map
 	{
 		let d = NSUserDefaults.standardUserDefaults()
 		
+		money = d.integerForKey("partyMoney")
 		let partySize = d.integerForKey("partySize")
 		let reserveSize = d.integerForKey("reserveSize")
 		for i in 0..<partySize
