@@ -28,8 +28,8 @@
 	</dict>
 	<key>floor</key>
 	<dict>
-		<key>gate</key> <true/>
-		<!-- <key>encounters</key> <true/> -->
+		<!-- <key>gate</key> <true/> -->
+		<key>encounters</key> <true/>
 		<key>color</key> <string>112211</string>
 	</dict>
 	<key>gate</key>

@@ -87,11 +87,11 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			
 			//sample starting party
 			map.party.append(Creature(job: "mystic", level: 1, good: true))
-//			map.party.append(Creature(job: "sour knight", level: 1, good: true))
-//			map.party.append(Creature(job: "rogue", level: 1, good: true))
-//			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
-//			map.party.append(Creature(job: "cold killer", level: 1, good: true))
-//			map.party.append(Creature(job: "cryoman", level: 1, good: true))
+			map.party.append(Creature(job: "sour knight", level: 1, good: true))
+			map.party.append(Creature(job: "rogue", level: 1, good: true))
+			map.party.append(Creature(job: "pyromaniac", level: 1, good: true))
+			map.party.append(Creature(job: "cold killer", level: 1, good: true))
+			map.party.append(Creature(job: "cryoman", level: 1, good: true))
 			
 			map.save()
 			saveState = kSaveStateMap

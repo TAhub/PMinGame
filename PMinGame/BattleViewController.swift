@@ -95,16 +95,21 @@ class BattleViewController: UIViewController, BattleDelegate {
 					fullMessages.append(extraMessage)
 				}
 			}
+			let joinedText = fullMessages.joinWithSeparator("\n")
 			dispatch_async(dispatch_get_main_queue())
 			{
-				//set text
-				self.textParser.text = fullMessages.joinWithSeparator("\n")
-				
-				//move to bottom
-				UIView.setAnimationsEnabled(false)
-				let range = NSMakeRange(self.textParser.text.characters.count, 0)
-				self.textParser.scrollRangeToVisible(range)
-				UIView.setAnimationsEnabled(true)
+				if self.textParser.text.characters.count < joinedText.characters.count
+				{
+					//set text
+					self.textParser.text = joinedText
+					self.textParser.layoutIfNeeded()
+					
+					//move to bottom
+					UIView.setAnimationsEnabled(false)
+					let range = NSMakeRange(self.textParser.text.characters.count, 0)
+					self.textParser.scrollRangeToVisible(range)
+					UIView.setAnimationsEnabled(true)
+				}
 			}
 		}
 		
@@ -407,16 +412,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 		
 		//TODO: run a message based on the money won/lost
 		
-		//TODO: run a message based on the experience awarded
-		
-		printFillerLine()
-	}
-	
-	private func victoryHook()
-	{
-		//TODO: get the actual net money change here (you should know it earlier, since you'll run a message for it)
-		let moneyChange:Int = 0
-		
 		//award EXP
 		var battleEXP = 0
 		for enemy in battle.enemies
@@ -434,9 +429,20 @@ class BattleViewController: UIViewController, BattleDelegate {
 		for (i, player) in battle.players.enumerate()
 		{
 			let exp = netTurns * battle.playerTurnDist[i] / netTurns
-			player.experience += exp
+			if exp != 0
+			{
+				player.experience += exp
+				runMessage("\(player.name) got \(exp) experience!", shake: false)
+			}
 		}
 		
+		printFillerLine()
+	}
+	
+	private func victoryHook()
+	{
+		//TODO: get the actual net money change here (you should know it earlier, since you'll run a message for it)
+		let moneyChange:Int = 0
 		
 		//any enemies who are good should join the party reserve
 		var newAdditions = [Creature]()
@@ -496,6 +502,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private func printFillerLine()
 	{
-		runMessage("                                       ", shake: false)
+		runMessage("                                                             ", shake: false)
 	}
 }
