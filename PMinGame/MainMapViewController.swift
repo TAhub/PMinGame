@@ -26,6 +26,7 @@ var saveState:String
 	}
 	set(newSave)
 	{
+		print("Setting save state to \(newSave)!")
 		NSUserDefaults.standardUserDefaults().setObject(newSave, forKey: kSaveStateKey)
 	}
 }
@@ -116,6 +117,12 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		{
 			//go to the battle instantly
 			performSegueWithIdentifier("startBattle", sender: self)
+		}
+		else if saveState == kSaveStateNone
+		{
+			//set the save state
+			//this happens because of a transition
+			saveState = kSaveStateCamp
 		}
 		
 		

@@ -279,7 +279,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>hairless human</string>
 		<key>blend color</key> <string>666688</string>
-		<key>description</key> <string>TODO: write a description</string>
+		<key>description</key> <string>This human experimental subject seems to have broken free and joined up with a criminal group. For some reason *he seems to be angry about the experiments.</string>
 	</dict>
 	<!-- machines -->
 	<key>warbot</key>
