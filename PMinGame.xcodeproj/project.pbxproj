@@ -22,6 +22,9 @@
 		E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC61BF2C78A00A9F5D3 /* Map.swift */; };
 		E45DEDC91BF2C7B100A9F5D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */; };
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
+		E469DEA81C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */; };
+		E469DEAA1C0A20A400F3EE3C /* AttacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */; };
+		E469DEAC1C0A20B100F3EE3C /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */; };
 		E46FC2F21BFEBE2D00F5DB90 /* CampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */; };
 		E47497831BF9C24600C75466 /* EncounterGenerator.plist in Resources */ = {isa = PBXBuildFile; fileRef = E47497821BF9C24600C75466 /* EncounterGenerator.plist */; };
 		E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485F95A1BF02494005E6402 /* CreatureView.swift */; };
@@ -58,6 +61,9 @@
 		E45DEDC61BF2C78A00A9F5D3 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyMemberTableViewCell.swift; sourceTree = "<group>"; };
+		E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttacksViewController.swift; sourceTree = "<group>"; };
+		E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampViewController.swift; sourceTree = "<group>"; };
 		E47497821BF9C24600C75466 /* EncounterGenerator.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EncounterGenerator.plist; sourceTree = "<group>"; };
 		E485F95A1BF02494005E6402 /* CreatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureView.swift; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 				E42C5A2A1BFA43A2005DCE33 /* ViewExtensions.swift */,
 				E490037B1BF4315000707443 /* MapViewLayout.swift */,
 				E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */,
+				E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */,
 				E485F95A1BF02494005E6402 /* CreatureView.swift */,
 			);
 			name = View;
@@ -123,6 +130,8 @@
 		E428037B1BF1052C00174F37 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */,
+				E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */,
 				E433D3FA1C02B664009586FF /* LevelViewController.swift */,
 				E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */,
 				E427F2FC1BF246C0005AB626 /* PartyViewController.swift */,
@@ -262,6 +271,8 @@
 			files = (
 				E46FC2F21BFEBE2D00F5DB90 /* CampViewController.swift in Sources */,
 				E427F2FD1BF246C0005AB626 /* PartyViewController.swift in Sources */,
+				E469DEAA1C0A20A400F3EE3C /* AttacksViewController.swift in Sources */,
+				E469DEA81C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift in Sources */,
 				E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */,
 				E433D3FB1C02B664009586FF /* LevelViewController.swift in Sources */,
 				E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */,
@@ -271,6 +282,7 @@
 				E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */,
 				E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */,
 				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,
+				E469DEAC1C0A20B100F3EE3C /* ItemsViewController.swift in Sources */,
 				E42803781BF1051200174F37 /* ImageExtensions.swift in Sources */,
 				E4B8E98A1BF59B2200CC2C85 /* MapSketcher.swift in Sources */,
 				E4B8E9801BF569B100CC2C85 /* MapCurator.swift in Sources */,

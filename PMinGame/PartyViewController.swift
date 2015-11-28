@@ -33,29 +33,38 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		let cell = table.dequeueReusableCellWithIdentifier("personCell")!
+		let cell = table.dequeueReusableCellWithIdentifier("personCell") as! PartyMemberTableViewCell
 		let person = personAtIndexPath(indexPath)
 		
-		cell.textLabel!.text = "\(person.name)  \(person.health)/\(person.maxHealth)"
+		cell.nameLabel.text = "\(person.name)  \(person.health)/\(person.maxHealth)"
+		cell.personSelectCallback =
+		{
+			self.selectedPerson = person
+		}
 		
 		return cell
 	}
 
 	private var selectedPerson:Creature?
-	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-	{
-		selectedPerson = personAtIndexPath(indexPath)
-		performSegueWithIdentifier("showDetail", sender: self)
-	}
+//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+//	{
+//		selectedPerson = personAtIndexPath(indexPath)
+//		performSegueWithIdentifier("showDetail", sender: self)
+//	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 	{
-		if segue.identifier == "showDetail"
+		if let pdvc = segue.destinationViewController as? PersonDetailViewController
 		{
-			if let pdvc = segue.destinationViewController as? PersonDetailViewController
-			{
-				pdvc.person = selectedPerson
-			}
+			pdvc.person = selectedPerson
+		}
+		else if let avc = segue.destinationViewController as? AttacksViewController
+		{
+			avc.person = selectedPerson
+		}
+		else if let ivc = segue.destinationViewController as? ItemsViewController
+		{
+			ivc.person = selectedPerson
 		}
 	}
 	

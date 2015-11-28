@@ -1092,23 +1092,18 @@ class Creature
 		return label
 	}
 	
-	internal var longLabel:String
+	internal var shortLabel:String
 	{
 		let genderLabel = (gender == nil ? "" : (gender! ? "female " : "male "))
 		var label = "level \(level) \(genderLabel)\(job) (\(type))"
 		label += "\n\(health) health   \(accuracy) accuracy   \(dodge) dodge"
 		label += "\n\(bruteAttack) attack   \(bruteDefense) defense   \(cleverAttack) sp. attack   \(cleverDefense) sp. defense"
-		label += "\n\(jobDescription)"
-		label += "\n\nAttacks:\n"
-		for (num, attack) in attacks.enumerate()
-		{
-			if num == 2
-			{
-				label += "\n"
-			}
-			label += "  \(attack.attack) (\(attack.type ?? "typeless"))"
-		}
 		return label
+	}
+	
+	internal var longLabel:String
+	{
+		return "\(shortLabel)\n\(jobDescription)"
 	}
 	
 	//MARK: capturing
