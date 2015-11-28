@@ -602,7 +602,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pS7-Cl-Isv">
                                                     <rect key="frame" x="16" y="12" width="43" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVE-VK-0dr">
@@ -614,8 +614,8 @@
                                                         <segue destination="fwl-Mn-TAn" kind="show" identifier="showDetail" id="3sE-ti-Wpt"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxs-dc-zo7">
-                                                    <rect key="frame" x="122" y="5" width="55" height="32"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxs-dc-zo7">
+                                                    <rect key="frame" x="122" y="6" width="55" height="32"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <state key="normal" title="Attacks"/>
                                                     <connections>
@@ -716,7 +716,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irj-ba-okn">
                                                     <rect key="frame" x="61" y="8" width="491" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g8-JP-M6q">
@@ -729,7 +729,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-Yp-DSI">
                                                     <rect key="frame" x="8" y="8" width="45" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -898,9 +898,63 @@
                                     <constraint firstAttribute="height" constant="70" id="xKS-RE-fK7"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uYg-XN-thN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="188" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uYg-XN-thN">
                                 <rect key="frame" x="20" y="106" width="560" height="399"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="188" id="skG-di-nYa" customClass="ItemTableViewCell" customModule="PMinGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="188"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="skG-di-nYa" id="5RV-WP-4T4">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFS-MP-TaM">
+                                                    <rect key="frame" x="8" y="8" width="43" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHF-Zb-91t">
+                                                    <rect key="frame" x="59" y="8" width="493" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="755" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P3E-d7-gCN">
+                                                    <rect key="frame" x="8" y="36" width="30" height="32"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <state key="normal" title="Use"/>
+                                                    <connections>
+                                                        <action selector="useAction" destination="skG-di-nYa" eventType="touchUpInside" id="dsd-16-TSC"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="UHF-Zb-91t" secondAttribute="bottom" id="3nl-UR-wQZ"/>
+                                                <constraint firstItem="P3E-d7-gCN" firstAttribute="top" secondItem="lFS-MP-TaM" secondAttribute="bottom" constant="8" symbolic="YES" id="6Op-0q-Yfc"/>
+                                                <constraint firstItem="lFS-MP-TaM" firstAttribute="top" secondItem="5RV-WP-4T4" secondAttribute="topMargin" id="8Mn-V9-cBT"/>
+                                                <constraint firstItem="UHF-Zb-91t" firstAttribute="leading" secondItem="lFS-MP-TaM" secondAttribute="trailing" constant="8" symbolic="YES" id="MEt-Y5-VnG"/>
+                                                <constraint firstItem="P3E-d7-gCN" firstAttribute="leading" secondItem="5RV-WP-4T4" secondAttribute="leadingMargin" id="Y50-pU-sHz"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="P3E-d7-gCN" secondAttribute="bottom" id="dJx-yH-GZw"/>
+                                                <constraint firstItem="lFS-MP-TaM" firstAttribute="leading" secondItem="5RV-WP-4T4" secondAttribute="leadingMargin" id="e7k-VW-otE"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="UHF-Zb-91t" secondAttribute="trailing" id="gzH-kw-ata"/>
+                                                <constraint firstItem="UHF-Zb-91t" firstAttribute="top" secondItem="5RV-WP-4T4" secondAttribute="topMargin" id="hAd-A0-hyr"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lFS-MP-TaM" secondAttribute="trailing" id="jd3-88-t3H"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="jd3-88-t3H"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="UHF-Zb-91t" id="JOU-pC-Fc9"/>
+                                            <outlet property="nameLabel" destination="lFS-MP-TaM" id="EO4-W3-ZjK"/>
+                                            <outlet property="useButton" destination="P3E-d7-gCN" id="O0s-AQ-7qh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -919,6 +973,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="itemTable" destination="uYg-XN-thN" id="AqO-Us-SzQ"/>
                         <outlet property="nameLabel" destination="YtR-rP-FR2" id="hdO-Xo-vsg"/>
                         <outlet property="portraitView" destination="zYj-24-g2J" id="BlG-lZ-CcH"/>
                     </connections>

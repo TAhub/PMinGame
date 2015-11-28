@@ -94,6 +94,13 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			map.party.append(Creature(job: "cold killer", level: 1, good: true))
 			map.party.append(Creature(job: "cryoman", level: 1, good: true))
 			
+			//starting inventory
+			map.items.append(Item(type: "poultice"))
+			map.items[0].number = 6
+			map.items.append(Item(type: "smelling salts"))
+			map.items[1].number = 2
+			map.items.append(Item(type: "miracle cure"))
+			
 			map.save()
 			saveState = kSaveStateMap
 		}
@@ -219,6 +226,8 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				let nextMap = Map(from: map)
 				cvc.nextMap = nextMap
 				nextMap.party = map.party
+				nextMap.money = map.money
+				nextMap.items = map.items
 				
 				//save the next map
 				nextMap.save()
@@ -265,8 +274,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		else
 		{
 			map.money = money
-			
-			print(map.money)
+			map.items = loadInventory()
 			
 			if let newAdditions = newAdditions
 			{

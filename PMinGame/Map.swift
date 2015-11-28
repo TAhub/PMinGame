@@ -20,6 +20,35 @@ let kMaxFloor = 3
 let kEncounterChance:UInt32 = 13
 let kPartyDamagePercent = 5
 
+func saveInventory(items:[Item])
+{
+	let d = NSUserDefaults.standardUserDefaults()
+	
+	d.setInteger(items.count, forKey: "items")
+	for i in 0..<items.count
+	{
+		d.setInteger(items[i].number, forKey: "items\(i)Number")
+		d.setObject(items[i].type, forKey: "items\(i)Type")
+	}
+}
+
+func loadInventory()->[Item]
+{
+	let d = NSUserDefaults.standardUserDefaults()
+	
+	var items = [Item]()
+	let numItems = d.integerForKey("items")
+	for i in 0..<numItems
+	{
+		let number = d.integerForKey("items\(i)Number")
+		let type = d.stringForKey("items\(i)Type")!
+		let it = Item(type: type)
+		it.number = number
+		items.append(it)
+	}
+	return items
+}
+
 class Map
 {
 	var delegate:MapDelegate!
@@ -37,6 +66,7 @@ class Map
 	var party = [Creature]()
 	var reserve = [Creature]()
 	var money:Int = 0
+	var items = [Item]()
 	
 	var partyPosition:(Int, Int)!
 	var enemyEncounters = [(Int, Int)]()
@@ -203,6 +233,9 @@ class Map
 		
 		//save party
 		saveParty()
+		
+		//save inventory
+		saveInventory(items)
 	}
 	
 	private func load()
@@ -236,6 +269,9 @@ class Map
 		
 		//load party
 		loadParty()
+		
+		//load inventory
+		items = loadInventory()
 	}
 	
 	private func saveWalkers()

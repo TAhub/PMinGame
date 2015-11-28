@@ -84,16 +84,12 @@ class Battle
 		}
 	}
 	
-	init(players:[Creature], money:Int, encounterType:String, difficulty:Int, savePlayersCallback: ()->())
+	init(players:[Creature], money:Int, items:[Item], encounterType:String, difficulty:Int, savePlayersCallback: ()->())
 	{
 		self.money = money
 		self.players = players
 		self.savePlayersCallback = savePlayersCallback
-		
-		//TODO: get the real inventory
-		playerItems.append(Item(type: "poultice"))
-		playerItems.append(Item(type: "miracle cure"))
-		playerItems.append(Item(type: "smelling salts"))
+		self.playerItems = items
 		
 		if saveState == kSaveStateBattle
 		{
@@ -227,7 +223,7 @@ class Battle
 	
 	func pickItem(num:Int, item:Item) -> Bool
 	{
-		if players.count > num && ((players[num].dead && item.targetsDead) || (!players[num].dead && item.targetsAlive))
+		if players.count > num && item.canUseOn(players[num])
 		{
 			playerOrder = .UseItem(item, players[num])
 			turnOperation()
@@ -302,6 +298,8 @@ class Battle
 			//TODO: remove expended items from the enemy item list
 			//dunno if I'll let enemies use items, though
 		}
+		
+		saveInventory(playerItems)
 	}
 	private func useFlee(user:Creature)
 	{
@@ -668,6 +666,10 @@ class Battle
 	{
 		if playerItems.count > num
 		{
+			if playerItems[num].number > 1
+			{
+				return "\(playerItems[num].type) x\(playerItems[num].number)"
+			}
 			return playerItems[num].type
 		}
 		return nil

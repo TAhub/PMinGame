@@ -19,6 +19,7 @@
 		E433D3FB1C02B664009586FF /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433D3FA1C02B664009586FF /* LevelViewController.swift */; };
 		E437085D1BF4E8DC00F0B8D6 /* Tiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = E437085C1BF4E8DC00F0B8D6 /* Tiles.plist */; };
 		E43A757B1BED3B5B00367863 /* Races.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43A757A1BED3B5B00367863 /* Races.plist */; };
+		E44C09F31C0A36A900895C56 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C09F21C0A36A900895C56 /* ItemTableViewCell.swift */; };
 		E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC61BF2C78A00A9F5D3 /* Map.swift */; };
 		E45DEDC91BF2C7B100A9F5D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */; };
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
@@ -59,6 +60,7 @@
 		E433D3FA1C02B664009586FF /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		E437085C1BF4E8DC00F0B8D6 /* Tiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tiles.plist; sourceTree = "<group>"; };
 		E43A757A1BED3B5B00367863 /* Races.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Races.plist; sourceTree = "<group>"; };
+		E44C09F21C0A36A900895C56 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		E45DEDC61BF2C78A00A9F5D3 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
@@ -118,12 +120,13 @@
 		E428037A1BF1052700174F37 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E44C09F21C0A36A900895C56 /* ItemTableViewCell.swift */,
+				E469DEAD1C0A276D00F3EE3C /* AttackTableViewCell.swift */,
 				E433D3F81C02B0E6009586FF /* TileCollectionViewCell.swift */,
 				E42803771BF1051200174F37 /* ImageExtensions.swift */,
 				E42C5A2A1BFA43A2005DCE33 /* ViewExtensions.swift */,
 				E490037B1BF4315000707443 /* MapViewLayout.swift */,
 				E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */,
-				E469DEAD1C0A276D00F3EE3C /* AttackTableViewCell.swift */,
 				E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */,
 				E485F95A1BF02494005E6402 /* CreatureView.swift */,
 			);
@@ -278,6 +281,7 @@
 				E469DEAA1C0A20A400F3EE3C /* AttacksViewController.swift in Sources */,
 				E469DEA81C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift in Sources */,
 				E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */,
+				E44C09F31C0A36A900895C56 /* ItemTableViewCell.swift in Sources */,
 				E433D3FB1C02B664009586FF /* LevelViewController.swift in Sources */,
 				E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */,
 				E45DEDC91BF2C7B100A9F5D3 /* Tile.swift in Sources */,

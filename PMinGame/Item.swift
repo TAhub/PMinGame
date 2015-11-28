@@ -16,6 +16,11 @@ class Item
 		self.type = type
 	}
 	
+	func canUseOn(on:Creature)->Bool
+	{
+		return (on.dead && targetsDead) || (!on.dead && targetsAlive)
+	}
+	
 	//MARK: computed properties
 	var heals:Int?
 	{
@@ -44,5 +49,9 @@ class Item
 	var message:String
 	{
 		return PlistService.loadValue("Items", type, "message") as! String
+	}
+	var description:String
+	{
+		return "TODO: implement descriptions"
 	}
 }

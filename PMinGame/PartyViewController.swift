@@ -78,6 +78,8 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		else if let ivc = segue.destinationViewController as? ItemsViewController
 		{
 			ivc.person = selectedPerson
+			ivc.items = mvc.map.items
+			ivc.saveClosure = saveClosure
 		}
 	}
 	
