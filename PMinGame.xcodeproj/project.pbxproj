@@ -25,6 +25,7 @@
 		E469DEA81C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */; };
 		E469DEAA1C0A20A400F3EE3C /* AttacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */; };
 		E469DEAC1C0A20B100F3EE3C /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */; };
+		E469DEAE1C0A276D00F3EE3C /* AttackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E469DEAD1C0A276D00F3EE3C /* AttackTableViewCell.swift */; };
 		E46FC2F21BFEBE2D00F5DB90 /* CampViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */; };
 		E47497831BF9C24600C75466 /* EncounterGenerator.plist in Resources */ = {isa = PBXBuildFile; fileRef = E47497821BF9C24600C75466 /* EncounterGenerator.plist */; };
 		E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E485F95A1BF02494005E6402 /* CreatureView.swift */; };
@@ -64,6 +65,7 @@
 		E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyMemberTableViewCell.swift; sourceTree = "<group>"; };
 		E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttacksViewController.swift; sourceTree = "<group>"; };
 		E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		E469DEAD1C0A276D00F3EE3C /* AttackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttackTableViewCell.swift; sourceTree = "<group>"; };
 		E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampViewController.swift; sourceTree = "<group>"; };
 		E47497821BF9C24600C75466 /* EncounterGenerator.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EncounterGenerator.plist; sourceTree = "<group>"; };
 		E485F95A1BF02494005E6402 /* CreatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatureView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				E42C5A2A1BFA43A2005DCE33 /* ViewExtensions.swift */,
 				E490037B1BF4315000707443 /* MapViewLayout.swift */,
 				E4F3C83B1BE9AD2D00D29811 /* Main.storyboard */,
+				E469DEAD1C0A276D00F3EE3C /* AttackTableViewCell.swift */,
 				E469DEA71C0A1CE700F3EE3C /* PartyMemberTableViewCell.swift */,
 				E485F95A1BF02494005E6402 /* CreatureView.swift */,
 			);
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E469DEAE1C0A276D00F3EE3C /* AttackTableViewCell.swift in Sources */,
 				E46FC2F21BFEBE2D00F5DB90 /* CampViewController.swift in Sources */,
 				E427F2FD1BF246C0005AB626 /* PartyViewController.swift in Sources */,
 				E469DEAA1C0A20A400F3EE3C /* AttacksViewController.swift in Sources */,

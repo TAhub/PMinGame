@@ -1144,3 +1144,8 @@ class Creature
 		}
 	}
 }
+
+
+//MARK: make creatures equatable
+extension Creature:Equatable {}
+func == (lhs: Creature, rhs: Creature) -> Bool { return lhs === rhs }

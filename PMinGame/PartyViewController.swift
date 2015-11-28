@@ -54,6 +54,18 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 	{
+		let saveClosure:(()->()) =
+		{
+			if let partyPos = self.mvc.map.party.indexOf(self.selectedPerson!)
+			{
+				savePartyMember(self.selectedPerson!, party: true, number: partyPos)
+			}
+			else if let reservePos = self.mvc.map.reserve.indexOf(self.selectedPerson!)
+			{
+				savePartyMember(self.selectedPerson!, party: false, number: reservePos)
+			}
+		}
+		
 		if let pdvc = segue.destinationViewController as? PersonDetailViewController
 		{
 			pdvc.person = selectedPerson
@@ -61,6 +73,7 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		else if let avc = segue.destinationViewController as? AttacksViewController
 		{
 			avc.person = selectedPerson
+			avc.saveClosure = saveClosure
 		}
 		else if let ivc = segue.destinationViewController as? ItemsViewController
 		{

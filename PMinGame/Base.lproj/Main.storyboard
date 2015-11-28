@@ -702,19 +702,83 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="163" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kf1-UW-uQt">
+                                <rect key="frame" x="20" y="106" width="560" height="399"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="attackCell" rowHeight="163" id="U13-Ug-tAd" customClass="AttackTableViewCell" customModule="PMinGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="163"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U13-Ug-tAd" id="FGW-Dl-4eh">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="162"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qo-Yp-DSI">
+                                                    <rect key="frame" x="8" y="8" width="43" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" ambiguous="YES" misplaced="YES" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irj-ba-okn">
+                                                    <rect key="frame" x="59" y="8" width="493" height="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6g8-JP-M6q">
+                                                    <rect key="frame" x="8" y="36" width="45" height="30"/>
+                                                    <state key="normal" title="Forget"/>
+                                                    <connections>
+                                                        <action selector="forgetButton" destination="U13-Ug-tAd" eventType="touchUpInside" id="z7v-Hd-lQv"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="6g8-JP-M6q" secondAttribute="bottom" id="OFm-jg-2la"/>
+                                                <constraint firstItem="7Qo-Yp-DSI" firstAttribute="width" relation="greaterThanOrEqual" secondItem="6g8-JP-M6q" secondAttribute="width" id="OlG-xH-89l"/>
+                                                <constraint firstItem="7Qo-Yp-DSI" firstAttribute="leading" secondItem="FGW-Dl-4eh" secondAttribute="leadingMargin" id="Op7-lh-qGu"/>
+                                                <constraint firstItem="Irj-ba-okn" firstAttribute="leading" secondItem="7Qo-Yp-DSI" secondAttribute="trailing" constant="8" symbolic="YES" id="Sfs-VL-neo"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Irj-ba-okn" secondAttribute="bottom" id="TWO-cN-Uxs"/>
+                                                <constraint firstItem="6g8-JP-M6q" firstAttribute="top" secondItem="7Qo-Yp-DSI" secondAttribute="bottom" constant="8" symbolic="YES" id="aRD-U9-SqX"/>
+                                                <constraint firstItem="7Qo-Yp-DSI" firstAttribute="top" secondItem="FGW-Dl-4eh" secondAttribute="topMargin" id="feY-yt-O4c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Irj-ba-okn" secondAttribute="trailing" id="lA0-6L-6VW"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="6g8-JP-M6q" secondAttribute="leading" id="mvd-CT-dEX"/>
+                                                <constraint firstAttribute="topMargin" secondItem="Irj-ba-okn" secondAttribute="top" id="rri-0B-l1W"/>
+                                                <constraint firstItem="Irj-ba-okn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6g8-JP-M6q" secondAttribute="trailing" constant="8" symbolic="YES" id="teh-Tc-uh0"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OlG-xH-89l"/>
+                                                    <exclude reference="teh-Tc-uh0"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="Irj-ba-okn" id="veF-3I-HXj"/>
+                                            <outlet property="forgetButtonOutlet" destination="6g8-JP-M6q" id="hTR-VY-9Aj"/>
+                                            <outlet property="nameLabel" destination="7Qo-Yp-DSI" id="Jb8-yH-nLw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kf1-UW-uQt" firstAttribute="leading" secondItem="47V-pN-kXG" secondAttribute="leadingMargin" id="1M6-2Q-9i3"/>
                             <constraint firstItem="Thw-Jn-084" firstAttribute="top" secondItem="kbG-I6-HVk" secondAttribute="bottom" constant="8" symbolic="YES" id="3Gf-6A-wCr"/>
                             <constraint firstItem="pAf-Et-Tfz" firstAttribute="top" secondItem="kbG-I6-HVk" secondAttribute="bottom" constant="8" symbolic="YES" id="4jC-SK-sb6"/>
                             <constraint firstItem="W4I-TO-mIX" firstAttribute="centerX" secondItem="47V-pN-kXG" secondAttribute="centerX" id="KgR-28-CBa"/>
+                            <constraint firstItem="W4I-TO-mIX" firstAttribute="top" secondItem="kf1-UW-uQt" secondAttribute="bottom" constant="8" symbolic="YES" id="SOO-TU-YSC"/>
                             <constraint firstItem="pAf-Et-Tfz" firstAttribute="leading" secondItem="47V-pN-kXG" secondAttribute="leadingMargin" id="UzM-5T-Q07"/>
+                            <constraint firstItem="kf1-UW-uQt" firstAttribute="top" secondItem="pAf-Et-Tfz" secondAttribute="bottom" constant="8" symbolic="YES" id="bzU-pu-CL6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kf1-UW-uQt" secondAttribute="trailing" id="cwS-cP-osS"/>
                             <constraint firstItem="Thw-Jn-084" firstAttribute="leading" secondItem="pAf-Et-Tfz" secondAttribute="trailing" constant="8" symbolic="YES" id="gqY-0H-sGt"/>
                             <constraint firstItem="Uag-qi-4fC" firstAttribute="top" secondItem="W4I-TO-mIX" secondAttribute="bottom" constant="8" symbolic="YES" id="lqb-MC-HXs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Thw-Jn-084" secondAttribute="trailing" id="vgh-Na-UZQ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="attackTable" destination="kf1-UW-uQt" id="Y0q-CG-Jhe"/>
                         <outlet property="nameLabel" destination="Thw-Jn-084" id="JRp-sF-7ZC"/>
                         <outlet property="portraitView" destination="pAf-Et-Tfz" id="374-Hm-4Mv"/>
                     </connections>
