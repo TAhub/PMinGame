@@ -122,7 +122,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		{
 			//set the save state
 			//this happens because of a transition
-			saveState = kSaveStateCamp
+			saveState = kSaveStateMap
 		}
 		
 		
@@ -198,6 +198,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				
 				//award EXP for finishing the map
 				let mapEXP = expToNextLevel(map.difficulty) * 7 / 10
+				print("Awarding \(mapEXP) experience for finishing the map!")
 				for person in map.party
 				{
 					person.experience += mapEXP
