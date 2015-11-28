@@ -53,11 +53,21 @@ class AttacksViewController: UIViewController, UITableViewDataSource {
 		{
 			cell.forgetClosure =
 			{
-				self.person!.attacks.removeAtIndex(indexPath.row)
-				self.attackTable.reloadData()
+				let alert = UIAlertController(title: "Really forget?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+				let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default)
+				{ (action) in
+					self.person!.attacks.removeAtIndex(indexPath.row)
+					self.attackTable.reloadData()
+					
+					//also save the effect!
+					self.saveClosure()
+				}
+				let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
 				
-				//also save the effect!
-				self.saveClosure()
+				alert.addAction(cancel)
+				alert.addAction(ok)
+				
+				self.presentViewController(alert, animated: true, completion: nil)
 			}
 		}
 		else
