@@ -42,6 +42,9 @@ class CampViewController: UIViewController {
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		//set transition
+		navigationController?.delegate = nil
+		
 		if let dest = segue.destinationViewController as? LevelViewController
 		{
 			dest.party = party

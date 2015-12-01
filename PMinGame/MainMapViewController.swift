@@ -199,6 +199,9 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	{
 		if let cvc = segue.destinationViewController as? CampViewController
 		{
+			//set transition
+			navigationController?.delegate = nil
+			
 			if saveState != kSaveStateCamp
 			{
 				saveState = kSaveStateNone
@@ -251,6 +254,9 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		}
 		else if let bvc = segue.destinationViewController as? BattleViewController
 		{
+			//set transition
+			navigationController?.delegate = BattleTransition()
+			
 			if saveState != kSaveStateBattle
 			{
 				saveState = kSaveStateNone

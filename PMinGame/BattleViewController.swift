@@ -18,7 +18,7 @@ enum MenuState
 }
 
 class BattleViewController: UIViewController, BattleDelegate {
-
+	
 	//MARK: outlets and actions
 	@IBOutlet weak var playerPosition: NSLayoutConstraint!
 	@IBOutlet weak var playerView: CreatureView!
@@ -75,7 +75,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	private var messages = [String]()
 	private var storeMessages = [String]()
 	private var writingMessages:Bool = false
-	{
+		{
 		didSet
 		{
 			labelsChanged()
@@ -97,19 +97,19 @@ class BattleViewController: UIViewController, BattleDelegate {
 			}
 			let joinedText = fullMessages.joinWithSeparator("\n")
 			dispatch_async(dispatch_get_main_queue())
-			{
-				if self.textParser.text.characters.count < joinedText.characters.count
 				{
-					//set text
-					self.textParser.text = joinedText
-					self.textParser.layoutIfNeeded()
-					
-					//move to bottom
-					UIView.setAnimationsEnabled(false)
-					let range = NSMakeRange(self.textParser.text.characters.count, 0)
-					self.textParser.scrollRangeToVisible(range)
-					UIView.setAnimationsEnabled(true)
-				}
+					if self.textParser.text.characters.count < joinedText.characters.count
+					{
+						//set text
+						self.textParser.text = joinedText
+						self.textParser.layoutIfNeeded()
+						
+						//move to bottom
+						UIView.setAnimationsEnabled(false)
+						let range = NSMakeRange(self.textParser.text.characters.count, 0)
+						self.textParser.scrollRangeToVisible(range)
+						UIView.setAnimationsEnabled(true)
+					}
 			}
 		}
 		
@@ -120,8 +120,8 @@ class BattleViewController: UIViewController, BattleDelegate {
 			{
 				message = message.substringFromIndex(message.startIndex.advancedBy(1))
 				dispatch_async(dispatch_get_main_queue())
-				{
-					self.shake()
+					{
+						self.shake()
 				}
 			}
 			for i in message.startIndex..<message.endIndex
@@ -156,14 +156,14 @@ class BattleViewController: UIViewController, BattleDelegate {
 	//MARK: central stuff
 	private var battle:Battle!
 	private var animating:Bool = false
-	{
+		{
 		didSet
 		{
 			labelsChanged()
 		}
 	}
 	private var menuState:MenuState = .Main
-	{
+		{
 		didSet
 		{
 			labelsChanged()
@@ -174,11 +174,18 @@ class BattleViewController: UIViewController, BattleDelegate {
 	{
 		super.viewWillAppear(animated)
 		
+		textParser.text = ""
+	}
+	
+	override func viewDidAppear(animated: Bool)
+	{
+		super.viewDidAppear(animated)
+		
 		//do a little animation
 		animating = true
 		playerPosition.constant = 0
 		enemyPosition.constant = 0
-		UIView.animateWithDuration(2.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
+		UIView.animateWithDuration(2.0, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations:
 			{
 				self.view.layoutIfNeeded()
 				self.playerStats.alpha = 1
@@ -190,8 +197,6 @@ class BattleViewController: UIViewController, BattleDelegate {
 		
 		//initialize the labels
 		labelsChanged()
-		
-		textParser.text = ""
 	}
 	
 	private var endOfBattleHook:((Bool, [Creature]?, Int)->())!
@@ -205,7 +210,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		
 		battle.delegate = self
 		self.endOfBattleHook = endOfBattleHook
-    }
+	}
 	
 	private func pressButton(num:Int)
 	{
@@ -293,6 +298,8 @@ class BattleViewController: UIViewController, BattleDelegate {
 		}
 	}
 	
+	private var firstLabelSet = true
+	
 	private func labelsChanged()
 	{
 		if playerStats == nil || battle == nil
@@ -300,10 +307,23 @@ class BattleViewController: UIViewController, BattleDelegate {
 			return
 		}
 		
+		if !animating
+		{
+			firstLabelSet = false
+		}
+		
 		if !writingMessages
 		{
-			playerStats.text = battle.playerStat
-			enemyStats.text = battle.enemyStat
+			if !firstLabelSet
+			{
+				playerStats.text = battle.playerStat
+				enemyStats.text = battle.enemyStat
+			}
+			else
+			{
+				playerStats.text = ""
+				enemyStats.text = ""
+			}
 			
 			playerView.creature = battle.player
 			enemyView.creature = battle.enemy
@@ -371,23 +391,23 @@ class BattleViewController: UIViewController, BattleDelegate {
 		animating = true
 		actingOnPosition.constant = 300 * (onPlayer ? 1 : -1)
 		UIView.animateWithDuration(1.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
-		{
-			self.view.layoutIfNeeded()
-			actingOnLabel.alpha = 0
-			
-		})
-		{ (success) in
-			self.labelsChanged()
-			
-			actingOnPosition.constant = 0
-			UIView.animateWithDuration(1.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
 			{
 				self.view.layoutIfNeeded()
-				actingOnLabel.alpha = 1
+				actingOnLabel.alpha = 0
+				
 			})
 			{ (success) in
-				self.animating = false
-			}
+				self.labelsChanged()
+				
+				actingOnPosition.constant = 0
+				UIView.animateWithDuration(1.0, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations:
+					{
+						self.view.layoutIfNeeded()
+						actingOnLabel.alpha = 1
+					})
+					{ (success) in
+						self.animating = false
+				}
 		}
 	}
 	

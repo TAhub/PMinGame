@@ -66,6 +66,9 @@ class PartyViewController: UIViewController, UITableViewDelegate, UITableViewDat
 			}
 		}
 		
+		//set transition
+		navigationController?.delegate = nil
+		
 		if let pdvc = segue.destinationViewController as? PersonDetailViewController
 		{
 			pdvc.person = selectedPerson
