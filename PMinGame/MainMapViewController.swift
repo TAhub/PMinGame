@@ -65,7 +65,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.jobStatDiagnostic()
 		
 		//turn this diagnostic on if you want to see if a job's attacks have the right balance of brute and clever, types, etc
-		PlistService.jobAttackDiagnostic()
+//		PlistService.jobAttackDiagnostic()
 		
 		//turn this diagnostic on if you want to see if one type has too many attacks, etc
 //		PlistService.attackDiagnostic()
@@ -74,7 +74,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.attackUsageDiagnostic()
 		
 		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
-		PlistService.attackPowerDiagnostic()
+//		PlistService.attackPowerDiagnostic()
 		
 		
 		//check save state

@@ -797,7 +797,7 @@
 		<!-- appearance -->
 		<key>race</key> <string>thunderbird</string>
 		<key>job appearance</key> <string>template</string>
-		<key>blend color</key> <string>FFFF00</string>
+		<key>blend color</key> <string>FFFF22</string>
 		<key>description</key> <string>This monster causes thunder when *he beats *his wings. Keeping *him around would probably be bad for your hearing.</string>
 	</dict>
 </dict>
