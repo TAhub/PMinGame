@@ -21,6 +21,7 @@
 		<key>ranged</key> <true/>
 		<key>quick</key> <true/>
 		<key>leech</key> <true/>
+		<key>free on miss</key> <true/>
 		<key>user effects</key>
 		<dict>
 			<key>attack steps</key> <integer>1</integer>
@@ -32,6 +33,7 @@
 			<key>bleed chance</key> <integer>50</integer>
 			<key>burning chance</key> <integer>50</integer>
 			<key>sleep chance</key> <integer>50</integer>
+			<key>confusion chance</key> <integer>50</integer>
 			<key>nonlethal</key> <true/>
 			<key>cleanse</key> <true/>
 		</dict>
@@ -46,6 +48,7 @@
 			<key>bleed chance</key> <integer>50</integer>
 			<key>burning chance</key> <integer>50</integer>
 			<key>sleep chance</key> <integer>50</integer>
+			<key>confusion chance</key> <integer>50</integer>
 			<key>leech</key> <true/>
 			<key>nonlethal</key> <true/>
 			<key>cleanse</key> <true/>
@@ -192,6 +195,46 @@
 		<key>message</key> <string>*Name swiped at *OnName with *his vibrating blade!</string>
 		<key>miss message</key> <string>*Name tried to slash *his vibrating blade at *OnName, but missed!</string>
 		<key>description</key> <string>does physical damage and has a low chance of inflicting bleed.</string>
+		<key>tier</key> <integer>3</integer>
+	</dict>
+	<!-- bite line -->
+	<key>bite</key>
+	<dict>
+		<key>damage</key> <integer>9</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>20</integer>
+		<!-- properties -->
+		<key>leech</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>15</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name took a big bite out of *OnName!</string>
+		<key>miss message</key> <string>*Name tried to bite *OnName, but *OnName fended *him off!</string>
+		<key>description</key> <string>does light physical damage, has a high chance of inflicting bleed, and heals the user.</string>
+		<key>tier</key> <integer>1</integer>
+	</dict>
+	<key>gouge</key>
+	<dict>
+		<key>damage</key> <integer>18</integer>
+		<key>accuracy</key> <integer>70</integer>
+		<key>type</key> <string>physical</string>
+		<key>power points</key> <integer>16</integer>
+		<key>upgrade for</key> <string>bite</string>
+		<!-- properties -->
+		<key>leech</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>bleed chance</key> <integer>15</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name took a huge bite out of *OnName!</string>
+		<key>miss message</key> <string>*Name tried to bit *OnName, but *OnName fended *him off!</string>
+		<key>description</key> <string>does light physical damage, has a high chance of inflicting bleed, and heals the user.</string>
 		<key>tier</key> <integer>3</integer>
 	</dict>
 	<!-- slam line -->
@@ -554,13 +597,36 @@
 		<!-- properties -->
 		<key>clever</key> <true/>
 		<key>ranged</key> <true/>
-		<!-- TODO: shouldn't use power points on a miss -->
+		<key>free on miss</key> <true/>
 		<!-- appearance -->
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name summoned the astral wheel and struck *OnName with it!</string>
-		<key>miss message</key> <string>*Name summoned the astral wheel, but was unable to control it!</string>
-		<key>description</key> <string>does heavy astral damage.</string>
+		<key>miss message</key> <string>*Name tried to summon the astral wheel, but was unable to control it!</string>
+		<key>description</key> <string>does heavy astral damage and is free on a miss.</string>
 		<key>tier</key> <integer>3</integer>
+	</dict>
+	<key>havoc</key>
+	<dict>
+		<key>damage</key> <integer>15</integer>
+		<key>accuracy</key> <integer>80</integer>
+		<key>type</key> <string>astral</string>
+		<key>power points</key> <integer>12</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>enemy effects</key>
+		<dict>
+			<key>confusion chance</key> <integer>10</integer>
+			<key>leech</key> <true/>
+			<key>nonlethal</key> <true/>
+			<key>cleanse</key> <true/>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name overwhelmed *OnName with ghastly tricks!</string>
+		<key>miss message</key> <string>*Name tried overwhelm *OnName, but *OnName was merely whelmed!</string>
+		<key>description</key> <string>does astral damage and has a moderate chance to inflict confusion.</string>
+		<key>tier</key> <integer>1</integer>
 	</dict>
 	<!-- -->
 	<!-- flame attacks -->
@@ -1165,6 +1231,42 @@
 		<!-- TODO: animation data -->
 		<key>message</key> <string>*Name stared at *OnName with enthralling eyes!</string>
 		<key>description</key> <string>has a high chance of inflicting sleep.</string>
+		<key>tier</key> <integer>2</integer>
+	</dict>
+	<key>lift off</key>
+	<dict>
+		<key>damage</key> <integer>12</integer>
+		<key>accuracy</key> <integer>85</integer>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>user effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>1</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name took off into the air, blasting *OnName with thunder!</string>
+		<key>miss message</key> <string>*Name tried to take off into the air, but *OnName grabbed *his leg!</string>
+		<key>description</key> <string>does light typeless damage and raises the user's evasion.</string>
+		<key>tier</key> <integer>1</integer>
+	</dict>
+	<key>thunderbomb</key>
+	<dict>
+		<key>damage</key> <integer>30</integer>
+		<key>power points</key> <integer>6</integer>
+		<!-- properties -->
+		<key>clever</key> <true/>
+		<key>ranged</key> <true/>
+		<key>user effects</key>
+		<dict>
+			<key>dodge steps</key> <integer>-1</integer>
+		</dict>
+		<!-- appearance -->
+		<!-- TODO: animation data -->
+		<key>message</key> <string>*Name divebombed into *OnName, blasting the battlefield with thunder!</string>
+		<key>description</key> <string>does heavy typeless damage, but lowers the user's evasion.</string>
 		<key>tier</key> <integer>2</integer>
 	</dict>
 	<key>explode</key>

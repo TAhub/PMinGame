@@ -33,9 +33,7 @@ var saveState:String
 
 func savePartyMember(member:Creature, party:Bool, number:Int)
 {
-	//TODO: get a creature save string
 	let creatureSaveString = member.creatureString
-	
 	NSUserDefaults.standardUserDefaults().setObject(creatureSaveString, forKey: "\(party ? "party" : "reserve")\(number)")
 }
 
@@ -67,7 +65,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.jobStatDiagnostic()
 		
 		//turn this diagnostic on if you want to see if a job's attacks have the right balance of brute and clever, types, etc
-//		PlistService.jobAttackDiagnostic()
+		PlistService.jobAttackDiagnostic()
 		
 		//turn this diagnostic on if you want to see if one type has too many attacks, etc
 //		PlistService.attackDiagnostic()
@@ -76,7 +74,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 //		PlistService.attackUsageDiagnostic()
 		
 		//turn this diagnostic on if you want to see if any attack is too strong, too weak, etc
-//		PlistService.attackPowerDiagnostic()
+		PlistService.attackPowerDiagnostic()
 		
 		
 		//check save state
@@ -373,10 +371,6 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	func startBattle()
 	{
 		performSegueWithIdentifier("startBattle", sender: self)
-		
-		//TODO: this should have a cool custom transition
-		//some kind of dissolve maybe
-		//think a final fantasy battle start
 	}
 	func partyDamageEffect()
 	{

@@ -26,9 +26,9 @@
 		<key>paralysis immunity</key> <true/>
 		<key>freeze immunity</key> <true/>
 		<key>sleep immunity</key> <true/>
+		<key>confusion immunity</key> <true/>
 		<key>sneaky</key> <true/>
 		<key>hardy</key> <true/>
-		<!-- TODO: nobody has the parrying property yet. should probably give it to somebody! -->
 		<key>parrying</key> <true/>
 		<key>shielding</key> <true/>
 		<key>main character</key> <true/>
@@ -526,7 +526,7 @@
 		<key>attacks</key>
 		<dict>
 			<key>1</key> <string>puff of flame</string>
-			<key>4</key> <string>blinding light</string>
+			<key>4</key> <string>power up</string>
 			<key>8</key> <string>brand</string>
 			<key>10</key> <string>flamethrower</string>
 			<key>15</key> <string>ignite</string>
@@ -683,6 +683,122 @@
 		<key>weapon appearance</key> <string>weapon_shield</string>
 		<key>blend color</key> <string>BB9999</string>
 		<key>description</key> <string>This ex-soldier has a flaming gauntlet and a shield that protects *him from ranged attacks.</string>
+	</dict>
+	<!-- monsters -->
+	<key>wendigo</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>45</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>9</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>8</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>12</integer>
+		<!-- misc -->
+		<key>type</key> <string>frost</string>
+		<key>freeze immunity</key> <true/>
+		<key>sleep immunity</key> <true/>
+		<key>hardy</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>bite</string>
+			<key>6</key> <string>subdue</string>
+			<key>10</key> <string>rime</string>
+			<key>15</key> <string>hunker down</string>
+			<key>20</key> <string>gouge</string>
+			<key>24</key> <string>hypothermia</string>
+		</dict>
+		<!-- appearance -->
+		<key>race</key> <string>wendigo</string>
+		<key>job appearance</key> <string>template</string>
+		<key>blend color</key> <string>223377</string>
+		<key>description</key> <string>This monster stalks the frozen wastes, eating humans. What *he is doing here is unclear. But whatever the reason, *he shines at traversing the dangerous terrain around here.</string>
+	</dict>
+	<key>yatagarasu</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>50</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>10</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>12</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>flame</string>
+		<key>burning immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>puff of flame</string>
+			<key>3</key> <string>blinding light</string>
+			<key>10</key> <string>flamethrower</string>
+			<key>13</key> <string>slam</string>
+			<key>17</key> <string>focus</string>
+			<key>20</key> <string>hellfire</string>
+			<key>23</key> <string>heavy slam</string>
+		</dict>
+		<!-- appearance -->
+		<key>race</key> <string>yatagarasu</string>
+		<key>job appearance</key> <string>template</string>
+		<key>blend color</key> <string>443333</string>
+		<key>description</key> <string>This monster has too many legs for a bird. According to the stories, monsters of this type are associated with the sun.</string>
+	</dict>
+	<key>poltergeist</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>45</integer>
+		<key>accuracy</key> <integer>10</integer>
+		<key>dodge</key> <integer>13</integer>
+		<key>brute attack</key> <integer>9</integer>
+		<key>brute defense</key> <integer>9</integer>
+		<key>clever attack</key> <integer>9</integer>
+		<key>clever defense</key> <integer>9</integer>
+		<!-- misc -->
+		<key>type</key> <string>astral</string>
+		<key>burning immunity</key> <true/>
+		<key>bleed immunity</key> <true/>
+		<key>parrying</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>astral touch</string>
+			<key>3</key> <string>havoc</string>
+			<key>10</key> <string>ghost touch</string>
+			<key>20</key> <string>ghost touch</string>
+		</dict>
+		<!-- appearance -->
+		<key>race</key> <string>poltergeist</string>
+		<key>job appearance</key> <string>template</string>
+		<key>blend color</key> <string>DDDEED</string>
+		<key>description</key> <string>This monster has a passing resemblance to a ghost, but was never alive. It would be foolish to attack *him with a close-range attack, as *his form would shift out of the way.</string>
+	</dict>
+	<key>thunderbird</key>
+	<dict>
+		<!-- stats -->
+		<key>health</key> <integer>50</integer>
+		<key>accuracy</key> <integer>11</integer>
+		<key>dodge</key> <integer>10</integer>
+		<key>brute attack</key> <integer>11</integer>
+		<key>brute defense</key> <integer>8</integer>
+		<key>clever attack</key> <integer>11</integer>
+		<key>clever defense</key> <integer>8</integer>
+		<!-- misc -->
+		<key>type</key> <string>spark</string>
+		<key>paralysis immunity</key> <true/>
+		<key>attacks</key>
+		<dict>
+			<key>1</key> <string>lift off</string>
+			<key>5</key> <string>shock</string>
+			<key>10</key> <string>thunderbomb</string>
+			<key>14</key> <string>electrocute</string>
+			<key>20</key> <string>shockwave</string>
+			<key>23</key> <string>lightning bolt</string>
+		</dict>
+		<!-- appearance -->
+		<key>race</key> <string>thunderbird</string>
+		<key>job appearance</key> <string>template</string>
+		<key>blend color</key> <string>FFFF00</string>
+		<key>description</key> <string>This monster causes thunder when *he beats *his wings. Keeping *him around would probably be bad for your hearing.</string>
 	</dict>
 </dict>
 </plist>

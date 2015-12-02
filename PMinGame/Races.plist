@@ -190,8 +190,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName faded away!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the astral being name generator -->
+		<key>name generator</key> <string>monster</string>
 	</dict>
 	<key>honored dead</key>
 	<dict>
@@ -251,8 +250,7 @@
 		<!-- text prompt data -->
 		<key>death message</key> <string>*OnName burned out!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
-		<!-- TODO: name generator -->
-		<!-- specifically, the astral being name generator -->
+		<key>name generator</key> <string>monster</string>
 	</dict>
 	<key>frozen soul</key>
 	<dict>
@@ -284,6 +282,46 @@
 		<key>death message</key> <string>*OnName broke apart!</string>
 		<key>unconscious message</key> <string>*OnName became unresponsive!</string>
 		<key>name generator</key> <string>human</string>
+	</dict>
+	<key>yatagarasu</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName died!</string>
+		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
+		<key>name generator</key> <string>monster</string>
+	</dict>
+	<key>wendigo</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName faded away!</string>
+		<key>unconscious message</key> <string>*OnName quieted down!</string>
+		<key>name generator</key> <string>monster</string>
+	</dict>
+	<key>poltergeist</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName faded away!</string>
+		<key>unconscious message</key> <string>*OnName quieted down!</string>
+		<key>name generator</key> <string>monster</string>
+	</dict>
+	<key>thunderbird</key>
+	<dict>
+		<!-- overall data -->
+		<!-- appearance data -->
+		<!-- TODO: appearance data -->
+		<!-- text prompt data -->
+		<key>death message</key> <string>*OnName died!</string>
+		<key>unconscious message</key> <string>*OnName fell unconscious!</string>
+		<key>name generator</key> <string>monster</string>
 	</dict>
 </dict>
 </plist>

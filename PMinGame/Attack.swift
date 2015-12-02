@@ -47,6 +47,10 @@ struct AttackEffect
 	{
 		return contents["sleep chance"] as? Int
 	}
+	var confusionChance:Int?
+	{
+		return contents["confusion chance"] as? Int
+	}
 	var nonlethal:Bool
 	{
 		return contents["nonlethal"] != nil
@@ -107,6 +111,10 @@ class Attack
 	var mug:Bool
 	{
 		return PlistService.loadValue("Attacks", attack, "mug") != nil
+	}
+	var freeOnMiss:Bool
+	{
+		return PlistService.loadValue("Attacks", attack, "free on miss") != nil
 	}
 	var description:String
 	{

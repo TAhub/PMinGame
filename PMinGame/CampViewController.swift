@@ -26,6 +26,7 @@ class CampViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		//TODO: you can access money with "nextMap.money"
+		//be sure to change nextMap.money if you buy anything, and save with saveParty, etc
 
 		saveState = kSaveStateCamp
 		

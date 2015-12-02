@@ -37,16 +37,80 @@
 		<string>(robot block)-(greek)</string>
 		<string>(robot block)-(robot block)</string>
 		<string>(robot block)-(robot block)</string>
-		<string>(greek) (letter)-(robot block)</string>
+		<string>(greek) (robot letter)-(robot block)</string>
+	</array>
+	<key>monster</key>
+	<array>
+		<string>(monster syllable)(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable)</string>
+		<string>(monster syllable)(monster syllable) (monster vowel)'(monster syllable)</string>
+		<string>(monster syllable) (monster vowel)'(monster syllable)</string>
 	</array>
 	<!-- name generator parts -->
+	<key>monster syllable</key>
+	<array>
+		<string>(monster consonant)(monster vowel)(monster vowel)</string>
+		<string>(monster consonant)(monster vowel)</string>
+		<string>(monster consonant)(monster vowel)</string>
+		<string>(monster consonant)(monster double vowel)</string>
+	</array>
+	<key>monster vowel</key>
+	<array>
+		<string>a</string>
+		<string>e</string>
+		<string>i</string>
+		<string>o</string>
+		<string>u</string>
+		<string>y</string>
+	</array>
+	<key>monster double vowel</key>
+	<array>
+		<string>aa</string>
+		<string>ee</string>
+		<string>ii</string>
+		<string>oo</string>
+		<string>ou</string>
+		<string>iy</string>
+	</array>
+	<key>monster consonant</key>
+	<array>
+		<string>B</string>
+		<string>C</string>
+		<string>D</string>
+		<string>D</string>
+		<string>F</string>
+		<string>G</string>
+		<string>H</string>
+		<string>J</string>
+		<string>K</string>
+		<string>K</string>
+		<string>K</string>
+		<string>K</string>
+		<string>L</string>
+		<string>L</string>
+		<string>M</string>
+		<string>N</string>
+		<string>P</string>
+		<string>Q</string>
+		<string>R</string>
+		<string>S</string>
+		<string>T</string>
+		<string>V</string>
+		<string>W</string>
+		<string>Z</string>
+	</array>
 	<key>robot block</key>
 	<array>
 		<string>(digit)(digit)(digit)</string>
-		<string>(letter)(digit)(digit)</string>
-		<string>(digit)(digit)(letter)</string>
+		<string>(robot letter)(digit)(digit)</string>
+		<string>(digit)(digit)(robot letter)</string>
 	</array>
-	<key>letter</key>
+	<key>robot letter</key>
 	<array>
 		<string>A</string>
 		<string>B</string>

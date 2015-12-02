@@ -58,6 +58,7 @@ class Creature
 	private var freeze:Int?
 	private var bleed:Int?
 	private var sleep:Int?
+	private var confusion:Int?
 	private var burning:Int?
 	private var attackStep:Int = 0
 	{
@@ -147,6 +148,10 @@ class Creature
 	{
 		return PlistService.loadValue("Jobs", job, "sleep immunity") != nil
 	}
+	private var confusionImmunity:Bool
+	{
+		return PlistService.loadValue("Jobs", job, "confusion immunity") != nil
+	}
 	
 	//MARK: saving and loading via creature strings
 	var creatureString:String
@@ -192,6 +197,7 @@ class Creature
 		s += saveStatusString(paralysis)
 		s += saveStatusString(bleed)
 		s += saveStatusString(burning)
+		s += saveStatusString(confusion)
 		
 		return s
 	}
@@ -243,6 +249,7 @@ class Creature
 		paralysis = Int(broken[i++])
 		bleed = Int(broken[i++])
 		burning = Int(broken[i++])
+		confusion = Int(broken[i++])
 	}
 	
 	init(job:String, level:Int, good:Bool)
@@ -475,6 +482,7 @@ class Creature
 	func resetStatus()
 	{
 		sleep = nil
+		confusion = nil
 		bleed = nil
 		paralysis = nil
 		burning = nil
@@ -740,6 +748,23 @@ class Creature
 				return false
 			}
 		}
+		if confusion != nil
+		{
+			if shouldShakeOffStatus(baseChance: 50, chanceRamp: 10)(status: confusion!)
+			{
+				runM(message: "*Name shook off *his confusion!", shake: false)
+				confusion = nil
+			}
+			else
+			{
+				confusion! += 1
+				runM(message: "*Name hurt *himself in *his confusion!", shake: false)
+				
+				//TODO: take damage from confusion
+				
+				return false
+			}
+		}
 		
 		return true
 	}
@@ -765,6 +790,7 @@ class Creature
 			paralysis = nil
 			burning = nil
 			sleep = nil
+			confusion = nil
 		}
 		
 		if item.cureSteps
@@ -927,6 +953,13 @@ class Creature
 		{
 			//output a miss message
 			runM(message: attack.missMessage, shake: false)
+			
+			if attack.freeOnMiss
+			{
+				//the attack costs nothing on a miss
+				//so give it a refund
+				attack.powerPoints += 1
+			}
 		}
 		
 		return hit
@@ -1011,6 +1044,16 @@ class Creature
 					runM(message: "*Name fell asleep!", shake: false)
 				}
 				
+				if confusionImmunity && attackEffect.confusionChance != nil
+				{
+					runM(message: "*Name was immune to being confused!", shake: false)
+				}
+				else if statusEffectCheck(attackEffect.confusionChance, crit: crit)
+				{
+					confusion = 0
+					runM(message: "*Name as confused!", shake: false)
+				}
+				
 				let oldAS = attackStep
 				attackStep += attackEffect.attackStep ?? 0
 				stepEffectMessage("attack", oldStep: oldAS, newStep: attackStep, messageHandler: messageHandler)
@@ -1037,6 +1080,7 @@ class Creature
 					bleed = nil
 					paralysis = nil
 					sleep = nil
+					confusion = nil
 					attackStep = max(attackStep, 0)
 					defenseStep = max(defenseStep, 0)
 					accuracyStep = max(accuracyStep, 0)
@@ -1080,7 +1124,7 @@ class Creature
 			label += getStepLabel(accuracyStep, name: "ACCURACY")
 			label += getStepLabel(dodgeStep, name: "DODGE")
 		}
-		if freeze != nil || burning != nil || paralysis != nil || bleed != nil || sleep != nil
+		if freeze != nil || burning != nil || paralysis != nil || bleed != nil || sleep != nil || confusion != nil
 		{
 			label += "\n"
 			label += (freeze != nil ? " frozen" : "")
@@ -1088,6 +1132,7 @@ class Creature
 			label += (bleed != nil ? " bleeding" : "")
 			label += (burning != nil ? " burning" : "")
 			label += (sleep != nil ? " asleep" : "")
+			label += (confusion != nil ? " confused" : "")
 		}
 		return label
 	}
