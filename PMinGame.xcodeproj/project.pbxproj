@@ -21,6 +21,7 @@
 		E437085D1BF4E8DC00F0B8D6 /* Tiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = E437085C1BF4E8DC00F0B8D6 /* Tiles.plist */; };
 		E43A757B1BED3B5B00367863 /* Races.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43A757A1BED3B5B00367863 /* Races.plist */; };
 		E44C09F31C0A36A900895C56 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44C09F21C0A36A900895C56 /* ItemTableViewCell.swift */; };
+		E459611A1C10A81F003ED614 /* Tilesets.plist in Resources */ = {isa = PBXBuildFile; fileRef = E45961191C10A81F003ED614 /* Tilesets.plist */; };
 		E45DEDC71BF2C78A00A9F5D3 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC61BF2C78A00A9F5D3 /* Map.swift */; };
 		E45DEDC91BF2C7B100A9F5D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */; };
 		E4643A481BEA5E5B00C81D3C /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */; };
@@ -63,6 +64,7 @@
 		E437085C1BF4E8DC00F0B8D6 /* Tiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tiles.plist; sourceTree = "<group>"; };
 		E43A757A1BED3B5B00367863 /* Races.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Races.plist; sourceTree = "<group>"; };
 		E44C09F21C0A36A900895C56 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		E45961191C10A81F003ED614 /* Tilesets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tilesets.plist; sourceTree = "<group>"; };
 		E45DEDC61BF2C78A00A9F5D3 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		E45DEDC81BF2C7B100A9F5D3 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		E4F3C8491BE9AD4900D29811 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E45961191C10A81F003ED614 /* Tilesets.plist */,
 				E47497821BF9C24600C75466 /* EncounterGenerator.plist */,
 				E4F9F58D1BF9073900017AED /* NameGenerator.plist */,
 				E40C5BEE1BF6545500F608F4 /* Maps.plist */,
@@ -261,6 +264,7 @@
 				E4F3C84F1BE9B18600D29811 /* Types.plist in Resources */,
 				E4F3C8421BE9AD2D00D29811 /* LaunchScreen.storyboard in Resources */,
 				E47497831BF9C24600C75466 /* EncounterGenerator.plist in Resources */,
+				E459611A1C10A81F003ED614 /* Tilesets.plist in Resources */,
 				E4F3C84D1BE9B17E00D29811 /* Attacks.plist in Resources */,
 				E4F3C83F1BE9AD2D00D29811 /* Assets.xcassets in Resources */,
 				E4F3C84B1BE9B17100D29811 /* Jobs.plist in Resources */,

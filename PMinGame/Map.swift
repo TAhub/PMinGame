@@ -17,7 +17,7 @@ protocol MapDelegate
 }
 
 let kMaxFloor = 3
-let kEncounterChance:UInt32 = 13
+let kEncounterChance:UInt32 = 27
 let kPartyDamagePercent = 5
 
 func saveInventory(items:[Item])

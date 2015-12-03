@@ -339,8 +339,16 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	{
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mapCell", forIndexPath: indexPath) as! TileCollectionViewCell
 		let tile = map.tiles[indexPath.section][indexPath.row]
-		cell.backgroundColor = tile.color
-		cell.tileImage.image = tileImages[tile.type]
+		if tile.visible
+		{
+			cell.backgroundColor = tile.color
+			cell.tileImage.image = tileImages[tile.type]
+			cell.hidden = false
+		}
+		else
+		{
+			cell.hidden = true
+		}
 		return cell
 	}
 	func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool

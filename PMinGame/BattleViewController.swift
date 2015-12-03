@@ -185,7 +185,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 		animating = true
 		playerPosition.constant = 0
 		enemyPosition.constant = 0
-		UIView.animateWithDuration(2.0, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations:
+		UIView.animateWithDuration(1.5, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations:
 			{
 				self.view.layoutIfNeeded()
 				self.playerStats.alpha = 1

@@ -38,6 +38,10 @@ struct Tile
 	{
 		return PlistService.loadValue("Tiles", type, "dart") as? String
 	}
+	var visible:Bool
+	{
+		return PlistService.loadValue("Tiles", type, "color") != nil
+	}
 	var color:UIColor
 	{
 		return PlistService.loadColor(PlistService.loadValue("Tiles", type, "color") as! String)

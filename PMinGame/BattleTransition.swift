@@ -23,7 +23,7 @@ class BattleTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewC
 	//MARK: transition
 	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval
 	{
-		return 1.5
+		return 0.75
 	}
 	
 	func animateTransition(transitionContext: UIViewControllerContextTransitioning)
@@ -40,7 +40,7 @@ class BattleTransition: NSObject, UIViewControllerAnimatedTransitioning, UIViewC
 		
 		container.addSubview(whiteScreen)
 		
-		UIView.animateWithDuration(duration / 6, animations:
+		UIView.animateWithDuration(duration / 3, animations:
 		{
 			whiteScreen.alpha = 1
 		})

@@ -12,6 +12,9 @@
 	<key>template</key>
 	<dict>
 		<key>start size</key> <integer>50</integer>
+		<key>walkers</key> <integer>10</integer>
+		<key>spikes percent</key> <integer>10</integer>
+		<key>encounter floors percent</key> <integer>40</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
@@ -19,13 +22,13 @@
 				<key>rectangles</key> <integer>5</integer>
 				<key>min size</key> <integer>4</integer>
 				<key>max size</key> <integer>7</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>55</integer>
 				<key>smooths</key> <integer>3</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 			</dict>
 		</array>
 	</dict>
@@ -33,13 +36,16 @@
 	<key>shrine</key>
 	<dict>
 		<key>start size</key> <integer>23</integer>
+		<key>walkers</key> <integer>12</integer>
+		<key>spikes percent</key> <integer>10</integer>
+		<key>encounter floors percent</key> <integer>35</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>45</integer>
 				<key>smooths</key> <integer>1</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like a garden of some sort -->
 			</dict>
 			<dict>
@@ -47,7 +53,7 @@
 				<key>rectangles</key> <integer>6</integer>
 				<key>min size</key> <integer>4</integer>
 				<key>max size</key> <integer>8</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like a temple -->
 			</dict>
 			<dict>
@@ -55,7 +61,7 @@
 				<key>rectangles</key> <integer>8</integer>
 				<key>min size</key> <integer>2</integer>
 				<key>max size</key> <integer>4</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like a temple -->
 			</dict>
 		</array>
@@ -63,13 +69,16 @@
 	<key>ruins</key>
 	<dict>
 		<key>start size</key> <integer>25</integer>
+		<key>walkers</key> <integer>9</integer>
+		<key>spikes percent</key> <integer>20</integer>
+		<key>encounter floors percent</key> <integer>30</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>48</integer>
 				<key>smooths</key> <integer>2</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like caves -->
 			</dict>
 			<dict>
@@ -77,7 +86,7 @@
 				<key>rectangles</key> <integer>13</integer>
 				<key>min size</key> <integer>2</integer>
 				<key>max size</key> <integer>4</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like rubble-y stone rooms -->
 			</dict>
 			<dict>
@@ -85,7 +94,7 @@
 				<key>rectangles</key> <integer>3</integer>
 				<key>min size</key> <integer>6</integer>
 				<key>max size</key> <integer>8</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like cleaner stone rooms -->
 			</dict>
 		</array>
@@ -93,6 +102,9 @@
 	<key>caves</key>
 	<dict>
 		<key>start size</key> <integer>30</integer>
+		<key>walkers</key> <integer>7</integer>
+		<key>spikes percent</key> <integer>14</integer>
+		<key>encounter floors percent</key> <integer>45</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
@@ -100,14 +112,14 @@
 				<key>rectangles</key> <integer>3</integer>
 				<key>min size</key> <integer>3</integer>
 				<key>max size</key> <integer>4</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like rubble-y stone rooms -->
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>56</integer>
 				<key>smooths</key> <integer>3</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like a cave -->
 			</dict>
 		</array>
@@ -115,6 +127,9 @@
 	<key>meadows</key>
 	<dict>
 		<key>start size</key> <integer>27</integer>
+		<key>walkers</key> <integer>13</integer>
+		<key>spikes percent</key> <integer>5</integer>
+		<key>encounter floors percent</key> <integer>40</integer>
 		<key>sketchers</key>
 		<array>
 			<dict>
@@ -122,21 +137,21 @@
 				<key>rectangles</key> <integer>1</integer>
 				<key>min size</key> <integer>4</integer>
 				<key>max size</key> <integer>6</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look a meadow -->
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>54</integer>
 				<key>smooths</key> <integer>2</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like a forest -->
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>56</integer>
 				<key>smooths</key> <integer>3</integer>
-				<!-- TODO: tileset -->
+				<key>tileset</key> <string>template</string>
 				<!-- should look like a meadow -->
 			</dict>
 		</array>

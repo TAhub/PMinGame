@@ -20,6 +20,10 @@
 		<key>color</key> <string>00AA77</string>
 	</dict>
 	<!-- real tiles -->
+	<key>black</key>
+	<dict>
+		<key>solid</key> <true/>
+	</dict>
 	<key>wall</key>
 	<dict>
 		<key>solid</key> <true/>
@@ -28,9 +32,17 @@
 	</dict>
 	<key>floor</key>
 	<dict>
-		<!-- <key>gate</key> <true/> -->
-		<key>encounters</key> <true/>
 		<key>color</key> <string>112211</string>
+	</dict>
+	<key>spike</key>
+	<dict>
+		<key>damaging</key> <true/>
+		<key>color</key> <string>332211</string>
+	</dict>
+	<key>encounter floor</key>
+	<dict>
+		<key>encounters</key> <true/>
+		<key>color</key> <string>113333</string>
 	</dict>
 	<key>gate</key>
 	<dict>

@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+let kSpecialTileSpike:UInt16 = 1
+let kSpecialTileWalker:UInt16 = 2
+let kSpecialTileEncounterFloor:UInt16 = 3
+
 class MapCurator
 {
 	class func makeMap(type:String) -> ([[Tile]], Int, (Int, Int))
@@ -18,6 +22,7 @@ class MapCurator
 		var destPosition:(Int, Int)!
 		var startingWidth:Int!
 		var startingHeight:Int!
+		var accessableTiles:Int!
 		
 		while finalSketch == nil
 		{
@@ -28,6 +33,7 @@ class MapCurator
 				destPosition = results.2
 				startingWidth = results.3
 				startingHeight = results.4
+				accessableTiles = results.5
 			}
 		}
 		
@@ -41,7 +47,76 @@ class MapCurator
 		let newHeight = results2.4
 		
 		
-		//TODO: place traps, encounters, etc
+		//place traps, encounters, etc
+		let numSpikes = accessableTiles * (PlistService.loadValue("Maps", type, "spikes percent") as! Int) / 100;
+		let numEncounterFloors = accessableTiles * (PlistService.loadValue("Maps", type, "encounter floors percent") as! Int) / 100;
+		let numWalkers = PlistService.loadValue("Maps", type, "walkers") as! Int
+		
+		var specialTiles = MapSketcher.makeEmptyArray(width: newWidth, height: newHeight);
+		
+		//place spikes
+		for _ in 0..<numSpikes
+		{
+			while (true)
+			{
+				let x = Int(arc4random_uniform(UInt32(newWidth)))
+				let y = Int(arc4random_uniform(UInt32(newHeight)))
+				
+				if specialTiles[y][x] == 0 && finalSketch[y][x] != 0 && (x != destPosition.0 || y != destPosition.1) && (x != startPosition.0 || y != startPosition.1)
+				{
+					specialTiles[y][x] = kSpecialTileSpike
+					break
+				}
+			}
+		}
+		
+		//place encounter floors
+		for _ in 0..<numEncounterFloors
+		{
+			var possibilities = [(Int, Int)]()
+			for y in 0..<newHeight
+			{
+				for x in 0..<newWidth
+				{
+					if specialTiles[y][x] == 0 && finalSketch[y][x] != 0 && (x != destPosition.0 || y != destPosition.1) && (x != startPosition.0 || y != startPosition.1)
+					{
+						//extra possibilities for neighbors
+						var numPlaces = 1
+						if (x > 0 && specialTiles[y][x-1] == kSpecialTileEncounterFloor) || (x < newWidth - 1 && specialTiles[y][x+1] == kSpecialTileEncounterFloor)
+						{
+							numPlaces += 2
+						}
+						if (y > 0 && specialTiles[y-1][x] == kSpecialTileEncounterFloor) || (y < newHeight - 1 && specialTiles[y+1][x] == kSpecialTileEncounterFloor)
+						{
+							numPlaces += 2
+						}
+						
+						for _ in 0..<numPlaces
+						{
+							possibilities.append(x, y)
+						}
+					}
+				}
+			}
+			
+			if possibilities.count == 0
+			{
+				//there's no space anymore, somehow
+				print("ERROR: out of space for encounter floors")
+				break
+			}
+			
+			let pick = Int(arc4random_uniform(UInt32(possibilities.count)))
+			specialTiles[possibilities[pick].1][possibilities[pick].0] = kSpecialTileEncounterFloor
+		}
+		
+		//place walkers
+		for _ in 0..<numWalkers
+		{
+			
+		}
+		
+		//TODO: implement traps
 
 		
 		//translate the final sketch to real tiles
@@ -51,21 +126,46 @@ class MapCurator
 			var tileC = [Tile]()
 			for x in 0..<newWidth
 			{
-				//TODO: pick an appropriate tile for this spot
-				//the type of a floor is based on the sketcher number it is
-				//the type of a wall is based on the highest sketcher number in a 3x3 grid surrounding it
-				//a wall which is by the edge should be a black wall
-				//a wall whose highest nearby sketcher number is 0 should be made into a black wall
-				//each sketcher has an associated floor and wall type (ie brick wall + tile floor, cave wall + dirt floor, w/e)
-				//also associated versions of traps, etc
-				
-				if x == destPosition.0 && y == destPosition.1
+				//find the highest sketcher near here
+				var highestSketcher:Int = 0
+				for y2 in max(0, y-1)...min(newHeight-1, y+1)
 				{
-					tileC.append(Tile(type: "gate"))
+					for x2 in max(0, x-1)...min(newWidth-1, x+1)
+					{
+						highestSketcher = max(Int(finalSketch[y2][x2]), highestSketcher)
+					}
+				}
+				
+				if highestSketcher != 0
+				{
+					let tileset = (PlistService.loadValue("Maps", type, "sketchers") as! [[String : AnyObject]])[highestSketcher - 1]["tileset"] as! String
+					var tileName:String;
+					switch(specialTiles[y][x])
+					{
+					case kSpecialTileSpike:
+						tileName = PlistService.loadValue("Tilesets", tileset, "spike") as! String
+					case kSpecialTileEncounterFloor:
+						tileName = PlistService.loadValue("Tilesets", tileset, "encounter floor") as! String
+					case kSpecialTileWalker:
+						//TODO: add a walker here
+						fallthrough
+					default:
+						if x == destPosition.0 && y == destPosition.1
+						{
+							tileName = PlistService.loadValue("Tilesets", tileset, "gate") as! String
+						}
+						else
+						{
+							tileName = PlistService.loadValue("Tilesets", tileset, finalSketch[y][x] == 0 ? "wall" : "floor") as! String
+						}
+						break
+					}
+					
+					tileC.append(Tile(type: tileName))
 				}
 				else
 				{
-					tileC.append(Tile(type: finalSketch[y][x] == 0 ? "wall" : "floor"))
+					tileC.append(Tile(type: "black"))
 				}
 			}
 			tiles.append(tileC)
@@ -96,7 +196,7 @@ class MapCurator
 	}
 	
 	//MARK: helper functions
-	private class func getGoodFinalSketch(type:String)->([[UInt16]], (Int, Int), (Int, Int), Int, Int)?
+	private class func getGoodFinalSketch(type:String)->([[UInt16]], (Int, Int), (Int, Int), Int, Int, Int)?
 	{
 		var sketches = [[[UInt16]]]()
 		let startingWidth = PlistService.loadValue("Maps", type, "start size") as! Int
@@ -155,7 +255,7 @@ class MapCurator
 			return nil
 		}
 		
-		return (finalSketch, startPosition, destPosition, startingWidth, startingHeight)
+		return (finalSketch, startPosition, destPosition, startingWidth, startingHeight, accessableTiles)
 	}
 	
 	private class func mapResize(finalSketch:[[UInt16]], startPosition:(Int, Int), endPosition:(Int, Int), width:Int, height:Int) -> ([[UInt16]], (Int, Int), (Int, Int), Int, Int)
