@@ -14,11 +14,13 @@ protocol MapDelegate
 	func startBattle()
 	func partyDamageEffect()
 	func nextMap()
+	func walkerAttack(num:Int)
 }
 
 let kMaxFloor = 3
 let kEncounterChance:UInt32 = 27
 let kPartyDamagePercent = 5
+let kMaxSightline = 4
 
 func saveInventory(items:[Item])
 {
@@ -135,6 +137,7 @@ class Map
 			tiles = results.0
 			width = results.1
 			partyPosition = results.2
+			enemyEncounters = results.3
 		}
 	}
 	
@@ -197,11 +200,63 @@ class Map
 						self.delegate.startBattle()
 					}
 				}
+				
+				//did you catch the attention of anything?
+				//traps only activate if you DON'T fight someone
+				if !self.spotCheck(true)
+				{
+					self.spotCheck(false)
+				}
 			}
 			
 			//save the walkers
 			saveWalkers()
 		}
+	}
+	
+	private func spotCheck(encounter:Bool)->Bool
+	{
+		var blocked = [false, false, false, false]
+		for i in 1...kMaxSightline
+		{
+			//check in every direction
+			for j in 0..<4
+			{
+				if !blocked[j]
+				{
+					var x2 = partyPosition.0
+					var y2 = partyPosition.1
+					switch(j)
+					{
+					case 0: x2 -= i
+					case 1: x2 += i
+					case 2: y2 -= i
+					case 3: y2 += i
+					default: break
+					}
+					
+					if y2 < 0 || x2 < 0 || y2 >= tiles.count || x2 >= width || tiles[y2][x2].solid
+					{
+						//the sightline is blocked
+						blocked[j] = true
+					}
+					else if encounter
+					{
+						//check for encounters here
+						for (i, encounter) in enemyEncounters.enumerate()
+						{
+							if encounter.0 == x2 && encounter.1 == y2
+							{
+								delegate.walkerAttack(i)
+								return true
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return false
 	}
 	
 	//MARK: save and load

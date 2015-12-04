@@ -373,6 +373,23 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 	}
 	
 	//MARK: map delegate functions
+	
+	func walkerAttack(num: Int)
+	{
+		moveWalker(encounterWalkers[num], to: map.partyPosition)
+		{
+			//remove the walker
+			self.encounterWalkers[num].removeFromSuperview()
+			self.map.enemyEncounters.removeAtIndex(num)
+			self.encounterWalkers.removeAtIndex(num)
+			self.map.save()
+			
+			//start a battle
+			//TODO: it should be a special battle, against multiple foes
+			self.startBattle()
+		}
+	}
+	
 	func playerMoved(completion:()->())
 	{
 		//move the player

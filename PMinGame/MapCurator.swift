@@ -15,7 +15,7 @@ let kSpecialTileEncounterFloor:UInt16 = 3
 
 class MapCurator
 {
-	class func makeMap(type:String) -> ([[Tile]], Int, (Int, Int))
+	class func makeMap(type:String) -> ([[Tile]], Int, (Int, Int), [(Int, Int)])
 	{
 		var finalSketch:[[UInt16]]!
 		var startPosition:(Int, Int)!
@@ -113,13 +113,24 @@ class MapCurator
 		//place walkers
 		for _ in 0..<numWalkers
 		{
-			//TODO: place a walker
+			while (true)
+			{
+				let x = Int(arc4random_uniform(UInt32(newWidth)))
+				let y = Int(arc4random_uniform(UInt32(newHeight)))
+				
+				if specialTiles[y][x] == 0 && finalSketch[y][x] != 0 && (x != destPosition.0 || y != destPosition.1) && (x != startPosition.0 || y != startPosition.1) && spotSightlines(finalSketch, width: newWidth, height: newHeight, x: x, y: y, startX: startPosition.0, startY: startPosition.1) >= 5
+				{
+					specialTiles[y][x] = kSpecialTileWalker
+					break
+				}
+			}
 		}
 		
 		//TODO: implement traps
 
 		
 		//translate the final sketch to real tiles
+		var walkers = [(Int, Int)]()
 		var tiles = [[Tile]]()
 		for y in 0..<newHeight
 		{
@@ -147,7 +158,8 @@ class MapCurator
 					case kSpecialTileEncounterFloor:
 						tileName = PlistService.loadValue("Tilesets", tileset, "encounter floor") as! String
 					case kSpecialTileWalker:
-						//TODO: add a walker here
+						//add a walker, but have default floor terrain
+						walkers.append(x, y)
 						fallthrough
 					default:
 						if x == destPosition.0 && y == destPosition.1
@@ -172,7 +184,7 @@ class MapCurator
 		}
 		
 		//finally, return the map
-		return (tiles, newWidth, startPosition)
+		return (tiles, newWidth, startPosition, walkers)
 	}
 	
 	class func drawMap(map:[[Tile]], canvas:UIView)
@@ -196,6 +208,50 @@ class MapCurator
 	}
 	
 	//MARK: helper functions
+	private class func spotSightlines(finalSketch:[[UInt16]], width:Int, height:Int, x:Int, y:Int, startX:Int, startY:Int)->Int
+	{
+		var blocked = [false, false, false, false]
+		var sightlines = 0
+		for i in 1...kMaxSightline
+		{
+			//check in every direction
+			for j in 0..<4
+			{
+				if !blocked[j]
+				{
+					var x2 = x
+					var y2 = y
+					switch(j)
+					{
+					case 0: x2 -= i
+					case 1: x2 += i
+					case 2: y2 -= i
+					case 3: y2 += i
+					default: break
+					}
+					
+					if x2 < 0 || y2 < 0 || x2 >= width || y2 >= height || finalSketch[y2][x2] != 0
+					{
+						//the sightline is blocked
+						blocked[j] = true
+					}
+					else if x2 == startX && y2 == startY
+					{
+						//uh-oh!
+						//things with sightlines can't spawn in sight-range of the player
+						return 0
+					}
+					else
+					{
+						//there's a valid sightline
+						sightlines += 1
+					}
+				}
+			}
+		}
+		return sightlines
+	}
+	
 	private class func getGoodFinalSketch(type:String)->([[UInt16]], (Int, Int), (Int, Int), Int, Int, Int)?
 	{
 		var sketches = [[[UInt16]]]()
