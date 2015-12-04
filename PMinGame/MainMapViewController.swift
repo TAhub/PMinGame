@@ -202,8 +202,6 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			
 			if saveState != kSaveStateCamp
 			{
-				saveState = kSaveStateNone
-				
 				//award EXP for finishing the map
 				let mapEXP = expToNextLevel(map.difficulty) * 7 / 10
 				print("Awarding \(mapEXP) experience for finishing the map!")
@@ -221,17 +219,25 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				}
 				encounterWalkers = [UIView]()
 				
-				
 				//prepare the segue
-				cvc.party = map.party
-				let nextMap = Map(from: map)
-				cvc.nextMap = nextMap
-				nextMap.party = map.party
-				nextMap.money = map.money
-				nextMap.items = map.items
+				cvc.comparisonMap = map
 				
-				//save the next map
-				nextMap.save()
+				//generate the next map in another thread
+				dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0))
+				{
+					let nextMap = Map(from: self.map)
+					dispatch_async(dispatch_get_main_queue())
+					{
+						nextMap.money = self.map.money
+						nextMap.items = self.map.items
+						nextMap.party = self.map.party
+						cvc.nextMap = nextMap
+						saveState = kSaveStateCamp
+						
+						//save the next map
+						nextMap.save()
+					}
+				}
 				
 				cvc.completionCallback =
 				{ (nextMap) in
@@ -243,7 +249,6 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			else
 			{
 				//set up the camp you are loading
-				cvc.party = map.party
 				cvc.nextMap = map
 				cvc.completionCallback =
 				{ (nextMap) in

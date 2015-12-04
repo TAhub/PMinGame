@@ -10,35 +10,55 @@ import UIKit
 
 class CampViewController: UIViewController {
 
-	var party:[Creature]!
 	var completionCallback:((Map)->())!
+	var comparisonMap:Map!
 	var nextMap:Map!
+	{
+		didSet
+		{
+			comparisonMap = nextMap
+			if nextMapButton != nil
+			{
+				//set the button
+				nextMapButton.setTitle(nextMap.name, forState: .Normal)
+			}
+		}
+	}
 	
 	@IBOutlet weak var nextMapButton: UIButton!
 	@IBAction func nextMapAction()
 	{
-		saveState = kSaveStateNone
-		completionCallback(nextMap)
-		navigationController!.popViewControllerAnimated(true)
+		if nextMap != nil
+		{
+			saveState = kSaveStateNone
+			completionCallback(nextMap)
+			navigationController!.popViewControllerAnimated(true)
+		}
 	}
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		//TODO: you can access money with "nextMap.money"
-		//be sure to change nextMap.money if you buy anything, and save with saveParty, etc
-
-		saveState = kSaveStateCamp
+		//TODO: you can access money with "comparisonMap.money"
+		//same if you add new items
+		//your money, items, and party variables are all separate from the next map's
+		//since the next map might not exist yet
+		//so they will have to be saved separately
 		
-		if LevelViewController.checkLevel(party)
+		if LevelViewController.checkLevel(comparisonMap.party)
 		{
 			//level up
 			performSegueWithIdentifier("levelUp", sender: self)
 		}
-		else
+		else if nextMap != nil
 		{
 			//set up labels and stuff
 			nextMapButton.setTitle(nextMap.name, forState: .Normal)
+		}
+		else
+		{
+			//set the next map label to a temporary value
+			nextMapButton.setTitle("Traveling...", forState: .Normal)
 		}
 	}
 	
@@ -48,7 +68,7 @@ class CampViewController: UIViewController {
 		
 		if let dest = segue.destinationViewController as? LevelViewController
 		{
-			dest.party = party
+			dest.party = comparisonMap.party
 		}
 	}
 }

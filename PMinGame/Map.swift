@@ -119,8 +119,6 @@ class Map
 
 				//and, no matter if it's a continuation or not, this should be one difficulty higher
 				difficulty = from.difficulty + 1
-				
-				money = from.money
 			}
 			else
 			{

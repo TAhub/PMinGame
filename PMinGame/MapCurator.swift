@@ -113,7 +113,7 @@ class MapCurator
 		//place walkers
 		for _ in 0..<numWalkers
 		{
-			
+			//TODO: place a walker
 		}
 		
 		//TODO: implement traps
