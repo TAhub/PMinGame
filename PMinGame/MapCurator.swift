@@ -183,6 +183,18 @@ class MapCurator
 			tiles.append(tileC)
 		}
 		
+		//setup top-walls
+		for y in 0..<newHeight-1
+		{
+			for x in 0..<newWidth
+			{
+				if tiles[y][x].visible && tiles[y][x].solid && tiles[y+1][x].solid
+				{
+					tiles[y][x] = Tile(type: "\(tiles[y][x].type) top")
+				}
+			}
+		}
+		
 		//finally, return the map
 		return (tiles, newWidth, startPosition, walkers)
 	}

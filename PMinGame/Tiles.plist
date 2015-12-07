@@ -30,6 +30,11 @@
 		<key>color</key> <string>665555</string>
 		<key>image</key> <string>wall_brick</string>
 	</dict>
+	<key>wall top</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>665555</string>
+	</dict>
 	<key>floor</key>
 	<dict>
 		<key>color</key> <string>112211</string>
