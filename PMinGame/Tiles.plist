@@ -24,35 +24,108 @@
 	<dict>
 		<key>solid</key> <true/>
 	</dict>
-	<key>wall</key>
+	<!-- cave wall -->
+	<key>grey cave</key>
 	<dict>
 		<key>solid</key> <true/>
-		<key>color</key> <string>665555</string>
+		<key>color</key> <string>666666</string>
+		<key>image</key> <string>wall_cave</string>
+	</dict>
+	<key>grey cave top</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>666666</string>
+	</dict>
+	<key>brown cave</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>664D33</string>
+		<key>image</key> <string>wall_cave</string>
+	</dict>
+	<key>brown cave top</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>664D33</string>
+	</dict>
+	<!-- brick -->
+	<key>grey brick</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>666666</string>
 		<key>image</key> <string>wall_brick</string>
 	</dict>
-	<key>wall top</key>
+	<key>grey brick top</key>
 	<dict>
 		<key>solid</key> <true/>
-		<key>color</key> <string>665555</string>
+		<key>color</key> <string>666666</string>
 	</dict>
-	<key>floor</key>
+	<!-- cracked brick -->
+	<key>grey cracked brick</key>
 	<dict>
-		<key>color</key> <string>112211</string>
+		<key>solid</key> <true/>
+		<key>color</key> <string>666666</string>
+		<key>image</key> <string>wall_crackedbrick</string>
 	</dict>
-	<key>spike</key>
+	<key>grey cracked brick top</key>
+	<dict>
+		<key>solid</key> <true/>
+		<key>color</key> <string>666666</string>
+	</dict>
+	<!-- tile floor -->
+	<key>grey tile</key>
+	<dict>
+		<key>color</key> <string>333333</string>
+		<key>image</key> <string>wall_tile</string>
+	</dict>
+	<!-- rough -->
+	<key>grey rough</key>
+	<dict>
+		<key>color</key> <string>333333</string>
+		<key>image</key> <string>wall_rough</string>
+	</dict>
+	<key>green rough</key>
+	<dict>
+		<key>color</key> <string>0A330A</string>
+		<key>image</key> <string>wall_rough</string>
+	</dict>
+	<!-- spikes -->
+	<key>grey spikes</key>
 	<dict>
 		<key>damaging</key> <true/>
-		<key>color</key> <string>332211</string>
+		<key>color</key> <string>333333</string>
+		<key>image</key> <string>wall_spikes</string>
 	</dict>
-	<key>encounter floor</key>
+	<key>green spikes</key>
+	<dict>
+		<key>damaging</key> <true/>
+		<key>color</key> <string>0A330A</string>
+		<key>image</key> <string>wall_spikes</string>
+	</dict>
+	<!-- rubble -->
+	<key>grey rubble</key>
 	<dict>
 		<key>encounters</key> <true/>
-		<key>color</key> <string>113333</string>
+		<key>color</key> <string>333333</string>
+		<key>image</key> <string>wall_rubble</string>
 	</dict>
-	<key>gate</key>
+	<key>green rubble</key>
+	<dict>
+		<key>encounters</key> <true/>
+		<key>color</key> <string>0A330A</string>
+		<key>image</key> <string>wall_rubble</string>
+	</dict>
+	<!-- gate -->
+	<key>grey gate</key>
 	<dict>
 		<key>gate</key> <true/>
-		<key>color</key> <string>333388</string>
+		<key>color</key> <string>333333</string>
+		<key>image</key> <string>wall_gate</string>
+	</dict>
+	<key>green gate</key>
+	<dict>
+		<key>gate</key> <true/>
+		<key>color</key> <string>0A330A</string>
+		<key>image</key> <string>wall_gate</string>
 	</dict>
 </dict>
 </plist>

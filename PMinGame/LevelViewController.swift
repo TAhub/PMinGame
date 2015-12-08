@@ -175,7 +175,6 @@ class LevelViewController: UIViewController {
 			{
 				p.experience -= expToNextLevel(p.level)
 				p.level += 1
-				p.health = p.maxHealth
 				toLevel = p
 				return
 			}

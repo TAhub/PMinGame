@@ -284,6 +284,11 @@ class Creature
 		getLevelAppropriateAttacks()
 		
 		//fill up resources
+		fillResources()
+	}
+	
+	internal func fillResources()
+	{
 		health = maxHealth
 		for attack in attacks
 		{

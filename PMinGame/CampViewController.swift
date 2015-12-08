@@ -45,6 +45,13 @@ class CampViewController: UIViewController {
 		//since the next map might not exist yet
 		//so they will have to be saved separately
 		
+		
+		//heal the entire party
+		for person in comparisonMap.party
+		{
+			person.fillResources()
+		}
+		
 		if LevelViewController.checkLevel(comparisonMap.party)
 		{
 			//level up

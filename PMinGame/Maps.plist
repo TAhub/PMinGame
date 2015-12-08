@@ -45,24 +45,21 @@
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>45</integer>
 				<key>smooths</key> <integer>1</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like a garden of some sort -->
+				<key>tileset</key> <string>grey gardens</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
 				<key>rectangles</key> <integer>6</integer>
 				<key>min size</key> <integer>4</integer>
 				<key>max size</key> <integer>8</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like a temple -->
+				<key>tileset</key> <string>grey temple</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
 				<key>rectangles</key> <integer>8</integer>
 				<key>min size</key> <integer>2</integer>
 				<key>max size</key> <integer>4</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like a temple -->
+				<key>tileset</key> <string>grey temple</string>
 			</dict>
 		</array>
 	</dict>
@@ -78,24 +75,21 @@
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>48</integer>
 				<key>smooths</key> <integer>2</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like caves -->
+				<key>tileset</key> <string>grey caves</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
 				<key>rectangles</key> <integer>13</integer>
 				<key>min size</key> <integer>2</integer>
 				<key>max size</key> <integer>4</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like rubble-y stone rooms -->
+				<key>tileset</key> <string>grey ruins</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>twiggy</string>
 				<key>rectangles</key> <integer>3</integer>
 				<key>min size</key> <integer>6</integer>
 				<key>max size</key> <integer>8</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like cleaner stone rooms -->
+				<key>tileset</key> <string>grey rooms</string>
 			</dict>
 		</array>
 	</dict>
@@ -112,15 +106,13 @@
 				<key>rectangles</key> <integer>3</integer>
 				<key>min size</key> <integer>3</integer>
 				<key>max size</key> <integer>4</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like rubble-y stone rooms -->
+				<key>tileset</key> <string>grey ruins</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>56</integer>
 				<key>smooths</key> <integer>3</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like a cave -->
+				<key>tileset</key> <string>grey caves</string>
 			</dict>
 		</array>
 	</dict>
@@ -137,22 +129,19 @@
 				<key>rectangles</key> <integer>1</integer>
 				<key>min size</key> <integer>4</integer>
 				<key>max size</key> <integer>6</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look a meadow -->
+				<key>tileset</key> <string>green meadows</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>54</integer>
 				<key>smooths</key> <integer>2</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like a forest -->
+				<key>tileset</key> <string>brown forest</string>
 			</dict>
 			<dict>
 				<key>type</key> <string>ultimate lifeform</string>
 				<key>start chance</key> <integer>56</integer>
 				<key>smooths</key> <integer>3</integer>
-				<key>tileset</key> <string>template</string>
-				<!-- should look like a meadow -->
+				<key>tileset</key> <string>green meadows</string>
 			</dict>
 		</array>
 	</dict>

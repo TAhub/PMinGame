@@ -127,7 +127,6 @@ class MapCurator
 		}
 		
 		//TODO: implement traps
-
 		
 		//translate the final sketch to real tiles
 		var walkers = [(Int, Int)]()

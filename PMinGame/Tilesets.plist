@@ -11,12 +11,68 @@
 <dict>
 	<key>template</key>
 	<dict>
-		<key>wall</key> <string>wall</string>
-		<key>floor</key> <string>floor</string>
-		<key>encounter floor</key> <string>encounter floor</string>
-		<key>spike</key> <string>spike</string>
-		<key>gate</key> <string>gate</string>
+		<key>wall</key> <string>black</string>
+		<key>floor</key> <string>grey tile</string>
+		<key>encounter floor</key> <string>grey rubble</string>
+		<key>spike</key> <string>grey spikes</string>
+		<key>gate</key> <string>grey gate</string>
 	</dict>
 	<!-- real tilesets -->
+	<key>grey ruins</key>
+	<dict>
+		<key>wall</key> <string>grey cracked brick</string>
+		<key>floor</key> <string>grey tile</string>
+		<key>encounter floor</key> <string>grey rubble</string>
+		<key>spike</key> <string>grey spikes</string>
+		<key>gate</key> <string>grey gate</string>
+	</dict>
+	<key>grey temple</key>
+	<dict>
+		<key>wall</key> <string>grey brick</string>
+		<key>floor</key> <string>grey tile</string>
+		<key>encounter floor</key> <string>grey rubble</string>
+		<key>spike</key> <string>grey spikes</string>
+		<key>gate</key> <string>grey gate</string>
+	</dict>
+	<key>grey rooms</key>
+	<dict>
+		<key>wall</key> <string>grey brick</string>
+		<key>floor</key> <string>grey tile</string>
+		<key>encounter floor</key> <string>grey rubble</string>
+		<key>spike</key> <string>grey spikes</string>
+		<key>gate</key> <string>grey gate</string>
+	</dict>
+	<key>grey caves</key>
+	<dict>
+		<key>wall</key> <string>grey cave</string>
+		<key>floor</key> <string>grey rough</string>
+		<key>encounter floor</key> <string>grey rubble</string>
+		<key>spike</key> <string>grey spikes</string>
+		<key>gate</key> <string>grey gate</string>
+	</dict>
+	<key>grey gardens</key>
+	<dict>
+		<key>wall</key> <string>grey brick</string>
+		<key>floor</key> <string>green rough</string>
+		<key>encounter floor</key> <string>green rubble</string>
+		<key>spike</key> <string>green spikes</string>
+		<key>gate</key> <string>green gate</string>
+	</dict>
+	<key>green meadows</key>
+	<dict>
+		<key>wall</key> <string>grey cave</string>
+		<key>floor</key> <string>green rough</string>
+		<key>encounter floor</key> <string>green rubble</string>
+		<key>spike</key> <string>green spikes</string>
+		<key>gate</key> <string>green gate</string>
+	</dict>
+	<key>brown forest</key>
+	<dict>
+		<key>wall</key> <string>brown cave</string>
+		<key>floor</key> <string>green rough</string>
+		<key>encounter floor</key> <string>green rubble</string>
+		<key>spike</key> <string>green spikes</string>
+		<key>gate</key> <string>green gate</string>
+	</dict>
 </dict>
 </plist>
