@@ -156,14 +156,14 @@ class BattleViewController: UIViewController, BattleDelegate {
 	//MARK: central stuff
 	private var battle:Battle!
 	private var animating:Bool = false
-		{
+	{
 		didSet
 		{
 			labelsChanged()
 		}
 	}
 	private var menuState:MenuState = .Main
-		{
+	{
 		didSet
 		{
 			labelsChanged()
@@ -426,8 +426,16 @@ class BattleViewController: UIViewController, BattleDelegate {
 		textParser.shake()
 	}
 	
+	func forceLabels()
+	{
+		playerStats.text = battle.playerStat
+		enemyStats.text = battle.enemyStat
+	}
+	
 	func victory()
 	{
+		forceLabels()
+		
 		endingHook = victoryHook
 		runMessage("The party was victorious!", shake: false)
 		
@@ -492,6 +500,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	func defeat()
 	{
+		forceLabels()
 		endingHook = defeatHook
 		runMessage("The party was annihilated!", shake: true)
 		printFillerLine()
@@ -506,6 +515,7 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	func flee()
 	{
+		forceLabels()
 		endingHook = fleeHook
 		runMessage("The battle is over!", shake: false)
 		for enemy in battle.enemies

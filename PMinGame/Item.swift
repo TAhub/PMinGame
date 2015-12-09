@@ -52,6 +52,11 @@ class Item
 	}
 	var description:String
 	{
-		return "TODO: implement descriptions"
+		let baseString = PlistService.loadValue("Items", type, "description") as! String
+		if let heals = heals
+		{
+			return "\(baseString) Heals \(heals) health."
+		}
+		return baseString
 	}
 }
