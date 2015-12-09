@@ -36,5 +36,89 @@
 			<key>minimum level</key> <integer>3</integer>
 		</dict>
 	</array>
+	<key>machines</key>
+	<array>
+		<dict>
+			<key>job</key> <string>warbot</string>
+			<key>minimum level</key> <integer>1</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>lightning bot</string>
+			<key>minimum level</key> <integer>3</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>soldier robot</string>
+			<key>minimum level</key> <integer>8</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>AI</string>
+			<key>minimum level</key> <integer>10</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>exterminator</string>
+			<key>minimum level</key> <integer>12</integer>
+		</dict>
+	</array>
+	<key>mercenaries</key>
+	<array>
+		<dict>
+			<key>job</key> <string>scout</string>
+			<key>minimum level</key> <integer>1</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>cold killer</string>
+			<key>minimum level</key> <integer>5</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>flameguard</string>
+			<key>minimum level</key> <integer>9</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>sour knight</string>
+			<key>minimum level</key> <integer>12</integer>
+		</dict>
+	</array>
+	<key>undead</key>
+	<array>
+		<dict>
+			<key>job</key> <string>honored dead</string>
+			<key>minimum level</key> <integer>1</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>frozen soul</string>
+			<key>minimum level</key> <integer>3</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>dancing lights</string>
+			<key>minimum level</key> <integer>5</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>life thief</string>
+			<key>minimum level</key> <integer>8</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>shape of fire</string>
+			<key>minimum level</key> <integer>15</integer>
+		</dict>
+	</array>
+	<key>monsters</key>
+	<array>
+		<dict>
+			<key>job</key> <string>thunderbird</string>
+			<key>minimum level</key> <integer>1</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>wendigo</string>
+			<key>minimum level</key> <integer>5</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>yatagarasu</string>
+			<key>minimum level</key> <integer>7</integer>
+		</dict>
+		<dict>
+			<key>job</key> <string>poltergeist</string>
+			<key>minimum level</key> <integer>14</integer>
+		</dict>
+	</array>
 </dict>
 </plist>
