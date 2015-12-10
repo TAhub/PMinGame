@@ -120,6 +120,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			map.party.append(Creature(job: "cryoman", level: 1, good: true))
 			
 			//starting inventory
+			map.money = 100
 			map.items.append(Item(type: "poultice"))
 			map.items[0].number = 6
 			map.items.append(Item(type: "smelling salts"))

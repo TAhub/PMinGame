@@ -46,6 +46,7 @@
 		E4F3C8531BE9B20C00D29811 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8521BE9B20C00D29811 /* Battle.swift */; };
 		E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8541BE9BB1900D29811 /* PlistService.swift */; };
 		E4F3C8571BE9BD9C00D29811 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F3C8561BE9BD9C00D29811 /* Attack.swift */; };
+		E4F91E401C19F182009A6F86 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F91E3F1C19F182009A6F86 /* ShopViewController.swift */; };
 		E4F9F58E1BF9073900017AED /* NameGenerator.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4F9F58D1BF9073900017AED /* NameGenerator.plist */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		E4F3C8521BE9B20C00D29811 /* Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		E4F3C8541BE9BB1900D29811 /* PlistService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistService.swift; sourceTree = "<group>"; };
 		E4F3C8561BE9BD9C00D29811 /* Attack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
+		E4F91E3F1C19F182009A6F86 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		E4F9F58D1BF9073900017AED /* NameGenerator.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NameGenerator.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,10 +143,11 @@
 		E428037B1BF1052C00174F37 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */,
-				E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */,
+				E4F91E3F1C19F182009A6F86 /* ShopViewController.swift */,
 				E433D3FA1C02B664009586FF /* LevelViewController.swift */,
 				E46FC2F11BFEBE2D00F5DB90 /* CampViewController.swift */,
+				E469DEA91C0A20A400F3EE3C /* AttacksViewController.swift */,
+				E469DEAB1C0A20B100F3EE3C /* ItemsViewController.swift */,
 				E427F2FC1BF246C0005AB626 /* PartyViewController.swift */,
 				E427F2FE1BF24A7B005AB626 /* PersonDetailViewController.swift */,
 				E4643A471BEA5E5B00C81D3C /* BattleViewController.swift */,
@@ -294,6 +297,7 @@
 				E45DEDC91BF2C7B100A9F5D3 /* Tile.swift in Sources */,
 				E42C5A2B1BFA43A2005DCE33 /* ViewExtensions.swift in Sources */,
 				E4F3C8511BE9B20300D29811 /* Creature.swift in Sources */,
+				E4F91E401C19F182009A6F86 /* ShopViewController.swift in Sources */,
 				E4F3C8381BE9AD2D00D29811 /* AppDelegate.swift in Sources */,
 				E485F95B1BF02494005E6402 /* CreatureView.swift in Sources */,
 				E4F3C8551BE9BB1900D29811 /* PlistService.swift in Sources */,

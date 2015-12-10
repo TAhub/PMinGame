@@ -39,13 +39,6 @@ class CampViewController: UIViewController {
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		//TODO: you can access money with "comparisonMap.money"
-		//same if you add new items
-		//your money, items, and party variables are all separate from the next map's
-		//since the next map might not exist yet
-		//so they will have to be saved separately
-		
-		
 		//heal the entire party
 		for person in comparisonMap.party
 		{
@@ -76,6 +69,18 @@ class CampViewController: UIViewController {
 		if let dest = segue.destinationViewController as? LevelViewController
 		{
 			dest.party = comparisonMap.party
+		}
+		if let dest = segue.destinationViewController as? ShopViewController
+		{
+			dest.items = comparisonMap.items
+			dest.money = comparisonMap.money
+			dest.saveCompletion =
+			{
+				self.comparisonMap.items = dest.items
+				self.comparisonMap.money = dest.money
+				self.comparisonMap.saveParty()
+				saveInventory(dest.items)
+			}
 		}
 	}
 }

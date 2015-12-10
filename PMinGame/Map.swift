@@ -199,13 +199,13 @@ class Map
 					{
 						self.delegate.startBattle(BattleType.Normal)
 					}
-				}
-				
-				//did you catch the attention of anything?
-				//traps only activate if you DON'T fight someone
-				if !self.spotCheck(true)
-				{
-					self.spotCheck(false)
+					
+					//did you catch the attention of anything?
+					//traps only activate if you DON'T fight someone
+					if !self.spotCheck(true)
+					{
+						self.spotCheck(false)
+					}
 				}
 			}
 			
