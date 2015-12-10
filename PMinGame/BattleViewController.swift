@@ -17,6 +17,13 @@ enum MenuState
 	case ItemTarget(Int, Item)
 }
 
+enum BattleType: Int
+{
+	case Normal = 0
+	case Encounter = 1
+	case Boss = 2
+}
+
 class BattleViewController: UIViewController, BattleDelegate {
 	
 	//MARK: outlets and actions
@@ -201,10 +208,10 @@ class BattleViewController: UIViewController, BattleDelegate {
 	
 	private var endOfBattleHook:((Bool, [Creature]?, Int)->())!
 	private var endingHook:(()->())?
-	func setup(party:[Creature], money:Int, encounterType:String, difficulty:Int, endOfBattleHook:(Bool, [Creature]?, Int)->(), savePlayersCallback:()->())
+	func setup(party:[Creature], money:Int, encounterType:String, difficulty:Int, type:BattleType, endOfBattleHook:(Bool, [Creature]?, Int)->(), savePlayersCallback:()->())
 	{
 		let items = loadInventory()
-		battle = Battle(players: party, money: money, items: items, encounterType: encounterType, difficulty: difficulty, savePlayersCallback: savePlayersCallback)
+		battle = Battle(players: party, money: money, items: items, encounterType: encounterType, difficulty: difficulty, type:type, savePlayersCallback: savePlayersCallback)
 		
 		saveState = kSaveStateBattle
 		
@@ -445,6 +452,35 @@ class BattleViewController: UIViewController, BattleDelegate {
 		{
 			battleMoney += moneyForLevel(enemy.level)
 		}
+		
+		//award items for non-random fights
+		if (battle.battleType.rawValue != BattleType.Normal.rawValue)
+		{
+			let items = PlistService.loadEntries("Items") as! [String : [String : AnyObject]]
+			
+			var possibilities = [String]();
+			for (item, _) in items
+			{
+				if PlistService.loadValue("Items", item, "can drop") != nil &&
+					(PlistService.loadValue("Items", item, "cost") as! Int) < battleMoney
+				{
+					possibilities.append(item)
+				}
+			}
+			if possibilities.count > 0
+			{
+				let pick = Item(type: possibilities[Int(arc4random_uniform(UInt32(possibilities.count)))])
+				
+				//add the item
+				if addItem(&battle.playerItems, newItem: pick)
+				{
+					runMessage("You got a \(pick.type)!", shake: false)
+					battleMoney -= pick.cost
+					saveInventory(battle.playerItems);
+				}
+			}
+		}
+		
 		battle.money += battleMoney
 		runMessage("You got \(battleMoney) karma!", shake: false)
 		

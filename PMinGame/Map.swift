@@ -11,7 +11,7 @@ import Foundation
 protocol MapDelegate
 {
 	func playerMoved(completion:()->())
-	func startBattle()
+	func startBattle(type:BattleType)
 	func partyDamageEffect()
 	func nextMap()
 	func walkerAttack(num:Int)
@@ -197,7 +197,7 @@ class Map
 					}
 					if self.tiles[to.1][to.0].encounters && arc4random_uniform(100) < kEncounterChance
 					{
-						self.delegate.startBattle()
+						self.delegate.startBattle(BattleType.Normal)
 					}
 				}
 				

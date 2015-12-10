@@ -50,6 +50,10 @@ class Item
 	{
 		return PlistService.loadValue("Items", type, "message") as! String
 	}
+	var cost:Int
+	{
+		return PlistService.loadValue("Items", type, "cost") as! Int
+	}
 	var description:String
 	{
 		let baseString = PlistService.loadValue("Items", type, "description") as! String

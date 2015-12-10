@@ -17,6 +17,10 @@
 		<key>targets dead</key> <true/>
 		<key>targets alive</key> <true/>
 		<key>use while immobile</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>9999</integer>
+		<key>can drop</key> <true/>
+		<key>min shop level</key> <integer>9999</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -28,6 +32,10 @@
 	<dict>
 		<key>heals</key> <integer>40</integer>
 		<key>targets alive</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>20</integer>
+		<key>can drop</key> <true/>
+		<key>min shop level</key> <integer>0</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -38,6 +46,10 @@
 	<dict>
 		<key>heals</key> <integer>60</integer>
 		<key>targets alive</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>40</integer>
+		<key>can drop</key> <true/>
+		<key>min shop level</key> <integer>11</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -48,6 +60,10 @@
 	<dict>
 		<key>heals</key> <integer>80</integer>
 		<key>targets alive</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>60</integer>
+		<key>can drop</key> <true/>
+		<key>min shop level</key> <integer>22</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -58,6 +74,9 @@
 	<dict>
 		<key>heals</key> <integer>20</integer>
 		<key>targets dead</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>40</integer>
+		<key>min shop level</key> <integer>0</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -69,6 +88,9 @@
 		<key>cure status</key> <true/>
 		<key>targets alive</key> <true/>
 		<key>use while immobile</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>20</integer>
+		<key>min shop level</key> <integer>0</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -79,6 +101,9 @@
 	<dict>
 		<key>cure steps</key> <true/>
 		<key>targets alive</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>20</integer>
+		<key>min shop level</key> <integer>0</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->
@@ -92,6 +117,9 @@
 		<key>cure steps</key> <true/>
 		<key>targets alive</key> <true/>
 		<key>use while immobile</key> <true/>
+		<!-- cost info -->
+		<key>cost</key> <integer>50</integer>
+		<key>min shop level</key> <integer>15</integer>
 		<!-- appearance info -->
 		<!-- TODO: animation data -->
 		<!-- message info -->

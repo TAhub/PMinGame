@@ -11,6 +11,8 @@ import Foundation
 let kWorstEffectivenessLabel = " 👎"
 let kBestEffectivenessLabel = " 👍"
 
+let kMaxItemPerType:Int = 10
+
 protocol BattleDelegate
 {
 	func runMessage(message:String, shake: Bool)
@@ -40,6 +42,7 @@ class Battle
 	
 	internal var playerTurnDist = [Int]()
 	internal var money:Int
+	internal var battleType:BattleType
 	
 	//turn order data
 	private let defaultTurnOrder:Bool
@@ -57,6 +60,7 @@ class Battle
 		d.setInteger(money, forKey: "battleMoney")
 		d.setBool(defaultTurnOrder, forKey: "battleTurnOrder")
 		d.setInteger(enemies.count, forKey: "battleEnemies")
+		d.setInteger(battleType.rawValue, forKey: "battleType")
 		for (i, en) in enemies.enumerate()
 		{
 			d.setObject(en.creatureString, forKey: "battleEnemy\(i)")
@@ -84,8 +88,9 @@ class Battle
 		}
 	}
 	
-	init(players:[Creature], money:Int, items:[Item], encounterType:String, difficulty:Int, savePlayersCallback: ()->())
+	init(players:[Creature], money:Int, items:[Item], encounterType:String, difficulty:Int, type:BattleType, savePlayersCallback: ()->())
 	{
+		self.battleType = type
 		self.money = money
 		self.players = players
 		self.savePlayersCallback = savePlayersCallback
@@ -97,6 +102,7 @@ class Battle
 			let d = NSUserDefaults.standardUserDefaults()
 			self.money = d.integerForKey("battleMoney")
 			defaultTurnOrder = d.boolForKey("battleTurnOrder")
+			battleType = BattleType(rawValue: d.integerForKey("battleType"))!
 			let battleEnemies = d.integerForKey("battleEnemies")
 			for i in 0..<battleEnemies
 			{
@@ -116,7 +122,14 @@ class Battle
 		else
 		{
 			//load an encounter
-			let numberEnemies = 1
+			let numberEnemies:Int
+			switch(type)
+			{
+			case .Normal: numberEnemies = 1
+			case .Boss: fallthrough
+			case .Encounter: numberEnemies = 2 + (difficulty / 8)
+			}
+			
 			let encounterFlat = PlistService.loadValueFlat("EncounterGenerator", encounterType) as! [[String : AnyObject]]
 			for _ in 0..<numberEnemies
 			{

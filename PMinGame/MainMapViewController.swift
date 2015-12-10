@@ -18,6 +18,33 @@ let kSaveStateKey:String = "saveState"
 let kSaveStateBattle:String = "BATTLE"
 let kSaveStateCamp:String = "CAMP"
 
+func addItem(inout items:[Item], newItem:Item, actuallyAdd:Bool = true) -> Bool
+{
+	for item in items
+	{
+		if item.type == newItem.type
+		{
+			if item.number + newItem.number <= kMaxItemPerType
+			{
+				if actuallyAdd
+				{
+					item.number += newItem.number
+				}
+				return true
+			}
+			else
+			{
+				return false
+			}
+		}
+	}
+	if (actuallyAdd)
+	{
+		items.append(newItem)
+	}
+	return true
+}
+
 var saveState:String
 {
 	get
@@ -265,7 +292,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 				saveState = kSaveStateNone
 			}
 			
-			bvc.setup(map.party, money: map.money, encounterType: map.encounterType, difficulty: map.difficulty, endOfBattleHook: battleCallback)
+			bvc.setup(map.party, money: map.money, encounterType: map.encounterType, difficulty: map.difficulty, type: bType, endOfBattleHook: battleCallback)
 			{
 				self.map.saveParty()
 			}
@@ -385,8 +412,7 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 			self.map.save()
 			
 			//start a battle
-			//TODO: it should be a special battle, against multiple foes
-			self.startBattle()
+			self.startBattle(BattleType.Encounter)
 		}
 	}
 	
@@ -398,8 +424,10 @@ class MainMapViewController: UIViewController, UICollectionViewDataSource, UICol
 		//and move the "camera"
 		moveCameraToPlayer(true)
 	}
-	func startBattle()
+	private var bType:BattleType = BattleType.Normal
+	func startBattle(type:BattleType)
 	{
+		bType = type
 		performSegueWithIdentifier("startBattle", sender: self)
 	}
 	func partyDamageEffect()
